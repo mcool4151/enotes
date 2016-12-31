@@ -5,12 +5,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html >
 <head>
   <meta charset="utf-8">
-
+  <script type="text/javascript">
+    var base = "<?php echo base_url(); ?>";
+  </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
   <meta name="author" content="Abc,def,ghi">
+  <meta name="google-signin-client_id" content="884000251920-jsnc6o4o8buh4ek1s208avhj3p5atm07.apps.googleusercontent.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/landing-page-styles.css">
 
   <!--[if lt IE 9]>
@@ -36,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
     <ul class="mobile-submenu">
-      <li class="banner-logo" style="background-image:url(./images/logo.png);">
+      <li class="banner-logo" style="background-image:url(<?php echo base_url(); ?>/images/logo.png);">
 </li>
       <li class="active"><span>home</span></li>
       <li><span>home</span></li>
@@ -61,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-<div class="parallax bg-one" style="background-image: url('./images/banner-1.jpg');">
+<div class="parallax bg-one" style="background-image: url('<?php echo base_url(); ?>/images/banner-1.jpg');">
 <div class="image-filter"></div>
 </div>
 
@@ -69,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Save &#38; Share knowledge here</h2>
   <div class="login-button-container">
-  <div class="google-login button ">Google +</div><span>or</span>
+  <div class="google-login button g-signin2" data-onsuccess="onSignIn">Google +</div><span>or</span>
   <div class="facebook-login button ">Facebook</div>
 </div>
 </div>
@@ -93,10 +96,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div class="parallax bg-two" style="background-image: url('.<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
+<div class="parallax bg-two" style="background-image: url('<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
 
 <div class="modal last-modal" >
-  <div class="banner-logo" style="background-image:url(.<?php echo base_url();?>/images/logo.png);"></div>
+  <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Get started with US now for free </h2>
   <div class="login-button-container">
   <div class="google-login button ">Google +</div><span>or</span>
@@ -120,6 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="<?php echo base_url();?>javascripts/landingpage.js"></script>
+    <script src="<?php echo base_url();?>javascripts/gplus.js"></script>
 
 <script>
 
