@@ -1,0 +1,20 @@
+
+@import "partials/normalize";
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/base";
+
+
+body{
+    background-color: $main-background;
+
+
+    @include screen(tablet-large) {
+      background-color: blue;
+    }
+    @include screen(mobile-large) {
+      background-color: green;
+    }
+
+
+}

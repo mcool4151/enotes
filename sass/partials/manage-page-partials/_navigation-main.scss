@@ -1,0 +1,63 @@
+.main{
+  padding-top: 10px;
+  height: 65px;
+  z-index: 81;
+  top:-25px;
+  box-shadow: none;
+  border-bottom: 1px solid $light-grey-border;
+  @extend .desktop-visible;
+  h2{
+    margin-left: 20px;
+    margin-top: -3px;
+    font-size: 27px;
+    color:darken(gray, 5%);
+    font-family: RalewayRegular;
+    font-weight: 100!important;
+  }
+  .search-bar{
+    z-index: 10;
+    @extend .desktop-visible;
+    margin-left: 150px;
+    background-color: lighten(gray,45%);
+    height:40px;
+    padding-left: 50px;
+    color:darken(gray,10%);
+    width: 60%;
+    margin-top: 5px;
+  }
+  .search-icon{
+    z-index: 11;
+    @extend .desktop-visible;
+    position: absolute;
+    left:260px;
+    font-size: 20px;
+    top:12px;
+    color:darken(gray,5%);
+  }
+}
+$placeholder-color:darken(gray,5%);
+$placeholder-weight:100;
+
+.main input::-webkit-input-placeholder {
+color: $placeholder-color !important;
+font-weight: $placeholder-weight;
+font-family: RalewayRegular;
+}
+
+.main input:-moz-placeholder { /* Firefox 18- */
+color: $placeholder-color !important;
+font-weight: $placeholder-weight;
+font-family: RalewayRegular;
+}
+
+.main input::-moz-placeholder {  /* Firefox 19+ */
+color: $placeholder-color !important;
+font-weight: $placeholder-weight;
+font-family: RalewayRegular;
+}
+
+.main input:-ms-input-placeholder {
+  font-family: RalewayRegular;
+color: $placeholder-color !important;
+font-weight: $placeholder-weight;
+}

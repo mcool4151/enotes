@@ -1,0 +1,299 @@
+.phone-visible{
+  @include bp-large {
+
+    display: none;
+  }
+  @include bp-medium {
+    display: block;
+  }
+}
+.desktop-visible{
+  @include bp-large {
+    display: block;
+
+  }
+  @include bp-medium {
+
+    display: none;
+  }
+}
+.nav-container{
+  z-index: 80;
+  position:fixed;
+  @include bp-large {
+    top:40px;
+  }
+  @include bp-medium {
+    top:-25px;
+  }
+
+  left:0px;
+  width:100%;
+  height:50px;
+  background-color:#fff;
+  border-bottom:1px solid $light-grey-border;
+  box-shadow:0px 0px 5px gray;
+}
+
+
+.nav-header{
+
+  background-image: url('https://greenhatworld.com/wp-content/uploads/2016/09/Download-Power-Vector-images-Packs.jpg') ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:300px;
+  height: 150px;
+  margin-left: -40px;
+  margin-top: -4px;
+@extend .phone-visible;
+  .email-id{
+    @extend .font;
+
+position: relative;
+padding-top:120px;
+      z-index:11;
+      color: #fff!important;
+      font-size: 14px;
+      text-align: center;
+
+  }
+  .profile-pic{
+    position: absolute;
+      z-index:11;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    left:120px;
+    top :60px;
+  }
+}
+
+.nav-header:hover{
+  border: none!important;
+}
+.filter-nav-header{
+  z-index:10;
+  position: absolute;
+  background-color: black;
+  width: 300px;
+  height: 150px;
+  opacity: 0.4;
+}
+.left-container li{
+  z-index: 12;
+  .fa{
+          background-color: $main-background;
+  }
+
+}
+.left-container li:hover .fa{
+        background-color: darken($main-background,5%);
+}
+.nav-container h2{
+  font-weight: 500;
+  font-size: 21px;
+  margin-top: 4px;
+  margin-left: 25px;
+  color: darken(gray, 25%);
+  float: left;
+}
+
+
+
+
+
+
+.button {
+    background-color: lighten(orange, 15%);
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 60px;
+    cursor: pointer;
+    @extend .desktop-visible;
+    float: left;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+
+.new{
+  text-transform:uppercase;
+  padding: 5px 40px;
+  margin-left: 0px;
+  margin-top: 13px;
+  margin-right: 60px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 900;
+}
+.new:hover{
+  background-color: lighten(orange, 20%);
+}
+
+
+
+
+.c-hamburger {
+
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 45px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  float: left;
+  margin-top: 15px;
+
+@extend .phone-visible;
+
+}
+
+.c-hamburger:focus {
+  outline: none;
+}
+
+.c-hamburger span {
+  display: block;
+  position: absolute;
+  top:10px;
+  left: 0px;
+  right: 0px;
+  height:2px;
+  background: darken(gray, 25%);
+
+}
+
+.c-hamburger span::before,
+.c-hamburger span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: darken(gray, 25%);
+  content: "";
+}
+
+.c-hamburger span::before {
+  top: -10px;
+}
+
+.c-hamburger span::after {
+  bottom: -10px;
+}
+
+
+
+.c-hamburger--htla span {
+  transition: transform 0.3s;
+}
+
+.c-hamburger--htla span::before {
+  transform-origin: top right;
+  transition: transform 0.3s, width 0.3s, top 0.3s;
+}
+
+.c-hamburger--htla span::after {
+  transform-origin: bottom right;
+  transition: transform 0.3s, width 0.3s, bottom 0.3s;
+}
+
+/* active state, i.e. menu open */
+
+.back-arrow{
+  display: none;
+}
+.back-arrow span {
+  transform: rotate(180deg);
+}
+
+.back-arrow span::before,
+.back-arrow span::after {
+  width: 50%;
+}
+
+.back-arrow span::before {
+  top: 0;
+  transform: translateX(17px) translateY(0px) rotate(45deg);
+}
+
+.back-arrow span::after {
+  bottom: 0;
+  transform: translateX(17px) translateY(-1px) rotate(-45deg);
+}
+.nav-icons{
+  font-size: 22px;
+  color: darken(gray, 20%);
+  margin-top: 12px;
+  float: right;
+  margin-right: 30px;
+}
+
+.settings-icon{
+  @extend .nav-icons;
+  @extend .desktop-visible;
+  color: darken(gray, 5%);
+}
+.grid-icon{
+  @extend .nav-icons;
+  @extend .desktop-visible;
+    color: darken(gray, 5%);
+}
+.list-icon{
+  display: none;
+  @extend .nav-icons;
+  @extend .desktop-visible;
+    color: darken(gray, 5%);
+}
+.info-icon{
+  @extend .nav-icons;
+  @extend .desktop-visible;
+  color: darken(gray, 5%);
+}
+
+.sub-menu-icon
+{
+  @extend .nav-icons;
+  margin-top: 14px;
+  @extend .phone-visible;
+}
+.search-icon{
+  @extend .nav-icons;
+  @extend .phone-visible;
+}
+.search-bar{
+  display: none;
+  position: absolute;
+  left:95px;
+  top:10px;
+  border: none;
+  width: 65%;
+  height :30px;
+  padding-left: 10px;
+  outline: none;
+}
+.search-bar:focus{
+  border: 0px solid black;
+}

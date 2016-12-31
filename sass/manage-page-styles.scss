@@ -1,0 +1,316 @@
+@import "partials/manage-page-partials/normalize";
+@import "partials/manage-page-partials/variables";
+@import "partials/manage-page-partials/mixins";
+@import "partials/manage-page-partials/base";
+@import "partials/manage-page-partials/navigation";
+@import "partials/manage-page-partials/navigation-main";
+body{
+    background-color: $main-background;
+    overflow-x: hidden;
+    cursor:default!important;
+}
+
+.font{
+  color:darken($gray, 25%);
+  line-height:1em;
+    font-size:15px;
+    font-weight:none;
+    font-family: $base-font-family;
+    text-decoration:none;
+    font-weight: 500;
+}
+.active{
+  border-left:2px solid lighten(orange, 10%)!important;
+  color:lighten(orange, 10%)!important;
+
+  .fa{
+    color:lighten(orange, 10%)!important;
+  }
+}
+.active:hover{
+  background-color: $main-background!important;
+  .fa{
+    background-color: $main-background!important;
+  }
+}
+.container{
+    width:100%;
+    height:auto;
+    position: absolute;
+    @include bp-large {
+      top:110px;
+    }
+    @include bp-medium {
+      top:50px;
+    }
+
+    float:left;
+}
+
+.center-container{
+  float:right;
+
+  height: 100%;
+  @include bp-large {
+    width:80%;
+  }
+  @include bp-medium {
+    width:100%;
+  }
+  @include bp-small {
+    width:100%;
+  }
+
+
+}
+.file,.folder{
+  @include bp-large {
+    width:24%;
+  }
+  @include bp-medium {
+    width:32%;
+  }
+  @include bp-small {
+    width:48%;
+  }
+
+  cursor:pointer!important;
+}
+.display-container{
+ display:block;
+list-style: none;
+height: auto;
+cursor:default!important;
+  li{
+
+  }
+  ul{
+    list-style: none;
+  }
+  h3{
+
+        @extend .font;
+          padding-bottom: 10px;
+
+  }
+
+}
+.clearfix{
+
+  clear:both;
+}
+
+.folder-container{
+margin-top: -10px;
+margin-left: -70px;
+
+}
+.folder{
+
+  margin-right: 5px;
+  margin-bottom: 20px;
+  height:40px;
+  float:left;
+  padding-left:10px;
+  padding-top: 9px;
+  display: block;
+  background-color:#fff;
+  box-shadow: 0px 0px 50px  $light-grey-border;
+  @extend .font;
+  font-size: 13px;
+  color: lighten(black, 5%);
+
+
+    border-bottom: 1px solid darken($light-grey-border, 7%);
+    span{
+      vertical-align:text-top;
+    }
+    .folder-icon{
+      font-size: 20px;
+
+      color: lighten($gray, 2%);
+      background-color: lighten($gray, 47%);
+      padding: 10px;
+      margin: -10px;
+      margin-top: -9px;
+      padding-bottom: 8px;
+      margin-right: 20px;
+    }
+    .dot-icon{
+      font-size: 20px;
+      float: right;
+      margin-right: 10px;
+      color: lighten($gray, 5%);
+    }
+}
+.fix{
+  @extend .folder;
+
+  width: 100%;
+  height: 0px;
+  margin:0px;
+  padding:0px;
+  margin-bottom: 15px;
+  border-bottom: 0px solid $light-grey-border;
+}
+.file-container{
+margin-top: -10px;
+margin-left: -70px;
+}
+.file{
+
+  margin-right: 5px;
+  margin-bottom: 5px;
+  height:auto;
+  float:left;
+  padding-left:10px;
+  padding-top: 12px;
+  display: block;
+  background-color:#fff;
+  color: lighten(black, 5%);
+    @extend .font;
+    font-size: 13px;
+    span{
+      vertical-align: text-top;
+    }
+    .file-preview{
+      background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width:95%;
+      height: 150px;
+    }
+    .file-name{
+      height: 40px;
+      padding-left:10px;
+      padding-top: 6px;
+      .folder-icon{
+        font-size: 20px;
+        margin-right: 20px;
+        color: lighten($gray, 2%);
+      }
+    }
+}
+
+.filter{
+  z-index:90;
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+
+}
+.left-container{
+
+position: fixed;
+left: 0px;
+height: 150%;
+width:$left-container-width;
+background-color: $main-background;
+border-right: 1px solid $light-grey-border;
+
+@include bp-large {
+
+  width:200px;
+}
+@include bp-medium {
+//  z-index: 100;
+  @include bp-large {
+    top:90px;
+  }
+  @include bp-medium {
+    top:-20px;
+  }
+  width:300px;
+  visibility: hidden;
+}
+
+      .left-navigation{
+        list-style: none;
+      }
+      .left-navigation .folder{
+
+
+        @include bp-large {
+          width:200px;
+        }
+        @include bp-medium {
+
+          width:300px;
+          left: -400px;
+          -webkit-transition: 1;
+        }
+
+        @extend .font;
+        font-size: 12px;
+        font-weight: 100;
+        margin-left: -40px;
+        height: 45px;
+        padding-left: 30px;
+        padding-top: 0px;
+        background-color: $main-background;
+        box-shadow: none;
+        margin-bottom: 0px;
+        border-bottom: 0px solid #fff;
+        border-left: 3px solid $main-background;
+        padding-top: 10px;
+        border-right: 1px solid $light-grey-border;
+      }
+      .folder .folder-icon{
+        margin-right: 20px;
+        font-size: 20px;
+
+        color: darken($main-background,60%);
+
+      }
+      .folder span{
+        vertical-align:text-top;
+      }
+      .left-navigation li:hover{
+
+        background-color: darken($main-background,5%);
+        border-left: 3px solid darken($main-background,45%);
+      }
+
+      .line{
+        @extend .folder;
+        padding: 0px!important;
+        margin: 0px!important;
+        height: 1px!important;
+        margin-left: -40px!important;
+        margin-top: 10px!important;
+        margin-bottom: 10px!important;
+        background-color: $light-grey-border!important;
+
+      }
+}
+
+.upload-button{
+  position: fixed;
+  bottom :15px;
+  right :20px;
+  padding-top:6px;
+  padding-bottom:20px;
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  background: lighten($blue, 7%);
+  text-align:center;
+  box-shadow: 5px 10px 30px gray;
+
+  @extend .font;
+  color:#e2eaf3;
+  text-align: center;
+  line-height:1em;
+    font-size:40px;
+
+    @extend .phone-visible;
+}
+.upload-button:hover{
+  background: lighten($blue, 5%);
+}

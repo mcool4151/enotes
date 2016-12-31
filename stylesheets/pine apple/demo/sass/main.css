@@ -1,0 +1,65 @@
+/*
+Error: File to import not found or unreadable: ../../build/pineapple-sass.
+       Load paths:
+         Compass::SpriteImporter
+         /home/avish/Desktop/e-notes/sass
+         /usr/share/compass/frameworks/compass/stylesheets
+        on line 3 of /home/avish/Desktop/e-notes/sass/pine apple/demo/sass/main.scss
+
+1: // Test sass script for pineapple-sass 
+2: 
+3: @import "../../build/pineapple-sass";
+4: 
+5: // Animations
+6: .transition {
+7: 	@include transition(opacity .2s ease-in);
+8: }
+
+Backtrace:
+/home/avish/Desktop/e-notes/sass/pine apple/demo/sass/main.scss:3
+/usr/lib/ruby/vendor_ruby/sass/tree/import_node.rb:67:in `rescue in import'
+/usr/lib/ruby/vendor_ruby/sass/tree/import_node.rb:45:in `import'
+/usr/lib/ruby/vendor_ruby/sass/tree/import_node.rb:28:in `imported_file'
+/usr/lib/ruby/vendor_ruby/sass/tree/import_node.rb:37:in `css_import?'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:311:in `visit_import'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `block in with_base'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:115:in `with_frame'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `with_base'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `map'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:166:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:186:in `visit_root'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:157:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:8:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:36:in `css_tree'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:20:in `render'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:278:in `render'
+/usr/lib/ruby/vendor_ruby/compass/import-once/engine.rb:17:in `block in render'
+/usr/lib/ruby/vendor_ruby/compass/import-once/engine.rb:29:in `with_import_scope'
+/usr/lib/ruby/vendor_ruby/compass/import-once/engine.rb:16:in `render'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:293:in `watch'
+/usr/lib/ruby/vendor_ruby/compass/sass_compiler.rb:46:in `watch!'
+/usr/lib/ruby/vendor_ruby/compass/commands/watch_project.rb:41:in `perform'
+/usr/lib/ruby/vendor_ruby/compass/commands/base.rb:18:in `execute'
+/usr/lib/ruby/vendor_ruby/compass/commands/project_base.rb:19:in `execute'
+/usr/lib/ruby/vendor_ruby/compass/exec/sub_command_ui.rb:43:in `perform!'
+/usr/lib/ruby/vendor_ruby/compass/exec/sub_command_ui.rb:15:in `run!'
+/usr/bin/compass:30:in `block in <main>'
+/usr/bin/compass:44:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ../../build/pineapple-sass.\A        Load paths:\A          Compass::SpriteImporter\A          /home/avish/Desktop/e-notes/sass\A          /usr/share/compass/frameworks/compass/stylesheets\A         on line 3 of /home/avish/Desktop/e-notes/sass/pine apple/demo/sass/main.scss\A \A 1: // Test sass script for pineapple-sass \A 2: \A 3: @import \"../../build/pineapple-sass\";\A 4: \A 5: // Animations\A 6: .transition {\A 7: 	@include transition(opacity .2s ease-in);\A 8: }"; }
