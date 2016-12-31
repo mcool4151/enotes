@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="author" content="Abc,def,ghi">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="stylesheets/landing-page-styles.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/landing-page-styles.css">
 
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="modal banner" >
-  <div class="banner-logo" style="background-image:url(./images/logo.png);"></div>
+  <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Save &#38; Share knowledge here</h2>
   <div class="login-button-container">
   <div class="google-login button ">Google +</div><span>or</span>
@@ -76,27 +76,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div class="modal files-supported" >
-    <div class="file-img" style="background-image:url(./images/files.png);">
+    <div class="file-img" style="background-image:url(<?php echo base_url();?>/images/files.png);">
     </div>
     <div class="text-container">
     <h3>Save any file</h3>
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div class="parallax bg-two" style="background-image: url('./images/banner-2.jpg');"><div class="image-filter"></div></div>
+<div class="parallax bg-two" style="background-image: url('<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
 
 <div class="modal shared-files" >
-    <div class="shared-img" style="background-image:url(./images/share.jpg);">
+    <div class="shared-img" style="background-image:url(<?php echo base_url();?>/images/share.jpg);">
     </div>
     <div class="text-container">
     <h3>Share files &#38; folders</h3>
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div class="parallax bg-two" style="background-image: url('./images/banner-2.jpg');"><div class="image-filter"></div></div>
+<div class="parallax bg-two" style="background-image: url('.<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
 
 <div class="modal last-modal" >
-  <div class="banner-logo" style="background-image:url(./images/logo.png);"></div>
+  <div class="banner-logo" style="background-image:url(.<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Get started with US now for free </h2>
   <div class="login-button-container">
   <div class="google-login button ">Google +</div><span>or</span>
@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <script src="javascripts/landingpage.js"></script>
+    <script src="<?php echo base_url();?>javascripts/landingpage.js"></script>
 
 <script>
 

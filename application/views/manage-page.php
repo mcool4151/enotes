@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="author" content="Abc,def,ghi">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="stylesheets/manage-page-styles.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>stylesheets/manage-page-styles.css">
 
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -168,8 +168,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="jquery-3.1.1.min.js"></script>
-<script src="javascripts/scripts.js"></script>
-<script src="javascripts/dropdown-menu.js"></script>
+<script src="<?php echo base_url();?>javascripts/scripts.js"></script>
+<script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
 
 <script>
 
