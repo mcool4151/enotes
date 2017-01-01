@@ -1,0 +1,78 @@
+
+
+.folder-submenu-container{
+
+  position: relative;
+width: 460px;
+@include bp-medium {
+width: 400px;
+}
+height: 300px;
+margin-left: -8px;
+margin-top: 20px;
+padding-left: 0px;
+  z-index: 10;
+  li{
+    @extend .font;
+  font-weight: 100;
+  margin-left: -40px;
+  height: 40px;
+  width: 230px;
+  @include bp-medium {
+  width: 200px;
+  }
+  background-color: #fff;
+  box-shadow: none;
+  margin-bottom: 0px;
+  border-bottom: 0px solid #fff;
+  border-left: 3px solid #fff;
+  margin-left: 0px;
+  padding-left:20px;
+  padding-top: 10px;
+  border-right: 1px solid $light-grey-border;
+  font-size: 12px!important;
+  .icon{
+    margin-right: 20px;
+    font-size: 18px;
+    color: darken($main-background,60%);
+  }
+  .right{
+    float: right;
+    margin-right: 10px;
+    font-weight: 100;
+    margin-top: 5px;
+    @include bp-medium {
+    display: none;
+    }
+  }
+
+ span{
+  vertical-align:text-top;
+}
+
+}
+li:hover{
+background-color: darken($main-background,5%);
+border-left: 3px solid darken($main-background,45%);
+}
+  .submenu{
+    width: 230px;
+    height: 240px;
+    position: absolute;
+    @include bp-medium {
+    width: 200px;
+    top:30px;
+    left:0px;
+    background-color: #fff;
+    }
+    padding-left: 0px;
+    margin-top: -30px;
+    right: 0px;
+  }
+}
+.open-with-sub{
+  display: none;
+}
+.open-with-main:hover .open-with-sub{
+  display: block;
+}

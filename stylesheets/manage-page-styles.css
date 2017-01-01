@@ -1187,15 +1187,116 @@ article p a:visited {
   font-weight: 100;
 }
 
-/* line 7, ../sass/manage-page-styles.scss */
+/* line 3, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container {
+  position: relative;
+  width: 460px;
+  height: 300px;
+  margin-left: -8px;
+  margin-top: 20px;
+  padding-left: 0px;
+  z-index: 10;
+}
+@media screen and (max-width: 1024px) {
+  /* line 3, ../sass/partials/manage-page-partials/_submenu.scss */
+  .folder-submenu-container {
+    width: 400px;
+  }
+}
+/* line 15, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container li {
+  font-weight: 100;
+  margin-left: -40px;
+  height: 40px;
+  width: 230px;
+  background-color: #fff;
+  box-shadow: none;
+  margin-bottom: 0px;
+  border-bottom: 0px solid #fff;
+  border-left: 3px solid #fff;
+  margin-left: 0px;
+  padding-left: 20px;
+  padding-top: 10px;
+  border-right: 1px solid #e6e6e6;
+  font-size: 12px !important;
+}
+@media screen and (max-width: 1024px) {
+  /* line 15, ../sass/partials/manage-page-partials/_submenu.scss */
+  .folder-submenu-container li {
+    width: 200px;
+  }
+}
+/* line 34, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container li .icon {
+  margin-right: 20px;
+  font-size: 18px;
+  color: #5a5a5a;
+}
+/* line 39, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container li .right {
+  float: right;
+  margin-right: 10px;
+  font-weight: 100;
+  margin-top: 5px;
+}
+@media screen and (max-width: 1024px) {
+  /* line 39, ../sass/partials/manage-page-partials/_submenu.scss */
+  .folder-submenu-container li .right {
+    display: none;
+  }
+}
+/* line 49, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container li span {
+  vertical-align: text-top;
+}
+/* line 54, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container li:hover {
+  background-color: #e6e6e6;
+  border-left: 3px solid gray;
+}
+/* line 58, ../sass/partials/manage-page-partials/_submenu.scss */
+.folder-submenu-container .submenu {
+  width: 230px;
+  height: 240px;
+  position: absolute;
+  padding-left: 0px;
+  margin-top: -30px;
+  right: 0px;
+}
+@media screen and (max-width: 1024px) {
+  /* line 58, ../sass/partials/manage-page-partials/_submenu.scss */
+  .folder-submenu-container .submenu {
+    width: 200px;
+    top: 30px;
+    left: 0px;
+    background-color: #fff;
+  }
+}
+
+/* line 73, ../sass/partials/manage-page-partials/_submenu.scss */
+.open-with-sub {
+  display: none;
+}
+
+/* line 76, ../sass/partials/manage-page-partials/_submenu.scss */
+.open-with-main:hover .open-with-sub {
+  display: block;
+}
+
+/* line 9, ../sass/manage-page-styles.scss */
 body {
   background-color: #f3f3f3;
   overflow-x: hidden;
   cursor: default !important;
 }
 
-/* line 13, ../sass/manage-page-styles.scss */
-.font, .nav-header .email-id, .display-container h3, .folder, .fix, .left-container .line, .file, .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line, .upload-button {
+/* line 14, ../sass/manage-page-styles.scss */
+.classnew {
+  color: red !important;
+}
+
+/* line 17, ../sass/manage-page-styles.scss */
+.font, .nav-header .email-id, .folder-submenu-container li, .display-container h3, .folder, .fix, .left-container .line, .file, .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line, .upload-button {
   color: #404040;
   line-height: 1em;
   font-size: 15px;
@@ -1205,26 +1306,26 @@ body {
   font-weight: 500;
 }
 
-/* line 22, ../sass/manage-page-styles.scss */
+/* line 26, ../sass/manage-page-styles.scss */
 .active {
   border-left: 2px solid #ffb733 !important;
   color: #ffb733 !important;
 }
-/* line 26, ../sass/manage-page-styles.scss */
+/* line 30, ../sass/manage-page-styles.scss */
 .active .fa {
   color: #ffb733 !important;
 }
 
-/* line 30, ../sass/manage-page-styles.scss */
+/* line 34, ../sass/manage-page-styles.scss */
 .active:hover {
   background-color: #f3f3f3 !important;
 }
-/* line 32, ../sass/manage-page-styles.scss */
+/* line 36, ../sass/manage-page-styles.scss */
 .active:hover .fa {
   background-color: #f3f3f3 !important;
 }
 
-/* line 36, ../sass/manage-page-styles.scss */
+/* line 40, ../sass/manage-page-styles.scss */
 .container {
   width: 100%;
   height: auto;
@@ -1232,94 +1333,96 @@ body {
   float: left;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 36, ../sass/manage-page-styles.scss */
+  /* line 40, ../sass/manage-page-styles.scss */
   .container {
     top: 110px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 36, ../sass/manage-page-styles.scss */
+  /* line 40, ../sass/manage-page-styles.scss */
   .container {
     top: 50px;
   }
 }
 
-/* line 50, ../sass/manage-page-styles.scss */
+/* line 54, ../sass/manage-page-styles.scss */
 .center-container {
   float: right;
   height: 100%;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 50, ../sass/manage-page-styles.scss */
+  /* line 54, ../sass/manage-page-styles.scss */
   .center-container {
     width: 80%;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 50, ../sass/manage-page-styles.scss */
+  /* line 54, ../sass/manage-page-styles.scss */
   .center-container {
     width: 100%;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 50, ../sass/manage-page-styles.scss */
+  /* line 54, ../sass/manage-page-styles.scss */
   .center-container {
     width: 100%;
   }
 }
 
-/* line 66, ../sass/manage-page-styles.scss */
+/* line 70, ../sass/manage-page-styles.scss */
 .file, .folder, .fix, .left-container .line {
   cursor: pointer !important;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 66, ../sass/manage-page-styles.scss */
+  /* line 70, ../sass/manage-page-styles.scss */
   .file, .folder, .fix, .left-container .line {
     width: 24%;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 66, ../sass/manage-page-styles.scss */
+  /* line 70, ../sass/manage-page-styles.scss */
   .file, .folder, .fix, .left-container .line {
     width: 32%;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 66, ../sass/manage-page-styles.scss */
+  /* line 70, ../sass/manage-page-styles.scss */
   .file, .folder, .fix, .left-container .line {
     width: 48%;
   }
 }
 
-/* line 79, ../sass/manage-page-styles.scss */
+/* line 83, ../sass/manage-page-styles.scss */
 .display-container {
   display: block;
   list-style: none;
+  width: 100%;
   height: auto;
   cursor: default !important;
 }
-/* line 87, ../sass/manage-page-styles.scss */
+/* line 93, ../sass/manage-page-styles.scss */
 .display-container ul {
   list-style: none;
 }
-/* line 90, ../sass/manage-page-styles.scss */
+/* line 96, ../sass/manage-page-styles.scss */
 .display-container h3 {
   padding-bottom: 10px;
 }
 
-/* line 98, ../sass/manage-page-styles.scss */
+/* line 104, ../sass/manage-page-styles.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 103, ../sass/manage-page-styles.scss */
+/* line 109, ../sass/manage-page-styles.scss */
 .folder-container {
   margin-top: -10px;
   margin-left: -70px;
 }
 
-/* line 108, ../sass/manage-page-styles.scss */
+/* line 114, ../sass/manage-page-styles.scss */
 .folder, .fix, .left-container .line {
+  position: relative;
   margin-right: 5px;
   margin-bottom: 20px;
   height: 40px;
@@ -1333,11 +1436,11 @@ body {
   color: #0d0d0d;
   border-bottom: 1px solid #d4d4d4;
 }
-/* line 125, ../sass/manage-page-styles.scss */
+/* line 132, ../sass/manage-page-styles.scss */
 .folder span, .fix span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 128, ../sass/manage-page-styles.scss */
+/* line 135, ../sass/manage-page-styles.scss */
 .folder .folder-icon, .fix .folder-icon, .left-container .line .folder-icon {
   font-size: 20px;
   color: #858585;
@@ -1348,15 +1451,27 @@ body {
   padding-bottom: 8px;
   margin-right: 20px;
 }
-/* line 139, ../sass/manage-page-styles.scss */
+/* line 146, ../sass/manage-page-styles.scss */
 .folder .dot-icon, .fix .dot-icon, .left-container .line .dot-icon {
-  font-size: 20px;
+  width: 30px;
+  margin-top: -5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   float: right;
-  margin-right: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 5px;
   color: #8d8d8d;
 }
+/* line 158, ../sass/manage-page-styles.scss */
+.folder .dot-icon:hover, .fix .dot-icon:hover, .left-container .line .dot-icon:hover {
+  border: 1px solid #8d8d8d;
+  background-color: #fff;
+  color: #404040;
+  border-radius: 2px;
+}
 
-/* line 146, ../sass/manage-page-styles.scss */
+/* line 165, ../sass/manage-page-styles.scss */
 .fix {
   width: 100%;
   height: 0px;
@@ -1366,13 +1481,13 @@ body {
   border-bottom: 0px solid #e6e6e6;
 }
 
-/* line 156, ../sass/manage-page-styles.scss */
+/* line 175, ../sass/manage-page-styles.scss */
 .file-container {
   margin-top: -10px;
   margin-left: -70px;
 }
 
-/* line 160, ../sass/manage-page-styles.scss */
+/* line 179, ../sass/manage-page-styles.scss */
 .file {
   margin-right: 5px;
   margin-bottom: 5px;
@@ -1385,11 +1500,11 @@ body {
   color: #0d0d0d;
   font-size: 13px;
 }
-/* line 173, ../sass/manage-page-styles.scss */
+/* line 192, ../sass/manage-page-styles.scss */
 .file span {
   vertical-align: text-top;
 }
-/* line 176, ../sass/manage-page-styles.scss */
+/* line 195, ../sass/manage-page-styles.scss */
 .file .file-preview {
   background-image: url("http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png");
   background-size: cover;
@@ -1398,20 +1513,20 @@ body {
   width: 95%;
   height: 150px;
 }
-/* line 184, ../sass/manage-page-styles.scss */
+/* line 203, ../sass/manage-page-styles.scss */
 .file .file-name {
   height: 40px;
   padding-left: 10px;
   padding-top: 6px;
 }
-/* line 188, ../sass/manage-page-styles.scss */
+/* line 207, ../sass/manage-page-styles.scss */
 .file .file-name .folder-icon {
   font-size: 20px;
   margin-right: 20px;
   color: #858585;
 }
 
-/* line 196, ../sass/manage-page-styles.scss */
+/* line 215, ../sass/manage-page-styles.scss */
 .filter {
   z-index: 90;
   background-color: black;
@@ -1424,7 +1539,7 @@ body {
   visibility: hidden;
 }
 
-/* line 208, ../sass/manage-page-styles.scss */
+/* line 227, ../sass/manage-page-styles.scss */
 .left-container {
   position: fixed;
   left: 0px;
@@ -1434,36 +1549,36 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 208, ../sass/manage-page-styles.scss */
+  /* line 227, ../sass/manage-page-styles.scss */
   .left-container {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 208, ../sass/manage-page-styles.scss */
+  /* line 227, ../sass/manage-page-styles.scss */
   .left-container {
     width: 300px;
     visibility: hidden;
   }
 }
 @media screen and (max-width: 1024px) and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 208, ../sass/manage-page-styles.scss */
+  /* line 227, ../sass/manage-page-styles.scss */
   .left-container {
     top: 90px;
   }
 }
 @media screen and (max-width: 1024px) and (max-width: 1024px) {
-  /* line 208, ../sass/manage-page-styles.scss */
+  /* line 227, ../sass/manage-page-styles.scss */
   .left-container {
     top: -20px;
   }
 }
 
-/* line 233, ../sass/manage-page-styles.scss */
+/* line 252, ../sass/manage-page-styles.scss */
 .left-container .left-navigation {
   list-style: none;
 }
-/* line 236, ../sass/manage-page-styles.scss */
+/* line 255, ../sass/manage-page-styles.scss */
 .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
   font-size: 12px;
   font-weight: 100;
@@ -1480,35 +1595,35 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 236, ../sass/manage-page-styles.scss */
+  /* line 255, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 236, ../sass/manage-page-styles.scss */
+  /* line 255, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
     width: 300px;
-    left: -400px;
+    left: 0px;
     -webkit-transition: 1;
   }
 }
-/* line 264, ../sass/manage-page-styles.scss */
+/* line 283, ../sass/manage-page-styles.scss */
 .left-container .folder .folder-icon, .left-container .fix .folder-icon, .left-container .line .folder-icon {
   margin-right: 20px;
   font-size: 20px;
   color: #5a5a5a;
 }
-/* line 271, ../sass/manage-page-styles.scss */
+/* line 290, ../sass/manage-page-styles.scss */
 .left-container .folder span, .left-container .fix span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 274, ../sass/manage-page-styles.scss */
+/* line 293, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover {
   background-color: #e6e6e6;
   border-left: 3px solid gray;
 }
-/* line 280, ../sass/manage-page-styles.scss */
+/* line 299, ../sass/manage-page-styles.scss */
 .left-container .line {
   padding: 0px !important;
   margin: 0px !important;
@@ -1519,7 +1634,7 @@ body {
   background-color: #e6e6e6 !important;
 }
 
-/* line 293, ../sass/manage-page-styles.scss */
+/* line 312, ../sass/manage-page-styles.scss */
 .upload-button {
   position: fixed;
   bottom: 15px;
@@ -1538,7 +1653,7 @@ body {
   font-size: 40px;
 }
 
-/* line 314, ../sass/manage-page-styles.scss */
+/* line 333, ../sass/manage-page-styles.scss */
 .upload-button:hover {
   background: #1a1aff;
 }

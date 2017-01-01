@@ -117,26 +117,26 @@ body{
 }
 
 /* active state, i.e. menu open */
-.c-hamburger--htx.is-active {
+.is-active {
 
 }
 
-.c-hamburger--htx.is-active span {
+.is-active span {
   background: none;
 }
 
-.c-hamburger--htx.is-active span::before {
+.is-active span::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.c-hamburger--htx.is-active span::after {
+.is-active span::after {
   bottom: 0;
   transform: rotate(-45deg);
 }
 
-.c-hamburger--htx.is-active span::before,
-.c-hamburger--htx.is-active span::after {
+.is-active span::before,
+.is-active span::after {
   transition-delay: 0s, 0.3s;
 }
 

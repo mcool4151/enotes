@@ -27,7 +27,6 @@ $("#saved-notes").addClass("active");
           $(".filter").css({"z-index": "50","visibility": "hidden"});
 
       });
-      $(".dot-icon").css({"display": "block"});
 
 
 
@@ -60,7 +59,6 @@ $("#saved-notes").addClass("active");
 
 }
 else {
-      $(".dot-icon").css({"display": "none"});
 }
 
 
