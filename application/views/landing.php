@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li>
         <div class="login-button-container">
         <div class="google-login button ">Google</div><span>or</span>
-        <div class="facebook-login button ">Facebook</div>
+        <a href="<?php echo $fburl; ?>"><div class="facebook-login button ">Facebook</div></a>
       </div>
       </li>
     </ul>
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <h2>Save &#38; Share knowledge here</h2>
   <div class="login-button-container">
   <div class="google-login button g-signin2" data-onsuccess="onSignIn">Google +</div><span>or</span>
-  <div class="facebook-login button ">Facebook</div>
+  <a href="<?php echo $fburl; ?>"><div class="facebook-login button ">Facebook</div></a>
 </div>
 </div>
 
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <h2>Get started with US now for free </h2>
   <div class="login-button-container">
   <div class="google-login button ">Google +</div><span>or</span>
-  <div class="facebook-login button ">Facebook</div>
+  <a href="<?php echo $fburl; ?>"><div class="facebook-login button ">Facebook</div></a>
 </div>
 </div>
 <div class="modal footer" >

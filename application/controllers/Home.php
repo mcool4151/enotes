@@ -19,7 +19,19 @@ class Home extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index(){
-		$this->load->view('landing');
+		$this->load->library('composerpac');
+    $fb = new Facebook\Facebook([
+      'app_id' => '138580793302606', // Replace {app-id} with your app id
+      'app_secret' => '4619aaef6258bcae3d85e83bbf9f5b30',
+      'default_graph_version' => 'v2.2',
+    ]);
+
+    $helper = $fb->getRedirectLoginHelper();
+
+    $permissions = ['email']; // Optional permissions
+    $loginUrl = $helper->getLoginUrl('http://localhost/project/fb/check/', $permissions);
+		$data['fburl'] = htmlspecialchars($loginUrl);
+		$this->load->view('landing',$data);
 	}
 	public function manage(){
 		$this->load->view('manage-page');
