@@ -5,7 +5,7 @@ var folderid;
 
 
     folderid = $(this).parent().prop("id");
-
+	
   });
 
 $(".open-with-main").click(function(){

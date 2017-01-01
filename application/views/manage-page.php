@@ -93,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li>
             <h3 class="clearfix">Uploading</h3>
             <ul class="folder-container">
-              <li class="folder" draggable="true"  id="folder"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
 
 
               <li class="fix"></li>
@@ -108,12 +108,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li>
             <h3 class="clearfix">Folders</h3>
             <ul class="folder-container">
-              <li class="folder" draggable="true"  id="folder1"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder2"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder3"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder4"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder5"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder6"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="fa fa-ellipsis-v dot-icon" aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder1"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder2"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder3"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder4"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder5"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder6"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
 
 
 
@@ -170,6 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
+<script src="<?php echo base_url();?>javascripts/submenu.js"></script>
 
 <script>
 
