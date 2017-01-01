@@ -58,16 +58,16 @@ class Fb extends CI_Controller {
     }
 
     // Logged in
-    echo '<h3>Access Token</h3>';
-    var_dump($accessToken->getValue());
+    //echo '<h3>Access Token</h3>';
+    //var_dump($accessToken->getValue());
 
     // The OAuth 2.0 client handler helps us manage access tokens
     $oAuth2Client = $fb->getOAuth2Client();
 
     // Get the access token metadata from /debug_token
-    $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-    echo '<h3>Metadata</h3>';
-    var_dump($tokenMetadata);
+    //$tokenMetadata = $oAuth2Client->debugToken($accessToken);
+    //echo '<h3>Metadata</h3>';
+    //var_dump($tokenMetadata);
 
     // Validation (these will throw FacebookSDKException's when they fail)
     // Replace {app-id} with your app id
@@ -83,8 +83,8 @@ class Fb extends CI_Controller {
         exit;
       }
 
-      echo '<h3>Long-lived</h3>';
-      var_dump($accessToken->getValue());
+      //echo '<h3>Long-lived</h3>';
+      //var_dump($accessToken->getValue());
     }
 
     $_SESSION['fb_access_token'] = (string) $accessToken;
@@ -92,5 +92,20 @@ class Fb extends CI_Controller {
     // User is logged in with a long-lived access token.
     // You can redirect them to a members-only page.
     //header('Location: https://example.com/members.php');
+
+    try {
+      // Returns a `Facebook\FacebookResponse` object
+      $response = $fb->get('/me?fields=id,name', $_SESSION['fb_access_token']);
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      echo 'Graph returned an error: ' . $e->getMessage();
+      exit;
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      exit;
+    }
+
+    $user = $response->getGraphUser();
+    echo $user['id'];
+
   }
 }
