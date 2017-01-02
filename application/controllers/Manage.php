@@ -16,7 +16,7 @@ class Manage extends CI_Controller {
     $this->load->model('fileman');
     if(isset($_GET['depth'])) {
       $dir = realpath($this->session->dir.$_GET['depth']);
-      if(!$this->checkpath($this->session->dir,$dir)) exit(97);
+      if(!$this->checkpath(realpath($this->session->dir),$dir)) exit(97);
     }
     else $dir = $this->session->dir;
     echo json_encode($this->fileman->getdirarr($dir));
