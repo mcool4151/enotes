@@ -43,7 +43,7 @@ $(".search-icon").click(function(e) {
 if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li><i class="ion-ios-paper icon" ></i><span>Upload File</span></li><li><i class="ion-ios-folder icon" ></i><span>Upload Folder</span></li></ul>');
+  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li><a id="upload"><i class="ion-ios-paper icon" ></i><span>Upload File</span></a></li><li><i class="ion-ios-folder icon" ></i><span>Upload Folder</span></li></ul>');
 onscreen=1;
 }
 }

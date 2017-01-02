@@ -1,0 +1,60 @@
+$(document).ready(function(){
+  var files = [];
+  var folders = [];
+  function reloadfiles() {
+    $('#files').html(" ");
+    $.each(files,function(index,value) {
+      $('#files').html($('#files').html() + "<li class=\"file\" draggable=\"true\" id=\"file"+index+"\"><div class=\"file-preview\"  style=\"  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;\"></div><div class=\"file-name\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span></div></li>");
+    });
+    $('#files').html($('#files').html() + "<li class=\"fix\" ></li></ul>");
+  }
+  function reloadfolders() {
+    $('#folders').html(" ");
+    $.each(folders,function (index,value) {
+      $('#folders').html($('#folders').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+    });
+    $('#folders').html($('#folders').html() + "<li class=\"fix\" ></li>");
+  }
+  function fetchAndReload(){
+    $.ajax({
+      url:base+"manage/getdir",
+      type:"GET",
+      async:false,
+      success:function(result){
+        files = [];
+        folders = [];
+        list = jQuery.parseJSON(result);
+        $.each(list,function(index,value){
+          if (value.is_dir == true) folders.push(value.name);
+          else files.push(value.name);
+        });
+        reloadfiles();
+        reloadfolders();
+      }
+    });
+  }
+  fetchAndReload();
+  $("#myfile").change(function (){
+    var formData = new FormData($('#myform')[0]);
+    $.ajax({
+      url:base+"manage/upload",
+      type:"POST",
+      data:formData,
+      processData: false,
+      contentType: false,
+      async: true,
+      success:function(result){
+        if(result == 1){
+          fetchAndReload();
+        }
+        else {
+          alert(result);
+        }
+      }
+    });
+  });
+});
+$("#upload").on('click',function(){
+  //$('#myfile').click();
+  alert("done");
+});

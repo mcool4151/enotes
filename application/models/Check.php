@@ -20,7 +20,7 @@ class Check extends CI_Model {
       'uid'       =>  $uid,
       'name'      =>  $name,
       'email'     =>  $email,
-      'dir'       =>  realpath(__DIR__."/../../upload/$uid")
+      'dir'       =>  realpath(__DIR__."/../../upload/$uid").'/'
     );
     $this->session->set_userdata($data);
     return 1;

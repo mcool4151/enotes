@@ -5,7 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html >
 <head>
   <meta charset="utf-8">
-
+  <script type="text/javascript">
+    var base = "<?php echo base_url(); ?>";
+  </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
   <meta name="author" content="Abc,def,ghi">
@@ -84,9 +86,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       </div><!--left container end --><!--change end -->
       <div class="center-container">
-
+        <form id="myform" style="display:none;">
+          <input type="file" id="myfile" name="myfile" value="">
+        </form>
         <ul class="display-container ">
-          <li>
+          <!--<li>
             <h3 class="clearfix">Uploading</h3>
             <ul class="folder-container">
               <li class="folder" draggable="true"  id="folder"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -100,10 +104,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <li class="fix"></li>
             </ul>
-          </li>
+          </li>-->
           <li>
             <h3 class="clearfix">Folders</h3>
-            <ul class="folder-container">
+            <ul class="folder-container" id="folders">
               <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -119,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <li>
             <h3 class="clearfix">Files</h3>
-            <ul class="file-container">
+            <ul class="file-container" id="files">
               <li class="file" draggable="true" id="file1"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
               <li class="file" draggable="true" id="file2"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" draggable="true"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
               <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
@@ -167,6 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
 <script src="<?php echo base_url();?>javascripts/submenu.js"></script>
+<script src="<?php echo base_url();?>javascripts/load.js"></script>
 
 <script>
 
