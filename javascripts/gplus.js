@@ -7,7 +7,7 @@ function onSignIn(googleUser) {
     type:"POST",
     data: { token: id_token},
     success:function(result){
-      alert(result);
+      if(result == 1) window.location.href = "/project/login";
     }
   });
 }

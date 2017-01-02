@@ -12,14 +12,15 @@ class gplus extends CI_Controller {
     $client = new Google_Client(['client_id' => $CLIENT_ID]);
     $payload = $client->verifyIdToken($id_token);
     if ($payload) {
-      echo $userid = $payload['email'];
+      //$this->session->id = $payload['sub'];
       // If request specified a G Suite domain:
       //$domain = $payload['hd'];
-    } else {
-      echo "Invalid Error";
-    }
-  }
-  public function index(){
-    //
+      $this->load->model('check');
+      if(!$this->check->checkAndLogin($payload['sub'],$payload['name'],$payload['email'])) {
+        echo 0;
+        return;
+      }
+      echo 1;
+    } else echo 'p';
   }
 }

@@ -95,7 +95,7 @@ class Fb extends CI_Controller {
 
     try {
       // Returns a `Facebook\FacebookResponse` object
-      $response = $fb->get('/me?fields=id,name', $_SESSION['fb_access_token']);
+      $response = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
     } catch(Facebook\Exceptions\FacebookResponseException $e) {
       echo 'Graph returned an error: ' . $e->getMessage();
       exit;
@@ -105,7 +105,11 @@ class Fb extends CI_Controller {
     }
 
     $user = $response->getGraphUser();
-    echo $user['id'];
-
+    $this->load->model('check');
+    if(!($this->check->checkAndLogin($user['id'],$user['name'],$user['email']))){
+      echo "Some error Occured";
+      exit;
+    }
+    redirect('manage');
   }
 }
