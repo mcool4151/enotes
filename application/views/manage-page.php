@@ -27,14 +27,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <ul class="nav-container main" >
 
       <li><h2>e-Notes</h2></li>
-      <i class="fa fa-search search-icon" aria-hidden="true"></i>
+      <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
 </form>
-<li class="search"><i class="ion-ios-gear settings-icon" aria-hidden="true"></i></li>
-<li class="search"><i class="ion-information-circled info-icon" aria-hidden="true"></i></li>
-<li class="search"><i class="ion-android-apps grid-icon" aria-hidden="true"></i></li>
+<li class="search"><i class="ion-log-out settings-icon" aria-hidden="true"></i></li>
+
 
 
 
@@ -52,10 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="search"><i class="ion-android-apps grid-icon" aria-hidden="true"></i></li>
 
 
-      <li class="search"><i class="fa fa-ellipsis-v sub-menu-icon" aria-hidden="true"></i></li>
+      <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
 
       <li class="search">
-        <i class="fa fa-search search-icon" aria-hidden="true"></i>
+        <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search..">
@@ -76,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="email-id">avishkadakia@gmail.com</div>
 
         </li>
-          <li class="folder" id="saved-notes"><i class="fa fa-hdd-o folder-icon" ></i><span>Saved Notes</span></li>
+          <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span>Saved Notes</span></li>
           <li class="folder" id="delete"><i class="ion-android-people folder-icon" ></i><span>Shared with me</span></li>
           <li class="folder" id="delete"><i class="ion-ios-clock folder-icon" ></i><span>Recent</span></li>
           <li class="folder" id="delete"><i class="ion-star folder-icon" ></i><span>Favorites</span></li>

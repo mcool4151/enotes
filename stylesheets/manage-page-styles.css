@@ -1448,10 +1448,11 @@ body {
   padding: 10px;
   margin: -10px;
   margin-top: -9px;
+  padding-top: 8px;
   padding-bottom: 8px;
   margin-right: 20px;
 }
-/* line 146, ../sass/manage-page-styles.scss */
+/* line 147, ../sass/manage-page-styles.scss */
 .folder .dot-icon, .fix .dot-icon, .left-container .line .dot-icon {
   width: 30px;
   margin-top: -5px;
@@ -1463,7 +1464,7 @@ body {
   margin-right: 5px;
   color: #8d8d8d;
 }
-/* line 158, ../sass/manage-page-styles.scss */
+/* line 159, ../sass/manage-page-styles.scss */
 .folder .dot-icon:hover, .fix .dot-icon:hover, .left-container .line .dot-icon:hover {
   border: 1px solid #8d8d8d;
   background-color: #fff;
@@ -1471,7 +1472,7 @@ body {
   border-radius: 2px;
 }
 
-/* line 165, ../sass/manage-page-styles.scss */
+/* line 166, ../sass/manage-page-styles.scss */
 .fix {
   width: 100%;
   height: 0px;
@@ -1481,13 +1482,13 @@ body {
   border-bottom: 0px solid #e6e6e6;
 }
 
-/* line 175, ../sass/manage-page-styles.scss */
+/* line 176, ../sass/manage-page-styles.scss */
 .file-container {
   margin-top: -10px;
   margin-left: -70px;
 }
 
-/* line 179, ../sass/manage-page-styles.scss */
+/* line 180, ../sass/manage-page-styles.scss */
 .file {
   margin-right: 5px;
   margin-bottom: 5px;
@@ -1500,11 +1501,11 @@ body {
   color: #0d0d0d;
   font-size: 13px;
 }
-/* line 192, ../sass/manage-page-styles.scss */
+/* line 193, ../sass/manage-page-styles.scss */
 .file span {
   vertical-align: text-top;
 }
-/* line 195, ../sass/manage-page-styles.scss */
+/* line 196, ../sass/manage-page-styles.scss */
 .file .file-preview {
   background-image: url("http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png");
   background-size: cover;
@@ -1513,20 +1514,20 @@ body {
   width: 95%;
   height: 150px;
 }
-/* line 203, ../sass/manage-page-styles.scss */
+/* line 204, ../sass/manage-page-styles.scss */
 .file .file-name {
   height: 40px;
   padding-left: 10px;
   padding-top: 6px;
 }
-/* line 207, ../sass/manage-page-styles.scss */
+/* line 208, ../sass/manage-page-styles.scss */
 .file .file-name .folder-icon {
   font-size: 20px;
   margin-right: 20px;
   color: #858585;
 }
 
-/* line 215, ../sass/manage-page-styles.scss */
+/* line 216, ../sass/manage-page-styles.scss */
 .filter {
   z-index: 90;
   background-color: black;
@@ -1539,7 +1540,7 @@ body {
   visibility: hidden;
 }
 
-/* line 227, ../sass/manage-page-styles.scss */
+/* line 228, ../sass/manage-page-styles.scss */
 .left-container {
   position: fixed;
   left: 0px;
@@ -1549,36 +1550,36 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 227, ../sass/manage-page-styles.scss */
+  /* line 228, ../sass/manage-page-styles.scss */
   .left-container {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 227, ../sass/manage-page-styles.scss */
+  /* line 228, ../sass/manage-page-styles.scss */
   .left-container {
     width: 300px;
     visibility: hidden;
   }
 }
 @media screen and (max-width: 1024px) and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 227, ../sass/manage-page-styles.scss */
+  /* line 228, ../sass/manage-page-styles.scss */
   .left-container {
     top: 90px;
   }
 }
 @media screen and (max-width: 1024px) and (max-width: 1024px) {
-  /* line 227, ../sass/manage-page-styles.scss */
+  /* line 228, ../sass/manage-page-styles.scss */
   .left-container {
     top: -20px;
   }
 }
 
-/* line 252, ../sass/manage-page-styles.scss */
+/* line 253, ../sass/manage-page-styles.scss */
 .left-container .left-navigation {
   list-style: none;
 }
-/* line 255, ../sass/manage-page-styles.scss */
+/* line 256, ../sass/manage-page-styles.scss */
 .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
   font-size: 12px;
   font-weight: 100;
@@ -1595,35 +1596,40 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 255, ../sass/manage-page-styles.scss */
+  /* line 256, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 255, ../sass/manage-page-styles.scss */
+  /* line 256, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
     width: 300px;
     left: 0px;
     -webkit-transition: 1;
   }
 }
-/* line 283, ../sass/manage-page-styles.scss */
+/* line 284, ../sass/manage-page-styles.scss */
 .left-container .folder .folder-icon, .left-container .fix .folder-icon, .left-container .line .folder-icon {
   margin-right: 20px;
   font-size: 20px;
+  background-color: #f3f3f3;
   color: #5a5a5a;
 }
-/* line 290, ../sass/manage-page-styles.scss */
+/* line 291, ../sass/manage-page-styles.scss */
 .left-container .folder span, .left-container .fix span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 293, ../sass/manage-page-styles.scss */
+/* line 294, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover {
   background-color: #e6e6e6;
   border-left: 3px solid gray;
 }
-/* line 299, ../sass/manage-page-styles.scss */
+/* line 298, ../sass/manage-page-styles.scss */
+.left-container .left-navigation li:hover .folder-icon {
+  background-color: #e6e6e6;
+}
+/* line 304, ../sass/manage-page-styles.scss */
 .left-container .line {
   padding: 0px !important;
   margin: 0px !important;
@@ -1634,7 +1640,7 @@ body {
   background-color: #e6e6e6 !important;
 }
 
-/* line 312, ../sass/manage-page-styles.scss */
+/* line 317, ../sass/manage-page-styles.scss */
 .upload-button {
   position: fixed;
   bottom: 15px;
@@ -1653,7 +1659,7 @@ body {
   font-size: 40px;
 }
 
-/* line 333, ../sass/manage-page-styles.scss */
+/* line 338, ../sass/manage-page-styles.scss */
 .upload-button:hover {
   background: #1a1aff;
 }
