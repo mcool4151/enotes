@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body><!--change start -->
+
   <nav>
     <ul class="nav-container main" >
 
@@ -31,24 +32,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
-</form>
-<li class="search"><i class="ion-log-out settings-icon" aria-hidden="true"></i></li>
-
-
-
-
-
+  </form>
+  <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i></li>
     </ul>
     <ul class="nav-container" >
-      <li class="button  new">new</li>
+      <li class="new-button-container"><div class="new button ">new</div></li>
       <li class="c-hamburger c-hamburger--htla left-menu"><span></span>
       </li>
       <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
       </li>
       <li><h2>Saved Notes</h2></li>
-            <li class="search"><i class="ion-ios-gear settings-icon" aria-hidden="true"></i></li>
-      <li class="search"><i class="ion-information-circled info-icon" aria-hidden="true"></i></li>
-      <li class="search"><i class="ion-android-apps grid-icon" aria-hidden="true"></i></li>
+            <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
+      <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
+      <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
 
 
       <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
@@ -58,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search..">
-</form>
+  </form>
       </li>
     </ul>
 
@@ -138,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         </ul>
-<!--files display -->
+  <!--files display -->
 
         <div class="upload-button">+</div><!--upload button -->
       </div><!--center container end -->

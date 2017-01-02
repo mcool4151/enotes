@@ -3,17 +3,20 @@
 .folder-submenu-container{
 
   position: relative;
-width: 460px;
+width: 230px;
 @include bp-medium {
-width: 400px;
+width: 200px;
 }
-height: 300px;
+height: auto;
 margin-left: -8px;
 margin-top: 20px;
 padding-left: 0px;
+
   z-index: 10;
+  box-shadow: 0px 0px 5px gray;
   li{
     @extend .font;
+
   font-weight: 100;
   margin-left: -40px;
   height: 40px;
@@ -52,18 +55,22 @@ padding-left: 0px;
 
 }
 li:hover{
-background-color: darken($main-background,5%);
+background-color: darken($main-background,1%);
 border-left: 3px solid darken($main-background,45%);
 }
   .submenu{
     width: 230px;
-    height: 240px;
+    height: 280px;
     position: absolute;
+    left:233px;
+    top:30px;
+    box-shadow: 0px 0px 5px gray;
+    background-color: red;
+    background-color: #fff;
     @include bp-medium {
     width: 200px;
     top:30px;
     left:0px;
-    background-color: #fff;
     }
     padding-left: 0px;
     margin-top: -30px;
@@ -75,4 +82,28 @@ border-left: 3px solid darken($main-background,45%);
 }
 .open-with-main:hover .open-with-sub{
   display: block;
+}
+.mobile-submenu-full-cover{
+  width: 100%;
+  height: 100%;
+
+  background-color: #fff;
+  position: fixed;
+  top:26px;
+  left: 0px;
+  padding-left: 0px;
+  li{
+    width: 100%;
+    height: 40px;
+    margin-top: 15px;
+    padding-top: 10px;
+    list-style: none;
+    font-weight: 100;
+
+    .icon{
+
+      margin-right: 30px;
+      margin-left: 40px;
+    }
+  }
 }

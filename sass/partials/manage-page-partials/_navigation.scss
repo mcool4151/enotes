@@ -129,8 +129,20 @@ padding-top:120px;
 .button3 {border-radius: 8px;}
 .button4 {border-radius: 12px;}
 .button5 {border-radius: 50%;}
-
+.new-button-container{
+  width: 200px;
+  height: 500px;
+  float: left;
+    @extend .desktop-visible;
+  .folder-submenu-container{
+    margin-top: 41px;
+    margin-left: 0px;
+  }
+}
 .new{
+  position: absolute;
+  top:0px;
+  left:40px;
   text-transform:uppercase;
   padding: 5px 40px;
   margin-left: 0px;
@@ -282,6 +294,7 @@ padding-top:120px;
 .search-icon{
   @extend .nav-icons;
   @extend .phone-visible;
+  margin-top: 15px;
 }
 .search-bar{
   display: none;
@@ -296,4 +309,28 @@ padding-top:120px;
 }
 .search-bar:focus{
   border: 0px solid black;
+}
+.hover-effect{
+  width: 30px;
+  margin-top: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  float: right;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 5px;
+
+  font-size: 22px;
+  color: darken(gray, 5%);
+
+  float: right;
+  margin-right: 15px;
+  margin-left: 0px;
+}
+.hover-effect:hover{
+  border: 1px solid lighten($gray, 5%);
+  background-color: #fff;
+  color: darken($gray, 20%);
+  border-radius: 2px;
+  cursor: pointer!important;
 }

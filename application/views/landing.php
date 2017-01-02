@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div class="parallax bg-two" style="background-image: url('http://www.pacifymind.net/wp-content/uploads/10959d-travelling-photo-high-quality.jpg');"><div class="image-filter"></div></div>
+<div class="parallax bg-two" style="background-image: url('<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
 
 <div class="modal shared-files" >
     <div class="shared-img" style="background-image:url(<?php echo base_url();?>/images/share.jpg);">
@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div class="parallax bg-two" style="background-image: url('http://images.huffingtonpost.com/2015-03-20-1426853494-9761329-iStock_000026246607_Large.jpg');"><div class="image-filter"></div></div>
+<div class="parallax bg-two" style="background-image: url('<?php echo base_url();?>/images/banner-3.jpg');"><div class="image-filter"></div></div>
 
 <div class="modal last-modal" >
   <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>

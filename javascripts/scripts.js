@@ -54,6 +54,9 @@ $("#saved-notes").addClass("active");
   $(".left-menu").css({"display": "block"});
   $(".search-bar").css({"display": "none"});
   $(".search-icon").css({"display": "block"});
+
+$(".mobile-submenu-full-cover").css({"display": "none"});
+
   });
 
 
