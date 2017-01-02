@@ -27,13 +27,13 @@ body{
   border-left:2px solid lighten(orange, 10%)!important;
   color:lighten(orange, 10%)!important;
 
-  .fa{
+  i{
     color:lighten(orange, 10%)!important;
   }
 }
 .active:hover{
   background-color: $main-background!important;
-  .fa{
+  i{
     background-color: $main-background!important;
   }
 }

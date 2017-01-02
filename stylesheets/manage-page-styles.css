@@ -1312,7 +1312,7 @@ body {
   color: #ffb733 !important;
 }
 /* line 30, ../sass/manage-page-styles.scss */
-.active .fa {
+.active i {
   color: #ffb733 !important;
 }
 
@@ -1321,7 +1321,7 @@ body {
   background-color: #f3f3f3 !important;
 }
 /* line 36, ../sass/manage-page-styles.scss */
-.active:hover .fa {
+.active:hover i {
   background-color: #f3f3f3 !important;
 }
 
