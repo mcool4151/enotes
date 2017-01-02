@@ -1,12 +1,10 @@
-$(document).ready(function(){
-  var active=0;
+var active=0;
 var folderid;
-  $(".dot-icon").click(function(){
+var classname;
+var onscreen=0;
+$(document).ready(function(){
 
-
-    folderid = $(this).parent().prop("id");
-
-  });
+alert("clicked on folder");
   /*$(".new").click(function(){
 
 
@@ -20,15 +18,13 @@ var folderid;
 
   });*/
 
-var classname;
-var onscreen=0;
 
 
 
 $(".upload-button").click(function(e) {
   $(".back-arrow").css({"display": "block"});
   $(".left-menu").css({"display": "none"});
-  $(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li><i class="ion-ios-paper icon" ></i><span>Upload File</span></li><li><i class="ion-ios-folder icon" ></i><span>Upload Folder</span></li></ul>');
+  $(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li><i class="ion-ios-paper icon" ></i><span>Upload File</span></li></ul>');
 });
 $(".search-icon").click(function(e) {
   $(".back-arrow").css({"display": "block"});
@@ -43,7 +39,7 @@ $(".search-icon").click(function(e) {
 if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li><a id="upload"><i class="ion-ios-paper icon" ></i><span>Upload File</span></a></li><li><i class="ion-ios-folder icon" ></i><span>Upload Folder</span></li></ul>');
+  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li ><a class="upload"><i class="ion-ios-paper icon" ></i><span>Upload File</span></a></li></ul>');
 onscreen=1;
 }
 }
@@ -54,6 +50,12 @@ else{
 });
 //$( ".folder-submenu-container" ).remove();
 
+$(".dot-icon").click(function(){
+
+
+  folderid = $(this).parent().prop("id");
+
+});
     $("body").click(function(e) {
  classname = $(e.target).attr('class').split(' ')[0];
 
@@ -65,7 +67,8 @@ else{
         onscreen=0;
         active=0;
       }
-      if(classname == 'dot-icon' /*&& other !== 'folder-submenu-container'*/)
+
+      if(classname == 'dot-icon' )
       {
         if(active==1)
         {
@@ -80,18 +83,17 @@ else{
         }
       }
 
-      /*  if(e.target.id != '#'+folderid) {
-          alert("entred" + e.target.id);
-          $( ".folder-submenu-container" ).remove();
-
-        }*/
     });
+
+
 
 
 
 });
 
+
 //
+/*&& other !== 'folder-submenu-container'*/
 /*
 <ul class="folder-submenu-container" >
     <li class="open-with-main"><i class="fa fa-folder icon" ></i><span>Open with</span><i class="fa fa-chevron-right right" aria-hidden="true"></i>
@@ -115,6 +117,8 @@ else{
 
 
 <ul class="folder-submenu-container" >
+<li class="open-with-main"><i class="fa fa-folder icon" ></i><span>Open with</span><i class="fa fa-chevron-right right" aria-hidden="true"></i>
+<ul class="submenu open-with-subner" >
 <li class="open-with-main"><i class="fa fa-folder icon" ></i><span>Open with</span><i class="fa fa-chevron-right right" aria-hidden="true"></i>
 <ul class="submenu open-with-sub" >
 <li><i class="fa fa-folder icon" ></i><span>connect more apps</span></li>

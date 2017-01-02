@@ -74,13 +74,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </li>
           <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span>Saved Notes</span></li>
-          <li class="folder" id="delete"><i class="ion-android-people folder-icon" ></i><span>Shared with me</span></li>
-          <li class="folder" id="delete"><i class="ion-ios-clock folder-icon" ></i><span>Recent</span></li>
-          <li class="folder" id="delete"><i class="ion-star folder-icon" ></i><span>Favorites</span></li>
+          <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span>Shared with me</span></li>
+          <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span>Recent</span></li>
+          <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span>Favorites</span></li>
           <li class="folder" id="delete"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
           <li class="line"></li>
 
-          <li class="folder" id="delete"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
+          <li class="folder" id="delete1"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
 
         </ul>
 
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>-->
           <li>
             <h3 class="clearfix">Folders</h3>
-            <ul class="folder-container" id="folders">
+            <ul class="folder-container" >
               <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -167,11 +167,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>javascripts/load.js"></script>
 <script src="jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
 <script src="<?php echo base_url();?>javascripts/submenu.js"></script>
-<script src="<?php echo base_url();?>javascripts/load.js"></script>
 
 <script>
 
@@ -261,7 +261,6 @@ document.addEventListener("drop", function(event) {
     if ( event.target.className == "folder" && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
       //  event.target.parentNode.appendChild(document.getElementById(data));
-
         var element = document.getElementById(data);
         element.parentNode.removeChild(element);
 

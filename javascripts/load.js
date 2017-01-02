@@ -9,11 +9,11 @@ $(document).ready(function(){
     $('#files').html($('#files').html() + "<li class=\"fix\" ></li></ul>");
   }
   function reloadfolders() {
-    $('#folders').html(" ");
+    $('.folder-container').html(" ");
     $.each(folders,function (index,value) {
-      $('#folders').html($('#folders').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
     });
-    $('#folders').html($('#folders').html() + "<li class=\"fix\" ></li>");
+    $('.folder-container').html($('.folder-container').html() + "<li class=\"fix\" ></li>");
   }
   function fetchAndReload(){
     $.ajax({
@@ -53,8 +53,19 @@ $(document).ready(function(){
       }
     });
   });
-});
-$("#upload").on('click',function(){
-  //$('#myfile').click();
-  alert("done");
+  var folderClassname;
+  var sidelinkid;
+  $(".folder").click(function(e){
+    folderClassname = $(e.target).attr('class').split(' ')[1];
+//    alert("outside folder " +folderClassname);
+    if(folderClassname != 'dot-icon' ){
+      alert("folderentred ");
+    }
+    sidelinkid = $(this).prop("id");
+      alert( sidelinkid);
+  });
+/*  $(".left-navigation li").click(function(e){
+
+
+});*/
 });
