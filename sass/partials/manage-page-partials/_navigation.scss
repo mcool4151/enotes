@@ -17,6 +17,9 @@
     display: none;
   }
 }
+#log-out,.line{
+  @extend .phone-visible;
+}
 .nav-container{
   z-index: 80;
   position:fixed;
@@ -131,7 +134,7 @@ padding-top:120px;
 .button5 {border-radius: 50%;}
 .new-button-container{
   width: 200px;
-  height: 500px;
+  height: 50px;
   float: left;
     @extend .desktop-visible;
   .folder-submenu-container{
@@ -155,7 +158,6 @@ padding-top:120px;
 .new:hover{
   background-color: lighten(orange, 20%);
 }
-
 
 
 
@@ -236,9 +238,11 @@ padding-top:120px;
 
 .back-arrow{
   display: none;
+  width: 20px;
 }
 .back-arrow span {
   transform: rotate(180deg);
+
 }
 
 .back-arrow span::before,
@@ -248,12 +252,12 @@ padding-top:120px;
 
 .back-arrow span::before {
   top: 0;
-  transform: translateX(17px) translateY(0px) rotate(45deg);
+  transform: translateX(10px) translateY(0px) rotate(45deg);
 }
 
 .back-arrow span::after {
   bottom: 0;
-  transform: translateX(17px) translateY(-1px) rotate(-45deg);
+  transform: translateX(10px) translateY(-1px) rotate(-45deg);
 }
 .nav-icons{
   font-size: 22px;
@@ -299,13 +303,14 @@ padding-top:120px;
 .search-bar{
   display: none;
   position: absolute;
-  left:95px;
+  left:80px;
   top:10px;
   border: none;
   width: 65%;
   height :30px;
   padding-left: 10px;
   outline: none;
+  z-index: 10;
 }
 .search-bar:focus{
   border: 0px solid black;

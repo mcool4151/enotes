@@ -4,7 +4,7 @@ var classname;
 var onscreen=0;
 $(document).ready(function(){
 
-alert("clicked on folder");
+
   /*$(".new").click(function(){
 
 
@@ -39,7 +39,7 @@ $(".search-icon").click(function(e) {
 if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li ><a class="upload"><i class="ion-ios-paper icon" ></i><span>Upload File</span></a></li></ul>');
+  $(".new-button-container").append('<ul class="folder-submenu-container" ><li><i class="ion-plus icon" ></i><span>Create Folder</span></li><li class="upload"><a class="upload"><i class="ion-ios-paper icon" ></i><span>Upload File</span></a></li></ul>');
 onscreen=1;
 }
 }

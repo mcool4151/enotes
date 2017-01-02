@@ -8,7 +8,13 @@ $(document).ready(function(){
   //$(".left-container").css({"z-index": "50", "visibility": "hidden"});
 //  $(".filter").css({"z-index": "50","visibility": "hidden"});
 //  $("h3").html( "jquery running" )
+$(".ion-log-out").click(function(){
+  $(".log-out-sub-menu").css({"display": "block"});
+});
+$(".close").click(function(){
+  $(".log-out-sub-menu").css({"display": "none"});
 
+});
 $("#saved-notes").addClass("active");
 
 

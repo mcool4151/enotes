@@ -35,7 +35,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
   </form>
-  <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i></li>
+  <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i>
+  <ul class="log-out-sub-menu">
+
+  <li class="close"><i class="ion-android-close settings-icon hover-effect" aria-hidden="true"></i></li>
+
+
+    <li class="profile-pic" style="background-image:url('http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png');"></li>
+
+  <li class="account-info-container">
+      <div class="log-out-username">Avish Kadakia</div>
+        <div class="log-out-email-id">avishkadakia199@gmail.com</div>
+          <div class="account-info">My Account</div>
+  </li>
+
+
+  <li class="sign-out-option">
+    <div class="log-out-button">Log Out</div>
+  </li>
+
+  </ul>
+
+  </li>
     </ul>
     <ul class="nav-container" >
       <li class="new-button-container"><div class="new button ">new</div></li>

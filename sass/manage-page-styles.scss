@@ -255,7 +255,7 @@ border-right: 1px solid $light-grey-border;
       }
       .left-navigation .folder{
 
-
+        cursor: pointer!important;
         @include bp-large {
           width:200px;
         }

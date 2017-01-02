@@ -62,7 +62,7 @@ border-left: 3px solid darken($main-background,45%);
     width: 230px;
     height: 280px;
     position: absolute;
-    left:233px;
+    left:230px;
     top:30px;
     box-shadow: 0px 0px 5px gray;
     background-color: red;
@@ -104,6 +104,113 @@ border-left: 3px solid darken($main-background,45%);
 
       margin-right: 30px;
       margin-left: 40px;
+    }
+  }
+}
+
+
+.log-out-sub-menu{
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: 180px;
+  background-color: #fff;
+  right: 15px;
+  top:28px;
+  z-index: 11;
+  box-shadow: 0px 0px 5px $light-grey-border;
+  li{
+    position: relative;
+    z-index: 5;
+    color: #fff;
+  }
+  .close{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -14px;
+    top:-5px;
+    z-index: 20;
+  }
+  .close:hover{
+    i{
+      border: none;
+    }
+    cursor: pointer!important;
+  }
+  .profile-pic{
+    position: absolute;
+      z-index:3;
+      border: 1px solid $light-grey-border;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    left:20px;
+    top :30px;
+    border: 1px solid $light-grey-border;
+    box-shadow: 0px 0px 5px $light-grey-border;
+
+  }
+  .account-info-container{
+    width: 200px;
+    height: 150px;
+    float: right;
+    font-size: 15px;
+    padding-top: 25px;
+    .log-out-username{
+      color: black;
+      margin-bottom: 7px;
+    }
+    .log-out-email-id{
+      font-family: RalewayRegular;
+      color:lighten(gray,10%);
+      margin-bottom: 17px;
+      font-size: 13px;
+    }
+    .account-info{
+      background-color: lighten(orange, 10%);
+      width: 100px;
+      height: 30px;
+      padding-top: 7px;
+      font-size: 13px;
+      text-align: center;
+      float: right;
+      margin-right: 20px;
+      box-shadow: 0px 0px 5px $light-grey-border;
+
+    }
+    .account-info:hover{
+      background-color: lighten(orange, 15%);
+      cursor: pointer!important;
+    }
+  }
+  .sign-out-option{
+    position: absolute;
+    width: 300px;
+    bottom: 0px;
+    height: 50px;
+    left: 0px;
+    border-top: 1px solid $light-grey-border;
+    .log-out-button{
+      background-color: lighten(gray, 50%);
+      width: 80px;
+      height: 30px;
+      margin-top: 10px;
+      padding-top: 7px;
+      font-size: 13px;
+      text-align: center;
+      float: left;
+      color: darken($light-grey-border, 15%);
+      margin-left: 20px;
+      border: 1px solid $light-grey-border;
+      box-shadow: 0px 0px 5px $light-grey-border;
+
+    }
+    .log-out-button:hover{
+      cursor: pointer!important;
     }
   }
 }
