@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="e-notes" content="">
   <meta name="author" content="Abc,def,ghi">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
   <link rel="stylesheet" href="<?php echo base_url();?>stylesheets/manage-page-styles.css">
 
@@ -31,9 +32,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form>
   <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
 </form>
-<li class="search"><i class="fa fa-cog settings-icon" aria-hidden="true"></i></li>
-<li class="search"><i class="fa fa-info-circle info-icon" aria-hidden="true"></i></li>
-<li class="search"><i class="fa fa-th grid-icon" aria-hidden="true"></i></li>
+<li class="search"><i class="ion-ios-gear settings-icon" aria-hidden="true"></i></li>
+<li class="search"><i class="ion-information-circled info-icon" aria-hidden="true"></i></li>
+<li class="search"><i class="ion-android-apps grid-icon" aria-hidden="true"></i></li>
 
 
 
@@ -46,9 +47,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
       </li>
       <li><h2>Saved Notes</h2></li>
-            <li class="search"><i class="fa fa-cog settings-icon" aria-hidden="true"></i></li>
-      <li class="search"><i class="fa fa-info-circle info-icon" aria-hidden="true"></i></li>
-      <li class="search"><i class="fa fa-th grid-icon" aria-hidden="true"></i></li>
+            <li class="search"><i class="ion-ios-gear settings-icon" aria-hidden="true"></i></li>
+      <li class="search"><i class="ion-information-circled info-icon" aria-hidden="true"></i></li>
+      <li class="search"><i class="ion-android-apps grid-icon" aria-hidden="true"></i></li>
 
 
       <li class="search"><i class="fa fa-ellipsis-v sub-menu-icon" aria-hidden="true"></i></li>
@@ -76,13 +77,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </li>
           <li class="folder" id="saved-notes"><i class="fa fa-hdd-o folder-icon" ></i><span>Saved Notes</span></li>
-          <li class="folder" id="delete"><i class="fa fa-share-alt folder-icon" ></i><span>Shared</span></li>
-          <li class="folder" id="delete"><i class="fa fa-clock-o folder-icon" ></i><span>Recent</span></li>
-          <li class="folder" id="delete"><i class="fa fa-star folder-icon" ></i><span>Favorites</span></li>
-          <li class="folder" id="delete"><i class="fa fa-trash folder-icon" ></i><span>Deleted</span></li>
+          <li class="folder" id="delete"><i class="ion-android-people folder-icon" ></i><span>Shared with me</span></li>
+          <li class="folder" id="delete"><i class="ion-ios-clock folder-icon" ></i><span>Recent</span></li>
+          <li class="folder" id="delete"><i class="ion-star folder-icon" ></i><span>Favorites</span></li>
+          <li class="folder" id="delete"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
           <li class="line"></li>
 
-          <li class="folder" id="delete"><i class="fa fa-trash folder-icon" ></i><span>Deleted</span></li>
+          <li class="folder" id="delete"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
 
         </ul>
 
@@ -93,12 +94,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li>
             <h3 class="clearfix">Uploading</h3>
             <ul class="folder-container">
-              <li class="folder" draggable="true"  id="folder"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
               <li class="fix"></li>
-              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
 
 
 
@@ -108,12 +109,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li>
             <h3 class="clearfix">Folders</h3>
             <ul class="folder-container">
-              <li class="folder" draggable="true"  id="folder1"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder2"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder3"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder4"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder5"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder6"><i class="fa fa-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon fa fa-ellipsis-v " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" draggable="true"  id="folder6"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
 
@@ -124,10 +125,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li>
             <h3 class="clearfix">Files</h3>
             <ul class="file-container">
-              <li class="file" draggable="true" id="file1"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file2"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" draggable="true"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="fa fa-file folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file1"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file2"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" draggable="true"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
+              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
 
 
 
