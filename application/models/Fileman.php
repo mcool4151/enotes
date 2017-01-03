@@ -8,7 +8,7 @@ class Fileman extends CI_Model {
   }
 
   public function getdirarr($dir){
-    $list = array_diff(scandir($dir), array('.','..','deleted'));
+    $list = array_diff(scandir($dir), array('.','..','deleted','favourites'));
     $files = array();
     foreach ($list as $file) {
       $files[] = array(

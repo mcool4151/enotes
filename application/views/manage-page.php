@@ -285,12 +285,17 @@ document.addEventListener("drop", function(event) {
     if ( event.target.className == "folder" && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
         //alert(event.target.id);
-        if(event.target.id == 'favorites'){
+        if(event.target.id == 'saved-notes'){
+          if(subdir == "") src = $("#"+data).text();
+          else src = subdir+"/"+$("#"+data).text();
+          dest = "";
+        }
+        else if(event.target.id == 'favorites'){
           if(subdir == "") src = $("#"+data).text();
           else src = subdir+"/"+$("#"+data).text();
           dest = "favourites";
         }
-        else if(event.target.id == 'delete'){
+        else if(event.target.id == 'trash'){
           if(subdir == "") src = $("#"+data).text();
           else src = subdir+"/"+$("#"+data).text();
           dest = "deleted";
@@ -319,7 +324,7 @@ document.addEventListener("drop", function(event) {
           async:false,
           data:{dest:dest,src:src},
           success:function(result){
-            alert(result);
+            //
           }
         });
       //  event.target.parentNode.appendChild(document.getElementById(data));

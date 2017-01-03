@@ -36,7 +36,7 @@ class Manage extends CI_Controller {
   public function move(){
     $src  = realpath($this->session->dir.$this->input->post('src'));
     $dest = realpath($this->session->dir.$this->input->post('dest'));
-    if(!($this->checkpath($this->session->dir,$src) && $this->checkpath($this->session->dir,$dest))){
+    if(!($this->checkpath(realpath($this->session->dir),$src) && $this->checkpath(realpath($this->session->dir),$dest))){
       echo "error with dir";
       return;
     }

@@ -11,7 +11,7 @@ $(document).ready(function(){
       $('.folders-text').css({"display": "block"});
       $('.files-text').css({"display": "block"});
       if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
-      $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" ><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" ><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+      $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" ><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
     if(test == 1) {
       $('.files-text').css({"display": "none"});
