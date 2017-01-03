@@ -7,11 +7,20 @@ $(document).ready(function(){
     $('#files').html(" ");
     var test = 1;
     $.each(files,function(index,value) {
+      fullname = value;
       test = 0;
       $('.folders-text').css({"display": "block"});
       $('.files-text').css({"display": "block"});
-      if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
-      $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" ><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+      if ( $(window).width() < 480) {
+        if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+      }
+      else if($(window).width() < 1025){
+        if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+      }
+      else {
+        if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
+      }
+      $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
     if(test == 1) {
       $('.files-text').css({"display": "none"});
@@ -23,8 +32,18 @@ $(document).ready(function(){
     var test = 1;
     $('.folders-text').css({"display": "block"});
     $.each(folders,function (index,value) {
+      fullname = value
       test = 0;
-      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\">"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+      if ( $(window).width() < 480) {
+        if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+      }
+      else if($(window).width() < 1025){
+        if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+      }
+      else {
+        if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
+      }
+      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\">"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
     });
     if(test == 1) $('.folders-text').css({"display": "none"});
     $('.folder-container').html($('.folder-container').html() + "<li class=\"fix\" ></li>");
@@ -188,11 +207,21 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'favorite')
   {
-    $("h3").text(classname1);
+    if(subdir == "") src = $("#"+data).text();
+    else src = subdir+"/"+$("#"+data).text();
+    dest = "favourites";
+    move(src,dest);
   }
   else if(classname1 == 'rename')
   {
-    $("h3").text(classname1);
+    if(subdir == "") {
+      src = $("#"+data).text(); // old name
+      dest = null; // new name
+    }
+    else {
+      src = subdir+"/"+$("#"+data).text();
+      dest = subdir+"/"+null;//new name
+    }
   }
   else if(classname1 == 'details')
   {
@@ -202,6 +231,13 @@ $("body").click(function(e) {
   {
     $("h3").text(classname1);
   }
+  else if(classname1 == 'trash')
+  {
+    if(subdir == "") src = $("#"+data).text();
+    else src = subdir+"/"+$("#"+data).text();
+    dest = "deleted";
+    move(src,dest);
+  }
 /*  if(c
 if(classname1 == 'create-folder')// create folder register added
 {
@@ -210,3 +246,14 @@ alert(classname1 + " create folder clicked");
 });
 
 });
+function move(src,dest){
+  $.ajax({
+    url:base+"manage/move",
+    type:"POST",
+    async:false,
+    data:{dest:dest,src:src},
+    success:function(result){
+      //
+    }
+  });
+}

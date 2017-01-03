@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script type="text/javascript">
     var base = "<?php echo base_url(); ?>";
     var subdir = "";
+    var logout = base + "/manage/logout";
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
@@ -102,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text">Deleted</span></li>
             <li class="line"></li>
 
-            <li class="folder" id="delete1"><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text">Extra option</span></li>
+            <li class="folder" id="log-out" onclick="window.location.href=logout;"><i class="ion-log-out folder-icon" ></i><span class="left-nav-bar-text">Log Out</span></li>
 
           </ul>
 
@@ -137,7 +138,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-                <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avis
+                  h1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder6"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
@@ -286,18 +288,18 @@ document.addEventListener("drop", function(event) {
         var data = event.dataTransfer.getData("Text");
         //alert(event.target.id);
         if(event.target.id == 'saved-notes'){
-          if(subdir == "") src = $("#"+data).text();
-          else src = subdir+"/"+$("#"+data).text();
+          if(subdir == "") src = $("#"+data).attr('name');
+          else src = subdir+"/"+$("#"+data).attr('name');
           dest = "";
         }
         else if(event.target.id == 'favorites'){
-          if(subdir == "") src = $("#"+data).text();
-          else src = subdir+"/"+$("#"+data).text();
+          if(subdir == "") src = $("#"+data).attr('name');
+          else src = subdir+"/"+$("#"+data).attr('name');
           dest = "favourites";
         }
         else if(event.target.id == 'trash'){
-          if(subdir == "") src = $("#"+data).text();
-          else src = subdir+"/"+$("#"+data).text();
+          if(subdir == "") src = $("#"+data).attr('name');
+          else src = subdir+"/"+$("#"+data).attr('name');
           dest = "deleted";
         }
         else if(event.target.id == 'recent'){
@@ -306,27 +308,22 @@ document.addEventListener("drop", function(event) {
         else if(event.target.id == 'shared-with-me'){
           return;
         }
+        else if(event.target.id == 'log-out'){
+          window.location.href = base + "/manage/logout";
+        }
         else {
           if(subdir == ""){
-            dest = $("#"+event.target.id).text();
-            src = $("#"+data).text();
+            dest = $("#"+event.target.id).attr('name');
+            src = $("#"+data).attr('name');
           }
           else {
-            dest = subdir+"/"+$("#"+event.target.id).text();
-            src = subdir+"/"+$("#"+data).text();
+            dest = subdir+"/"+$("#"+event.target.id).attr('name');
+            src = subdir+"/"+$("#"+data).attr('name');
           }
         }
         //alert("dest:" + dest);
         //alert("src:" + src);
-        $.ajax({
-          url:base+"manage/move",
-          type:"POST",
-          async:false,
-          data:{dest:dest,src:src},
-          success:function(result){
-            //
-          }
-        });
+        move(src,dest);
       //  event.target.parentNode.appendChild(document.getElementById(data));
         var element = document.getElementById(data);
         element.parentNode.removeChild(element);
