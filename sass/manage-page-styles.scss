@@ -102,7 +102,6 @@ cursor:default!important;
 
 }
 .clearfix{
-
   clear:both;
 }
 
@@ -112,7 +111,6 @@ margin-left: -70px;
 
 }
 .folder{
-
   position: relative;
   margin-right: 5px;
   margin-bottom: 20px;
@@ -126,7 +124,10 @@ margin-left: -70px;
   @extend .font;
   font-size: 13px;
   color: lighten(black, 5%);
-
+  @include bp-small {
+    font-size: 11px;
+    height: 35px;
+  }
 
     border-bottom: 1px solid darken($light-grey-border, 7%);
     span{
@@ -143,6 +144,10 @@ margin-left: -70px;
       padding-top: 8px;
       padding-bottom: 8px;
       margin-right: 20px;
+      @include bp-small {
+          font-size: 15px;
+          margin-right: 10px;
+      }
     }
     .dot-icon{
       width: 30px;
@@ -154,6 +159,9 @@ margin-left: -70px;
       text-align: center;
       margin-right: 5px;
       color: lighten($gray, 5%);
+      @include bp-small {
+          margin-top: -8px;
+      }
 
     }
     .dot-icon:hover{
@@ -161,6 +169,7 @@ margin-left: -70px;
       background-color: #fff;
       color: darken($gray, 25%);
       border-radius: 2px;
+
     }
 }
 .fix{
@@ -190,6 +199,10 @@ margin-left: -70px;
   color: lighten(black, 5%);
     @extend .font;
     font-size: 13px;
+    @include bp-small {
+      font-size: 11px;
+
+    }
     span{
       vertical-align: text-top;
     }
@@ -200,15 +213,25 @@ margin-left: -70px;
       background-position: center;
       width:95%;
       height: 150px;
+      @include bp-small {
+        height: 100px;
+      }
     }
     .file-name{
       height: 40px;
       padding-left:10px;
       padding-top: 6px;
+      @include bp-small {
+        height: 30px;
+      }
       .folder-icon{
         font-size: 20px;
         margin-right: 20px;
         color: lighten($gray, 2%);
+        @include bp-small {
+            font-size: 15px;
+            margin-right: 10px;
+        }
       }
     }
     .dot-icon{
@@ -221,7 +244,12 @@ margin-left: -70px;
       text-align: center;
       margin-right: 5px;
       color: lighten($gray, 5%);
-
+      @include bp-small {
+          margin-top: -3px;
+          width: 25px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+      }
     }
     .dot-icon:hover{
       border: 1px solid lighten($gray, 5%);

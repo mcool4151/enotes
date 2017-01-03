@@ -977,18 +977,31 @@ body {
 .mobile-submenu .login-button-container {
   padding-left: 15px;
 }
+@media screen and (max-width: 1024px) {
+  /* line 177, ../sass/landing-page-styles.scss */
+  .mobile-submenu .login-button-container {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 177, ../sass/landing-page-styles.scss */
+  .mobile-submenu .login-button-container {
+    width: 90%;
+    padding-left: 15px;
+  }
+}
 
-/* line 180, ../sass/landing-page-styles.scss */
+/* line 189, ../sass/landing-page-styles.scss */
 .mobile-submenu .active {
   color: #5a5a5a;
 }
-/* line 182, ../sass/landing-page-styles.scss */
+/* line 191, ../sass/landing-page-styles.scss */
 .mobile-submenu .active span:hover {
   border-bottom: 0px solid #ffb733;
 }
 
 /*modal */
-/* line 190, ../sass/landing-page-styles.scss */
+/* line 199, ../sass/landing-page-styles.scss */
 .parallax {
   /* The image used */
   position: relative;
@@ -1000,7 +1013,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* line 202, ../sass/landing-page-styles.scss */
+/* line 211, ../sass/landing-page-styles.scss */
 .parallax .image-filter {
   width: inherit;
   height: inherit;
@@ -1008,27 +1021,27 @@ body {
   opacity: 0.5;
 }
 
-/* line 209, ../sass/landing-page-styles.scss */
+/* line 218, ../sass/landing-page-styles.scss */
 .parallax {
   z-index: 8;
 }
 
-/* line 212, ../sass/landing-page-styles.scss */
+/* line 221, ../sass/landing-page-styles.scss */
 .bg-one {
   z-index: 6;
 }
 
-/* line 215, ../sass/landing-page-styles.scss */
+/* line 224, ../sass/landing-page-styles.scss */
 .banner {
   z-index: 6;
 }
 
-/* line 220, ../sass/landing-page-styles.scss */
+/* line 229, ../sass/landing-page-styles.scss */
 .files-supported {
   z-index: 10;
 }
 
-/* line 223, ../sass/landing-page-styles.scss */
+/* line 232, ../sass/landing-page-styles.scss */
 .modal {
   width: 100%;
   height: 100%;
@@ -1038,7 +1051,7 @@ body {
   font-size: 12px;
   text-align: center;
 }
-/* line 231, ../sass/landing-page-styles.scss */
+/* line 240, ../sass/landing-page-styles.scss */
 .modal h2 {
   color: #fff;
   margin-top: 20px;
@@ -1048,32 +1061,32 @@ body {
   line-height: 60px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 231, ../sass/landing-page-styles.scss */
+  /* line 240, ../sass/landing-page-styles.scss */
   .modal h2 {
     font-size: 40px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 231, ../sass/landing-page-styles.scss */
+  /* line 240, ../sass/landing-page-styles.scss */
   .modal h2 {
     font-size: 35px;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 231, ../sass/landing-page-styles.scss */
+  /* line 240, ../sass/landing-page-styles.scss */
   .modal h2 {
     font-size: 30px;
   }
 }
 
-/* line 252, ../sass/landing-page-styles.scss */
+/* line 261, ../sass/landing-page-styles.scss */
 .banner {
   position: fixed;
   height: 250px;
-  top: 200px;
+  top: 250px;
 }
 
-/* line 258, ../sass/landing-page-styles.scss */
+/* line 267, ../sass/landing-page-styles.scss */
 .banner-logo {
   position: relative;
   margin: 0px auto;
@@ -1084,7 +1097,7 @@ body {
   background-size: 68px 60px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 258, ../sass/landing-page-styles.scss */
+  /* line 267, ../sass/landing-page-styles.scss */
   .banner-logo {
     width: 88px;
     height: 77px;
@@ -1092,15 +1105,27 @@ body {
   }
 }
 
-/* line 275, ../sass/landing-page-styles.scss */
+/* line 284, ../sass/landing-page-styles.scss */
 .login-button-container {
   margin: 0px auto;
-  width: 350px;
+  width: 450px;
   height: 40px;
   padding-top: 10px;
 }
+@media screen and (max-width: 1024px) {
+  /* line 284, ../sass/landing-page-styles.scss */
+  .login-button-container {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 284, ../sass/landing-page-styles.scss */
+  .login-button-container {
+    width: 90%;
+  }
+}
 
-/* line 282, ../sass/landing-page-styles.scss */
+/* line 296, ../sass/landing-page-styles.scss */
 .button {
   background-color: #4CAF50;
   /* Green */
@@ -1115,48 +1140,48 @@ body {
   cursor: pointer;
 }
 
-/* line 294, ../sass/landing-page-styles.scss */
+/* line 308, ../sass/landing-page-styles.scss */
 .banner .login-button-container {
   text-align: center;
 }
-/* line 296, ../sass/landing-page-styles.scss */
+/* line 310, ../sass/landing-page-styles.scss */
 .banner .login-button-container div {
   width: 45%;
   height: inherit;
 }
-/* line 300, ../sass/landing-page-styles.scss */
+/* line 314, ../sass/landing-page-styles.scss */
 .banner .login-button-container span {
   font-size: 13px;
   color: #fff;
   padding-top: 15px;
 }
 
-/* line 308, ../sass/landing-page-styles.scss */
+/* line 322, ../sass/landing-page-styles.scss */
 .google-login {
   float: left;
   background-color: #d34836;
 }
 
-/* line 312, ../sass/landing-page-styles.scss */
+/* line 326, ../sass/landing-page-styles.scss */
 .facebook-login {
   float: right;
   background-color: #3b5998;
 }
 
-/* line 318, ../sass/landing-page-styles.scss */
+/* line 332, ../sass/landing-page-styles.scss */
 .bg-two {
   height: 300px;
   margin-top: 0px;
   background-attachment: scroll;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 318, ../sass/landing-page-styles.scss */
+  /* line 332, ../sass/landing-page-styles.scss */
   .bg-two {
     height: 500px;
   }
 }
 
-/* line 327, ../sass/landing-page-styles.scss */
+/* line 341, ../sass/landing-page-styles.scss */
 .files-supported {
   z-index: 10;
   width: 100%;
@@ -1169,13 +1194,13 @@ body {
   padding-top: 0px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 327, ../sass/landing-page-styles.scss */
+  /* line 341, ../sass/landing-page-styles.scss */
   .files-supported {
     height: 500px;
   }
 }
 
-/* line 343, ../sass/landing-page-styles.scss */
+/* line 357, ../sass/landing-page-styles.scss */
 .file-img {
   width: 50%;
   height: 100%;
@@ -1186,7 +1211,7 @@ body {
   float: left;
 }
 @media screen and (max-width: 1024px) {
-  /* line 343, ../sass/landing-page-styles.scss */
+  /* line 357, ../sass/landing-page-styles.scss */
   .file-img {
     margin-top: 30px;
     background-position: 50% 50%;
@@ -1195,21 +1220,31 @@ body {
     background-size: 300px 250px;
   }
 }
+@media screen and (max-width: 480px) {
+  /* line 357, ../sass/landing-page-styles.scss */
+  .file-img {
+    margin-top: 30px;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 50%;
+    background-size: 250px 200px;
+  }
+}
 
-/* line 359, ../sass/landing-page-styles.scss */
+/* line 380, ../sass/landing-page-styles.scss */
 .text-container {
   width: 50%;
   height: 100%;
   float: left;
 }
 @media screen and (max-width: 1024px) {
-  /* line 359, ../sass/landing-page-styles.scss */
+  /* line 380, ../sass/landing-page-styles.scss */
   .text-container {
     width: 100%;
     height: 50%;
   }
 }
-/* line 368, ../sass/landing-page-styles.scss */
+/* line 389, ../sass/landing-page-styles.scss */
 .text-container h3 {
   color: #4d4d4d;
   font-family: RalewayRegular;
@@ -1219,13 +1254,13 @@ body {
   margin-top: 160px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 368, ../sass/landing-page-styles.scss */
+  /* line 389, ../sass/landing-page-styles.scss */
   .text-container h3 {
     float: left;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 368, ../sass/landing-page-styles.scss */
+  /* line 389, ../sass/landing-page-styles.scss */
   .text-container h3 {
     font-size: 25px;
     margin-top: 40px;
@@ -1233,7 +1268,13 @@ body {
     text-align: center;
   }
 }
-/* line 385, ../sass/landing-page-styles.scss */
+@media screen and (max-width: 480px) {
+  /* line 389, ../sass/landing-page-styles.scss */
+  .text-container h3 {
+    margin-top: 20px;
+  }
+}
+/* line 410, ../sass/landing-page-styles.scss */
 .text-container p {
   float: left;
   margin-left: 60px;
@@ -1247,17 +1288,26 @@ body {
   width: 80%;
 }
 @media screen and (max-width: 1024px) {
-  /* line 385, ../sass/landing-page-styles.scss */
+  /* line 410, ../sass/landing-page-styles.scss */
   .text-container p {
+    width: 90%;
     margin-top: -25px;
-    margin-left: 50px;
+    margin-left: 60px;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
   }
 }
+@media screen and (max-width: 480px) {
+  /* line 410, ../sass/landing-page-styles.scss */
+  .text-container p {
+    width: 90%;
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+}
 
-/* line 409, ../sass/landing-page-styles.scss */
+/* line 440, ../sass/landing-page-styles.scss */
 .shared-files {
   z-index: 10;
   width: 100%;
@@ -1270,13 +1320,13 @@ body {
   padding-top: 0px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 409, ../sass/landing-page-styles.scss */
+  /* line 440, ../sass/landing-page-styles.scss */
   .shared-files {
     height: 500px;
   }
 }
 
-/* line 425, ../sass/landing-page-styles.scss */
+/* line 456, ../sass/landing-page-styles.scss */
 .shared-files .shared-img {
   background-repeat: no-repeat;
   background-color: white;
@@ -1288,25 +1338,25 @@ body {
   background-size: 800px 140px;
 }
 @media screen and (max-width: 1024px) {
-  /* line 425, ../sass/landing-page-styles.scss */
+  /* line 456, ../sass/landing-page-styles.scss */
   .shared-files .shared-img {
     background-size: 550px 100px;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 425, ../sass/landing-page-styles.scss */
+  /* line 456, ../sass/landing-page-styles.scss */
   .shared-files .shared-img {
-    background-size: 320px 60px;
+    background-size: 250px 50px;
   }
 }
 
-/* line 445, ../sass/landing-page-styles.scss */
+/* line 476, ../sass/landing-page-styles.scss */
 .shared-files .text-container {
   float: left;
   width: 100%;
   height: 50%;
 }
-/* line 453, ../sass/landing-page-styles.scss */
+/* line 484, ../sass/landing-page-styles.scss */
 .shared-files .text-container h3 {
   color: #4d4d4d;
   font-family: RalewayRegular;
@@ -1317,19 +1367,19 @@ body {
   width: 100%;
 }
 @media screen and (max-width: 1024px) {
-  /* line 453, ../sass/landing-page-styles.scss */
+  /* line 484, ../sass/landing-page-styles.scss */
   .shared-files .text-container h3 {
     font-size: 40px;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 453, ../sass/landing-page-styles.scss */
+  /* line 484, ../sass/landing-page-styles.scss */
   .shared-files .text-container h3 {
     margin-top: -140px;
     font-size: 25px;
   }
 }
-/* line 470, ../sass/landing-page-styles.scss */
+/* line 501, ../sass/landing-page-styles.scss */
 .shared-files .text-container p {
   float: left;
   color: #595959;
@@ -1344,7 +1394,7 @@ body {
   font-weight: 100;
 }
 @media screen and (max-width: 1024px) {
-  /* line 470, ../sass/landing-page-styles.scss */
+  /* line 501, ../sass/landing-page-styles.scss */
   .shared-files .text-container p {
     font-size: 19px;
     margin-top: -40px;
@@ -1352,7 +1402,7 @@ body {
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 470, ../sass/landing-page-styles.scss */
+  /* line 501, ../sass/landing-page-styles.scss */
   .shared-files .text-container p {
     margin-top: -20px;
     font-size: 18px;
@@ -1360,7 +1410,7 @@ body {
   }
 }
 
-/* line 495, ../sass/landing-page-styles.scss */
+/* line 525, ../sass/landing-page-styles.scss */
 .last-modal {
   z-index: 10;
   width: 100%;
@@ -1372,7 +1422,7 @@ body {
   padding-top: 40px;
   padding-top: 100px;
 }
-/* line 505, ../sass/landing-page-styles.scss */
+/* line 535, ../sass/landing-page-styles.scss */
 .last-modal .banner-logo {
   position: relative;
   margin: 0px auto;
@@ -1383,21 +1433,33 @@ body {
   background-size: 68px 60px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 505, ../sass/landing-page-styles.scss */
+  /* line 535, ../sass/landing-page-styles.scss */
   .last-modal .banner-logo {
     width: 88px;
     height: 77px;
     background-size: 88px 77px;
   }
 }
-/* line 522, ../sass/landing-page-styles.scss */
+/* line 552, ../sass/landing-page-styles.scss */
 .last-modal .login-button-container {
   margin: 0px auto;
   width: 350px;
   height: 40px;
   padding-top: 10px;
 }
-/* line 529, ../sass/landing-page-styles.scss */
+@media screen and (max-width: 1024px) {
+  /* line 552, ../sass/landing-page-styles.scss */
+  .last-modal .login-button-container {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 552, ../sass/landing-page-styles.scss */
+  .last-modal .login-button-container {
+    width: 90%;
+  }
+}
+/* line 564, ../sass/landing-page-styles.scss */
 .last-modal .button {
   background-color: #4CAF50;
   /* Green */
@@ -1411,32 +1473,32 @@ body {
   margin-top: -10px;
   cursor: pointer;
 }
-/* line 541, ../sass/landing-page-styles.scss */
+/* line 576, ../sass/landing-page-styles.scss */
 .last-modal .login-button-container {
   text-align: center;
 }
-/* line 543, ../sass/landing-page-styles.scss */
+/* line 578, ../sass/landing-page-styles.scss */
 .last-modal .login-button-container div {
   width: 45%;
   height: inherit;
 }
-/* line 547, ../sass/landing-page-styles.scss */
+/* line 582, ../sass/landing-page-styles.scss */
 .last-modal .login-button-container span {
   font-size: 13px;
   color: #595959;
   padding-top: 15px;
 }
-/* line 555, ../sass/landing-page-styles.scss */
+/* line 590, ../sass/landing-page-styles.scss */
 .last-modal .google-login {
   float: left;
   background-color: #d34836;
 }
-/* line 559, ../sass/landing-page-styles.scss */
+/* line 594, ../sass/landing-page-styles.scss */
 .last-modal .facebook-login {
   float: right;
   background-color: #3b5998;
 }
-/* line 563, ../sass/landing-page-styles.scss */
+/* line 598, ../sass/landing-page-styles.scss */
 .last-modal h2 {
   color: #595959;
   margin-top: 20px;
@@ -1446,25 +1508,25 @@ body {
   line-height: 60px;
 }
 @media screen and (max-width: 4000px) and (min-width: 1025px) {
-  /* line 563, ../sass/landing-page-styles.scss */
+  /* line 598, ../sass/landing-page-styles.scss */
   .last-modal h2 {
     font-size: 40px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 563, ../sass/landing-page-styles.scss */
+  /* line 598, ../sass/landing-page-styles.scss */
   .last-modal h2 {
     font-size: 35px;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 563, ../sass/landing-page-styles.scss */
+  /* line 598, ../sass/landing-page-styles.scss */
   .last-modal h2 {
     font-size: 30px;
   }
 }
 
-/* line 583, ../sass/landing-page-styles.scss */
+/* line 618, ../sass/landing-page-styles.scss */
 .footer {
   z-index: 10;
   width: 100%;
@@ -1478,25 +1540,52 @@ body {
   padding-top: 40px;
   padding-top: 0px;
 }
-/* line 595, ../sass/landing-page-styles.scss */
+/* line 630, ../sass/landing-page-styles.scss */
 .footer div {
   float: left;
   margin-top: 13px;
   margin-left: 30px;
   color: #ffb733;
 }
-/* line 602, ../sass/landing-page-styles.scss */
+@media screen and (max-width: 1024px) {
+  /* line 630, ../sass/landing-page-styles.scss */
+  .footer div {
+    font-size: 12px;
+    margin-left: 17px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 630, ../sass/landing-page-styles.scss */
+  .footer div {
+    font-size: 12px;
+    margin-left: 17px;
+  }
+}
+/* line 644, ../sass/landing-page-styles.scss */
 .footer div:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 606, ../sass/landing-page-styles.scss */
+/* line 648, ../sass/landing-page-styles.scss */
 .footer .right {
   float: right;
   margin-right: 30px;
 }
+@media screen and (max-width: 1024px) {
+  /* line 648, ../sass/landing-page-styles.scss */
+  .footer .right {
+    font-size: 12px;
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 648, ../sass/landing-page-styles.scss */
+  .footer .right {
+    display: none;
+  }
+}
 
-/* line 611, ../sass/landing-page-styles.scss */
+/* line 661, ../sass/landing-page-styles.scss */
 .desktop-nav-bar {
   z-index: 100;
   width: 100%;
@@ -1506,12 +1595,12 @@ body {
   padding-top: 15px;
 }
 @media screen and (max-width: 1024px) {
-  /* line 611, ../sass/landing-page-styles.scss */
+  /* line 661, ../sass/landing-page-styles.scss */
   .desktop-nav-bar {
     display: none;
   }
 }
-/* line 623, ../sass/landing-page-styles.scss */
+/* line 673, ../sass/landing-page-styles.scss */
 .desktop-nav-bar div {
   float: right;
   margin-top: 13px;
@@ -1520,19 +1609,19 @@ body {
   font-size: 16px;
   font-family: RalewayRegular;
 }
-/* line 631, ../sass/landing-page-styles.scss */
+/* line 681, ../sass/landing-page-styles.scss */
 .desktop-nav-bar div:hover {
   border-bottom: 1px solid #fff;
   padding-bottom: 2px;
   cursor: pointer;
 }
-/* line 636, ../sass/landing-page-styles.scss */
+/* line 686, ../sass/landing-page-styles.scss */
 .desktop-nav-bar .left {
   float: left;
   margin-left: 30px;
   font-size: 32px;
 }
-/* line 641, ../sass/landing-page-styles.scss */
+/* line 691, ../sass/landing-page-styles.scss */
 .desktop-nav-bar .left:hover {
   border: none;
 }

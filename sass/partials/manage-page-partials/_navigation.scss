@@ -20,6 +20,12 @@
 #log-out,.line{
   @extend .phone-visible;
 }
+#log-out{
+  .folder-icon{
+    margin-top: 20px!important;
+    color: red;
+  }
+}
 .nav-container{
   z-index: 80;
   position:fixed;
@@ -300,7 +306,7 @@ padding-top:120px;
 .search-icon{
   @extend .nav-icons;
   @extend .phone-visible;
-  margin-top: 13px;
+  margin-top: 15px;
   margin-left: -10px;
 }
 .search-bar{
