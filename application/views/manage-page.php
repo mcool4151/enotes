@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </ul>
             </li>-->
             <li>
-              <h3 class="clearfix">Folders</h3>
+              <h3 class="clearfix folders-text">Folders</h3>
               <ul class="folder-container" >
                 <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
 
             <li>
-              <h3 class="clearfix">Files</h3>
+              <h3 class="clearfix files-text" >Files</h3>
               <ul class="file-container" id="files">
                 <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
                 <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
@@ -284,7 +284,7 @@ document.addEventListener("drop", function(event) {
     event.preventDefault();
     if ( event.target.className == "folder" && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
-        alert(event.target.id);
+        //alert(event.target.id);
         if(event.target.id == 'favorites'){
           if(subdir == "") src = $("#"+data).text();
           else src = subdir+"/"+$("#"+data).text();
@@ -311,9 +311,9 @@ document.addEventListener("drop", function(event) {
             src = subdir+"/"+$("#"+data).text();
           }
         }
-        alert("dest:" + dest);
-        alert("src:" + src);
-        /*$.ajax({
+        //alert("dest:" + dest);
+        //alert("src:" + src);
+        $.ajax({
           url:base+"manage/move",
           type:"POST",
           async:false,
@@ -321,7 +321,7 @@ document.addEventListener("drop", function(event) {
           success:function(result){
             alert(result);
           }
-        });*/
+        });
       //  event.target.parentNode.appendChild(document.getElementById(data));
         var element = document.getElementById(data);
         element.parentNode.removeChild(element);

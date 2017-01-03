@@ -21,7 +21,7 @@ class gplus extends CI_Controller {
         return;
       }
       echo 1;
-      $this->session->pic = $payload['pictureUrl'];
+      $this->session->pic = $payload['picture'];
     } else echo 'p';
   }
 }

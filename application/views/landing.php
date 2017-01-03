@@ -11,18 +11,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <title>e-notes</title>
   <meta name="e-notes" content="">
   <meta name="author" content="Abc,def,ghi">
-  <meta name="google-signin-client_id" content="884000251920-jsnc6o4o8buh4ek1s208avhj3p5atm07.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/api:client.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/landing-page-styles.css">
 
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
-  <style>
-
-
-</style>
+  <script type="text/javascript">
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '884000251920-jsnc6o4o8buh4ek1s208avhj3p5atm07.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      //attachSignin(document.getElementById('mysignin'));
+      $('.google-login').each(function(i, obj) {
+        attachSignin(obj);
+      });
+    });
+  };
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          onSignIn(googleUser);
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
 
 </head>
 
@@ -72,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Save &#38; Share knowledge here</h2>
   <div class="login-button-container">
-  <div class="google-login button g-signin2" data-onsuccess="onSignIn">Google +</div><span>or</span>
+  <div class="google-login button" id="mysignin">Google +</div><span>or</span>
   <a href="<?php echo $fburl; ?>"><div class="facebook-login button ">Facebook</div></a>
 </div>
 </div>
@@ -124,6 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="<?php echo base_url();?>javascripts/landingpage.js"></script>
     <script src="<?php echo base_url();?>javascripts/gplus.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 <script>
 
@@ -166,5 +191,7 @@ if(scroll< 579){
 
 
 </script>
+<script>startApp();</script>
+
 </body>
 </html>

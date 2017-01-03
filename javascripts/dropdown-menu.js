@@ -49,19 +49,20 @@ else{
 }
 });
 //$( ".folder-submenu-container" ).remove();
-
+/*
 $(".dot-icon").click(function(){
 
 
   folderid = $(this).parent().prop("id");
 
-});
+});*/
     $("body").click(function(e) {
  classname = $(e.target).attr('class').split(' ')[0];
 
     //     alert("classname");
 
-
+    folderid = $(e.target).parent().attr('id');
+    //$("h3").text(folderid);
       if(active!=0){
         $( ".folder-submenu-container" ).remove();
         onscreen=0;
