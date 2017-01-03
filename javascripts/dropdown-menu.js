@@ -2,6 +2,7 @@ var active=0;
 var folderid;
 var classname;
 var onscreen=0;
+
 $(document).ready(function(){
 
 
@@ -79,12 +80,12 @@ $(".dot-icon").click(function(){
         }
         if(active==0)
         {
-          $("#"+folderid).append('<ul class="folder-submenu-container" ><li class="open-with open-with-main"><i class="ion-arrow-expand icon" ></i><span class="open-with">Open with</span><i class="ion-arrow-right-b right" aria-hidden="true"></i><ul class="submenu open-with-sub" ><li><i class="ion-plus icon" ></i><span class="connect-more-apps">connect more apps</span></li></ul></li><li class="move-to"><i class="ion-android-exit icon" ></i><span class="move-to">Move To..</span></li><li class="get-shareable-link"><i class="ion-link icon" ></i><span class="get-shareable-link">Share</span></li><li class="favorite"><i class="ion-ios-star icon" ></i><span class="favorite">Add To Favorite</span></li><li class="rename"><i class="ion-ios-compose icon" ></i><span class="rename">Rename</span></li><li class="details"><i class="ion-ios-information icon" ></i><span class="details">View Details</span></li><li class="download"><i class="ion-archive icon" ></i><span class="download">Download</span></li><li class="trash"><i class="ion-trash-b icon" ></i><span class="trash">Delete</span></li></ul>');
+          $("#"+folderid).append('<ul class="folder-submenu-container" ><li class="open-with open-with-main"><i class="ion-arrow-expand icon" ></i><span class="open-with">Open with</span><i class="ion-arrow-right-b right" aria-hidden="true"></i><ul class="submenu open-with-sub" ><li><i class="ion-plus icon" ></i><span class="connect-more-apps">connect more apps</span></li></ul></li><li class="move-to"><i class="ion-android-exit icon" ></i><span class="move-to">Move To..</span></li><li class="get-shareable-link"><i class="ion-link icon" ></i><span class="get-shareable-link">Get Shareable Link</span></li><li class="favorite"><i class="ion-ios-star icon" ></i><span class="favorite">Add To Favorite</span></li><li class="rename"><i class="ion-ios-compose icon" ></i><span class="rename">Rename</span></li><li class="details"><i class="ion-ios-information icon" ></i><span class="details">View Details</span></li><li class="download"><i class="ion-archive icon" ></i><span class="download">Download</span></li></ul>');
           active=1;
           if ( $(window).width() < 480) {
           $(".back-arrow").css({"display": "block"});
           $(".left-menu").css({"display": "none"});
-        }
+          }
         }
       }
 
@@ -161,4 +162,34 @@ $(".dot-icon").click(function(){
 
 
 <ul class="folder-submenu-container" ><li class="open-with-main"><i class="fa fa-folder icon" ></i><span>Open with</span><i class="fa fa-chevron-right right" aria-hidden="true"></i><ul class="submenu open-with-sub" ><li><i class="fa fa-folder icon" ></i><span>connect more apps</span></li><li><i class="fa fa-folder icon" ></i><span>choose application</span></li><li><i class="fa fa-folder icon" ></i><span>choose application</span></li></ul></li><li><i class="fa fa-folder icon" ></i><span>Move To..</span></li><li><i class="fa fa-folder icon" ></i><span>Add Star</span></li><li><i class="fa fa-folder icon" ></i><span>Rename</span></li><li><i class="fa fa-folder icon" ></i><span>View Details</span></li><li><i class="fa fa-folder icon" ></i><span>Downloads</span></li></ul>
+*/
+
+
+
+
+
+/*
+<div class="modal-background-filter"></div>
+<div class="shared-modal-container" >
+<h3>Share with others</h3>
+<div class="link-share-contianer">
+<input value="link goes here" class="share-link" />
+</div>
+<div class="or-container">
+<div class="line-share left">
+</div>
+<span>or</span>
+<div class="line-share right">
+</div>
+</div>
+<h4>People<h4>
+<form >
+<input value="Enter email to share file" class="email-input" />
+</form>
+<div class="button-done">Share</div>
+<div class="close"><i class="ion-close"></i></div>
+</div>
+
+<div class="modal-background-filter"></div><div class="shared-modal-container" ><h3>Share with others</h3><div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close"><i class="ion-close"></i></div></div>
+
 */

@@ -1,14 +1,4 @@
-$(".new-button-container").click(function(e) {
-  var classname1 = $(e.target).attr('class').split(' ')[0];
-  if(classname1 == 'upload')
-  {
-  alert(classname1 + " upload clicked");
-}
-if(classname1 == 'create-folder')// create folder register added
-{
-alert(classname1 + " create folder clicked");
-}
-});
+
 // Folder update code
 $(".folder").click(function(e){
   folderClassname = $(e.target).attr('class').split(' ')[0];
@@ -155,6 +145,64 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'rename')
   {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'details')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'download')
+  {
+    $("h3").text(classname1);
+  }
+/*  if(c
+if(classname1 == 'create-folder')// create folder register added
+{
+alert(classname1 + " create folder clicked");
+}*/
+});
+
+//-------------------------independent code=------------------------------
+$(".new-button-container").click(function(e) {
+  var classname1 = $(e.target).attr('class').split(' ')[0];
+  if(classname1 == 'upload')
+  {
+  alert(classname1 + " upload clicked");
+}
+if(classname1 == 'create-folder')// create folder register added
+{
+  $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input value="folder name goes here" class="share-link" /></div><div class="button-done" >Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+
+}
+});
+$("body").click(function(e) {
+  var classname1 = $(e.target).attr('class').split(' ')[0];
+  if(classname1 == 'close-button'){
+  $( ".modal-background-filter" ).remove();
+    $( ".open-modal" ).remove();
+  }
+  if(classname1 == 'open-with')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'move-to')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'get-shareable-link')
+  {
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    $("h3").text(classname1);
+
+  }
+  else if(classname1 == 'favorite')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'rename')
+  {
+    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal rename-modal-container" ><h3>Rename</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input value="file name goes here" class="share-link" /></div><div class="button-done">Save</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
     $("h3").text(classname1);
   }
   else if(classname1 == 'details')

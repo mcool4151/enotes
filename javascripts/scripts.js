@@ -8,6 +8,12 @@ $(document).ready(function(){
   //$(".left-container").css({"z-index": "50", "visibility": "hidden"});
 //  $(".filter").css({"z-index": "50","visibility": "hidden"});
 //  $("h3").html( "jquery running" )
+$(".share-option").click(function(){
+  $(".log-out-sub-menu").css({"display": "block"});
+});
+
+
+
 $(".ion-log-out").click(function(){
   $(".log-out-sub-menu").css({"display": "block"});
 });

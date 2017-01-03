@@ -166,6 +166,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           </ul>
     <!--files display -->
+  <!--  <div class="modal-background-filter"></div>
+      <div class"shared-modal-container" >
+        <h3>Share with others</h3>
+        <div class="link-share-contianer">
+          <label class="share-link">link goes here</label>
+        </div>
+        <div class="or-container">
+          <div class="line-share left">
+          </div>
+          <span>or</span>
+          <div class="line-share right">
+          </div>
+      </div>
+        <div class="email-share-contianer">
+          <h4>Choose people you want to share file with<h4>
+            <form action="/cgi-bin/hello_get.cgi" method="get">
+              <input type="text" name="email_id" value="" maxlength="100" />
+            </form>
+            <ul class="email-suggestion-container">
+              <li>email 1</li>
+              <li>email 2</li>
+              <li>email 3</li>
+              <li>email 4</li>
+            </ul>
+            <div class="button done">done</div>
+        </div>
+      </div>-->
+
 
           <div class="upload-button">+</div><!--upload button -->
         </div><!--center container end -->

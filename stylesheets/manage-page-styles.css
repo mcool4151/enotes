@@ -1335,7 +1335,7 @@ article p a:visited {
 .folder-submenu-container .submenu {
   z-index: 11;
   width: 230px;
-  height: 320px;
+  height: 280px;
   position: absolute;
   left: 228px;
   top: 30px;
@@ -1445,7 +1445,7 @@ article p a:visited {
   height: 60px;
   border-radius: 50%;
   left: 20px;
-  top: 30px;
+  top: 50px;
   border: 1px solid #e6e6e6;
   box-shadow: 0px 0px 5px #e6e6e6;
 }
@@ -1455,7 +1455,7 @@ article p a:visited {
   height: 150px;
   float: right;
   font-size: 15px;
-  padding-top: 25px;
+  padding-top: 55px;
 }
 /* line 184, ../sass/partials/manage-page-partials/_submenu.scss */
 .log-out-sub-menu .account-info-container .log-out-username {
@@ -1475,18 +1475,18 @@ article p a:visited {
   width: 100px;
   height: 30px;
   padding-top: 7px;
-  font-size: 13px;
   text-align: center;
-  float: right;
-  margin-right: 20px;
   box-shadow: 0px 0px 5px #e6e6e6;
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
 }
-/* line 206, ../sass/partials/manage-page-partials/_submenu.scss */
+/* line 205, ../sass/partials/manage-page-partials/_submenu.scss */
 .log-out-sub-menu .account-info-container .account-info:hover {
   background-color: #ffc04d;
   cursor: pointer !important;
 }
-/* line 211, ../sass/partials/manage-page-partials/_submenu.scss */
+/* line 210, ../sass/partials/manage-page-partials/_submenu.scss */
 .log-out-sub-menu .sign-out-option {
   position: absolute;
   width: 300px;
@@ -1495,7 +1495,7 @@ article p a:visited {
   left: 0px;
   border-top: 1px solid #e6e6e6;
 }
-/* line 218, ../sass/partials/manage-page-partials/_submenu.scss */
+/* line 217, ../sass/partials/manage-page-partials/_submenu.scss */
 .log-out-sub-menu .sign-out-option .log-out-button {
   background-color: white;
   width: 80px;
@@ -1510,9 +1510,333 @@ article p a:visited {
   border: 1px solid #e6e6e6;
   box-shadow: 0px 0px 5px #e6e6e6;
 }
-/* line 233, ../sass/partials/manage-page-partials/_submenu.scss */
+/* line 232, ../sass/partials/manage-page-partials/_submenu.scss */
 .log-out-sub-menu .sign-out-option .log-out-button:hover {
   cursor: pointer !important;
+}
+
+/* line 237, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container {
+  opacity: 1 !important;
+  z-index: 91;
+  position: relative;
+  margin: 150px auto;
+  width: 400px;
+  height: 310px;
+  background-color: #fff;
+}
+@media screen and (max-width: 1024px) {
+  /* line 237, ../sass/partials/manage-page-partials/_submenu.scss */
+  .shared-modal-container {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 237, ../sass/partials/manage-page-partials/_submenu.scss */
+  .shared-modal-container {
+    width: 90%;
+  }
+}
+/* line 253, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container h3 {
+  font-weight: 400;
+  font-size: 15px;
+  padding-top: 20px;
+  padding-left: 15px;
+  color: #333333;
+}
+/* line 261, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .share-link {
+  width: 80%;
+  height: 30px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  left: 30px;
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #595959;
+  font-size: 13px;
+  font-family: RalewayRegular;
+}
+/* line 273, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .or-container {
+  position: absolute;
+  width: 100%;
+  top: 130px;
+  left: 0px;
+  text-align: center;
+}
+/* line 279, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .or-container .line-share {
+  width: 40%;
+  height: 1px;
+  background-color: #e6e6e6;
+  margin-top: 7px;
+}
+/* line 285, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .or-container .left {
+  float: left;
+  margin-left: 10px;
+}
+/* line 289, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .or-container .right {
+  float: right;
+  margin-right: 10px;
+}
+/* line 293, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .or-container span {
+  color: #808080;
+  font-family: RalewayRegular;
+}
+/* line 298, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container h4 {
+  font-weight: 400;
+  font-size: 15px;
+  padding-top: 100px;
+  padding-left: 15px;
+  color: #333333;
+}
+/* line 306, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .email-input {
+  width: 80%;
+  height: 30px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  top: 210px;
+  left: 30px;
+  padding-left: 10px;
+  color: #595959;
+  font-size: 13px;
+  font-family: RalewayRegular;
+  font-weight: 100;
+}
+/* line 320, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .button-done {
+  background-color: #ffb733;
+  width: 100px;
+  height: 30px;
+  padding-top: 5px;
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #fff;
+}
+/* line 334, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .button-done:hover {
+  background-color: #ffc04d;
+  cursor: pointer !important;
+}
+/* line 338, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .close {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  right: 10px;
+  top: 10px;
+  padding-left: 10px;
+  z-index: 20;
+}
+/* line 347, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .close:hover {
+  cursor: pointer !important;
+}
+/* line 348, ../sass/partials/manage-page-partials/_submenu.scss */
+.shared-modal-container .close:hover i {
+  border: none;
+}
+
+/* line 354, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container {
+  opacity: 1 !important;
+  z-index: 91;
+  position: relative;
+  margin: 150px auto;
+  width: 400px;
+  height: 210px;
+  background-color: #fff;
+}
+@media screen and (max-width: 1024px) {
+  /* line 354, ../sass/partials/manage-page-partials/_submenu.scss */
+  .rename-modal-container {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 354, ../sass/partials/manage-page-partials/_submenu.scss */
+  .rename-modal-container {
+    width: 90%;
+  }
+}
+/* line 370, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container h3 {
+  font-weight: 200;
+  font-size: 23px;
+  padding-top: 30px;
+  padding-left: 25px;
+  color: #404040;
+  text-transform: capitalize;
+}
+/* line 378, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container p {
+  width: 80%;
+  margin-top: -10px;
+  margin-left: 30px;
+  font-size: 13px;
+  color: #4d4d4d;
+  font-weight: 100;
+}
+/* line 386, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .share-link {
+  width: 80%;
+  height: 30px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  left: 30px;
+  margin-top: 0px;
+  padding-left: 10px;
+  color: #595959;
+  font-size: 13px;
+  font-family: RalewayRegular;
+}
+/* line 399, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .button-done {
+  background-color: #ffb733;
+  width: 100px;
+  height: 30px;
+  padding-top: 7px;
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #fff;
+}
+/* line 413, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .button-done:hover {
+  background-color: #ffc04d;
+  cursor: pointer !important;
+}
+/* line 417, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .close {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  right: 10px;
+  top: 10px;
+  padding-left: 10px;
+  z-index: 20;
+}
+/* line 426, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .close:hover {
+  cursor: pointer !important;
+}
+/* line 427, ../sass/partials/manage-page-partials/_submenu.scss */
+.rename-modal-container .close:hover i {
+  border: none;
+}
+
+/* line 433, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container {
+  opacity: 1 !important;
+  z-index: 91;
+  position: relative;
+  margin: 150px auto;
+  width: 400px;
+  height: 210px;
+  background-color: #fff;
+}
+@media screen and (max-width: 1024px) {
+  /* line 433, ../sass/partials/manage-page-partials/_submenu.scss */
+  .create-folder-modal-container {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 433, ../sass/partials/manage-page-partials/_submenu.scss */
+  .create-folder-modal-container {
+    width: 90%;
+  }
+}
+/* line 449, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container h3 {
+  font-weight: 200;
+  font-size: 23px;
+  padding-top: 30px;
+  padding-left: 25px;
+  color: #404040;
+  text-transform: capitalize;
+}
+/* line 457, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container p {
+  width: 80%;
+  margin-top: -10px;
+  margin-left: 30px;
+  font-size: 13px;
+  color: #4d4d4d;
+  font-weight: 100;
+}
+/* line 465, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .share-link {
+  width: 80%;
+  height: 30px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  left: 30px;
+  margin-top: 0px;
+  padding-left: 10px;
+  color: #595959;
+  font-size: 13px;
+  font-family: RalewayRegular;
+}
+/* line 478, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .button-done {
+  background-color: #ffb733;
+  width: 100px;
+  height: 30px;
+  padding-top: 7px;
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #fff;
+}
+/* line 492, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .button-done:hover {
+  background-color: #ffc04d;
+  cursor: pointer !important;
+}
+/* line 496, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .close {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  right: 10px;
+  top: 10px;
+  padding-left: 10px;
+  z-index: 20;
+}
+/* line 505, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .close:hover {
+  cursor: pointer !important;
+}
+/* line 506, ../sass/partials/manage-page-partials/_submenu.scss */
+.create-folder-modal-container .close:hover i {
+  border: none;
+}
+
+/* line 512, ../sass/partials/manage-page-partials/_submenu.scss */
+.modal-background-filter {
+  z-index: 90;
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 /* line 9, ../sass/manage-page-styles.scss */
