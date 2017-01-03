@@ -226,10 +226,12 @@ document.addEventListener("dragstart", function(event) {
     ghostImage.style.height="30px";
     ghostImage.style.width="200px";
     ghostImage.style.fontWeight="100";
-    ghostImage.style.fontSize="15px";
-    ghostImage.style.paddingLeft="10px"
-    ghostImage.style.paddingTop="6px"
-    ghostImage.childNodes[0].style.marginRight="20px"
+    ghostImage.style.fontSize="13px";
+    ghostImage.style.paddingLeft="10px";
+    ghostImage.style.paddingTop="6px";
+    ghostImage.childNodes[0].style.marginRight="10px";
+    ghostImage.childNodes[2].style.visibility = "hidden";
+
      document.body.appendChild(ghostImage);
 
      event.dataTransfer.setDragImage(ghostImage, 0, 0);

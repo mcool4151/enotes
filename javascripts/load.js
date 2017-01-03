@@ -92,11 +92,12 @@ $(document).ready(function(){
   });
   var folderClassname;
   var sidelinkid;
-  $(".folder").click(function(e){
+  $("body").click(function(e){
     folderClassname = $(e.target).attr('class').split(' ')[0];
-//    alert("outside folder " +folderClassname);
+    if(folderClassname=="folder")
+    {
     if(folderClassname != 'dot-icon' ){
-      sidelinkid = $(this).prop("id");
+      sidelinkid = $(e.target).prop("id");
       if(sidelinkid == "saved-notes"){
         subdir = "";
       }
@@ -113,13 +114,15 @@ $(document).ready(function(){
         subdir = "";
       }
       else {
-        //$("h3").text(sidelinkid);
-        if(subdir == "") subdir = $("#"+sidelinkid).text();
-        else subdir += ("/"+$("#"+sidelinkid).text());
+  //      alert("entred" + sidelinkid);
+  //      $("h3").text($("#"+sidelinkid).attr('name'));
+        if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
+        else subdir += ("/"+$("#"+sidelinkid).attr('name'));
       }
       fetchAndReload();
     }
     sidelinkid = $(this).prop("id");
+  }
   });
 /*  $(".left-navigation li").click(function(e){
 
@@ -207,10 +210,12 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'favorite')
   {
-    if(subdir == "") src = $("#"+data).text();
-    else src = subdir+"/"+$("#"+data).text();
+    $("h3").text("folderid "+ $("#"+folderid).parent().attr('name'));
+  //  alert("folderid "+ $("#"+folderid).attr('name'));
+    if(subdir == "") src = $("#"+folderid).parent().attr('name');
+    else src = subdir+"/"+$("#"+folderid).parent().attr('name');
     dest = "favourites";
-    move(src,dest);
+  //  move(src,dest);
   }
   else if(classname1 == 'rename')
   {
