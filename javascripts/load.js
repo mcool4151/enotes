@@ -103,7 +103,6 @@ $(document).ready(function(){
 $(".new-button-container").click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
   if(classname1 == 'upload'){
-    alert("Not working");
     document.getElementById('myfile').click();
   }
 });
