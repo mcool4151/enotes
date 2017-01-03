@@ -27,167 +27,166 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body><!--change start -->
 
-  <nav>
-    <ul class="nav-container main" >
+    <nav>
+      <ul class="nav-container main" >
 
-      <li><h2>e-Notes</h2></li>
-      <i class="ion-android-search search-icon" aria-hidden="true"></i>
-
-        <form>
-  <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
-  </form>
-  <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i>
-  <ul class="log-out-sub-menu">
-
-  <li class="close"><i class="ion-android-close settings-icon hover-effect" aria-hidden="true"></i></li>
-
-
-    <li class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>');"></li>
-
-  <li class="account-info-container">
-      <div class="log-out-username"><?php echo $this->session->name; ?></div>
-        <div class="log-out-email-id"><?php echo $this->session->email; ?></div>
-          <div class="account-info">My Account</div>
-  </li>
-
-
-  <li class="sign-out-option">
-    <div class="log-out-button" id="logout">Log Out</div>
-  </li>
-
-  </ul>
-
-  </li>
-    </ul>
-    <ul class="nav-container" >
-      <li class="new-button-container"><div class="new button ">new</div></li>
-      <li class="c-hamburger c-hamburger--htla left-menu"><span></span>
-      </li>
-      <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
-      </li>
-      <li><h2>Saved Notes</h2></li>
-            <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
-      <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
-      <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
-
-
-      <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
-
-      <li class="search">
+        <li><h2>e-Notes</h2></li>
         <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
-        <form>
-  <input type="text" name="search" class="search-bar" placeholder="Search..">
-  </form>
-      </li>
+          <form>
+    <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
+    </form>
+    <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i>
+    <ul class="log-out-sub-menu">
+
+    <li class="close"><i class="ion-android-close settings-icon hover-effect" aria-hidden="true"></i></li>
+
+
+      <li class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>');"></li>
+
+    <li class="account-info-container">
+        <div class="log-out-username"><?php echo $this->session->name; ?></div>
+          <div class="log-out-email-id"><?php echo $this->session->email; ?></div>
+            <div class="account-info">My Account</div>
+    </li>
+
+
+    <li class="sign-out-option">
+      <div class="log-out-button" id="logout">Log Out</div>
+    </li>
+
     </ul>
 
-  </nav><!--navigation bar end -->
-  <section class="body">
-    <div class="container">
-      <div class="filter"></div>
-      <div class="left-container">
-      <ul class="left-navigation">
-        <li class="nav-header" id="delete">
-          <div class="filter-nav-header"></div>
-
-          <div class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>" > </div>
-          <div class="email-id"><?php echo $this->session->email; ?></div>
-
+    </li>
+      </ul>
+      <ul class="nav-container" >
+        <li class="new-button-container"><div class="new button ">new</div></li>
+        <li class="c-hamburger c-hamburger--htla left-menu"><span></span>
         </li>
-          <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span>Saved Notes</span></li>
-          <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span>Shared with me</span></li>
-          <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span>Recent</span></li>
-          <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span>Favorites</span></li>
-          <li class="folder" id="delete"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
-          <li class="line"></li>
+        <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
+        </li>
+        <li><h2 class="active-left-nav">Saved Notes</h2></li>
+              <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
+        <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
+        <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
 
-          <li class="folder" id="delete1"><i class="ion-trash-b folder-icon" ></i><span>Deleted</span></li>
 
-        </ul>
+        <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
 
-      </div><!--left container end --><!--change end -->
-      <div class="center-container">
-        <form id="myform" style="display:none;">
-          <input type="file" id="myfile" name="myfile" value="">
-        </form>
-        <ul class="display-container ">
-          <form id="myform">
-            <input type="file" style="display:none;" name="myfile" id="myfile">
+        <li class="search">
+          <i class="ion-android-search search-icon" aria-hidden="true"></i>
+
+          <form>
+    <input type="text" name="search" class="search-bar" placeholder="Search..">
+    </form>
+        </li>
+      </ul>
+
+    </nav><!--navigation bar end -->
+    <section class="body">
+      <div class="container">
+        <div class="filter"></div>
+        <div class="left-container">
+        <ul class="left-navigation">
+          <li class="nav-header" id="delete">
+            <div class="filter-nav-header"></div>
+
+            <div class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>" > </div>
+            <div class="email-id"><?php echo $this->session->email; ?></div>
+
+          </li>
+            <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span class="left-nav-bar-text">Saved Notes</span></li>
+            <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text">Shared with me</span></li>
+            <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text">Recent</span></li>
+            <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text">Favorites</span></li>
+            <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text">Deleted</span></li>
+            <li class="line"></li>
+
+            <li class="folder" id="delete1"><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text">Extra option</span></li>
+
+          </ul>
+
+        </div><!--left container end --><!--change end -->
+        <div class="center-container">
+          <form id="myform" style="display:none;">
+            <input type="file" id="myfile" name="myfile" value="">
           </form>
-          <!--<li>
-            <h3 class="clearfix">Uploading</h3>
-            <ul class="folder-container">
-              <li class="folder" draggable="true"  id="folder"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+          <ul class="display-container ">
+            <form id="myform">
+              <input type="file" style="display:none;" name="myfile" id="myfile">
+            </form>
+            <!--<li>
+              <h3 class="clearfix">Uploading</h3>
+              <ul class="folder-container">
+                <li class="folder" draggable="true"  id="folder"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
-              <li class="fix"></li>
-              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-
-
-
-              <li class="fix"></li>
-            </ul>
-          </li>-->
-          <li>
-            <h3 class="clearfix">Folders</h3>
-            <ul class="folder-container" >
-              <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="folder6"><i class="ion-ios-folder folder-icon" ></i><span>Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="fix"></li>
+                <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
+                <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
 
 
 
-              <li class="fix"></li>
-            </ul>
-          </li>
-
-          <li>
-            <h3 class="clearfix">Files</h3>
-            <ul class="file-container" id="files">
-              <li class="file" draggable="true" id="file1"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file2"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" draggable="true"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file3"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-              <li class="file" draggable="true" id="file4"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span></div></li>
-
-
-
-              <li class="fix"></li>
-            </ul>
-          </li>
+                <li class="fix"></li>
+              </ul>
+            </li>-->
+            <li>
+              <h3 class="clearfix">Folders</h3>
+              <ul class="folder-container" >
+                <li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder6"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
 
-        </ul>
-  <!--files display -->
+                <li class="fix"></li>
+              </ul>
+            </li>
 
-        <div class="upload-button">+</div><!--upload button -->
-      </div><!--center container end -->
-      <div class="right-container">
-      </div><!--right container end -->
-    </div><!--main container end -->
+            <li>
+              <h3 class="clearfix">Files</h3>
+              <ul class="file-container" id="files">
+                <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
+                <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
+                <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
+                <li class="file" draggable="true" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
+
+
+
+                <li class="fix"></li>
+              </ul>
+            </li>
+
+
+
+          </ul>
+    <!--files display -->
+
+          <div class="upload-button">+</div><!--upload button -->
+        </div><!--center container end -->
+        <div class="right-container">
+        </div><!--right container end -->
+      </div><!--main container end -->
 
 
 
 
 
 
-  </section>
-  <footer>
-<!--    <ul class="footer">
-      <li><a href="">about</a></li>
-      <li><a href="">help</a></li>
-      <li><a href="">terms</a></li>
-      <li><a href="">privacy</a></li>
-      <li><a href="">setting</a></li>
-      <li><a href="">send feedback</a></li>
-    </ul>-->
-  </footer>
-
+    </section>
+    <footer>
+  <!--    <ul class="footer">
+        <li><a href="">about</a></li>
+        <li><a href="">help</a></li>
+        <li><a href="">terms</a></li>
+        <li><a href="">privacy</a></li>
+        <li><a href="">setting</a></li>
+        <li><a href="">send feedback</a></li>
+      </ul>-->
+    </footer>
 
 
     <script src="http://localhost:35729/livereload.js"></script>
