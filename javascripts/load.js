@@ -1,13 +1,14 @@
 $(document).ready(function(){
   var files = [];
   var folders = [];
-  var subdir = "";
+  var images = [];
+  var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   function reloadfiles() {
     $('#files').html(" ");
     var test = 1;
     $.each(files,function(index,value) {
       test = 0;
-      $('#files').html($('#files').html() + "<li class=\"file\" draggable=\"true\" id=\"file"+index+"\"><div class=\"file-preview\"  style=\"  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;\"></div><div class=\"file-name\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span></div></li>");
+      $('#files').html($('#files').html() + "<li class=\"file\" draggable=\"true\" id=\"file"+index+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span></div></li>");
     });
     if(test == 1) $('#files').html($('#files').html() + "No Files Here");
     $('#files').html($('#files').html() + "<li class=\"fix\" ></li></ul>");
@@ -34,7 +35,11 @@ $(document).ready(function(){
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
           if (value.is_dir == true) folders.push(value.name);
-          else files.push(value.name);
+          else {
+            files.push(value.name);
+            if(value.is_img == true) images.push(value.link);
+            else images.push(defaultimg);
+          }
         });
         reloadfiles();
         reloadfolders();
@@ -64,17 +69,45 @@ $(document).ready(function(){
   var folderClassname;
   var sidelinkid;
   $(".folder").click(function(e){
-    folderClassname = $(e.target).attr('class').split(' ')[1];
+    folderClassname = $(e.target).attr('class').split(' ')[0];
 //    alert("outside folder " +folderClassname);
     if(folderClassname != 'dot-icon' ){
-      subdir += "favourites";
+      sidelinkid = $(this).prop("id");
+      if(sidelinkid == "saved-notes"){
+        subdir = "";
+      }
+      else if(sidelinkid == 'favorites'){
+        subdir = "/favourites";
+      }
+      else if(sidelinkid == 'delete'){
+        subdir = "/deleted";
+      }
+      else if(sidelinkid == 'recent'){
+        subdir = "";
+      }
+      else if(sidelinkid == 'shared-with-me'){
+        subdir = "";
+      }
+      else {
+        if(subdir == "") subdir = $("#"+sidelinkid).text();
+        else subdir += ("/"+$("#"+sidelinkid).text());
+      }
       fetchAndReload();
     }
     sidelinkid = $(this).prop("id");
-      alert( sidelinkid);
   });
 /*  $(".left-navigation li").click(function(e){
 
 
 });*/
+$(".new-button-container").click(function(e) {
+  var classname1 = $(e.target).attr('class').split(' ')[0];
+  if(classname1 == 'upload'){
+    alert("Not working");
+    document.getElementById('myfile').click();
+  }
+});
+$("#logout").click(function (e) {
+  window.location.href = base+"/manage/logout";
+});
 });

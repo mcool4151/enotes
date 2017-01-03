@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="utf-8">
   <script type="text/javascript">
     var base = "<?php echo base_url(); ?>";
+    var subdir = "";
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
@@ -41,17 +42,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <li class="close"><i class="ion-android-close settings-icon hover-effect" aria-hidden="true"></i></li>
 
 
-    <li class="profile-pic" style="background-image:url('http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png');"></li>
+    <li class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>');"></li>
 
   <li class="account-info-container">
-      <div class="log-out-username">Avish Kadakia</div>
-        <div class="log-out-email-id">avishkadakia199@gmail.com</div>
+      <div class="log-out-username"><?php echo $this->session->name; ?></div>
+        <div class="log-out-email-id"><?php echo $this->session->email; ?></div>
           <div class="account-info">My Account</div>
   </li>
 
 
   <li class="sign-out-option">
-    <div class="log-out-button">Log Out</div>
+    <div class="log-out-button" id="logout">Log Out</div>
   </li>
 
   </ul>
@@ -90,8 +91,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="nav-header" id="delete">
           <div class="filter-nav-header"></div>
 
-          <div class="profile-pic" style="background-image:url('http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png');" > </div>
-          <div class="email-id">avishkadakia@gmail.com</div>
+          <div class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>" > </div>
+          <div class="email-id"><?php echo $this->session->email; ?></div>
 
         </li>
           <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span>Saved Notes</span></li>
@@ -111,6 +112,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <input type="file" id="myfile" name="myfile" value="">
         </form>
         <ul class="display-container ">
+          <form id="myform">
+            <input type="file" style="display:none;" name="myfile" id="myfile">
+          </form>
           <!--<li>
             <h3 class="clearfix">Uploading</h3>
             <ul class="folder-container">
@@ -281,6 +285,44 @@ document.addEventListener("drop", function(event) {
     event.preventDefault();
     if ( event.target.className == "folder" && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
+        alert(event.target.id);
+        if(event.target.id == 'favorites'){
+          if(subdir == "") src = $("#"+data).text();
+          else src = subdir+"/"+$("#"+data).text();
+          dest = "favourites";
+        }
+        else if(event.target.id == 'delete'){
+          if(subdir == "") src = $("#"+data).text();
+          else src = subdir+"/"+$("#"+data).text();
+          dest = "deleted";
+        }
+        else if(event.target.id == 'recent'){
+          return;
+        }
+        else if(event.target.id == 'shared-with-me'){
+          return;
+        }
+        else {
+          if(subdir == ""){
+            dest = $("#"+event.target.id).text();
+            src = $("#"+data).text();
+          }
+          else {
+            dest = subdir+"/"+$("#"+event.target.id).text();
+            src = subdir+"/"+$("#"+data).text();
+          }
+        }
+        alert("dest:" + dest);
+        alert("src:" + src);
+        /*$.ajax({
+          url:base+"manage/move",
+          type:"POST",
+          async:false,
+          data:{dest:dest,src:src},
+          success:function(result){
+            alert(result);
+          }
+        });*/
       //  event.target.parentNode.appendChild(document.getElementById(data));
         var element = document.getElementById(data);
         element.parentNode.removeChild(element);

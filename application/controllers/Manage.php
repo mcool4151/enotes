@@ -33,4 +33,14 @@ class Manage extends CI_Controller {
     if(move_uploaded_file($_FILES['myfile']['tmp_name'],$this->session->dir.$_FILES['myfile']['name'])) echo 1;
     else echo 0;
   }
+  public function move(){
+    $src  = realpath($this->session->dir.$this->input->post('src'));
+    $dest = realpath($this->session->dir.$this->input->post('dest'));
+    if(!($this->checkpath($this->session->dir,$src) && $this->checkpath($this->session->dir,$dest))){
+      echo "error with dir";
+      return;
+    }
+    $this->load->model('fileman');
+    echo $this->fileman->mv($src,$dest);
+  }
 }
