@@ -40,7 +40,7 @@ class Manage extends CI_Controller {
       echo "error with dir";
       return;
     }
-    echo $this->fileman->mv($src,basename($dest));
+    echo $this->fileman->mv($src,$this->session->dir.basename($dest));
   }
   public function rename(){
     $depth = realpath($this->session->dir.$this->input->post('depth'));

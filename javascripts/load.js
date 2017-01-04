@@ -291,17 +291,7 @@ if(classname1 == 'create-folder')// create folder register added
 
 
 
-function move(src,dest){
-  $.ajax({
-    url:base+"manage/move",
-    type:"POST",
-    async:false,
-    data:{dest:dest,src:src},
-    success:function(result){
-      //
-    }
-  });
-}
+
 $("body").click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
   if(classname1 == 'close-button'){
@@ -380,3 +370,14 @@ classname = $(e.target).attr('class').split(' ')[0];
 
 
 });
+function move(src,dest){
+  $.ajax({
+    url:base+"manage/move",
+    type:"POST",
+    async:false,
+    data:{dest:dest,src:src},
+    success:function(result){
+      //
+    }
+  });
+}
