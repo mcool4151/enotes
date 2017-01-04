@@ -24,6 +24,10 @@ class Fileman extends CI_Model {
     if (rename($from,$to.'/'.basename($from))) return 1;
     else return 0;
   }
+  public function rn($from,$to){
+    if (rename($from,$to)) return 1;
+    else return 0;
+  }
   public function mkdir($path){
       return mkdir($path,0777,false);
   }

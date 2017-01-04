@@ -34,14 +34,24 @@ class Manage extends CI_Controller {
     else echo 0;
   }
   public function move(){
-    $_POST[''];
     $src  = realpath($this->session->dir.$this->input->post('src'));
     $dest = realpath($this->session->dir.$this->input->post('dest'));
-    if(!($this->checkpath(realpath($this->session->dir),$src) && $this->checkpath(realpath($this->session->dir),$dest))){
+    if(!($this->checkpath(realpath($this->session->dir),$src))){
       echo "error with dir";
       return;
     }
-    echo $this->fileman->mv($src,$dest);
+    echo $this->fileman->mv($src,basename($dest));
+  }
+  public function rename(){
+    $depth = realpath($this->session->dir.$this->input->post('depth'));
+    $dest = $this->input->post('dest');
+    if($this->input->post('depth') == '')$src = realpath($this->session->dir.$this->input->post('src'));
+    else $src = realpath($this->session->dir.$this->input->post('depth').'/'.$this->input->post('src'));
+    if(!($this->checkpath(realpath($this->session->dir),$src))){
+      echo "error with dir";
+      return;
+    }
+    echo $this->fileman->rn($src,$depth.'/'.basename($dest));
   }
   public function createdir(){
     $name = basename($this->input->post('name'));

@@ -1,11 +1,11 @@
 var fnr;
+var oldname;
 $(document).ready(function(){
   var files = [];
   var folders = [];
   var images = [];
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
-  var oldname;
   var newname;
   function reloadfiles() {
     $('#files').html(" ");
@@ -333,18 +333,13 @@ $("body").click(function(e) {
     $("#rname").click(function(e){
       var src,dest;
       newname = $("#newname").val();
-      if(subdir == ""){
-        src = oldname;
-        dest = newname;
-      }else {
-        src = subdir + '/' + oldname;
-        dest = subdir + '/'+ newname;
-      }
+      src = oldname;
+      dest = newname;
       $.ajax({
-        url:base+"manage/move",
+        url:base+"manage/rename",
         type:"POST",
         async:false,
-        data:{src:src,dest:dest},
+        data:{src:src,dest:dest,depth:subdir},
         success:function(result){
           $( ".modal-background-filter" ).remove();
           $( ".open-modal" ).remove();
