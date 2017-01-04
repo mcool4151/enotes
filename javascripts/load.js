@@ -254,6 +254,7 @@ $("body").click(function(e) {
     dest = "deleted";
     move(src,dest);
   }
+  });
 /*  if(c
 if(classname1 == 'create-folder')// create folder register added
 {
@@ -287,9 +288,9 @@ if(classname1 == 'create-folder')// create folder register added
 
 
 
-});
 
-});
+
+
 function move(src,dest){
   $.ajax({
     url:base+"manage/move",
@@ -365,6 +366,7 @@ if(classname1 == 'create-folder')// create folder register added
 {
 alert(classname1 + " create folder clicked");
 }*/
+});
 });
 $("body").click(function(e) {
 classname = $(e.target).attr('class').split(' ')[0];
