@@ -1,8 +1,12 @@
+var fnr;
 $(document).ready(function(){
   var files = [];
   var folders = [];
   var images = [];
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
+  var folderid;
+  var oldname;
+  var newname;
   function reloadfiles() {
     $('#files').html(" ");
     var test = 1;
@@ -72,6 +76,7 @@ $(document).ready(function(){
     });
   }
   fetchAndReload();
+  fnr = fetchAndReload;
   $("#myfile").change(function (){
     var formData = new FormData($('#myform')[0]);
     $.ajax({
@@ -108,10 +113,18 @@ $(document).ready(function(){
         subdir = "/deleted";
       }
       else if(sidelinkid == 'recent'){
-        subdir = "";
+        files = [];
+        folders = [];
+        reloadfiles();
+        reloadfolders();
+        return;
       }
       else if(sidelinkid == 'shared-with-me'){
-        subdir = "";
+        files = [];
+        folders = [];
+        reloadfiles();
+        reloadfolders();
+        return;
       }
       else {
   //      alert("entred" + sidelinkid);
@@ -220,12 +233,10 @@ $("body").click(function(e) {
   else if(classname1 == 'rename')
   {
     if(subdir == "") {
-      src = $("#"+data).text(); // old name
-      dest = null; // new name
+      //
     }
     else {
-      src = subdir+"/"+$("#"+data).text();
-      dest = subdir+"/"+null;//new name
+      //
     }
   }
   else if(classname1 == 'details')
@@ -248,6 +259,34 @@ if(classname1 == 'create-folder')// create folder register added
 {
 alert(classname1 + " create folder clicked");
 }*/
+$(".new-button-container").click(function(e) {
+  var classname1 = $(e.target).attr('class').split(' ')[0];
+  if(classname1 == 'upload')
+  {
+  //alert(classname1 + " upload clicked");
+}
+if(classname1 == 'create-folder')// create folder register added
+{
+  $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+  $( "#crtbtn" ).click(function() {
+    name = $("#nameto").val();
+    $.ajax({
+      url:base+"manage/createdir",
+      type:"POST",
+      async:false,
+      data:{depth:subdir,name:name},
+      success:function(result){
+        fnr();
+        $( ".modal-background-filter" ).remove();
+        $( ".open-modal" ).remove();
+      }
+    });
+  });
+}
+});
+
+
+
 });
 
 });
@@ -262,3 +301,85 @@ function move(src,dest){
     }
   });
 }
+$("body").click(function(e) {
+  var classname1 = $(e.target).attr('class').split(' ')[0];
+  if(classname1 == 'close-button'){
+  $( ".modal-background-filter" ).remove();
+    $( ".open-modal" ).remove();
+  }
+  if(classname1 == 'open-with')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'move-to')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'get-shareable-link')
+  {
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    $("h3").text(classname1);
+
+  }
+  else if(classname1 == 'favorite')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'rename')
+  {
+    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal rename-modal-container" ><h3>Rename</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="newname" placeholder="file name goes here" class="share-link" /></div><div class="button-done" id="rname">Save</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    //$("h3").text(classname1);
+    $("#rname").click(function(e){
+      var src,dest;
+      newname = $("#newname").val();
+      if(subdir == ""){
+        src = oldname;
+        dest = newname;
+      }else {
+        src = subdir + '/' + oldname;
+        dest = subdir + '/'+ newname;
+      }
+      $.ajax({
+        url:base+"manage/move",
+        type:"POST",
+        async:false,
+        data:{src:src,dest:dest},
+        success:function(result){
+          $( ".modal-background-filter" ).remove();
+          $( ".open-modal" ).remove();
+          fnr();
+        }
+      });
+    });
+  }
+  else if(classname1 == 'details')
+  {
+    $("h3").text(classname1);
+  }
+  else if(classname1 == 'download')
+  {
+    $("h3").text(classname1);
+  }
+/*  if(c
+if(classname1 == 'create-folder')// create folder register added
+{
+alert(classname1 + " create folder clicked");
+}*/
+});
+$("body").click(function(e) {
+classname = $(e.target).attr('class').split(' ')[0];
+
+//     alert("classname");
+
+
+//$("h3").text(folderid);
+
+  if(classname == 'dot-icon' )
+  {
+      folderid = $(e.target).parent().attr('id');
+      oldname = $("#"+folderid).attr('name');
+
+    }
+
+
+});
