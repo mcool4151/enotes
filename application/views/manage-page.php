@@ -96,11 +96,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="email-id"><?php echo $this->session->email; ?></div>
 
           </li>
-            <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span class="left-nav-bar-text">Saved Notes</span></li>
-            <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text">Shared with me</span></li>
-            <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text">Recent</span></li>
-            <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text">Favorites</span></li>
-            <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text">Deleted</span></li>
+            <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span class="left-nav-bar-text" id="saved-notes">Saved Notes</span></li>
+            <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text" id="shared-with-me">Shared with me</span></li>
+            <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text" id="recent">Recent</span></li>
+            <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text" id="favorites">Favorites</span></li>
+            <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text" id="trash">Deleted</span></li>
             <li class="line"></li>
 
             <li class="folder" id="log-out" onclick="window.location.href=logout;"><i class="ion-log-out folder-icon" ></i><span class="left-nav-bar-text">Log Out</span></li>

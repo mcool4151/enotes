@@ -2236,30 +2236,33 @@ body {
   .left-container .left-navigation .folder, .left-container .left-navigation .fix, .left-container .left-navigation .line {
     width: 300px;
     left: 0px;
+    -moz-transition: 1;
     -webkit-transition: 1;
+    -o-transition: 1;
+    transition: 1;
   }
 }
-/* line 330, ../sass/manage-page-styles.scss */
+/* line 333, ../sass/manage-page-styles.scss */
 .left-container .folder .folder-icon, .left-container .fix .folder-icon, .left-container .line .folder-icon {
   margin-right: 20px;
   font-size: 20px;
   background-color: #f3f3f3;
   color: #5a5a5a;
 }
-/* line 337, ../sass/manage-page-styles.scss */
+/* line 340, ../sass/manage-page-styles.scss */
 .left-container .folder span, .left-container .fix span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 340, ../sass/manage-page-styles.scss */
+/* line 343, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover {
   background-color: #e6e6e6;
   border-left: 3px solid gray;
 }
-/* line 344, ../sass/manage-page-styles.scss */
+/* line 347, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover .folder-icon {
   background-color: #e6e6e6;
 }
-/* line 350, ../sass/manage-page-styles.scss */
+/* line 353, ../sass/manage-page-styles.scss */
 .left-container .line {
   padding: 0px !important;
   margin: 0px !important;
@@ -2270,7 +2273,7 @@ body {
   background-color: #e6e6e6 !important;
 }
 
-/* line 363, ../sass/manage-page-styles.scss */
+/* line 366, ../sass/manage-page-styles.scss */
 .upload-button {
   position: fixed;
   bottom: 15px;
@@ -2289,7 +2292,7 @@ body {
   font-size: 40px;
 }
 
-/* line 384, ../sass/manage-page-styles.scss */
+/* line 387, ../sass/manage-page-styles.scss */
 .upload-button:hover {
   background: #1a1aff;
 }

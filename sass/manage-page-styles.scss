@@ -309,7 +309,10 @@ border-right: 1px solid $light-grey-border;
 
           width:300px;
           left: 0px;
+          -moz-transition: 1;
           -webkit-transition: 1;
+          -o-transition: 1;
+          transition: 1;
         }
 
         @extend .font;

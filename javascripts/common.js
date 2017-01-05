@@ -1,4 +1,4 @@
-
+// forui fix ui text click fix this if(folderClassname=="folder" || folderClassname=="left-nav-bar-text")
 // Folder update code
 $(".folder").click(function(e){
   folderClassname = $(e.target).attr('class').split(' ')[0];
