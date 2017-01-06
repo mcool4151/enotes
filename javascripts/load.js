@@ -99,7 +99,7 @@ $(document).ready(function(){
   var sidelinkid;
   $("body").click(function(e){
     folderClassname = $(e.target).attr('class').split(' ')[0];
-    if(folderClassname=="folder")
+    if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text")
     {
     if(folderClassname != 'dot-icon' ){
       sidelinkid = $(e.target).prop("id");
@@ -159,13 +159,13 @@ $("#logout").click(function (e) {
 
 var sidelinkid='saved-notes';
 var prevsidelinkid='saved-notes';
-    $(".folder").click(function(e){
+    $(".body").click(function(e){
       var folderClassname = $(e.target).attr('class').split(' ')[0];
 
     //    alert("outside folder " +folderClassname);
      if(folderClassname != 'dot-icon' ){
 
-         sidelinkid = $(this).prop("id");
+         sidelinkid = $(e.target).prop("id");
        if(sidelinkid == "saved-notes"){
           activeupdate(sidelinkid,"Saved Notes");
         }
