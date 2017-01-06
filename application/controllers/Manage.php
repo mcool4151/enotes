@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class Manage extends CI_Controller {
+  public $files;
   public function __construct(){
 		parent::__construct();
 		if(!($this->session->loggedin == 1)){
@@ -69,15 +70,19 @@ class Manage extends CI_Controller {
       else echo 1;
     }
   }
-  public function download(){
-    $_POST['depth'] = '';
-    $_POST['name'] = 'marksheet2016.jpg';
+  public function setdownload(){
     if($this->input->post('depth') == '')$path = realpath($this->session->dir.$this->input->post('name'));
     else $path = realpath($this->session->dir.$this->input->post('depth').'/'.$this->input->name);
     if(!$this->checkpath($this->session->dir,$path)){
       echo "Path error";
     }
-    else $this->fileman->download($path);
+    else {
+      echo 1;
+      $this->session->file = $path;
+    }
+  }
+  public function download(){
+    $this->fileman->download($this->session->file);
   }
   public function getsharelink(){
     $_POST['file'] = '';

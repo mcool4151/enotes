@@ -343,9 +343,17 @@ $("body").click(function(e) {
   {
     $("h3").text(classname1);
   }
-  else if(classname1 == 'download')
-  {
-    $("h3").text(classname1);
+  else if(classname1 == 'download'){
+    $.ajax({
+      url:base+"manage/setdownload",
+      type:"POST",
+      async:false,
+      data:{name:oldname,depth:subdir},
+      success:function(result){
+        if(result == 1) window.location.href=base+"/manage/download";
+        else alert("error While Setting download params");
+      }
+    });
   }
 /*  if(c
 if(classname1 == 'create-folder')// create folder register added
