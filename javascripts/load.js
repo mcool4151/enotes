@@ -79,6 +79,7 @@ $(document).ready(function(){
   fnr = fetchAndReload;
   $("#myfile").change(function (){
     var formData = new FormData($('#myform')[0]);
+    formData.append("depth",subdir);
     $.ajax({
       url:base+"manage/upload",
       type:"POST",
@@ -363,9 +364,12 @@ classname = $(e.target).attr('class').split(' ')[0];
 
   if(classname == 'dot-icon' )
   {
+    //console.log("%o",$(e.target).parent().attr('id'));
       folderid = $(e.target).parent().attr('id');
-      oldname = $("#"+folderid).attr('name');
-
+      if($("#"+folderid).attr('class') == "file-name"){
+        oldname = $(e.target).parent().parent().attr('name');
+      }
+      else oldname = $("#"+folderid).attr('name');
     }
 
 

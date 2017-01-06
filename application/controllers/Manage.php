@@ -30,7 +30,12 @@ class Manage extends CI_Controller {
     redirect('login');
   }
   public function upload(){
-    if(move_uploaded_file($_FILES['myfile']['tmp_name'],$this->session->dir.$_FILES['myfile']['name'])) echo 1;
+    $depth = realpath($this->session->dir.$this->input->post('depth'));
+    if(!($this->checkpath(realpath($this->session->dir),$depth))) {
+      echo "Error dir";
+      return;
+    }
+    if(move_uploaded_file($_FILES['myfile']['tmp_name'],$depth.'/'.$_FILES['myfile']['name'])) echo 1;
     else echo 0;
   }
   public function move(){
