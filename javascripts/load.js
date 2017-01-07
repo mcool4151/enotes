@@ -22,7 +22,7 @@ $(document).ready(function(){
         if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
       }
       else {
-        if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
+        if(value.length > 15) value = value.substring(0,13) + "..." + value.substring(value.length-5,value.length);
       }
       $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
@@ -61,6 +61,7 @@ $(document).ready(function(){
       success:function(result){
         files = [];
         folders = [];
+        images = [];
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
           if (value.is_dir == true) folders.push(value.name);
@@ -79,6 +80,7 @@ $(document).ready(function(){
   fnr = fetchAndReload;
   $("#myfile").change(function (){
     var formData = new FormData($('#myform')[0]);
+    formData.append("depth",subdir);
     $.ajax({
       url:base+"manage/upload",
       type:"POST",
@@ -99,7 +101,7 @@ $(document).ready(function(){
   var sidelinkid;
   $("body").click(function(e){
     folderClassname = $(e.target).attr('class').split(' ')[0];
-    if(folderClassname=="folder")
+    if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text")
     {
     if(folderClassname != 'dot-icon' ){
       sidelinkid = $(e.target).prop("id");
@@ -159,13 +161,13 @@ $("#logout").click(function (e) {
 
 var sidelinkid='saved-notes';
 var prevsidelinkid='saved-notes';
-    $(".folder").click(function(e){
+    $(".body").click(function(e){
       var folderClassname = $(e.target).attr('class').split(' ')[0];
 
     //    alert("outside folder " +folderClassname);
      if(folderClassname != 'dot-icon' ){
 
-         sidelinkid = $(this).prop("id");
+         sidelinkid = $(e.target).prop("id");
        if(sidelinkid == "saved-notes"){
           activeupdate(sidelinkid,"Saved Notes");
         }
@@ -342,9 +344,17 @@ $("body").click(function(e) {
   {
     $("h3").text(classname1);
   }
-  else if(classname1 == 'download')
-  {
-    $("h3").text(classname1);
+  else if(classname1 == 'download'){
+    $.ajax({
+      url:base+"manage/setdownload",
+      type:"POST",
+      async:false,
+      data:{name:oldname,depth:subdir},
+      success:function(result){
+        if(result == 1) window.location.href=base+"/manage/download";
+        else alert("error While Setting download params");
+      }
+    });
   }
 /*  if(c
 if(classname1 == 'create-folder')// create folder register added
@@ -363,9 +373,12 @@ classname = $(e.target).attr('class').split(' ')[0];
 
   if(classname == 'dot-icon' )
   {
+    //console.log("%o",$(e.target).parent().attr('id'));
       folderid = $(e.target).parent().attr('id');
-      oldname = $("#"+folderid).attr('name');
-
+      if($("#"+folderid).attr('class') == "file-name"){
+        oldname = $(e.target).parent().parent().attr('name');
+      }
+      else oldname = $("#"+folderid).attr('name');
     }
 
 
