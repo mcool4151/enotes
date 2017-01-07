@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="nav-header" id="delete">
             <div class="filter-nav-header"></div>
 
-            <div class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>" > </div>
+            <div class="profile-pic" style="background-image:url('<?php echo $this->session->pic ?>')"> </div>
             <div class="email-id"><?php echo $this->session->email; ?></div>
 
           </li>
