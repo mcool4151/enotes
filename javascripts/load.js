@@ -22,7 +22,7 @@ $(document).ready(function(){
         if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
       }
       else {
-        if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
+        if(value.length > 15) value = value.substring(0,13) + "..." + value.substring(value.length-5,value.length);
       }
       $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
@@ -61,6 +61,7 @@ $(document).ready(function(){
       success:function(result){
         files = [];
         folders = [];
+        images = [];
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
           if (value.is_dir == true) folders.push(value.name);
