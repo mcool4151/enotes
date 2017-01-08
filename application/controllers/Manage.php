@@ -15,12 +15,20 @@ class Manage extends CI_Controller {
     $this->load->view('manage-page');
   }
   public function getdir(){
-    if(isset($_GET['depth'])) {
-      $dir = realpath($this->session->dir.$_GET['depth']);
+    if($this->input->get('depth')) {
+      $dir = realpath($this->session->dir.$this->input->get('depth'));
       if(!$this->checkpath(realpath($this->session->dir),$dir)) exit(97);
+      $arr = $this->fileman->getdirarr($dir);
     }
-    else $dir = $this->session->dir;
-    echo json_encode($this->fileman->getdirarr($dir));
+    else {
+      $arr = array_merge($this->fileman->getdirarr($this->session->dir),
+        $this->fileman->getdirarr($this->session->dir.'favourites'));
+    }
+    function mycmp($a,$b){
+      return strcasecmp($a['name'],$b['name']);
+    }
+    usort($arr,"mycmp");
+    echo json_encode($arr);
   }
   private function checkpath($base,$test){
     if(!strncmp($test,$base,strlen($base))) return 1;
@@ -42,11 +50,11 @@ class Manage extends CI_Controller {
   public function move(){
     $src  = realpath($this->session->dir.$this->input->post('src'));
     $dest = realpath($this->session->dir.$this->input->post('dest'));
-    if(!($this->checkpath(realpath($this->session->dir),$src))){
+    if(!($this->checkpath(realpath($this->session->dir),$src) && $this->checkpath(realpath($this->session->dir),$dest))){
       echo "error with dir";
       return;
     }
-    echo $this->fileman->mv($src,$this->session->dir.basename($dest));
+    echo $this->fileman->mv($src,$dest);
   }
   public function rename(){
     $depth = realpath($this->session->dir.$this->input->post('depth'));
@@ -72,7 +80,7 @@ class Manage extends CI_Controller {
   }
   public function setdownload(){
     if($this->input->post('depth') == '')$path = realpath($this->session->dir.$this->input->post('name'));
-    else $path = realpath($this->session->dir.$this->input->post('depth').'/'.$this->input->name);
+    else $path = realpath($this->session->dir.$this->input->post('depth').'/'.$this->input->post('name'));
     if(!$this->checkpath($this->session->dir,$path)){
       echo "Path error";
     }

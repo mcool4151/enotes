@@ -211,17 +211,17 @@ var prevsidelinkid='saved-notes';
 $("body").click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
 
-  if(classname1 == 'open-with')
+  if(classname1 == 'open-with'+"open-with")
   {
     $("h3").text(classname1);
   }
   else if(classname1 == 'move-to')
   {
-    $("h3").text(classname1);
+    $("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'get-shareable-link')
   {
-    $("h3").text(classname1);
+    $("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'favorite')
   {
@@ -247,7 +247,7 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'download')
   {
-    $("h3").text(classname1);
+    //$("h3").text(classname1);
   }
   else if(classname1 == 'trash')
   {
@@ -302,21 +302,24 @@ $("body").click(function(e) {
   }
   if(classname1 == 'open-with')
   {
-    $("h3").text(classname1);
+    $("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'move-to')
   {
-    $("h3").text(classname1);
+    $("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'get-shareable-link')
   {
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-    $("h3").text(classname1);
+    //$("h3").text(classname1);
 
   }
-  else if(classname1 == 'favorite')
-  {
-    $("h3").text(classname1);
+  else if(classname1 == 'favorite'){
+    if(subdir == "") src = oldname;
+    else src = subdir+"/"+oldname;
+    dest = "favourites";
+    move(src,dest);
+    fnr();
   }
   else if(classname1 == 'rename')
   {
@@ -342,7 +345,7 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'details')
   {
-    $("h3").text(classname1);
+    $("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'download'){
     $.ajax({
@@ -390,7 +393,7 @@ function move(src,dest){
     async:false,
     data:{dest:dest,src:src},
     success:function(result){
-      //
+      fnr();
     }
   });
 }

@@ -355,8 +355,8 @@ document.addEventListener("drop", function(event) {
         //alert("src:" + src);
         move(src,dest);
       //  event.target.parentNode.appendChild(document.getElementById(data));
-        var element = document.getElementById(data);
-        element.parentNode.removeChild(element);
+        //var element = document.getElementById(data);
+        //element.parentNode.removeChild(element);
 
     }
     event.target.style.border = "";

@@ -46,7 +46,7 @@ class Fileman extends CI_Model {
       }
     }
     else{
-
+      echo "Folder download Not implemented";
     }
   }
   public function getlink($path){
