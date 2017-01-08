@@ -9,6 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var base = "<?php echo base_url(); ?>";
     var subdir = "";
     var logout = base + "/manage/logout";
+    var foldercount=0;
+    var filecount=0;
+
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">

@@ -71,6 +71,9 @@ $(document).ready(function(){
             else images.push(defaultimg);
           }
         });
+        foldercount = folders.length;
+        filecount = files.length;
+      //  alert("Folder count:"+filecount);
         reloadfiles();
         reloadfolders();
       }
