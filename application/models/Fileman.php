@@ -53,4 +53,41 @@ class Fileman extends CI_Model {
     $res = $this->db->query("select * from sharedlink where path=$path");
     //if($res->num_rows())
   }
+  public function addToFav($path){
+    $data = array(
+      'uid'   => $this->session->uid,
+      'path'  => $path
+    );
+    $this->db->insert('favourites',$data);
+  }
+  public function getFavAll(){
+    $uid = $this->session->uid;
+    $sql = "Select * from favourites where uid='$uid'";
+    $res = $this->db->query($sql);
+    $files = [];
+    foreach ($res->result_array() as $file) {
+      $path = str_replace($this->session->dir,'',$file['path']);
+      $img = @is_array(getimagesize($file['path']));
+      $link = $img?base_url().'upload/'.$this->session->uid.'/'.str_replace($this->session->dir,'',$file['path']):null;
+      $files[] = array(
+        'path'    => $path,
+        'name'    => basename($file['path']),
+        'is_dir'  => is_dir($file['path']),
+        'is_img'  => $img,
+        'link'    => $link,
+      );
+    }
+    return $files;
+  }
+  public function removeFromFav($path){
+    $uid = $this->session->uid;
+    $sql = "DELETE FROM `favourites` WHERE `uid`=$uid AND `path`='$path'";
+    $this->db->query($sql);
+  }
+  public function checkfav($path){
+    $uid = $this->session->uid;
+    $sql = "Select * from favourites where path='$path' AND uid='$uid'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
 }

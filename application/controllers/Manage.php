@@ -100,4 +100,16 @@ class Manage extends CI_Controller {
       return;
     }
   }
+  public function flipfav(){
+    $file = realpath($this->session->dir.$this->input->post('path'));
+    if(!$this->checkpath(realpath($this->session->dir),$file)) {
+      echo "error dir";
+      return;
+    }
+    if(!$this->fileman->checkfav($file)) $this->fileman->addToFav($file);
+    else $this->fileman->removeFromFav($file);
+  }
+  public function getfav(){
+    echo json_encode($this->fileman->getFavAll());
+  }
 }

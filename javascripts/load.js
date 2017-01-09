@@ -4,9 +4,40 @@ $(document).ready(function(){
   var files = [];
   var folders = [];
   var images = [];
+  var paths = [];
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
   var newname;
+  function updatesubdir(v){
+    alert(v);
+  }
+  function getfav(){
+    $.ajax({
+      url:base+"manage/getfav",
+      type:"GET",
+      async:false,
+      success:function(result){
+        files = [];
+        folders = [];
+        images = [];
+        paths = [];
+        list = jQuery.parseJSON(result);
+        $.each(list,function(index,value){
+          if (value.is_dir == true) {
+            folders.push(value.name);
+            paths.push(value.path);
+          }
+          else {
+            files.push(value.name);
+            if(value.is_img == true) images.push(value.link);
+            else images.push(defaultimg);
+          }
+        });
+        reloadfiles();
+        reloadfolders();
+      }
+    });
+  }
   function reloadfiles() {
     $('#files').html(" ");
     var test = 1;
@@ -36,7 +67,8 @@ $(document).ready(function(){
     var test = 1;
     $('.folders-text').css({"display": "block"});
     $.each(folders,function (index,value) {
-      fullname = value
+      if(prevsidelinkid == 'favorites') fullname = paths[index];
+      else fullname = value
       test = 0;
       if ( $(window).width() < 480) {
         if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
@@ -109,7 +141,9 @@ $(document).ready(function(){
         subdir = "";
       }
       else if(sidelinkid == 'favorites'){
-        subdir = "/favourites";
+        alert("here");
+        getfav();
+        return;
       }
       else if(sidelinkid == 'trash'){
         subdir = "/deleted";
@@ -133,6 +167,7 @@ $(document).ready(function(){
   //      $("h3").text($("#"+sidelinkid).attr('name'));
         if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
         else subdir += ("/"+$("#"+sidelinkid).attr('name'));
+        activeupdate("saved-notes","Saved Notes");
       }
       fetchAndReload();
     }
@@ -225,12 +260,15 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'favorite')
   {
-    $("h3").text("folderid "+ $("#"+folderid).parent().attr('name'));
+    //$("h3").text("folderid "+ $("#"+folderid).parent().attr('name'));
   //  alert("folderid "+ $("#"+folderid).attr('name'));
-    if(subdir == "") src = $("#"+folderid).parent().attr('name');
+    /*if(subdir == "") src = $("#"+folderid).parent().attr('name');
     else src = subdir+"/"+$("#"+folderid).parent().attr('name');
     dest = "favourites";
-  //  move(src,dest);
+    flipfav(src);
+    return;*/
+    //move(src,dest);
+
   }
   else if(classname1 == 'rename')
   {
@@ -318,8 +356,12 @@ $("body").click(function(e) {
     if(subdir == "") src = oldname;
     else src = subdir+"/"+oldname;
     dest = "favourites";
-    move(src,dest);
-    fnr();
+    //move(src,dest);
+    //fnr();
+    flipfav(src);
+    if(prevsidelinkid == 'favourites'){
+      getfav();
+    }
   }
   else if(classname1 == 'rename')
   {
@@ -394,6 +436,17 @@ function move(src,dest){
     data:{dest:dest,src:src},
     success:function(result){
       fnr();
+    }
+  });
+}
+function flipfav(file){
+  $.ajax({
+    url:base+"manage/flipfav",
+    data:{path:file},
+    type:"POST",
+    async:false,
+    success:function(result){
+      //
     }
   });
 }
