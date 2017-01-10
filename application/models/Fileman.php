@@ -25,6 +25,12 @@ class Fileman extends CI_Model {
     else return 0;
   }
   public function rn($from,$to){
+    if(isShared($from)){
+      $id = md5($from);
+      $sql = "UPDATE `sharedlink` SET `fileid`=$id,`path`=$from WHERE 1"
+      $this->db->query($sql);
+    }
+    if()
     if (rename($from,$to)) return 1;
     else return 0;
   }
@@ -60,6 +66,8 @@ class Fileman extends CI_Model {
     );
     $this->db->insert('favourites',$data);
   }
+  public function isFav($path){
+  }
   public function getFavAll(){
     $uid = $this->session->uid;
     $sql = "Select * from favourites where uid='$uid'";
@@ -89,5 +97,62 @@ class Fileman extends CI_Model {
     $sql = "Select * from favourites where path='$path' AND uid='$uid'";
     $res = $this->db->query($sql);
     return $res->num_rows();
+  }
+  public function addToDel($path){
+    $data = array(
+      'uid'   => $this->session->uid,
+      'path'  => $path
+    );
+    $this->db->insert('deleted',$data);
+  }
+  public function getDelAll(){
+    $uid = $this->session->uid;
+    $sql = "Select * from deleted where uid='$uid'";
+    $res = $this->db->query($sql);
+    $files = [];
+    foreach ($res->result_array() as $file) {
+      $path = str_replace($this->session->dir,'',$file['path']);
+      $img = @is_array(getimagesize($file['path']));
+      $link = $img?base_url().'upload/'.$this->session->uid.'/'.str_replace($this->session->dir,'',$file['path']):null;
+      $files[] = array(
+        'path'    => $path,
+        'name'    => basename($file['path']),
+        'is_dir'  => is_dir($file['path']),
+        'is_img'  => $img,
+        'link'    => $link,
+      );
+    }
+    return $files;
+  }
+  public function removeFromDel($path){
+    $uid = $this->session->uid;
+    $sql = "DELETE FROM `deleted` WHERE `uid`=$uid AND `path`='$path'";
+    $this->db->query($sql);
+  }
+  public function checkdel($path){
+    $uid = $this->session->uid;
+    $sql = "Select * from deleted where path='$path' AND uid='$uid'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
+  public function makeShareLink($path){
+    $id = md5($path);
+    $data = array(
+      'uid'   => $this->session->uid,
+      'path'  => $path,
+      'fileid'=> $id
+    );
+    $this->db->insert('sharedlink',$data);
+    return $id;
+  }
+  public function isShared($path){
+    $uid = $this->session->uid;
+    $sql = "SELECT * FROM `sharedlink` WHERE `uid`=$uid AND `path`=$path";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
+  public function removeSharedLink($path){
+    $uid = $this->session->uid;
+    $sql = "DELETE FROM `sharedlink` WHERE `uid`=$uid AND `path`=$path";
   }
 }

@@ -112,4 +112,16 @@ class Manage extends CI_Controller {
   public function getfav(){
     echo json_encode($this->fileman->getFavAll());
   }
+  public function flipdel(){
+    $file = realpath($this->session->dir.$this->input->post('path'));
+    if(!$this->checkpath(realpath($this->session->dir),$file)) {
+      echo "error dir";
+      return;
+    }
+    if(!$this->fileman->checkfav($file)) $this->fileman->addToDel($file);
+    else $this->fileman->removeFromDel($file);
+  }
+  public function getfav(){
+    echo json_encode($this->fileman->getDelAll());
+  }
 }

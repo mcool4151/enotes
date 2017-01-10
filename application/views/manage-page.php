@@ -326,6 +326,8 @@ document.addEventListener("drop", function(event) {
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
           dest = "favourites";
+          flipfav(src);
+          return;
         }
         else if(event.target.id == 'trash'){
           if(subdir == "") src = $("#"+data).attr('name');

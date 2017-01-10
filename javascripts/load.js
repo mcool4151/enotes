@@ -141,7 +141,6 @@ $(document).ready(function(){
         subdir = "";
       }
       else if(sidelinkid == 'favorites'){
-        alert("here");
         getfav();
         return;
       }
