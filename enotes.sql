@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 02, 2017 at 03:27 PM
+-- Generation Time: Jan 11, 2017 at 10:57 PM
 -- Server version: 5.7.16-0ubuntu0.16.10.1
 -- PHP Version: 7.0.8-3ubuntu3
 
@@ -19,6 +19,47 @@ SET time_zone = "+00:00";
 --
 -- Database: `enotes`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deleted`
+--
+
+CREATE TABLE `deleted` (
+  `uid` varchar(32) NOT NULL,
+  `path` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favourites`
+--
+
+CREATE TABLE `favourites` (
+  `uid` varchar(32) NOT NULL,
+  `path` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `favourites`
+--
+
+INSERT INTO `favourites` (`uid`, `path`) VALUES
+('102502669196938371636', '/home/mohammed/server/project/upload/102502669196938371636/markfavandrename');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sharedlink`
+--
+
+CREATE TABLE `sharedlink` (
+  `fileid` varchar(64) NOT NULL,
+  `path` varchar(1024) NOT NULL,
+  `uid` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43,6 +84,12 @@ INSERT INTO `users` (`uid`, `name`, `email`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `sharedlink`
+--
+ALTER TABLE `sharedlink`
+  ADD PRIMARY KEY (`fileid`);
 
 --
 -- Indexes for table `users`

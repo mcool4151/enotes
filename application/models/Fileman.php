@@ -45,13 +45,14 @@ class Fileman extends CI_Model {
   public function rn($from,$to){
     $uid = $this->session->uid;
     if (rename($from,$to)) {
-      if(isShared($from)){
+      if($this->isShared($from)){
         $id = md5($from);
-        $sql = "UPDATE `sharedlink` SET `path`=$from WHERE `uid`=$uid AND `path`='$from'";
+        $sql = "UPDATE `sharedlink` SET `path`='$to' WHERE `uid`=$uid AND `path`='$from'";
         $this->db->query($sql);
       }
-      if(isFav($from)){
-        $sql = "UPDATE `favourites` SET `path`=$from WHERE `uid`=$uid AND `path`='$from'";
+      if($this->isFav($from)){
+        echo "here";
+        $sql = "UPDATE `favourites` SET `path`='$to' WHERE `uid`=$uid AND `path`='$from'";
         $this->db->query($sql);
       }
       return 1;
@@ -94,6 +95,10 @@ class Fileman extends CI_Model {
     $this->db->insert('favourites',$data);
   }
   public function isFav($path){
+    $uid = $this->session->uid;
+    $sql = "Select * from favourites where `uid`=$uid AND `path`='$path'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
   }
   public function getFavAll(){
     $uid = $this->session->uid;
@@ -174,7 +179,7 @@ class Fileman extends CI_Model {
   }
   public function isShared($path){
     $uid = $this->session->uid;
-    $sql = "SELECT * FROM `sharedlink` WHERE `uid`=$uid AND `path`=$path";
+    $sql = "SELECT * FROM `sharedlink` WHERE `uid`=$uid AND `path`='$path'";
     $res = $this->db->query($sql);
     return $res->num_rows();
   }
