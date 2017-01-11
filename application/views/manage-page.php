@@ -11,6 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var logout = base + "/manage/logout";
     var foldercount=0;
     var filecount=0;
+    var sidelinkid='saved-notes';
+    var prevsidelinkid='saved-notes';
+    var ff,fd,gf,gd;
 
   </script>
   <title>e-notes</title>
@@ -324,18 +327,30 @@ document.addEventListener("drop", function(event) {
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
           dest = "";
+          if(prevsidelinkid == 'trash'){
+            fd(src);
+            gd();
+            event.target.style.border = "";
+            return;
+          }else if(prevsidelinkid == 'favorites'){
+            ff(src);
+            gf();
+            event.target.style.border = "";
+            return;
+          }
         }
         else if(event.target.id == 'favorites'){
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
           dest = "favourites";
-          flipfav(src);
+          ff(src);
           return;
         }
         else if(event.target.id == 'trash'){
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
-          dest = "deleted";
+          fd(src);
+          return;
         }
         else if(event.target.id == 'recent'){
           return;

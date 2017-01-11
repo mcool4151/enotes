@@ -20,10 +20,7 @@ class Manage extends CI_Controller {
       if(!$this->checkpath(realpath($this->session->dir),$dir)) exit(97);
       $arr = $this->fileman->getdirarr($dir);
     }
-    else {
-      $arr = array_merge($this->fileman->getdirarr($this->session->dir),
-        $this->fileman->getdirarr($this->session->dir.'favourites'));
-    }
+    else $arr = $this->fileman->getdirarr($this->session->dir);
     function mycmp($a,$b){
       return strcasecmp($a['name'],$b['name']);
     }
@@ -118,10 +115,10 @@ class Manage extends CI_Controller {
       echo "error dir";
       return;
     }
-    if(!$this->fileman->checkfav($file)) $this->fileman->addToDel($file);
+    if(!$this->fileman->checkdel($file)) $this->fileman->addToDel($file);
     else $this->fileman->removeFromDel($file);
   }
-  public function getfav(){
+  public function getdel(){
     echo json_encode($this->fileman->getDelAll());
   }
 }

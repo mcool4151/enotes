@@ -5,12 +5,43 @@ $(document).ready(function(){
   var folders = [];
   var images = [];
   var paths = [];
+  var fpaths = [];
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
   var newname;
   function updatesubdir(v){
     alert(v);
   }
+  function getdel(){
+    $.ajax({
+      url:base+"manage/getdel",
+      type:"GET",
+      async:false,
+      success:function(result){
+        files = [];
+        folders = [];
+        images = [];
+        paths = [];
+        fpaths = [];
+        list = jQuery.parseJSON(result);
+        $.each(list,function(index,value){
+          if (value.is_dir == true) {
+            folders.push(value.name);
+            paths.push(value.path);
+          }
+          else {
+            files.push(value.name);
+            fpaths.push(value.path);
+            if(value.is_img == true) images.push(value.link);
+            else images.push(defaultimg);
+          }
+        });
+        reloadfiles();
+        reloadfolders();
+      }
+    });
+  }
+  gd = getdel;
   function getfav(){
     $.ajax({
       url:base+"manage/getfav",
@@ -21,6 +52,7 @@ $(document).ready(function(){
         folders = [];
         images = [];
         paths = [];
+        fpaths = [];
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
           if (value.is_dir == true) {
@@ -29,6 +61,7 @@ $(document).ready(function(){
           }
           else {
             files.push(value.name);
+            fpaths.push(value.path);
             if(value.is_img == true) images.push(value.link);
             else images.push(defaultimg);
           }
@@ -38,11 +71,13 @@ $(document).ready(function(){
       }
     });
   }
+  gf = getfav;
   function reloadfiles() {
     $('#files').html(" ");
     var test = 1;
     $.each(files,function(index,value) {
-      fullname = value;
+      if(prevsidelinkid == 'favorites') fullname = fpaths[index];
+      else fullname = value;
       test = 0;
       $('.folders-text').css({"display": "block"});
       $('.files-text').css({"display": "block"});
@@ -68,7 +103,7 @@ $(document).ready(function(){
     $('.folders-text').css({"display": "block"});
     $.each(folders,function (index,value) {
       if(prevsidelinkid == 'favorites') fullname = paths[index];
-      else fullname = value
+      else fullname = value;
       test = 0;
       if ( $(window).width() < 480) {
         if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
@@ -144,11 +179,14 @@ $(document).ready(function(){
         subdir = "";
       }
       else if(sidelinkid == 'favorites'){
+        subdir = "";
         getfav();
         return;
       }
       else if(sidelinkid == 'trash'){
-        subdir = "/deleted";
+        subdir = "";
+        getdel();
+        return;
       }
       else if(sidelinkid == 'recent'){
         files = [];
@@ -169,6 +207,10 @@ $(document).ready(function(){
   //      $("h3").text($("#"+sidelinkid).attr('name'));
         if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
         else subdir += ("/"+$("#"+sidelinkid).attr('name'));
+        if(prevsidelinkid == 'trash'){
+          alert("Restore Folder To view Contents");
+          return;
+        }
         activeupdate("saved-notes","Saved Notes");
       }
       fetchAndReload();
@@ -196,8 +238,6 @@ $("#logout").click(function (e) {
 
 //test ----------
 
-var sidelinkid='saved-notes';
-var prevsidelinkid='saved-notes';
     $(".body").click(function(e){
       var folderClassname = $(e.target).attr('class').split(' ')[0];
 
@@ -209,10 +249,12 @@ var prevsidelinkid='saved-notes';
           activeupdate(sidelinkid,"Saved Notes");
         }
         else if(sidelinkid == 'favorites'){
+          subdir='';
           activeupdate(sidelinkid,"Favorites");
 
         }
         else if(sidelinkid == 'trash'){
+          subdir='';
           activeupdate(sidelinkid,"Deleted");
 
         }
@@ -361,7 +403,7 @@ $("body").click(function(e) {
     //move(src,dest);
     //fnr();
     flipfav(src);
-    if(prevsidelinkid == 'favourites'){
+    if(prevsidelinkid == 'favorites'){
       getfav();
     }
   }
@@ -452,3 +494,16 @@ function flipfav(file){
     }
   });
 }
+ff = flipfav;
+function flipdel(file){
+  $.ajax({
+    url:base+"manage/flipdel",
+    data:{path:file},
+    type:"POST",
+    async:false,
+    success:function(result){
+      //
+    }
+  });
+}
+fd = flipdel;

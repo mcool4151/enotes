@@ -8,9 +8,14 @@ class Fileman extends CI_Model {
   }
 
   public function getdirarr($dir){
-    $list = array_diff(scandir($dir), array('.','..','deleted','favourites'));
+    $list = array_diff(scandir($dir), array('.','..'));
     $files = array();
     foreach ($list as $file) {
+      $path = $dir.$file;
+      $uid = $this->session->uid;
+      $sql = "Select * from deleted where `uid`=$uid AND `path`='$path'";
+      $res = $this->db->query($sql);
+      if ($res->num_rows()) continue;
       $files[] = array(
         'name'    => $file,
         'is_dir'  => is_dir($dir.'/'.$file),
@@ -21,17 +26,36 @@ class Fileman extends CI_Model {
     return $files;
   }
   public function mv($from,$to){
-    if (rename($from,$to.'/'.basename($from))) return 1;
+    if (rename($from,$to.'/'.basename($from))) {
+      $uid = $this->session->uid;
+      $path = $to.'/'.basename($from);
+      if(isShared($from)){
+        $id = md5($from);
+        $sql = "UPDATE `sharedlink` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
+        $this->db->query($sql);
+      }
+      if(isFav($from)){
+        $sql = "UPDATE `favourites` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
+        $this->db->query($sql);
+      }
+      return 1;
+    }
     else return 0;
   }
   public function rn($from,$to){
-    if(isShared($from)){
-      $id = md5($from);
-      $sql = "UPDATE `sharedlink` SET `fileid`=$id,`path`=$from WHERE 1"
-      $this->db->query($sql);
+    $uid = $this->session->uid;
+    if (rename($from,$to)) {
+      if(isShared($from)){
+        $id = md5($from);
+        $sql = "UPDATE `sharedlink` SET `path`=$from WHERE `uid`=$uid AND `path`='$from'";
+        $this->db->query($sql);
+      }
+      if(isFav($from)){
+        $sql = "UPDATE `favourites` SET `path`=$from WHERE `uid`=$uid AND `path`='$from'";
+        $this->db->query($sql);
+      }
+      return 1;
     }
-    if()
-    if (rename($from,$to)) return 1;
     else return 0;
   }
   public function mkdir($path){
@@ -57,7 +81,10 @@ class Fileman extends CI_Model {
   }
   public function getlink($path){
     $res = $this->db->query("select * from sharedlink where path=$path");
-    //if($res->num_rows())
+    if($res->num_rows()){
+      $row = $res->row();
+      return $row['fileid'];
+    }
   }
   public function addToFav($path){
     $data = array(
