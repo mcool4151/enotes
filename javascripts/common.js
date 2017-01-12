@@ -1,5 +1,15 @@
 // forui fix ui text click fix this if(folderClassname=="folder" || folderClassname=="left-nav-bar-text")
 // Folder update code
+
+
+if($('#checkbox').attr('checked')) {
+    alert("link avalable");
+} else {
+    alert("link not avalable");
+}//customise for use
+
+
+
 $(".folder").click(function(e){
   folderClassname = $(e.target).attr('class').split(' ')[0];
 //    alert("outside folder " +folderClassname);

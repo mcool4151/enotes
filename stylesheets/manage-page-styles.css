@@ -1902,6 +1902,83 @@ article p a:visited {
   height: 100%;
 }
 
+/* line 537, ../sass/partials/manage-page-partials/_submenu.scss */
+.switch {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 16px;
+  top: 75px;
+  right: 55px;
+  z-index: 20;
+}
+@media screen and (max-width: 480px) {
+  /* line 537, ../sass/partials/manage-page-partials/_submenu.scss */
+  .switch {
+    right: 45px;
+  }
+}
+
+/* line 550, ../sass/partials/manage-page-partials/_submenu.scss */
+.switch input {
+  display: none;
+}
+
+/* line 552, ../sass/partials/manage-page-partials/_submenu.scss */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ededed;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* line 564, ../sass/partials/manage-page-partials/_submenu.scss */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: -4px;
+  bottom: -2px;
+  background-color: #d9d9d9;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+/* line 576, ../sass/partials/manage-page-partials/_submenu.scss */
+input:checked + .slider {
+  background-color: #ffdfa4;
+}
+
+/* line 580, ../sass/partials/manage-page-partials/_submenu.scss */
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+/* line 584, ../sass/partials/manage-page-partials/_submenu.scss */
+input:checked + .slider:before {
+  background-color: #ffc04d;
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+/* line 592, ../sass/partials/manage-page-partials/_submenu.scss */
+.slider.round {
+  border-radius: 34px;
+}
+
+/* line 596, ../sass/partials/manage-page-partials/_submenu.scss */
+.slider.round:before {
+  border-radius: 50%;
+}
+
 /* line 9, ../sass/manage-page-styles.scss */
 body {
   background-color: #f3f3f3;
