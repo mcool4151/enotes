@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE HTML>
-<html >
+<html>
 <head>
   <meta charset="utf-8">
   <script type="text/javascript">
@@ -15,7 +15,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var prevsidelinkid='saved-notes';
     var ff,fd,gf,gd;
     var fnr;
-
+    var active=0;
+    var folderid;
+    var classname;
+    var onscreen=0;
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
@@ -241,6 +244,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 document.addEventListener("dragstart", function(event) {
     // The dataTransfer.setData() method sets the data type and the value of the dragged data
+    $( ".folder-submenu-container" ).remove();
+    classname = $(event.target).attr('class').split(' ')[0];
 
     event.dataTransfer.setData("Text", event.target.id);
 
@@ -249,9 +254,7 @@ document.addEventListener("dragstart", function(event) {
     // Change the opacity of the draggable element
     c=document.getElementById(event.target.id).childNodes;
     var ghostImage = c[1].cloneNode(true);
-
-
-
+//$("h3").text("c[1] = "+ c[1] +"classname " + classname + " id " + event.target.id);
 
      ghostImage.style.position = "absolute";
      ghostImage.style.backgroundColor="white"
