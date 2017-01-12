@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var sidelinkid='saved-notes';
     var prevsidelinkid='saved-notes';
     var ff,fd,gf,gd;
+    var fnr;
 
   </script>
   <title>e-notes</title>
@@ -344,18 +345,23 @@ document.addEventListener("drop", function(event) {
           else src = subdir+"/"+$("#"+data).attr('name');
           dest = "favourites";
           ff(src);
+          event.target.style.border = "";
           return;
         }
         else if(event.target.id == 'trash'){
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
           fd(src);
+          fnr();
+          event.target.style.border = "";
           return;
         }
         else if(event.target.id == 'recent'){
+          event.target.style.border = "";
           return;
         }
         else if(event.target.id == 'shared-with-me'){
+          event.target.style.border = "";
           return;
         }
         else if(event.target.id == 'log-out'){

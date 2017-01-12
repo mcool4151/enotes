@@ -1,4 +1,3 @@
-var fnr;
 var oldname;
 $(document).ready(function(){
   var files = [];
@@ -76,8 +75,18 @@ $(document).ready(function(){
     $('#files').html(" ");
     var test = 1;
     $.each(files,function(index,value) {
-      if(prevsidelinkid == 'favorites') fullname = fpaths[index];
-      else fullname = value;
+      if(prevsidelinkid == 'favorites') {
+        fullname = fpaths[index];
+        exclass = "favorite";
+      }
+      else if(prevsidelinkid == 'trash'){
+        fullname = fpaths[index];
+        exclass = "trash";
+      }
+      else {
+        exclass = "";
+        fullname = value;
+      }
       test = 0;
       $('.folders-text').css({"display": "block"});
       $('.files-text').css({"display": "block"});
@@ -90,7 +99,7 @@ $(document).ready(function(){
       else {
         if(value.length > 15) value = value.substring(0,13) + "..." + value.substring(value.length-5,value.length);
       }
-      $('#files').html($('#files').html() + "<li class=\"file\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+      $('#files').html($('#files').html() + "<li class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
     if(test == 1) {
       $('.files-text').css({"display": "none"});
@@ -102,8 +111,18 @@ $(document).ready(function(){
     var test = 1;
     $('.folders-text').css({"display": "block"});
     $.each(folders,function (index,value) {
-      if(prevsidelinkid == 'favorites') fullname = paths[index];
-      else fullname = value;
+      if(prevsidelinkid == 'favorites') {
+        fullname = paths[index];
+        exclass = "favorite";
+      }
+      else if(prevsidelinkid == 'trash'){
+        fullname = paths[index];
+        exclass = "trash";
+      }
+      else {
+        exclass = "";
+        fullname = value;
+      }
       test = 0;
       if ( $(window).width() < 480) {
         if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
@@ -114,7 +133,7 @@ $(document).ready(function(){
       else {
         if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
       }
-      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\">"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\">"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
     });
     if(test == 1) $('.folders-text').css({"display": "none"});
     $('.folder-container').html($('.folder-container').html() + "<li class=\"fix\" ></li>");
@@ -129,6 +148,8 @@ $(document).ready(function(){
         files = [];
         folders = [];
         images = [];
+        paths = [];
+        fpaths = [];
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
           if (value.is_dir == true) folders.push(value.name);

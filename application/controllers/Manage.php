@@ -18,7 +18,7 @@ class Manage extends CI_Controller {
     if($this->input->get('depth')) {
       $dir = realpath($this->session->dir.$this->input->get('depth'));
       if(!$this->checkpath(realpath($this->session->dir),$dir)) exit(97);
-      $arr = $this->fileman->getdirarr($dir);
+      $arr = $this->fileman->getdirarr($dir.'/');
     }
     else $arr = $this->fileman->getdirarr($this->session->dir);
     function mycmp($a,$b){
