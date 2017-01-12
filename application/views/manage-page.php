@@ -296,11 +296,13 @@ document.addEventListener("dragend", function(event) {
 
 // When the draggable p element enters the droptarget, change the DIVS's border style
 document.addEventListener("dragenter", function(event) {
+  $("h2").text("event.target.className " + event.target.id);
 
-    if ( event.target.className == "folder" ) {
-        event.target.style.border = "1px solid gray";
-
+   if (event.target.className == "folder" || event.target.className == "left-nav-bar-text") {
+        $(event.target).css({"border":"1px solid gray"});
     }
+
+
 });
 
 // By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
@@ -311,9 +313,13 @@ document.addEventListener("dragover", function(event) {
 
 // When the draggable p element leaves the droptarget, reset the DIVS's border style
 document.addEventListener("dragleave", function(event) {
-    if ( event.target.className == "folder" ) {
-        event.target.style.border = "";
-    }
+  if (event.target.className == "folder" || event.target.className == "left-nav-bar-text") {
+      $(event.target).css({"border":"0px solid gray"});
+  }
+/*   if( event.target.className == "left-nav-bar-text"){
+    $(event.target).parent().css({"border":"0px solid gray"});
+
+  }*/
 });
 
 /* On drop - Prevent the browser default handling of the data (default is open as link on drop)
@@ -324,7 +330,8 @@ document.addEventListener("dragleave", function(event) {
 */
 document.addEventListener("drop", function(event) {
     event.preventDefault();
-    if ( event.target.className == "folder" && event.target.id!=event.dataTransfer.getData("Text")) {
+    $("h2").text(event.target.className);
+    if ( (event.target.className == "folder" || event.target.className == "left-nav-bar-text") && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
         //alert(event.target.id);
         if(event.target.id == 'saved-notes'){

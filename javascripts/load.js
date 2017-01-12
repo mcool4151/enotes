@@ -89,6 +89,7 @@ $(document).ready(function(){
       }
       test = 0;
       $('.folders-text').css({"display": "block"});
+      $('.folder-container').css({"display": "block"});
       $('.files-text').css({"display": "block"});
       if ( $(window).width() < 480) {
         if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
@@ -110,6 +111,7 @@ $(document).ready(function(){
     $('.folder-container').html(" ");
     var test = 1;
     $('.folders-text').css({"display": "block"});
+    $('.folder-container').css({"display": "block"});
     $.each(folders,function (index,value) {
       if(prevsidelinkid == 'favorites') {
         fullname = paths[index];
@@ -133,9 +135,9 @@ $(document).ready(function(){
       else {
         if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
       }
-      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\">"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
     });
-    if(test == 1) $('.folders-text').css({"display": "none"});
+    if(test == 1){ $('.folders-text').css({"display": "none"});$('.folder-container').css({"display": "none"});}
     $('.folder-container').html($('.folder-container').html() + "<li class=\"fix\" ></li>");
   }
   function fetchAndReload(){
@@ -192,7 +194,7 @@ $(document).ready(function(){
   var sidelinkid;
   $("body").click(function(e){
     folderClassname = $(e.target).attr('class').split(' ')[0];
-    if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text")
+    if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text" || folderClassname=="folder-name-text")
     {
     if(folderClassname != 'dot-icon' ){
       sidelinkid = $(e.target).prop("id");
