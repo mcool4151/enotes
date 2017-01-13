@@ -110,6 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text" id="shared-with-me">Shared with me</span></li>
             <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text" id="recent">Recent</span></li>
             <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text" id="favorites">Favorites</span></li>
+            <li class="folder" id="trash" ><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text">Groups</span></li>
             <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text" id="trash">Deleted</span></li>
             <li class="line"></li>
 
@@ -300,6 +301,11 @@ document.addEventListener("dragenter", function(event) {
 
    if (event.target.className == "folder" || event.target.className == "left-nav-bar-text") {
         $(event.target).css({"border":"1px solid gray"});
+        if(event.target.className == "left-nav-bar-text" )
+        {
+          $(event.target).css({"border":"0px solid gray"});
+          $(event.target).parent().css({"border":"1px solid gray"});
+        }
     }
 
 
@@ -313,7 +319,7 @@ document.addEventListener("dragover", function(event) {
 
 // When the draggable p element leaves the droptarget, reset the DIVS's border style
 document.addEventListener("dragleave", function(event) {
-  if (event.target.className == "folder" || event.target.className == "left-nav-bar-text") {
+  if (event.target.className == "folder") {
       $(event.target).css({"border":"0px solid gray"});
   }
 /*   if( event.target.className == "left-nav-bar-text"){

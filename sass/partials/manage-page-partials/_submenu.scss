@@ -99,6 +99,7 @@
 }
 .file{//special view case fr files
   .folder-submenu-container{
+    margin-top: -220px;
     margin-left: -20px;
     @include bp-small {
       margin-top: 20px;
@@ -530,69 +531,4 @@
 
 
   //  visibility: hidden;
-}
-
-
-
-.switch {
-  position: absolute;;
-  display: inline-block;
-  width: 30px;
-  height: 16px;
-  top:75px;
-  right: 55px;
-  z-index: 20;
-  @include bp-small {
-    right: 45px;
-  }
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: lighten(#ccc, 13%);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: -4px;
-  bottom: -2px;
-  background-color: lighten(#ccc, 5%);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: lighten(#ffc04d, 17%);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  background-color: #ffc04d;
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

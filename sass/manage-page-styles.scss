@@ -66,6 +66,8 @@ body{
 
 
 }
+
+
 .file,.folder{
   @include bp-large {
     width:24%;
@@ -123,6 +125,7 @@ height: 40px;
   display: block;
   background-color:#fff;
   box-shadow: 0px 0px 50px  $light-grey-border;
+
   @extend .font;
   font-size: 13px;
   color: lighten(black, 5%);
@@ -196,7 +199,7 @@ margin-left: -70px;
   padding-left:10px;
   padding-top: 12px;
   display: block;
-  background-color:#fff;
+  background-color:transparent;
   color: lighten(black, 5%);
     @extend .font;
     font-size: 13px;
@@ -214,6 +217,10 @@ margin-left: -70px;
       background-position: center;
       width:95%;
       height: 150px;
+
+      box-shadow: none;
+      border-bottom: 1px solid darken($light-grey-border, 17%);
+            box-shadow: 0px 0px 25px  $light-grey-border;
       @include bp-small {
         height: 100px;
       }
@@ -257,6 +264,7 @@ margin-left: -70px;
       background-color: #fff;
       color: darken($gray, 25%);
       border-radius: 2px;
+            box-shadow: 0px 3px 3px  $light-grey-border;
     }
 }
 
