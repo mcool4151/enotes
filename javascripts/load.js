@@ -415,7 +415,56 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'get-shareable-link')
   {
-      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox"type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      $('#checkbox').attr('checked',false);
+      if(subdir == "") src = oldname;
+      else src = subdir+"/"+oldname;
+      function checkshared(){
+        $.ajax({
+          url:base+"manage/checkshared",
+          type:"POST",
+          async:false,
+          data:{file:src},
+          success:function(result){
+            res = jQuery.parseJSON(result);
+            if(res.isShared){
+              $('#checkbox').attr('checked',true);
+              $('#linkbox').prop("disabled", false);
+              $('#linkbox').val(base+"shared/open/"+res.link);
+            }
+            else{
+              $('#checkbox').attr('checked',false);
+              $('#linkbox').prop("disabled", true);
+              $('#linkbox').val('');
+            }
+          }
+        });
+      }
+      checkshared();
+      $('#checkbox').change(function (){
+        if($(this).is(":checked")){
+          $.ajax({
+            url:base+"manage/addtoshared",
+            type:"POST",
+            async:false,
+            data:{file:src},
+            success:function(result){
+              checkshared();
+            }
+          });
+        }
+        else {
+          $.ajax({
+            url:base+"manage/remshared",
+            type:"POST",
+            async:false,
+            data:{file:src},
+            success:function(result){
+              checkshared();
+            }
+          });
+        }
+      });
     //$("h3").text(classname1);
 
   }

@@ -121,4 +121,41 @@ class Manage extends CI_Controller {
   public function getdel(){
     echo json_encode($this->fileman->getDelAll());
   }
+  public function checkshared(){
+    $file = realpath($this->session->dir.$this->input->post('file'));
+    if(!$this->checkpath(realpath($this->session->dir),$file)) {
+      echo "error dir";
+      return;
+    }
+    if($this->fileman->isShared($file)){
+      $id = $this->fileman->getlink($file);
+      $data = array(
+        'isShared' => true,
+        'link'     => $id
+      );
+      echo json_encode($data);
+      return;
+    }
+    $data = array(
+      'isShared' => false,
+      'link'     => null
+    );
+    echo json_encode($data);
+  }
+  public function addtoshared(){
+    $file = realpath($this->session->dir.$this->input->post('file'));
+    if(!$this->checkpath(realpath($this->session->dir),$file)) {
+      echo "error dir";
+      return;
+    }
+    $this->fileman->makeShareLink($file);
+  }
+  public function remshared(){
+    $file = realpath($this->session->dir.$this->input->post('file'));
+    if(!$this->checkpath(realpath($this->session->dir),$file)) {
+      echo "error dir";
+      return;
+    }
+    $this->fileman->removeSharedLink($file);
+  }
 }

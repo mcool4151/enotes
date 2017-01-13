@@ -81,10 +81,10 @@ class Fileman extends CI_Model {
     }
   }
   public function getlink($path){
-    $res = $this->db->query("select * from sharedlink where path=$path");
+    $res = $this->db->query("select * from sharedlink where `path`='$path'");
     if($res->num_rows()){
       $row = $res->row();
-      return $row['fileid'];
+      return $row->fileid;
     }
   }
   public function addToFav($path){
@@ -185,6 +185,7 @@ class Fileman extends CI_Model {
   }
   public function removeSharedLink($path){
     $uid = $this->session->uid;
-    $sql = "DELETE FROM `sharedlink` WHERE `uid`=$uid AND `path`=$path";
+    $sql = "DELETE FROM `sharedlink` WHERE `uid`=$uid AND `path`='$path'";
+    $this->db->query($sql);
   }
 }
