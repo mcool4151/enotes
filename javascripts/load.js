@@ -387,6 +387,10 @@ if(classname1 == 'create-folder')// create folder register added
         fnr();
         $( ".modal-background-filter" ).remove();
         $( ".open-modal" ).remove();
+        if ( $(window).width() < 480) {
+        $(".back-arrow").css({"display": "none"});
+        $(".left-menu").css({"display": "block"});
+      }
       }
     });
   });
@@ -542,6 +546,31 @@ classname = $(e.target).attr('class').split(' ')[0];
       else oldname = $("#"+folderid).attr('name');
     }
 
+          if(classname=='move-to'){
+
+         //alert("move-to clicked " + classname + prevforid);
+        if ( $(window).width() < 480) {
+        $(".back-arrow").css({"display": "none"});
+        $(".left-menu").css({"display": "block"});
+      }
+          $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon"></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon  "></i><div class="li-container"><li class="option-1" id="option-1" onClick="test()"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn btn-move left">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
+        }
+        //(".back-icon").css({"display": "none"});
+        if(classname=='close-icon'){
+
+        //  alert("clicked " + classname);
+        $(".move-to-submenu").css({"display": "none"});
+        }
+        if(classname=='back-icon'){
+
+          alert("back icon clicked  " + classname);
+      //  $(".move-to-submenu").css({"display": "none"});
+        }
+        if(classname=='btn-move'){
+
+          alert("btn move clicked  " + classname);
+      //  $(".move-to-submenu").css({"display": "none"});
+        }
 
 });
 function move(src,dest){
