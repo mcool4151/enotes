@@ -104,6 +104,7 @@ $(".dot-icon").click(function(){
             }
             else {
               $("#"+folderid).append('<ul class="folder-submenu-container" ><li class="open-with open-with-main"><i class="ion-arrow-expand icon" ></i><span class="open-with">Open with</span></li><li class="move-to"><i class="ion-android-exit icon" ></i><span class="move-to">Move To..</span></li><li class="get-shareable-link"><i class="ion-link icon" ></i><span class="get-shareable-link">Get Shareable Link</span></li><li class="favorite"><i class="ion-ios-star icon" ></i><span class="favorite">Add To Favorite</span></li><li class="rename"><i class="ion-ios-compose icon" ></i><span class="rename">Rename</span></li><li class="details"><i class="ion-ios-information icon" ></i><span class="details">View Details</span></li><li class="download"><i class="ion-archive icon" ></i><span class="download">Download</span></li><li class="trash"><i class="ion-trash-b icon" ></i><span class="trash">Remove</span></li></ul>');
+              prevforid=folderid;
               if ( $(window).width() > 480)
               $(".file .folder-submenu-container").css({"margin-top":"-220px"});
 
@@ -120,7 +121,7 @@ $(".dot-icon").click(function(){
 
       if(classname=='move-to'){
 
-     alert("move-to clicked " + classname + prevforid);
+     //alert("move-to clicked " + classname + prevforid);
     if ( $(window).width() < 480) {
     $(".back-arrow").css({"display": "none"});
     $(".left-menu").css({"display": "block"});

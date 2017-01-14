@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var folderid;
     var classname;
     var onscreen=0;
+    var prevforid;
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
