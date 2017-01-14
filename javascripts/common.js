@@ -2,6 +2,26 @@
 // Folder update code
 
 
+
+
+
+
+
+
+///this code for new share menu
+
+      if(classname == 'get-shareable-link')
+      {
+          $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label>
+
+
+//new sub menu code end here
+
+
+
+
+
+
 if($('#checkbox').attr('checked')) {
     alert("link avalable");
 } else {

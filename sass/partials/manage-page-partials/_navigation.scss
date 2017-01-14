@@ -104,12 +104,48 @@ padding-top:120px;
         background-color: darken($main-background,5%);
 }
 .nav-container h2{
-  font-weight: 500;
-  font-size: 21px;
-  margin-top: 4px;
-  margin-left: 25px;
+  font-weight: 100!important;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-left: -18px;
+  @include bp-medium {
+    margin-left: 10px;
+  }
+  @include bp-small {
+    margin-left: 10px;
+    .directory,i{
+      display: none;
+    }
+    .active-tab{
+      margin-top: -4px;
+      display: block!important;
+    }
+  }
   color: darken(gray, 25%);
   float: left;
+    font-family: OpenSansRegular;
+  .directory{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-bottom: 0px;
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 1px solid #fff;
+  }
+  .directory:hover{
+    border: 1px solid $light-grey-border;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .active-tab{
+    font-weight: 900!important;
+    border: 1px solid #fff!important;
+    cursor: default!important;
+  }
+  i{
+    font-size: 14px;
+  }
 }
 
 

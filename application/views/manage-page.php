@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </li>
         <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
         </li>
-        <li><h2 class="active-left-nav">Saved Notes</h2></li>
+        <li><h2 class="nav-bar-title"><span class="active-left-nav directory0 directory">Saved Notes</span><i class="ion-ios-arrow-right"></i><span class="directory1 directory">Html Folder</span><i class="ion-ios-arrow-right"></i><span class="directory2 directory active-tab">Website</span></h2></li>
               <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
         <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
         <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
