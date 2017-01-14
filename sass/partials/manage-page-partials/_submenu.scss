@@ -1,4 +1,7 @@
 
+.move-to-submenu:hover{
+  border: 0px;
+}
 
 .folder-submenu-container{
 
@@ -531,4 +534,192 @@
 
 
   //  visibility: hidden;
+}
+
+.move-to-submenu{
+  background-color: #fff;
+  position: relative;
+  width: 230px;
+  height: 200px;
+  margin-left: -8px;
+  margin-top: 20px;
+  padding-left: 0px;
+  z-index: 10;
+  box-shadow: 0px 0px 5px gray;
+
+
+  @include bp-medium {
+    width: 200px;
+  }
+  @include bp-small {
+    position: fixed;
+    height: 100%;
+    width: 120%;
+    top:30px;
+    left: 0px;
+    background-color: #fff;
+  }
+  .li-container{
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-bottom: 0px;
+    height: 200px;
+    @include bp-small {
+      height: 70%;
+      width: 85%;
+    }
+  }
+  h4{
+    background-color: darken($main-background,1%);
+    font-size: 19px;
+    padding: 10px;
+    margin: 0px;
+    padding-left: 50px;
+    color:darken($main-background,40%);
+    @include bp-medium {
+      font-size: 17px;
+      padding-top: 11px;
+    }
+    @include bp-small {
+      padding-left:70px;
+      font-size: 19px;
+      padding-top: 10px;
+    }
+  }
+  .back-icon{
+    position: absolute;
+    left: -5px;
+    top:10px;
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    color:darken($main-background,40%);
+    font-size: 25px;
+    @include bp-small {
+      margin-left: 30px;
+    }
+  }
+  .close-icon{
+    position: absolute;
+    right: 0px;
+    top:15px;
+    width: 25px;
+    height: 25px;
+    margin-right: 0px;
+    color:darken($main-background,40%);
+    font-size: 17px;
+    @include bp-small {
+      margin-right: 70px;
+    }
+  }
+  li{
+    @extend .font;
+    position: relative;
+    font-weight: 100;
+    margin-left: -40px;
+    height: 40px;
+    width: 230px;
+    background-color: #fff;
+    box-shadow: none;
+    margin-bottom: 0px;
+    border-bottom: 0px solid #fff;
+    border-left: 0px solid #fff;
+    margin-left: 0px;
+    padding-left:30px;
+    padding-top: 10px;
+    border-right: 1px solid $light-grey-border;
+    font-size: 12px!important;
+    @include bp-medium {
+      width: 200px;
+    }
+    @include bp-small {
+      width: 100%;
+    }
+    .icon{
+      margin-right: 20px;
+      font-size: 18px;
+      color: darken($main-background,60%);
+    }
+    .right{
+      float: right;
+      margin-right: 35px;
+      font-weight: 100;
+      margin-top: 0px;
+    }
+    span{
+      vertical-align:text-top;
+    }
+  }
+  li:hover{
+    background-color: lighten(orange,15%);
+    color: #fff;
+    border-left: 0px solid darken($main-background,45%);
+    .right{
+      display: block;
+    }
+    .icon{
+      color: #fff;
+    }
+
+  }
+  .btn-container{
+    margin-top: 0px;
+    height: 70px;
+    border-top: 1px solid $light-grey-border;
+    @include bp-small {
+      position: absolute;
+      bottom: 70px;
+
+    }
+    .right{
+      display: block;
+
+      font-weight: 100;
+      margin-right: 10px;
+      margin-top: -30px;
+      width:30px;
+      height: 30px;
+      padding-top: 5px;
+      padding-left: 8px;
+      border:1px solid darken($main-background,45%);
+      @include bp-small {
+        margin-right: 100px;
+          margin-top: -30px;
+      }
+    }
+    .left{
+      width:90px;
+      height: 32px;
+      margin-top: 15px;
+      margin-left: -15px;
+      padding-top: 8px;
+      padding-left: 16px;
+      border:1px solid lighten(orange, 10%);
+      background-color: lighten(orange, 10%);
+      color: #fff;
+      @include bp-small {
+        margin-top: 20px;
+        margin-left: 0px;
+      }
+    }
+  }
+  .btn-container:hover{
+    background-color: #fff;
+    color: #404040;
+    border-left: 0px solid darken($main-background,45%);
+    .icon{
+      color: darken($main-background,60%);
+    }
+  }
+  .disable{
+    opacity: 0.7;
+  }
+  .active{
+    background-color: lighten(orange, 10%);
+    color: #fff;
+    opacity: 1;
+    .icon{
+      color: #fff;
+    }
+  }
 }

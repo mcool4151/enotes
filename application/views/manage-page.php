@@ -246,6 +246,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 document.addEventListener("dragstart", function(event) {
     // The dataTransfer.setData() method sets the data type and the value of the dragged data
     $( ".folder-submenu-container" ).remove();
+    $(".move-to-submenu").css({"display": "none"});
+
     classname = $(event.target).attr('class').split(' ')[0];
 
     event.dataTransfer.setData("Text", event.target.id);

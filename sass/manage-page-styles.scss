@@ -76,6 +76,7 @@ body{
     width:32%;
   }
   @include bp-small {
+
     width:48%;
   }
 
@@ -112,7 +113,12 @@ margin-left: -70px;
 width: 100%;
 height: 40px;
   display: block;
-
+  @include bp-medium {
+    margin-left: -40px;
+  }
+@include bp-small {
+  margin-left: -40px;
+}
 }
 .folder{
   position: relative;
