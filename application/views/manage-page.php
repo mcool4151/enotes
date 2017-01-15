@@ -209,8 +209,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <div class="upload-button">+</div><!--upload button -->
         </div><!--center container end -->
-        <div class="right-container">
-        </div><!--right container end -->
+        <ul class="right-container">
+          <li class="top-section-contianer section-view-detail" >
+            <i class="ion-ios-paper icon current-icon" ></i>
+              <h1 class="current-name">Memories</h1>
+            <i class="close-icon-right-container ion-close icon" ></i>
+          </li>
+          <li class="thumbnail section-view-detail" >
+          </li>
+          <li class="file-info-section section-view-detail" >
+            <h3>File Info</h3>
+              <ul class="file-info-container">
+                <li><span class="parameter">Name </span><span class="description">abcdef dasd dasd</span></li>
+                <li><span class="parameter">Name </span><span class="description">abcdef dasd dasd</span></li>
+                <li><span class="parameter">Name </span><span class="description"><i class="ion-ios-folder icon" ></i> abcdef dasd dasd</span></li>
+
+              </ul>
+          </li>
+          <li class="share-info-section section-view-detail" >
+            <h3>Who has access</h3>
+            <ul class="share-info-container">
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">Owner</span>
+
+              </li>
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">View</span>
+
+              </li>
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">View,Edit</span>
+
+              </li>
+            </ul>
+          </li>
+          <li class="share-info-section section-view-detail" >
+            <h3>Activity</h3>
+            <ul class="share-info-container">
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">Owner</span>
+
+              </li>
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">View</span>
+
+              </li>
+              <li>
+                <div class="profile-pic" style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div>
+                <span class="share-info-name">Avish Kadakia</span>
+                <span class="share-info-email">avishkadakia@gmail.com</span>
+                <span class="share-info-role">View,Edit</span>
+
+              </li>
+            </ul>
+
+          </li>
+          <li class="fix-container section-view-detail" ></li>
+        </ul><!--right container end -->
       </div><!--main container end -->
 
 

@@ -45,7 +45,6 @@ $("#saved-notes").addClass("active");
 
 
 
-
   $(".left-menu").click(function(){
       $(".left-container").css({"z-index": "100", "visibility": "visible"});
       $(".filter").css({"z-index": "99","visibility": "visible"});
@@ -68,7 +67,7 @@ $("#saved-notes").addClass("active");
   $(".search-icon").css({"display": "block"});
   $(".folder-submenu-container").css({"display": "none"});
 $(".mobile-submenu-full-cover").css({"display": "none"});
-
+  $(".right-container").css({"display": "none"});
   });
 
 

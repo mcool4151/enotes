@@ -1,35 +1,16 @@
-// forui fix ui text click fix this if(folderClassname=="folder" || folderClassname=="left-nav-bar-text")
+if ( $(window).width() < 480) {
+$(".top-section-contianer").css({"background-image": "url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"});
+
+}
+if ( $(window).width() > 480) {
+$(".thumbnail").css({"background-image": "url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"});
+
+}
+
+
+
+
 // Folder update code
-
-
-
-
-
-
-
-
-///this code for new share menu
-
-      if(classname == 'get-shareable-link')
-      {
-          $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label>
-
-
-//new sub menu code end here
-
-
-
-
-
-
-if($('#checkbox').attr('checked')) {
-    alert("link avalable");
-} else {
-    alert("link not avalable");
-}//customise for use
-
-
-
 $(".folder").click(function(e){
   folderClassname = $(e.target).attr('class').split(' ')[0];
 //    alert("outside folder " +folderClassname);
@@ -197,7 +178,7 @@ $(".new-button-container").click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
   if(classname1 == 'upload')
   {
-  alert(classname1 + " upload clicked");
+  //alert(classname1 + " upload clicked");
 }
 if(classname1 == 'create-folder')// create folder register added
 {

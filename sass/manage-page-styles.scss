@@ -5,6 +5,7 @@
 @import "partials/manage-page-partials/navigation";
 @import "partials/manage-page-partials/navigation-main";
 @import "partials/manage-page-partials/submenu";
+@import "partials/manage-page-partials/view-detail";
 
 body{
     background-color: $main-background;
@@ -196,6 +197,10 @@ height: 40px;
 .file-container{
 margin-top: -10px;
 margin-left: -70px;
+  @include bp-medium {
+  width: 100%;
+  margin-left: -30px;
+  }
 }
 .file{
   margin-right: 5px;
@@ -209,6 +214,9 @@ margin-left: -70px;
   color: lighten(black, 5%);
     @extend .font;
     font-size: 13px;
+    @include bp-medium {
+    height: 170px;
+    }
     @include bp-small {
       font-size: 11px;
       height: 145px;
@@ -227,6 +235,9 @@ margin-left: -70px;
       box-shadow: none;
       border-bottom: 1px solid darken($light-grey-border, 17%);
             box-shadow: 0px 0px 25px  $light-grey-border;
+            @include bp-medium {
+            height: 120px;
+            }
       @include bp-small {
         height: 100px;
       }
