@@ -199,19 +199,23 @@ $(document).ready(function(){
     if(folderClassname != 'dot-icon' ){
       sidelinkid = $(e.target).prop("id");
       if(sidelinkid == "saved-notes"){
+        clearnavbar();
         subdir = "";
       }
       else if(sidelinkid == 'favorites'){
+        clearnavbar();
         subdir = "";
         getfav();
         return;
       }
       else if(sidelinkid == 'trash'){
+        clearnavbar();
         subdir = "";
         getdel();
         return;
       }
       else if(sidelinkid == 'recent'){
+        clearnavbar();
         files = [];
         folders = [];
         reloadfiles();
@@ -219,6 +223,7 @@ $(document).ready(function(){
         return;
       }
       else if(sidelinkid == 'shared-with-me'){
+        clearnavbar();
         files = [];
         folders = [];
         reloadfiles();
@@ -226,14 +231,24 @@ $(document).ready(function(){
         return;
       }
       else {
-  //      alert("entred" + sidelinkid);
-  //      $("h3").text($("#"+sidelinkid).attr('name'));
-        if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
-        else subdir += ("/"+$("#"+sidelinkid).attr('name'));
+        //      alert("entred" + sidelinkid);
+        //      $("h3").text($("#"+sidelinkid).attr('name'));
         if(prevsidelinkid == 'trash'){
           alert("Restore Folder To view Contents");
           return;
         }
+        if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
+        else subdir += ("/"+$("#"+sidelinkid).attr('name'));
+        if(prevsidelinkid == 'favorites'){
+          str = $("#"+sidelinkid).attr('name').split("/");
+          clearnavbar();
+          for(i=0,tmp="",name="";i<str.length;i++){
+            if(tmp == "") tmp = str[i];
+            else tmp = tmp + "/" + str[i];
+            updatenavbar(str[i],tmp);
+          }
+        }
+        else updatenavbar($("#"+sidelinkid).attr('name'),subdir);
         activeupdate("saved-notes","Saved Notes");
       }
       fetchAndReload();
@@ -553,7 +568,8 @@ classname = $(e.target).attr('class').split(' ')[0];
         $(".back-arrow").css({"display": "none"});
         $(".left-menu").css({"display": "block"});
       }
-          $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon"></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon  "></i><div class="li-container"><li class="option-1" id="option-1" onClick="test()"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn btn-move left">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
+          $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon" onclick="parseme(this)" name=""></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon"></i><div class="li-container"><li  onclick="parseme(this)"><i class="ion-ios-folder icon" ></i><span class="option-1">Folder</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn-move btn left" name="">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
+          open("");
         }
         //(".back-icon").css({"display": "none"});
         if(classname=='close-icon'){
@@ -563,15 +579,18 @@ classname = $(e.target).attr('class').split(' ')[0];
         }
         if(classname=='back-icon'){
 
-          alert("back icon clicked  " + classname);
+          //alert("back icon clicked  " + classname);
       //  $(".move-to-submenu").css({"display": "none"});
         }
         if(classname=='btn-move'){
-
-          alert("btn move clicked  " + classname);
+          src = $(".btn-move").parent().parent().parent().attr("name");
+          if(subdir != "") src = subdir+'/'+src;
+          dest = $(".btn-move").attr("name");
+          move(src,dest);
+          return;
+          //alert("btn move clicked  " + classname);
       //  $(".move-to-submenu").css({"display": "none"});
         }
-
 });
 function move(src,dest){
   $.ajax({
@@ -608,3 +627,44 @@ function flipdel(file){
   });
 }
 fd = flipdel;
+function parseme(obj){
+  open($(obj).attr("name"));
+}
+function open(dir){
+  var arr;
+  if(dir == ""){
+    $(".back-icon").css({"display" : "none"});
+  }
+  else {
+    arr = dir.split('/');
+    arr.pop();
+    if(!($.isArray(arr))) {
+      arr = "";
+    }
+    else arr = arr.join('/');
+    $(".back-icon").css({"display" : "block"});
+    $(".back-icon").attr("name",arr);
+  }
+  $.ajax({
+    url:base+"manage/getdir",
+    type:"GET",
+    async:false,
+    data:{depth:dir},
+    success:function(result){
+      $(".li-container").empty();
+      list = jQuery.parseJSON(result);
+      $.each(list,function(index,value){
+        if (value.is_dir == true) {
+          name = value.name;
+          if(dir != "")path = dir+'/'+name;
+          else path = name;
+          $(".li-container").append('<li  onclick="parseme(this)" name="'+path+'"><i class="ion-ios-folder icon" ></i><span class="option-1">'+name+'</span><i class="ion-android-arrow-dropright right icon" ></i></li>');
+        }
+        else {
+          //wait for it
+        }
+      });
+      $(".btn-move").attr("name",dir);
+    }
+  });
+}

@@ -29,12 +29,12 @@ class Fileman extends CI_Model {
     if (rename($from,$to.'/'.basename($from))) {
       $uid = $this->session->uid;
       $path = $to.'/'.basename($from);
-      if(isShared($from)){
+      if($this->isShared($from)){
         $id = md5($from);
         $sql = "UPDATE `sharedlink` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
         $this->db->query($sql);
       }
-      if(isFav($from)){
+      if($this->isFav($from)){
         $sql = "UPDATE `favourites` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
         $this->db->query($sql);
       }
@@ -135,6 +135,8 @@ class Fileman extends CI_Model {
       'uid'   => $this->session->uid,
       'path'  => $path
     );
+    $this->removeFromFav($path);
+    $this->removeSharedLink($path);
     $this->db->insert('deleted',$data);
   }
   public function getDelAll(){

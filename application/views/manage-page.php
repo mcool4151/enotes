@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </li>
         <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
         </li>
-        <li><h2 class="nav-bar-title"><span class="active-left-nav directory0 directory">Saved Notes</span><i class="ion-ios-arrow-right"></i><span class="directory1 directory">Html Folder</span><i class="ion-ios-arrow-right"></i><span class="directory2 directory active-tab">Website</span></h2></li>
+        <li><h2 class="nav-bar-title"><span onClick="makemeactive(this)" name="" class="active-left-nav directory0 directory">Saved Notes</span><i class="ion-ios-arrow-right"></i><span class="directory1 directory" onclick="makemeactive(this)">Html Folder</span><i class="ion-ios-arrow-right"></i><span class="directory2 directory active-tab">Website</span></h2></li>
               <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
         <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
         <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
@@ -311,6 +311,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
 
+function updatenavbar(name,str){
+  $(".nav-bar-title :last-child").removeClass("active-tab");
+  $(".nav-bar-title").append('<i class="ion-ios-arrow-right"></i><span onClick="makemeactive(this)" name="'+str+'" class="directory2 directory active-tab">'+name+'</span>');
+}
+function clearnavbar(){
+  $(".nav-bar-title").children().slice(1).remove();
+  $(".nav-bar-title :last-child").addClass("active-tab");
+}
+clearnavbar();
+function makemeactive(e){
+  $(e).nextAll().remove();
+  $(e).addClass("active-tab");
+  subdir = $(e).attr('name');
+  fnr();
+}
+//clearnavbar();
 /* Events fired on the drag target */
 
 
