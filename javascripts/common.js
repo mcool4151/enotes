@@ -1,3 +1,14 @@
+if(classname=='close-icon'){
+
+//  alert("clicked " + classname);
+$(".move-to-submenu").remove({"move-to-submenu"});
+}//moveto remove code
+
+
+
+
+
+
 if ( $(window).width() < 480) {
 $(".top-section-contianer").css({"background-image": "url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"});
 

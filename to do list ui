@@ -6,7 +6,8 @@ file icon
 --move option
 --directory menu
 custom drag and drop
-view details
+--view details
+groups
 info button share modal
 pepople sharing menu
 sub menu navigation
@@ -14,6 +15,17 @@ sub menu navigation
 
 
 
+
+---------------bug-----------
+--move to box-shadow bug
+--append bug
+--move back arrow height fix
+--dot icon fix
+back arrow bugs
+--search bar tablet view bug
+
+
+-------------------------------
 
 landing page:-
 sign in option desktop

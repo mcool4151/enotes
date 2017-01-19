@@ -11,6 +11,8 @@ body{
     background-color: $main-background;
     overflow-x: hidden;
     cursor:default!important;
+    width: 100%;
+    height: 100%;
 }
 .classnew{
   color: red!important;
@@ -53,8 +55,10 @@ body{
 }
 
 .center-container{
+  display: inline-block;
   float:right;
-  height: 100%;
+  height: auto;
+
   @include bp-large {
     width:80%;
   }
@@ -84,10 +88,20 @@ body{
   cursor:pointer!important;
 }
 .display-container{
- display:block;
+  position: absolute;
+  left: 200px;
+  top:0px;
+  margin-left: 0px;
+ display:inline-block;
 list-style: none;
 width: 100%;
 height: auto;
+
+@include bp-medium {
+    left:20px;
+    padding-left: 0px;
+}
+
 cursor:default!important;
 z-index: 1;
   li{
@@ -109,16 +123,21 @@ z-index: 1;
 }
 
 .folder-container{
-margin-top: -10px;
-margin-left: -70px;
-width: 100%;
-height: 40px;
-  display: block;
+  z-index: -1;
+
+margin-top: 0px;
+margin-left: 0px;
+display: inline-block;
+width: 80%;
+height: auto;
+  padding-left: 0px;
   @include bp-medium {
-    margin-left: -40px;
+    width: 98%;
+    margin-left: 0px;
   }
 @include bp-small {
-  margin-left: -40px;
+  width: 95%;
+  margin-left: 0px;
 }
 }
 .folder{
@@ -129,10 +148,9 @@ height: 40px;
   float:left;
   padding-left:10px;
   padding-top: 9px;
-  display: block;
+  display: inline-block;
   background-color:#fff;
   box-shadow: 0px 0px 50px  $light-grey-border;
-
   @extend .font;
   font-size: 13px;
   color: lighten(black, 5%);
@@ -147,7 +165,6 @@ height: 40px;
     }
     .folder-icon{
       font-size: 20px;
-
       color: lighten($gray, 2%);
       background-color: lighten($gray, 47%);
       padding: 10px;
@@ -166,7 +183,8 @@ height: 40px;
       margin-top: -5px;
       padding-top: 5px;
       padding-bottom: 5px;
-      float: right;
+      right: -5px;
+      position: absolute;
       font-size: 20px;
       text-align: center;
       margin-right: 5px;
@@ -177,11 +195,7 @@ height: 40px;
 
     }
     .dot-icon:hover{
-      border: 1px solid lighten($gray, 5%);
-      background-color: #fff;
       color: darken($gray, 25%);
-      border-radius: 2px;
-
     }
 }
 .fix{
@@ -195,11 +209,18 @@ height: 40px;
   border-bottom: 0px solid $light-grey-border;
 }
 .file-container{
-margin-top: -10px;
-margin-left: -70px;
+  margin-top: 0px;
+  margin-left: 0px;
+  display: inline-block;
+  width: 80%;
+  height: auto;
+    padding-left: 0px;
   @include bp-medium {
-  width: 100%;
-  margin-left: -30px;
+  width: 98%;
+  margin-left: 0px;
+  }
+  @include bp-medium {
+  width: 95%;
   }
 }
 .file{
@@ -209,7 +230,7 @@ margin-left: -70px;
   float:left;
   padding-left:10px;
   padding-top: 12px;
-  display: block;
+  display: inline-block;
   background-color:transparent;
   color: lighten(black, 5%);
     @extend .font;
@@ -231,7 +252,6 @@ margin-left: -70px;
       background-position: center;
       width:95%;
       height: 150px;
-
       box-shadow: none;
       border-bottom: 1px solid darken($light-grey-border, 17%);
             box-shadow: 0px 0px 25px  $light-grey-border;
@@ -243,6 +263,8 @@ margin-left: -70px;
       }
     }
     .file-name{
+      position: relative;
+      width: 96%;
       height: 40px;
       padding-left:10px;
       padding-top: 6px;
@@ -264,7 +286,8 @@ margin-left: -70px;
       margin-top: -5px;
       padding-top: 7px;
       padding-bottom: 5px;
-      float: right;
+      position: absolute;
+      right: -5px;
       font-size: 20px;
       text-align: center;
       margin-right: 5px;
@@ -277,11 +300,7 @@ margin-left: -70px;
       }
     }
     .dot-icon:hover{
-      border: 1px solid lighten($gray, 5%);
-      background-color: #fff;
       color: darken($gray, 25%);
-      border-radius: 2px;
-            box-shadow: 0px 3px 3px  $light-grey-border;
     }
 }
 

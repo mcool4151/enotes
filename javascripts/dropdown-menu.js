@@ -5,6 +5,7 @@ var onscreen=0;
 var sidelinkid='saved-notes';
 var prevsidelinkid='saved-notes';
 var prevforid;
+
     $("body").click(function(e){
       var folderClassname = $(e.target).attr('class').split(' ')[0];
 
@@ -101,6 +102,7 @@ $(".dot-icon").click(function(){
  classname = $(e.target).attr('class').split(' ')[0];
 
     //     alert("classname");
+  //  $(".folder span").text(classname);
 
     folderid = $(e.target).parent().attr('id');
     //$("h3").text(folderid);
@@ -173,17 +175,20 @@ $(".dot-icon").click(function(){
 
 
        if ( $(window).width() > 1024) {
-         $(".display-container").css({"width": "62%"});
-         $(".display-container .folder").css({"width": "32%"});
+         $(".display-container").css({"width": "55%"});
+         $(".folder-container").css({"width": "100%"});
          $(".file-container").css({"width": "100%"});
          $(".file-container .file").css({"width": "32%","height":"170px"});
          $(".file-container .file-preview").css({"height":"120px"});
 
        }
        else if ( $(window).width() > 480 && $(window).width() < 1024) {
-         $(".display-container").css({"width": "55%"});
-         $(".display-container .folder").css({"width": "48%"});
-         $(".file-container").css({"width": "100%","margin-left":"-30px"});
+         $(".display-container").css({"width": "47%"});
+         $(".folder-container").css({"width": "100%"});
+         $(".folder-container .folder").css({"width": "48%"});
+
+
+         $(".file-container").css({"width": "100%"});
          $(".file-container .file").css({"width": "48%","height":"150px"});
          $(".file-container .file-preview").css({"height":"100px"});
 
@@ -204,8 +209,9 @@ $(".dot-icon").click(function(){
 
       if ( $(window).width() > 1024) {
         $(".display-container").css({"width": "100%"});
-        $(".display-container .folder").css({"width": "24%"});
-        $(".file-container").css({"width": "100%"});
+        $(".folder-container").css({"width": "80%"});
+        $(".folder-container .folder").css({"width": "24%"});
+        $(".file-container").css({"width": "80%"});
         $(".file-container .file").css({"width": "24%","height":"200px"});
         $(".file-container .file-preview").css({"height":"150px"});
 
@@ -213,7 +219,7 @@ $(".dot-icon").click(function(){
       else if ( $(window).width() > 480 && $(window).width() < 1024) {
         $(".display-container").css({"width": "100%"});
         $(".display-container .folder").css({"width": "32%"});
-        $(".file-container").css({"width": "100%","margin-left":"-30px"});
+        $(".file-container").css({"width": "95%"});
         $(".file-container .file").css({"width": "32%","height":"170px"});
         $(".file-container .file-preview").css({"height":"120px"});
 
@@ -224,8 +230,8 @@ $(".dot-icon").click(function(){
    }
 
 
-
-  /*    if(classname=='move-to'){
+/*
+     if(classname=='move-to'){
 
       //   alert("move-to clicked " + classname + prevforid);
       if ( $(window).width() < 480) {
@@ -238,13 +244,13 @@ $(".dot-icon").click(function(){
       if(classname=='close-icon'){
 
       //  alert("clicked " + classname);
-      $(".move-to-submenu").css({"display": "none"});
+      $(".move-to-submenu").remove({"move-to-submenu"});
       }
       if(classname=='back-icon'){
 
         alert("back icon clicked  " + classname);
     //  $(".move-to-submenu").css({"display": "none"});
-      }
+  }*/
 
 
       if(classname == 'get-shareable-link')
@@ -252,7 +258,7 @@ $(".dot-icon").click(function(){
           $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /><div class="chip-container"><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">avishkadakia1996@gmail.com</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Mohammed Udaipurwala</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></div></form><ul class="email-id-result"><li>option1</li><li>option1</li><li>option1</li></ul><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
         //$("h3").text(classname1);
 
-      }*/
+      }
 
 
 
@@ -262,6 +268,7 @@ $(".dot-icon").click(function(){
 
 
     });
+
 });
 
 

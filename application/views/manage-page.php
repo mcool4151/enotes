@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <script type="text/javascript">
+    //constants
     var base = "<?php echo base_url(); ?>";
     var subdir = "";
     var logout = base + "/manage/logout";
@@ -108,10 +109,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           </li>
             <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span class="left-nav-bar-text" id="saved-notes">Saved Notes</span></li>
-            <li class="folder" id="shared-with-me"><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text" id="shared-with-me">Shared with me</span></li>
+            <li class="folder" id="shared-with-me"><i class="ion-android-share-alt folder-icon" ></i><span class="left-nav-bar-text" id="shared-with-me">Shared with me</span></li>
             <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text" id="recent">Recent</span></li>
             <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text" id="favorites">Favorites</span></li>
-            <li class="folder" id="trash" ><i class="ion-android-people folder-icon" ></i><span class="left-nav-bar-text">Groups</span></li>
+            <li class="folder" id="group"><i class="ion-android-people folder-icon" ></i><span id="group" class="left-nav-bar-text" >Groups</span></li>
             <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text" id="trash">Deleted</span></li>
             <li class="line"></li>
 
@@ -150,8 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-                <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avis
-                  h1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+                <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
                 <li class="folder" draggable="true"  id="folder6"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
 
 
@@ -303,11 +303,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src=""<?php echo base_url();?>javascripts/drag-drop.js"></script>
+
     <script src="<?php echo base_url();?>javascripts/load.js"></script>
 <script src="jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
-<script src="<?php echo base_url();?>javascripts/submenu.js"></script>
 
 <script>
 
@@ -465,7 +466,7 @@ document.addEventListener("drop", function(event) {
           event.target.style.border = "";
           return;
         }
-        else if(event.target.id == 'shared-with-me'){
+        else if(event.target.id == 'shared-with-me' ){
           event.target.style.border = "";
           return;
         }
