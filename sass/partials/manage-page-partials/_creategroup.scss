@@ -1,0 +1,206 @@
+.group-modal-container{
+  opacity: 1!important;
+  z-index:91;
+  position: relative;
+  margin:150px auto;
+  display: block;
+  height: auto;
+  width: 500px;
+  padding-bottom: 70px;
+  background-color: #fff;
+  color:lighten(black, 30%);
+  @include bp-medium {
+    width:500px;
+
+  }
+  @include bp-small {
+    width: 90% ;
+  }
+  h3{
+    font-weight: 200;
+    font-size: 23px;
+    padding-top: 30px;
+    padding-left: 25px;
+    color:lighten(black, 25%);
+    text-transform: capitalize;
+
+  }
+  p{
+    width: 80%;
+    margin-top: -20px;
+    margin-left: 30px;
+    font-size: 13px;
+    color:lighten(black, 30%);
+    font-weight: 100;
+  }
+  .input-container{
+    margin-left: 30px;
+    width: 100%;
+
+    height: auto;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family:  Roboto;
+
+  }
+  label{
+    text-transform: capitalize;
+    font-size: 13px;
+
+  }
+
+
+  .button-done{
+    background-color: lighten(orange, 10%);
+    width: 100px;
+    height: 30px;
+    padding-top: 7px;
+    font-size: 13px;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    color: #fff;
+
+
+  }
+  .button-done:hover{
+    background-color: lighten(orange, 15%);
+    cursor: pointer!important;
+  }
+  .close{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    right: 10px;
+    top:10px;
+    padding-left: 10px;
+    z-index: 20;
+  }
+  .close:hover{
+    i{
+      border: none;
+    }
+    cursor: pointer!important;
+  }
+  input{
+    margin-bottom: 5px;
+    padding-left: 5px;
+    float: left;
+    margin-top: 5px;
+    text-transform: capitalize;
+    font-size: 13px;
+    margin-left: 0px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    color: #4d4d4d;
+    border-bottom:1px solid $light-grey-border;
+    width: 85%;
+    @include bp-small {
+      width:80%;
+    }
+  }
+  input:focus{
+    border-bottom: 1px solid orange;
+
+  }
+  textarea{
+    font-size: 13px;
+    margin-top: 20px;
+    margin-left: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    border-bottom:1px solid $light-grey-border;
+    outline: none;
+    width: 85%;
+    resize: vertical;
+    @include bp-small {
+      width:80%;
+    }
+  }
+  textarea:focus{
+    border-bottom: 1px solid orange;
+
+  }
+
+  .chip-container{
+    position: relative;
+    width: 85%;
+    height: auto;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left:  0px;
+    padding-left: 0px;
+    overflow: hidden;
+    font-family: roboto;
+    border-bottom: 1px solid $light-grey-border;
+    @include bp-small {
+      width:80%;
+    }
+    input{
+      padding-left: 0px;
+      min-width: 100px;
+      margin-top: 5px;
+      text-transform: capitalize;
+      font-size: 13px;
+      margin-left: 5px;
+      margin-bottom: 0px;
+      border: none;
+      outline: none;
+      color: #4d4d4d;
+    }
+    input:focus{
+      border: none;
+
+    }
+
+    .chip{
+      float: left;
+    width: auto;
+    border: 1px solid $light-grey-border;
+    margin-left: 2px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 2px;
+    font-size: 13px;
+    color: darken(gray, 10%);
+    display: inline-block;
+
+    border-radius: 3px;
+    }
+    .person{
+      margin-right: 7px;
+      margin-left: 7px;
+      font-size: 15px;
+    }
+    .remove-email{
+      font-size: 13px;
+      margin-left: 7px;
+      margin-right: 7px;
+    }
+    .result{
+      width: 80%;
+
+
+      background-color: red;
+      position: relative;
+      margin-top:5px;
+      margin-left: 0px;
+      padding-left: 0px;
+      li{
+        list-style: none;
+        padding: 5px;
+        padding-left: 20px;
+        background-color: red;
+        height: 30px;
+        color: darken(gray, 10%);
+      }
+      li:hover{
+        background-color: lighten(gray, 40%);
+        cursor: pointer;
+      }
+    }
+  }
+}

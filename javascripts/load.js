@@ -388,6 +388,38 @@ $(".new-button-container").click(function(e) {
   {
   //alert(classname1 + " upload clicked");
 }
+if(classname1 == 'create-group')
+{
+  $(".body").append('<div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input autocomplete="off" placeholder="Name" id="members"><div class="chip-container" ><span class="chips-here"></span><input autocomplete="off" placeholder="Members" name="browser" id="members"></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Share</div><div class="close"><i class="close-button ion-close"></i></div></div>');
+  /*
+incase u want to read full html code
+
+  <div class="modal-background-filter"></div>
+  <div class="open-modal group-modal-container " >
+    <h3>Create Group</h3>
+    <p>Please enter details to create group </p>
+    <div class="input-container">
+      <input autocomplete="off" placeholder="Name" id="members">
+      <div class="chip-container" >
+        <span class="chips-here">
+        </span>
+        <input autocomplete="off" placeholder="Members" name="browser" id="members">
+      </div>
+      <textarea rows="4" placeholder="Description"></textarea>
+      <div class="chip-container" >
+        <span class="chips-here">
+         <span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span>
+      </span>
+        <input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members">
+      </div>
+      </div>
+      <div class="button-done">Share</div>
+      <div class="close"><i class="close-button ion-close"></i></div>
+    </div>
+
+
+    */
+}
 if(classname1 == 'create-folder')// create folder register added
 {
   $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
@@ -434,6 +466,14 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'get-shareable-link')
   {
+    /*
+    update share code
+    if(classname == 'get-shareable-link')
+    {
+        $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      //$("h3").text(classname1);
+
+    }*/
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('#checkbox').attr('checked',false);
       if(subdir == "") src = oldname;

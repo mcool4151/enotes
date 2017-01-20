@@ -4,6 +4,46 @@ if(classname=='close-icon'){
 $(".move-to-submenu").remove({"move-to-submenu"});
 }//moveto remove code
 
+/*      css for slider & dot-icon on groups*/
+
+#group4{
+  .slider{
+    visibility: hidden;
+  }
+  .dot-icon{
+    visibility: visible;
+    right: -5px;
+  }
+}
+
+/*key press for chips*/
+$( "body" ).keyup(function() {
+
+  var key = event.keyCode || event.charCode;
+  if( key == 8 || key == 46 )//detect backspace & delete key
+  {
+    var value=$.trim($(".chip-container input").val());
+    if(value.length==0)
+    {
+      //alert($("#option-2").text());
+      $(".chip-container input").val($("#"+lastchipadded).text());
+      $("#"+lastchipadded).remove();
+    }
+  }
+  if (key == 13) //detect enter key
+  {
+
+   var text;
+    text=$(".chip-container input").val();
+    $(".chip-container input").val("");
+    //alert(text);
+    $(".chips-here").append('<span class="chip" id="option-4"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
+    $("#"+latestchipadded+" span").text(text);
+
+
+ }
+});
+/*end here*/
 
 
 

@@ -6,25 +6,28 @@
 @import "partials/manage-page-partials/navigation-main";
 @import "partials/manage-page-partials/submenu";
 @import "partials/manage-page-partials/view-detail";
+@import "partials/manage-page-partials/creategroup";
+@import "partials/manage-page-partials/file";
+@import "partials/manage-page-partials/folder";
+@import "partials/manage-page-partials/group";
+@import "partials/manage-page-partials/leftnav";
 
 body{
-    background-color: $main-background;
-    overflow-x: hidden;
-    cursor:default!important;
-    width: 100%;
-    height: 100%;
+  background-color: $main-background;
+  overflow-x: hidden;
+  cursor:default!important;
+  width: 100%;
+  height: 100%;
 }
-.classnew{
-  color: red!important;
-}
+
 .font{
   color:darken($gray, 25%);
   line-height:1em;
-    font-size:15px;
-    font-weight:none;
-    font-family: $base-font-family;
-    text-decoration:none;
-    font-weight: 500;
+  font-size:15px;
+  font-weight:none;
+  font-family: $base-font-family;
+  text-decoration:none;
+  font-weight: 500;
 }
 .active{
   border-left:2px solid lighten(orange, 10%)!important;
@@ -41,36 +44,45 @@ body{
   }
 }
 .container{
-    width:100%;
-    height:auto;
-    position: absolute;
-    @include bp-large {
-      top:110px;
-    }
-    @include bp-medium {
-      top:50px;
-    }
-
-    float:left;
-}
-
-.center-container{
-  display: inline-block;
-  float:right;
-  height: auto;
-
+  width:100%;
+  height:auto;
+  position: absolute;
   @include bp-large {
-    width:80%;
+    top:110px;
   }
   @include bp-medium {
-    width:100%;
-  }
-  @include bp-small {
-    width:100%;
+    top:50px;
   }
 
+  float:left;
+}
+.display-container{
+  position: absolute;
+  left: 200px;
+  top:0px;
+  margin-left: 0px;
+  display:inline-block;
+  list-style: none;
+  width: 100%;
+  height: auto;
+  padding-left: 20px;
+  @include bp-medium {
+    left:20px;
+    padding-left: 0px;
+  }
+
+  cursor:default!important;
+  z-index: 1;
+  ul{
+    list-style: none;
+  }
+  h3{
+    @extend .font;
+    padding-bottom: 0px;
+  }
 
 }
+
 
 
 .file,.folder{
@@ -87,222 +99,8 @@ body{
 
   cursor:pointer!important;
 }
-.display-container{
-  position: absolute;
-  left: 200px;
-  top:0px;
-  margin-left: 0px;
- display:inline-block;
-list-style: none;
-width: 100%;
-height: auto;
 
-@include bp-medium {
-    left:20px;
-    padding-left: 0px;
-}
 
-cursor:default!important;
-z-index: 1;
-  li{
-
-  }
-  ul{
-    list-style: none;
-  }
-  h3{
-
-        @extend .font;
-          padding-bottom: 10px;
-
-  }
-
-}
-.clearfix{
-  clear:both;
-}
-
-.folder-container{
-  z-index: -1;
-
-margin-top: 0px;
-margin-left: 0px;
-display: inline-block;
-width: 80%;
-height: auto;
-  padding-left: 0px;
-  @include bp-medium {
-    width: 98%;
-    margin-left: 0px;
-  }
-@include bp-small {
-  width: 95%;
-  margin-left: 0px;
-}
-}
-.folder{
-  position: relative;
-  margin-right: 5px;
-  margin-bottom: 20px;
-  height:40px;
-  float:left;
-  padding-left:10px;
-  padding-top: 9px;
-  display: inline-block;
-  background-color:#fff;
-  box-shadow: 0px 0px 50px  $light-grey-border;
-  @extend .font;
-  font-size: 13px;
-  color: lighten(black, 5%);
-  @include bp-small {
-    font-size: 11px;
-    height: 35px;
-  }
-
-    border-bottom: 1px solid darken($light-grey-border, 7%);
-    span{
-      vertical-align:text-top;
-    }
-    .folder-icon{
-      font-size: 20px;
-      color: lighten($gray, 2%);
-      background-color: lighten($gray, 47%);
-      padding: 10px;
-      margin: -10px;
-      margin-top: -9px;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      margin-right: 20px;
-      @include bp-small {
-          font-size: 15px;
-          margin-right: 10px;
-      }
-    }
-    .dot-icon{
-      width: 30px;
-      margin-top: -5px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      right: -5px;
-      position: absolute;
-      font-size: 20px;
-      text-align: center;
-      margin-right: 5px;
-      color: lighten($gray, 5%);
-      @include bp-small {
-          margin-top: -8px;
-      }
-
-    }
-    .dot-icon:hover{
-      color: darken($gray, 25%);
-    }
-}
-.fix{
-  @extend .folder;
-
-  width: 100%;
-  height: 0px;
-  margin:0px;
-  padding:0px;
-  margin-bottom: 15px;
-  border-bottom: 0px solid $light-grey-border;
-}
-.file-container{
-  margin-top: 0px;
-  margin-left: 0px;
-  display: inline-block;
-  width: 80%;
-  height: auto;
-    padding-left: 0px;
-  @include bp-medium {
-  width: 98%;
-  margin-left: 0px;
-  }
-  @include bp-medium {
-  width: 95%;
-  }
-}
-.file{
-  margin-right: 5px;
-  margin-bottom: 5px;
-  height:200px;
-  float:left;
-  padding-left:10px;
-  padding-top: 12px;
-  display: inline-block;
-  background-color:transparent;
-  color: lighten(black, 5%);
-    @extend .font;
-    font-size: 13px;
-    @include bp-medium {
-    height: 170px;
-    }
-    @include bp-small {
-      font-size: 11px;
-      height: 145px;
-    }
-    span{
-      vertical-align: text-top;
-    }
-    .file-preview{
-      background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      width:95%;
-      height: 150px;
-      box-shadow: none;
-      border-bottom: 1px solid darken($light-grey-border, 17%);
-            box-shadow: 0px 0px 25px  $light-grey-border;
-            @include bp-medium {
-            height: 120px;
-            }
-      @include bp-small {
-        height: 100px;
-      }
-    }
-    .file-name{
-      position: relative;
-      width: 96%;
-      height: 40px;
-      padding-left:10px;
-      padding-top: 6px;
-      @include bp-small {
-        height: 30px;
-      }
-      .folder-icon{
-        font-size: 20px;
-        margin-right: 20px;
-        color: lighten($gray, 2%);
-        @include bp-small {
-            font-size: 15px;
-            margin-right: 10px;
-        }
-      }
-    }
-    .dot-icon{
-      width: 30px;
-      margin-top: -5px;
-      padding-top: 7px;
-      padding-bottom: 5px;
-      position: absolute;
-      right: -5px;
-      font-size: 20px;
-      text-align: center;
-      margin-right: 5px;
-      color: lighten($gray, 5%);
-      @include bp-small {
-          margin-top: -3px;
-          width: 25px;
-          padding-top: 2px;
-          padding-bottom: 2px;
-      }
-    }
-    .dot-icon:hover{
-      color: darken($gray, 25%);
-    }
-}
 
 .filter{
   z-index:90;
@@ -316,96 +114,100 @@ height: auto;
   visibility: hidden;
 
 }
+
 .left-container{
 
-position: fixed;
-left: 0px;
-height: 150%;
-width:$left-container-width;
-background-color: $main-background;
-border-right: 1px solid $light-grey-border;
-
-@include bp-large {
-
+  position: fixed;
+  top:110px;
+  left: 0px;
+  height: 150%;
   width:200px;
-}
-@include bp-medium {
-//  z-index: 100;
-  @include bp-large {
-    top:90px;
-  }
+
+  background-color: $main-background;
+  border-right: 1px solid $light-grey-border;
+
+
+
+  //  z-index: 100;
+
   @include bp-medium {
     top:-20px;
+    width:300px;
+    visibility: hidden;
+    background-color: #fff;
+
   }
-  width:300px;
-  visibility: hidden;
-}
 
-      .left-navigation{
-        list-style: none;
-      }
-      .left-navigation .folder{
 
-        cursor: pointer!important;
-        @include bp-large {
-          width:200px;
-        }
-        @include bp-medium {
 
-          width:300px;
-          left: 0px;
-          -moz-transition: 1;
-          -webkit-transition: 1;
-          -o-transition: 1;
-          transition: 1;
-        }
 
-        @extend .font;
-        font-size: 12px;
-        font-weight: 100;
-        margin-left: -40px;
-        height: 45px;
-        padding-left: 30px;
-        padding-top: 0px;
-        background-color: $main-background;
-        box-shadow: none;
-        margin-bottom: 0px;
-        border-bottom: 0px solid #fff;
-        border-left: 3px solid $main-background;
-        padding-top: 10px;
-        border-right: 1px solid $light-grey-border;
-      }
-      .folder .folder-icon{
-        margin-right: 20px;
-        font-size: 20px;
-        background-color: $main-background;
-        color: darken($main-background,60%);
+  .left-navigation{
+    list-style: none;
+  }
+  .left-navigation .folder{
+    background-color: $main-background;
 
-      }
-      .folder span{
-        vertical-align:text-top;
-      }
-      .left-navigation li:hover{
+    cursor: pointer!important;
+    @include bp-large {
+      width:200px;
+    }
+    @include bp-medium {
+      background-color: #fff;
+      width:300px;
+      left: 0px;
+      -moz-transition: 1;
+      -webkit-transition: 1;
+      -o-transition: 1;
+      transition: 1;
+    }
 
-        background-color: darken($main-background,5%);
-        border-left: 3px solid darken($main-background,45%);
-        .folder-icon{
-          background-color: darken($main-background,5%);
+    @extend .font;
+    font-size: 12px;
+    font-weight: 100;
+    margin-left: -40px;
+    height: 45px;
+    padding-left: 30px;
+    padding-top: 0px;
+    box-shadow: none;
+    margin-bottom: 0px;
+    border-bottom: 0px solid #fff;
+    border-left: 3px solid $main-background;
+    padding-top: 10px;
+    border-right: 1px solid $light-grey-border;
+  }
+  .folder .folder-icon{
+    margin-right: 20px;
+    font-size: 20px;
+    background-color: $main-background;
+    color: darken($main-background,60%);
+    @include bp-medium {
+      background-color: #fff;
+    }
+  }
+  .folder span{
+    vertical-align:text-top;
+  }
+  .left-navigation li:hover{
 
-        }
-      }
+    background-color: darken($main-background,5%);
+    border-left: 3px solid darken($main-background,45%);
+    .folder-icon{
+      background-color: darken($main-background,5%);
 
-      .line{
-        @extend .folder;
-        padding: 0px!important;
-        margin: 0px!important;
-        height: 1px!important;
-        margin-left: -40px!important;
-        margin-top: 10px!important;
-        margin-bottom: 10px!important;
-        background-color: $light-grey-border!important;
+    }
+  }
 
-      }
+  .line{
+    @extend .folder;
+    padding: 0px!important;
+    margin: 0px!important;
+    height: 1px!important;
+    margin-left: -40px!important;
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+    background-color: $light-grey-border!important;
+
+  }
 }
 
 .upload-button{
@@ -420,14 +222,14 @@ border-right: 1px solid $light-grey-border;
   background: lighten($blue, 7%);
   text-align:center;
   box-shadow: 5px 10px 30px gray;
-
+  z-index: 2;
   @extend .font;
   color:#e2eaf3;
   text-align: center;
   line-height:1em;
-    font-size:40px;
+  font-size:40px;
 
-    @extend .phone-visible;
+  @extend .phone-visible;
 }
 .upload-button:hover{
   background: lighten($blue, 5%);

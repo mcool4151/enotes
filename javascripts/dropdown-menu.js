@@ -81,7 +81,7 @@ $(".search-icon").click(function(e) {
 if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".new-button-container").append('<ul class="folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-plus icon" ></i><span class="create-folder">Create Folder</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+  $(".new-button-container").append('<ul class="folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
 onscreen=1;
 }
 }
@@ -177,26 +177,31 @@ $(".dot-icon").click(function(){
        if ( $(window).width() > 1024) {
          $(".display-container").css({"width": "55%"});
          $(".folder-container").css({"width": "100%"});
+         $(".group-container").css({"width": "100%"});
+
          $(".file-container").css({"width": "100%"});
-         $(".file-container .file").css({"width": "32%","height":"170px"});
-         $(".file-container .file-preview").css({"height":"120px"});
+         $(".display-container .file").css({"width": "32%","height":"170px"});
+         $(".display-container .file-preview").css({"height":"120px"});
 
        }
        else if ( $(window).width() > 480 && $(window).width() < 1024) {
          $(".display-container").css({"width": "47%"});
          $(".folder-container").css({"width": "100%"});
-         $(".folder-container .folder").css({"width": "48%"});
+         $(".group-container").css({"width": "100%"});
 
-
+         $(".display-container .folder").css({"width": "48%"});
          $(".file-container").css({"width": "100%"});
-         $(".file-container .file").css({"width": "48%","height":"150px"});
-         $(".file-container .file-preview").css({"height":"100px"});
+         $(".display-container .file").css({"width": "48%","height":"150px"});
+         $(".display-container .file-preview").css({"height":"100px"});
+         $("body").css({"overflow": "hidden"});
 
        }
-       else if ( $(window).width() < 1024) {
+       else if ( $(window).width() < 480) {
        $(".back-arrow").css({"display": "block"});
        $(".left-menu").css({"display": "none"});
        $(".close-icon-right-container").css({"display": "none"});
+       $("body").css({"overflow": "hidden"});
+
        }
     }
 
@@ -206,22 +211,27 @@ $(".dot-icon").click(function(){
 
     if(classname=='close-icon-right-container'){
       $(".right-container").css({"display": "none"});
+      $("body").css({"overflow-y": "auto"});
 
       if ( $(window).width() > 1024) {
         $(".display-container").css({"width": "100%"});
         $(".folder-container").css({"width": "80%"});
-        $(".folder-container .folder").css({"width": "24%"});
+        $(".group-container").css({"width": "80%"});
+
+        $(".display-container .folder").css({"width": "24%"});
         $(".file-container").css({"width": "80%"});
-        $(".file-container .file").css({"width": "24%","height":"200px"});
-        $(".file-container .file-preview").css({"height":"150px"});
+        $(".display-container .file").css({"width": "24%","height":"200px"});
+        $(".display-container .file-preview").css({"height":"150px"});
 
       }
       else if ( $(window).width() > 480 && $(window).width() < 1024) {
         $(".display-container").css({"width": "100%"});
         $(".display-container .folder").css({"width": "32%"});
+        $(".folder-container").css({"width": "98%"});
+        $(".group-container").css({"width": "98%"});
         $(".file-container").css({"width": "95%"});
-        $(".file-container .file").css({"width": "32%","height":"170px"});
-        $(".file-container .file-preview").css({"height":"120px"});
+        $(".display-container .file").css({"width": "32%","height":"170px"});
+        $(".display-container .file-preview").css({"height":"120px"});
 
       }
 
@@ -253,13 +263,21 @@ $(".dot-icon").click(function(){
   }*/
 
 
-      if(classname == 'get-shareable-link')
+    /*  if(classname == 'get-shareable-link')
       {
-          $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /><div class="chip-container"><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">avishkadakia1996@gmail.com</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Mohammed Udaipurwala</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></div></form><ul class="email-id-result"><li>option1</li><li>option1</li><li>option1</li></ul><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+          $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
         //$("h3").text(classname1);
 
+      }*/
+      if(classname=='chip-container'){
+        $( ".chip-container input" ).select();
       }
-
+      if(classname=='remove-email')
+      {
+        var id = $(e.target).parent().prop("id");
+        $("#"+id).remove();
+    }
+    //  $("#"+id).remove();
 
 
 

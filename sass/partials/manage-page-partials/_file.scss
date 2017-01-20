@@ -1,0 +1,96 @@
+.file-container{
+  margin-top: 0px;
+  margin-left: 0px;
+  display: inline-block;
+  width: 80%;
+  height: auto;
+    padding-left: 0px;
+  @include bp-medium {
+  width: 98%;
+  margin-left: 0px;
+  }
+  @include bp-medium {
+  width: 95%;
+  }
+}
+.file{
+  margin-right: 5px;
+  margin-bottom: 5px;
+  height:200px;
+  float:left;
+  padding-left:10px;
+  padding-top: 12px;
+  display: inline-block;
+  background-color:transparent;
+  color: lighten(black, 5%);
+    @extend .font;
+    font-size: 13px;
+    @include bp-medium {
+    height: 170px;
+    }
+    @include bp-small {
+      font-size: 11px;
+      height: 145px;
+    }
+    span{
+      vertical-align: text-top;
+    }
+    .file-preview{
+      background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width:95%;
+      height: 150px;
+      box-shadow: none;
+      border-bottom: 1px solid darken($light-grey-border, 17%);
+            box-shadow: 0px 0px 25px  $light-grey-border;
+            @include bp-medium {
+            height: 120px;
+            }
+      @include bp-small {
+        height: 100px;
+      }
+    }
+    .file-name{
+      position: relative;
+      width: 96%;
+      height: 40px;
+      padding-left:10px;
+      padding-top: 6px;
+      @include bp-small {
+        height: 30px;
+      }
+      .folder-icon{
+        font-size: 20px;
+        margin-right: 20px;
+        color: lighten($gray, 2%);
+        @include bp-small {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+      }
+    }
+    .dot-icon{
+      width: 30px;
+      margin-top: -5px;
+      padding-top: 7px;
+      padding-bottom: 5px;
+      position: absolute;
+      right: -5px;
+      font-size: 20px;
+      text-align: center;
+      top:6px;
+      margin-right: 5px;
+      color: lighten($gray, 5%);
+      @include bp-small {
+          margin-top: -3px;
+          width: 25px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+      }
+    }
+    .dot-icon:hover{
+      color: darken($gray, 25%);
+    }
+}

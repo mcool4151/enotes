@@ -1,0 +1,154 @@
+
+
+
+.group-container{
+  z-index: -1;
+margin-top: 0px;
+margin-left: 0px;
+display: inline-block;
+width: 80%;
+height: auto;
+  padding-left: 0px;
+  @include bp-medium {
+    width: 98%;
+    margin-left: 0px;
+  }
+@include bp-small {
+  width: 95%;
+  margin-left: 0px;
+}
+
+.folder{
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  height:40px;
+  float:left;
+  padding-left:10px;
+  padding-top: 9px;
+  display: inline-block;
+  background-color:#fff;
+  box-shadow: 0px 0px 50px  $light-grey-border;
+  @extend .font;
+  font-size: 13px;
+  color: lighten(black, 5%);
+  @include bp-small {
+    font-size: 11px;
+    height: 35px;
+  }
+
+    border-bottom: 1px solid darken($light-grey-border, 7%);
+    span{
+      vertical-align:text-top;
+    }
+    .folder-icon{
+      font-size: 20px;
+      color: lighten($gray, 2%);
+      background-color: lighten($gray, 47%);
+      padding: 10px;
+      margin: -10px;
+      margin-top: -9px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin-right: 20px;
+      @include bp-small {
+          font-size: 15px;
+          margin-right: 10px;
+      }
+    }
+    .dot-icon{
+      visibility: hidden;
+      width: 30px;
+      margin-top: -5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      right: 25px;
+      top:10px;
+      position: absolute;
+      font-size: 20px;
+      text-align: center;
+      margin-right: 5px;
+      color: lighten($gray, 5%);
+      @include bp-small {
+          margin-top: -8px;
+      }
+    }
+
+    .dot-icon:hover{
+      color: darken($gray, 25%);
+    }
+}
+
+
+.switch {
+  z-index: 0;
+  position: absolute;;
+  display: inline-block;
+  width: 20px;
+  height: 8px;
+  top:15px;
+  right: 10px;
+
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lighten(#ccc, 13%);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 0px;
+  bottom: -2px;
+  background-color: lighten(#ccc, 5%);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: lighten(#ffc04d, 17%);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  background-color: #ffc04d;
+  -webkit-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+}
+
+#group4{
+  .slider{
+    visibility: hidden;
+  }
+  .dot-icon{
+    visibility: visible;
+    right: -5px;
+  }
+}
