@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="file" draggable="true" id="file13"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true" id="file14"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file15" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
-            </ul>
+            </ul><!--
             <ul class="group-container" >
               <li class="folder" draggable="true"  id="group1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input checked    type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="group2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -156,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="file" draggable="true" id="file14"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file15" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="fix"></li>
-            </ul>
+            </ul>-->
           </div>
     <!--files display -->
   <!--  <div class="modal-background-filter"></div>
@@ -207,7 +207,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               </ul>
           </li>
-          <li class="share-info-section section-view-detail" >
+          <!--<li class="share-info-section section-view-detail" >
             <h3>Who has access</h3>
             <ul class="share-info-container">
               <li>
@@ -232,8 +232,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               </li>
             </ul>
-          </li>
-          <li class="share-info-section section-view-detail" >
+          </li>-->
+          <!--<li class="share-info-section section-view-detail" >
             <h3>Activity</h3>
             <ul class="share-info-container">
               <li>
@@ -259,8 +259,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </li>
             </ul>
 
-          </li>
-          <li class="fix-container section-view-detail" ></li>
+          </li>-->
+          <!--<li class="fix-container section-view-detail" ></li>-->
         </ul><!--right container end -->
       </div><!--main container end -->
 
@@ -284,7 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src=""<?php echo base_url();?>javascripts/drag-drop.js"></script>
+    <script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>
 
     <script src="<?php echo base_url();?>javascripts/load.js"></script>
 <script src="jquery-3.1.1.min.js"></script>

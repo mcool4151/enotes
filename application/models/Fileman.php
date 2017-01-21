@@ -17,10 +17,14 @@ class Fileman extends CI_Model {
       $res = $this->db->query($sql);
       if ($res->num_rows()) continue;
       $files[] = array(
-        'name'    => $file,
-        'is_dir'  => is_dir($dir.'/'.$file),
-        'is_img'  => @is_array(getimagesize($dir.'/'.$file))?true:false,
-        'link'    => (@is_array(getimagesize($dir.'/'.$file))?true:false)?base_url().'upload/'.$this->session->uid.'/'.$this->input->get('depth').'/'.$file:null
+        'name'      => $file,
+        'is_dir'    => is_dir($dir.'/'.$file),
+        'is_img'    => @is_array(getimagesize($dir.'/'.$file))?true:false,
+        'link'      => (@is_array(getimagesize($dir.'/'.$file))?true:false)?base_url().'upload/'.$this->session->uid.'/'.$this->input->get('depth').'/'.$file:null,
+        'is_slink'  => $this->isShared($dir.$file),
+        'is_fav'    => $this->isFav($dir.$file),
+        'lmd'       => date("F d Y H:i:s", filemtime($dir.$file)),
+        'size'      => round((filesize($dir.$file)/(1024)),2).'KB'
       );
     }
     return $files;

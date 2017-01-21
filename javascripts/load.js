@@ -1,10 +1,12 @@
 var oldname;
 $(document).ready(function(){
+  var list = undefined;
   var files = [];
   var folders = [];
+  /*
   var images = [];
   var paths = [];
-  var fpaths = [];
+  var fpaths = [];*/
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
   var newname;
@@ -17,22 +19,27 @@ $(document).ready(function(){
       type:"GET",
       async:false,
       success:function(result){
+        list = undefined;
         files = [];
         folders = [];
+        /*
         images = [];
         paths = [];
-        fpaths = [];
+        fpaths = [];*/
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
+          value.index = index;
           if (value.is_dir == true) {
-            folders.push(value.name);
-            paths.push(value.path);
+            folders.push(value);
+            /*folders.push(value.name);
+            paths.push(value.path);*/
           }
           else {
-            files.push(value.name);
+            files.push(value);
+            /*files.push(value.name);
             fpaths.push(value.path);
             if(value.is_img == true) images.push(value.link);
-            else images.push(defaultimg);
+            else images.push(defaultimg);*/
           }
         });
         reloadfiles();
@@ -47,22 +54,27 @@ $(document).ready(function(){
       type:"GET",
       async:false,
       success:function(result){
+        list = undefined;
         files = [];
         folders = [];
+        /*
         images = [];
         paths = [];
-        fpaths = [];
+        fpaths = [];*/
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
+          value.index = index;
           if (value.is_dir == true) {
-            folders.push(value.name);
-            paths.push(value.path);
+            folders.push(value);
+            /*folders.push(value.name);
+            paths.push(value.path);*/
           }
           else {
-            files.push(value.name);
+            files.push(value);
+            /*files.push(value.name);
             fpaths.push(value.path);
             if(value.is_img == true) images.push(value.link);
-            else images.push(defaultimg);
+            else images.push(defaultimg);*/
           }
         });
         reloadfiles();
@@ -76,31 +88,35 @@ $(document).ready(function(){
     var test = 1;
     $.each(files,function(index,value) {
       if(prevsidelinkid == 'favorites') {
-        fullname = fpaths[index];
+        fullname = value.path;
         exclass = "favorite";
       }
       else if(prevsidelinkid == 'trash'){
-        fullname = fpaths[index];
+        fullname = value.path;
         exclass = "trash";
       }
       else {
         exclass = "";
-        fullname = value;
+        fullname = value.name;
       }
+      if(value.is_img == true){
+        img = value.link;
+      }else img = defaultimg;
+      tmpval = value.name;
       test = 0;
       $('.folders-text').css({"display": "block"});
       $('.folder-container').css({"display": "block"});
       $('.files-text').css({"display": "block"});
       if ( $(window).width() < 480) {
-        if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+        if(tmpval.length > 10) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else if($(window).width() < 1025){
-        if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+        if(tmpval.length > 15) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else {
-        if(value.length > 15) value = value.substring(0,13) + "..." + value.substring(value.length-5,value.length);
+        if(tmpval.length > 15) tmpval = tmpval.substring(0,13) + "..." + tmpval.substring(tmpval.length-5,tmpval.length);
       }
-      $('#files').html($('#files').html() + "<li class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+images[index]+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+      $('#files').html($('#files').html() + "<li data-index=\""+value.index+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+fullname+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+tmpval+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
     });
     if(test == 1) {
       $('.files-text').css({"display": "none"});
@@ -114,31 +130,59 @@ $(document).ready(function(){
     $('.folder-container').css({"display": "block"});
     $.each(folders,function (index,value) {
       if(prevsidelinkid == 'favorites') {
-        fullname = paths[index];
+        fullname = value.path;
         exclass = "favorite";
       }
       else if(prevsidelinkid == 'trash'){
-        fullname = paths[index];
+        fullname = value.path;
         exclass = "trash";
       }
       else {
         exclass = "";
-        fullname = value;
+        fullname = value.name;
       }
+      tmpval = value.name;
       test = 0;
       if ( $(window).width() < 480) {
-        if(value.length > 10) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+        if(value.length > 10) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else if($(window).width() < 1025){
-        if(value.length > 15) value = value.substring(0,9) + "..." + value.substring(value.length-4,value.length);
+        if(value.length > 15) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else {
-        if(value.length > 30) value = value.substring(0,20) + "..." + value.substring(value.length-5,value.length);
+        if(value.length > 30) tmpval = tmpval.substring(0,20) + "..." + tmpval.substring(tmpval.length-5,tmpval.length);
       }
-      $('.folder-container').html($('.folder-container').html() + "<li class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+value+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+      $('.folder-container').html($('.folder-container').html() + "<li data-index=\""+value.index+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+fullname+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+tmpval+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
     });
     if(test == 1){ $('.folders-text').css({"display": "none"});$('.folder-container').css({"display": "none"});}
     $('.folder-container').html($('.folder-container').html() + "<li class=\"fix\" ></li>");
+  }
+  function updateDataSets(){
+    $.ajax({
+      url:base+"manage/getdir",
+      type:"GET",
+      async:false,
+      data:{depth:subdir},
+      success:function(result){
+        list = undefined;
+        files = [];
+        folders = [];
+        /*
+        images = [];
+        paths = [];
+        fpaths = [];*/
+        list = jQuery.parseJSON(result);
+        $.each(list,function(index,value){
+          value.index = index;
+          if (value.is_dir == true) folders.push(value);
+          else {
+            files.push(value);
+          }
+        });
+        foldercount = folders.length;
+        filecount = files.length;
+      }
+    });
   }
   function fetchAndReload(){
     $.ajax({
@@ -147,18 +191,19 @@ $(document).ready(function(){
       async:false,
       data:{depth:subdir},
       success:function(result){
+        list = undefined;
         files = [];
         folders = [];
+        /*
         images = [];
         paths = [];
-        fpaths = [];
+        fpaths = [];*/
         list = jQuery.parseJSON(result);
         $.each(list,function(index,value){
-          if (value.is_dir == true) folders.push(value.name);
+          value.index = index;
+          if (value.is_dir == true) folders.push(value);
           else {
-            files.push(value.name);
-            if(value.is_img == true) images.push(value.link);
-            else images.push(defaultimg);
+            files.push(value);
           }
         });
         foldercount = folders.length;
@@ -363,7 +408,18 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'details')
   {
-    $("h3").text(classname1);
+    data = $(".details").parent().parent().attr('data-index');
+    if(data == undefined) data = $(".details").parent().parent().parent().attr('data-index');
+    data = list[data];
+    $(".current-name").text(data.name);
+    //if(data.is_dir == true) $(".thumbnail").css({"display":"none"});
+    //else $(".thumbnail").css({"display":"block"});
+    $(".file-info-container").html(' ');
+    $(".file-info-container").append('<li><span class="parameter">Last Modified</span><span class="description">'+data.lmd+'</span></li>');
+    $(".file-info-container").append('<li><span class="parameter">Is Favorite</span><span     class="description">'+((data.is_fav == 1)?'Yes':'No')+'</span></li>');
+    $(".file-info-container").append('<li><span class="parameter">Path</span><span class="description">'+data.path+'</span></li>');
+    $(".file-info-container").append('<li><span class="parameter">Shared By Link</span><span class="description">'+((data.is_slink == 1)?'Yes':'No')+'</span></li>');
+    $(".file-info-container").append('<li><span class="parameter">Size</span><span class="description">'+data.size+'</span></li>');
   }
   else if(classname1 == 'download')
   {
@@ -371,10 +427,24 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'trash')
   {
-    if(subdir == "") src = $("#"+data).text();
-    else src = subdir+"/"+$("#"+data).text();
+    data = $(".trash").parent().parent().attr('name');
+    if(data == undefined) data = $(".trash").parent().parent().parent().attr('name');
+    if(subdir == "") src = data;
+    else src = subdir+"/"+ data;
     dest = "deleted";
-    move(src,dest);
+    fd(src);
+    fnr();
+    return;
+  }
+  else if(classname1 == 'restore')
+  {
+    data = $(".restore").parent().parent().attr('name');
+    if(data == undefined) data = $(".restore").parent().parent().parent().attr('name');
+    if(subdir == "") src = data;
+    else src = subdir+"/"+ data;
+    fd(src);
+    getdel();
+    return;
   }
   });
 /*  if(c
@@ -523,6 +593,7 @@ $("body").click(function(e) {
             }
           });
         }
+        updateDataSets();
       });
     //$("h3").text(classname1);
 
@@ -562,7 +633,7 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'details')
   {
-    $("h3").text(classname1+"open-with");
+    //
   }
   else if(classname1 == 'download'){
     $.ajax({
