@@ -49,6 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <form>
     <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf..">
     </form>
+    <form id="myform" style="display:none;">
+      <input type="file" id="myfile" name="myfile" value="">
+    </form>
     <li class="search"><i class="ion-log-out settings-icon hover-effect" aria-hidden="true"></i>
     <ul class="log-out-sub-menu">
 
@@ -285,11 +288,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<<<<<<< HEAD
-    <script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>
-=======
     <!--<script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>-->
->>>>>>> 16af9e31051a3933c2a72098fd1d20cb64ef6e0a
+    <!--<script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>-->
 
     <script src="<?php echo base_url();?>javascripts/load.js"></script>
 <script src="jquery-3.1.1.min.js"></script>

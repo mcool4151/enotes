@@ -91,6 +91,10 @@ $(document).ready(function(){
         fullname = value.path;
         exclass = "favorite";
       }
+      else if(value.is_fav == true){
+        fullname = value.name;
+        exclass = 'favorite';
+      }
       else if(prevsidelinkid == 'trash'){
         fullname = value.path;
         exclass = "trash";
@@ -132,6 +136,10 @@ $(document).ready(function(){
       if(prevsidelinkid == 'favorites') {
         fullname = value.path;
         exclass = "favorite";
+      }
+      else if(value.is_fav == 1){
+        fullname = value.name;
+        exclass = 'favorite';
       }
       else if(prevsidelinkid == 'trash'){
         fullname = value.path;
@@ -433,7 +441,7 @@ $("body").click(function(e) {
     $(".file-info-container").html(' ');
     $(".file-info-container").append('<li><span class="parameter">Last Modified</span><span class="description">'+data.lmd+'</span></li>');
     $(".file-info-container").append('<li><span class="parameter">Is Favorite</span><span     class="description">'+((data.is_fav == 1)?'Yes':'No')+'</span></li>');
-    $(".file-info-container").append('<li><span class="parameter">Path</span><span class="description">'+data.path+'</span></li>');
+    //$(".file-info-container").append('<li><span class="parameter">Path</span><span class="description">'+data.path+'</span></li>');
     $(".file-info-container").append('<li><span class="parameter">Shared By Link</span><span class="description">'+((data.is_slink == 1)?'Yes':'No')+'</span></li>');
     $(".file-info-container").append('<li><span class="parameter">Size</span><span class="description">'+data.size+'</span></li>');
   }
@@ -511,6 +519,11 @@ if(classname1 == 'create-folder')// create folder register added
   $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
   $( "#crtbtn" ).click(function() {
     name = $("#nameto").val();
+    name = $.trim(name);
+    if(name == '' || (name.indexOf('/') >= 0) || (name.indexOf("\\") >= 0)){
+      alert("Please Enter a valid name");
+      return;
+    }
     $.ajax({
       url:base+"manage/createdir",
       type:"POST",
@@ -626,6 +639,7 @@ $("body").click(function(e) {
     if(prevsidelinkid == 'favorites'){
       getfav();
     }
+    fnr();
   }
   else if(classname1 == 'rename')
   {
@@ -634,6 +648,11 @@ $("body").click(function(e) {
     $("#rname").click(function(e){
       var src,dest;
       newname = $("#newname").val();
+      newname = $.trim(newname);
+      if(newname == '' || (newname.indexOf('/') >= 0) || (newname.indexOf("\\") >= 0)){
+        alert("Please Enter a valid name");
+        return;
+      }
       src = oldname;
       dest = newname;
       $.ajax({
