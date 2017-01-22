@@ -17,6 +17,7 @@ $(".move-to-submenu").remove({"move-to-submenu"});
 }
 
 /*key press for chips*/
+var lastchipadded="option-2",latestchipadded="option-4";
 $( "body" ).keyup(function() {
 
   var key = event.keyCode || event.charCode;

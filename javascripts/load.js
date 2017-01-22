@@ -244,22 +244,26 @@ $(document).ready(function(){
     if(folderClassname != 'dot-icon' ){
       sidelinkid = $(e.target).prop("id");
       if(sidelinkid == "saved-notes"){
+        $(".group-container").css({"display":"none"});
         clearnavbar();
         subdir = "";
       }
       else if(sidelinkid == 'favorites'){
+        $(".group-container").css({"display":"none"});
         clearnavbar();
         subdir = "";
         getfav();
         return;
       }
       else if(sidelinkid == 'trash'){
+        $(".group-container").css({"display":"none"});
         clearnavbar();
         subdir = "";
         getdel();
         return;
       }
       else if(sidelinkid == 'recent'){
+        $(".group-container").css({"display":"none"});
         clearnavbar();
         files = [];
         folders = [];
@@ -268,6 +272,16 @@ $(document).ready(function(){
         return;
       }
       else if(sidelinkid == 'shared-with-me'){
+        $(".group-container").css({"display":"none"});
+        clearnavbar();
+        files = [];
+        folders = [];
+        reloadfiles();
+        reloadfolders();
+        return;
+      }
+      else if(sidelinkid == 'group'){
+        $(".group-container").css({"display":"block"});
         clearnavbar();
         files = [];
         folders = [];
@@ -276,6 +290,7 @@ $(document).ready(function(){
         return;
       }
       else {
+        $(".group-container").css({"display":"none"});
         //      alert("entred" + sidelinkid);
         //      $("h3").text($("#"+sidelinkid).attr('name'));
         if(prevsidelinkid == 'trash'){
@@ -326,7 +341,6 @@ $("#logout").click(function (e) {
 
     //    alert("outside folder " +folderClassname);
      if(folderClassname != 'dot-icon' ){
-
          sidelinkid = $(e.target).prop("id");
        if(sidelinkid == "saved-notes"){
           activeupdate(sidelinkid,"Saved Notes");
@@ -343,7 +357,9 @@ $("#logout").click(function (e) {
         }
         else if(sidelinkid == 'recent'){
           activeupdate(sidelinkid,"Recent");
-
+        }
+        else if(sidelinkid == 'group'){
+          activeupdate(sidelinkid,"Groups");
         }
         else if(sidelinkid == 'shared-with-me'){
           activeupdate(sidelinkid,"Shared with me");
@@ -412,8 +428,8 @@ $("body").click(function(e) {
     if(data == undefined) data = $(".details").parent().parent().parent().attr('data-index');
     data = list[data];
     $(".current-name").text(data.name);
-    //if(data.is_dir == true) $(".thumbnail").css({"display":"none"});
-    //else $(".thumbnail").css({"display":"block"});
+    if(data.is_dir == true) $(".thumbnail").css({"display":"none"});
+    else $(".thumbnail").css({"display":"block"});
     $(".file-info-container").html(' ');
     $(".file-info-container").append('<li><span class="parameter">Last Modified</span><span class="description">'+data.lmd+'</span></li>');
     $(".file-info-container").append('<li><span class="parameter">Is Favorite</span><span     class="description">'+((data.is_fav == 1)?'Yes':'No')+'</span></li>');
@@ -536,6 +552,7 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'get-shareable-link')
   {
+
     /*
     update share code
     if(classname == 'get-shareable-link')
@@ -544,7 +561,8 @@ $("body").click(function(e) {
       //$("h3").text(classname1);
 
     }*/
-      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      /*$(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');*/
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('#checkbox').attr('checked',false);
       if(subdir == "") src = oldname;
       else src = subdir+"/"+oldname;
