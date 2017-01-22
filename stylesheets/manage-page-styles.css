@@ -658,6 +658,64 @@ th {
   background: #2b2c41;
 }
 
+@font-face {
+  font-family: RalewayRegular;
+  src: url(../fonts/Raleway-Light.ttf);
+}
+@font-face {
+  font-family: colab;
+  src: url(../fonts/ColabReg.otf);
+}
+@font-face {
+  font-family: LeagueGothicRegular;
+  src: url(../fonts/LeagueGothic-CondensedRegular.otf);
+}
+@font-face {
+  font-family: Existencelight;
+  src: url(../fonts/Existence-Light.otf);
+}
+@font-face {
+  font-family: Ralewaymedium;
+  src: url(../fonts/Raleway-Medium.ttf);
+}
+@font-face {
+  font-family: KaushanScriptRegular;
+  src: url(../fonts/KaushanScript-Regular.otf);
+}
+@font-face {
+  font-family: OpenSansRegular;
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: AlexBrushRegular;
+  src: url(../fonts/AlexBrush-Regular.ttf);
+}
+@font-face {
+  font-family: INKITMT;
+  src: url(../fonts/INKITMT_.otf);
+}
+@font-face {
+  font-family: digital7;
+  src: url(../fonts/digital-7.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/roboto/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: Roboto-Regular;
+  src: url(../fonts/roboto/Roboto-Regular.ttf);
+}
+/*-buttons modes-*/
+/*1-stop variables
+$default-font-color:$green-light;
+$main-background: lighten($cyan,30%);
+$font-size-logo:25px;
+$nav-bar-left:25px;
+*/
+/*
+$default-text-color: $black !default;
+*/
 /*    usage
 p {
   @include font-size(14px)
@@ -3298,32 +3356,34 @@ body {
 /* line 79, ../sass/manage-page-styles.scss */
 .display-container h3 {
   padding-bottom: 0px;
+  display: inline-block;
+  clear: both;
 }
 
-/* line 88, ../sass/manage-page-styles.scss */
+/* line 90, ../sass/manage-page-styles.scss */
 .file, .folder, .left-container .line {
   cursor: pointer !important;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 88, ../sass/manage-page-styles.scss */
+  /* line 90, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 24%;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 88, ../sass/manage-page-styles.scss */
+  /* line 90, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 32%;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 88, ../sass/manage-page-styles.scss */
+  /* line 90, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 48%;
   }
 }
 
-/* line 105, ../sass/manage-page-styles.scss */
+/* line 107, ../sass/manage-page-styles.scss */
 .filter {
   z-index: 90;
   background-color: black;
@@ -3336,7 +3396,7 @@ body {
   visibility: hidden;
 }
 
-/* line 118, ../sass/manage-page-styles.scss */
+/* line 120, ../sass/manage-page-styles.scss */
 .left-container {
   position: fixed;
   top: 110px;
@@ -3347,7 +3407,7 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1024px) {
-  /* line 118, ../sass/manage-page-styles.scss */
+  /* line 120, ../sass/manage-page-styles.scss */
   .left-container {
     top: -20px;
     width: 300px;
@@ -3355,11 +3415,11 @@ body {
     background-color: #fff;
   }
 }
-/* line 144, ../sass/manage-page-styles.scss */
+/* line 146, ../sass/manage-page-styles.scss */
 .left-container .left-navigation {
   list-style: none;
 }
-/* line 147, ../sass/manage-page-styles.scss */
+/* line 149, ../sass/manage-page-styles.scss */
 .left-container .left-navigation .folder, .left-container .left-navigation .line {
   background-color: #f3f3f3;
   cursor: pointer !important;
@@ -3377,13 +3437,13 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 147, ../sass/manage-page-styles.scss */
+  /* line 149, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .line {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 147, ../sass/manage-page-styles.scss */
+  /* line 149, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .line {
     background-color: #fff;
     width: 300px;
@@ -3394,7 +3454,7 @@ body {
     transition: 1;
   }
 }
-/* line 178, ../sass/manage-page-styles.scss */
+/* line 180, ../sass/manage-page-styles.scss */
 .left-container .folder .folder-icon, .left-container .line .folder-icon {
   margin-right: 20px;
   font-size: 20px;
@@ -3402,25 +3462,25 @@ body {
   color: #5a5a5a;
 }
 @media screen and (max-width: 1024px) {
-  /* line 178, ../sass/manage-page-styles.scss */
+  /* line 180, ../sass/manage-page-styles.scss */
   .left-container .folder .folder-icon, .left-container .line .folder-icon {
     background-color: #fff;
   }
 }
-/* line 187, ../sass/manage-page-styles.scss */
+/* line 189, ../sass/manage-page-styles.scss */
 .left-container .folder span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 190, ../sass/manage-page-styles.scss */
+/* line 192, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover {
   background-color: #e6e6e6;
   border-left: 3px solid gray;
 }
-/* line 194, ../sass/manage-page-styles.scss */
+/* line 196, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover .folder-icon {
   background-color: #e6e6e6;
 }
-/* line 200, ../sass/manage-page-styles.scss */
+/* line 202, ../sass/manage-page-styles.scss */
 .left-container .line {
   padding: 0px !important;
   margin: 0px !important;
@@ -3431,7 +3491,7 @@ body {
   background-color: #e6e6e6 !important;
 }
 
-/* line 213, ../sass/manage-page-styles.scss */
+/* line 215, ../sass/manage-page-styles.scss */
 .upload-button {
   position: fixed;
   bottom: 15px;
@@ -3451,7 +3511,7 @@ body {
   font-size: 40px;
 }
 
-/* line 234, ../sass/manage-page-styles.scss */
+/* line 236, ../sass/manage-page-styles.scss */
 .upload-button:hover {
   background: #1a1aff;
 }
