@@ -121,10 +121,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
 
         </div><!--left container end --><!--change end -->
-        <div class="center-container">
-          <form id="myform" style="display:none;">
-            <input type="file" id="myfile" name="myfile" value="">
-          </form>
           <div class="display-container ">
 
 
@@ -136,20 +132,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
             </ul>
+            <h3 class="files-text" >Files</h3>
             <ul class="file-container" id="files">
               <li class="file" draggable="true"id="file12" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true" id="file13"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true" id="file14"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file15" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
+<<<<<<< HEAD
             </ul><!--
             <ul class="group-container" >
+=======
+            </ul>
+            <ul class="group-container" style="display:none;">
+>>>>>>> 16af9e31051a3933c2a72098fd1d20cb64ef6e0a
               <li class="folder" draggable="true"  id="group1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input checked    type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="group2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="group3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="group4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input   type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="group5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
             </ul>
-            <h3 class="files-text" >Files</h3>
+            <!--<h3 class="files-text" >Files</h3>
             <ul class="file-container" id="files">
               <li class="file" draggable="true"id="file12" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true" id="file13"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
@@ -189,7 +191,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
           <div class="upload-button">+</div><!--upload button -->
-        </div><!--center container end -->
         <ul class="right-container">
           <li class="top-section-contianer section-view-detail" >
             <i class="ion-ios-paper icon current-icon" ></i>
@@ -284,7 +285,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script src="http://localhost:35729/livereload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<<<<<<< HEAD
     <script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>
+=======
+    <!--<script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>-->
+>>>>>>> 16af9e31051a3933c2a72098fd1d20cb64ef6e0a
 
     <script src="<?php echo base_url();?>javascripts/load.js"></script>
 <script src="jquery-3.1.1.min.js"></script>
@@ -431,8 +436,12 @@ document.addEventListener("drop", function(event) {
           if(subdir == "") src = $("#"+data).attr('name');
           else src = subdir+"/"+$("#"+data).attr('name');
           dest = "favourites";
-          ff(src);
           event.target.style.border = "";
+          if(prevsidelinkid == 'trash'){
+            alert("Restore File First");
+            return
+          }
+          ff(src);
           return;
         }
         else if(event.target.id == 'trash'){
