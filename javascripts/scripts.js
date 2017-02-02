@@ -8,7 +8,7 @@ $(document).ready(function(){
 
   //$(".left-container").css({"z-index": "50", "visibility": "hidden"});
   //  $(".filter").css({"z-index": "50","visibility": "hidden"});
-  //  $("h3").html( "jquery running" )
+  //  //$("h3").html( "jquery running" )
 
 
 var lastchipadded="option-2",latestchipadded="option-4";
@@ -20,7 +20,7 @@ if(classname=='remove-email')
   $("#"+id).remove();
 }
 */
-  $( "body" ).keyup(function() {
+  /*$( "body" ).keyup(function() {
 
     var key = event.keyCode || event.charCode;
     if( key == 8 || key == 46 )//detect backspace & delete key
@@ -45,7 +45,7 @@ if(classname=='remove-email')
 
 
    }
-  });
+  }); */
 
 
 

@@ -105,7 +105,7 @@ $(".dot-icon").click(function(){
   //  $(".folder span").text(classname);
 
     folderid = $(e.target).parent().attr('id');
-    //$("h3").text(folderid);
+    ////$("h3").text(folderid);
       if(active!=0){
         $( ".folder-submenu-container" ).remove();
         onscreen=0;
@@ -128,7 +128,7 @@ $(".dot-icon").click(function(){
           var classnamefolder = $(e.target).parent().attr('class').split(' ')[1];
           var classnamefile = $(e.target).parent().parent().attr('class').split(' ')[1];
 
-          //$("h3").text(classnamefolder + classnamefile);
+          ////$("h3").text(classnamefolder + classnamefile);
 
           if(classnamefolder=='trash' || classnamefile == 'trash'){
               $("#"+folderid).append('<ul class="folder-submenu-container" ><li class="restore"><i class="ion-ios-undo icon" ></i><span class="restore">Restore </span></li><li class="permanently-delete"><i class="ion-trash-b icon" ></i><span class="permanently-delete">Permanently Delete</span></li></ul>');
@@ -266,7 +266,7 @@ $(".dot-icon").click(function(){
     /*  if(classname == 'get-shareable-link')
       {
           $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label>\00<div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-        //$("h3").text(classname1);
+        ////$("h3").text(classname1);
 
       }*/
       if(classname=='chip-container'){

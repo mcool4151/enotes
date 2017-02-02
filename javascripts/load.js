@@ -13,6 +13,42 @@ $(document).ready(function(){
   function updatesubdir(v){
     alert(v);
   }
+  $( "body" ).keyup(function() {
+    lastchipadded = $(".chip-container .chips-here span").last();
+    var key = event.keyCode || event.charCode;
+    if( key == 8 || key == 46 )//detect backspace & delete key
+    {
+      var value=$.trim($(".chip-container input").val());
+      if(value.length==0)
+      {
+        //alert($("#option-2").text());
+        $(".chip-container input").val($(lastchipadded).text());
+        $(lastchipadded).parent().remove();
+      }
+    }
+    if (key == 13) //detect enter key
+    {
+      var text;
+      text=$(".chip-container input").val();
+      $(".chip-container input").val("");
+      if(subdir == "") src = oldname;
+      else src = subdir+"/"+oldname;
+      //alert(text);
+      $.ajax({
+        url:base+"manage/sharewith",
+        type:"POST",
+        data:{uemail:text,file:src},
+        success:function(result){
+          if(result != 1) {
+            alert(result);
+            return;
+          }
+          $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
+          $(".chip-container .chips-here span").last().text(text);
+        }
+      });
+    }
+  });
   function getdel(){
     $.ajax({
       url:base+"manage/getdel",
@@ -217,10 +253,10 @@ $(document).ready(function(){
         foldercount = folders.length;
         filecount = files.length;
       //  alert("Folder count:"+filecount);
-        reloadfiles();
-        reloadfolders();
-      }
-    });
+      reloadfiles();
+      reloadfolders();
+    }
+  });
   }
   fetchAndReload();
   fnr = fetchAndReload;
@@ -249,58 +285,88 @@ $(document).ready(function(){
     folderClassname = $(e.target).attr('class').split(' ')[0];
     if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text" || folderClassname=="folder-name-text")
     {
-    if(folderClassname != 'dot-icon' ){
-      sidelinkid = $(e.target).prop("id");
-      if(sidelinkid == "saved-notes"){
-        $(".group-container").css({"display":"none"});
-        clearnavbar();
-        subdir = "";
-      }
-      else if(sidelinkid == 'favorites'){
-        $(".group-container").css({"display":"none"});
-        clearnavbar();
-        subdir = "";
-        getfav();
-        return;
-      }
-      else if(sidelinkid == 'trash'){
-        $(".group-container").css({"display":"none"});
-        clearnavbar();
-        subdir = "";
-        getdel();
-        return;
-      }
-      else if(sidelinkid == 'recent'){
-        $(".group-container").css({"display":"none"});
-        clearnavbar();
-        files = [];
-        folders = [];
-        reloadfiles();
-        reloadfolders();
-        return;
-      }
-      else if(sidelinkid == 'shared-with-me'){
-        $(".group-container").css({"display":"none"});
-        clearnavbar();
-        files = [];
-        folders = [];
-        reloadfiles();
-        reloadfolders();
-        return;
-      }
-      else if(sidelinkid == 'group'){
-        $(".group-container").css({"display":"block"});
-        clearnavbar();
-        files = [];
-        folders = [];
-        reloadfiles();
-        reloadfolders();
-        return;
-      }
-      else {
-        $(".group-container").css({"display":"none"});
+      if(folderClassname != 'dot-icon' ){
+        sidelinkid = $(e.target).prop("id");
+        if(sidelinkid == "saved-notes"){
+          $(".group-container").css({"display":"none"});
+          clearnavbar();
+          subdir = "";
+        }
+        else if(sidelinkid == 'favorites'){
+          $(".group-container").css({"display":"none"});
+          clearnavbar();
+          subdir = "";
+          getfav();
+          return;
+        }
+        else if(sidelinkid == 'trash'){
+          $(".group-container").css({"display":"none"});
+          clearnavbar();
+          subdir = "";
+          getdel();
+          return;
+        }
+        else if(sidelinkid == 'recent'){
+          $(".group-container").css({"display":"none"});
+          clearnavbar();
+          files = [];
+          folders = [];
+          reloadfiles();
+          reloadfolders();
+          return;
+        }
+        else if(sidelinkid == 'shared-with-me'){
+          $(".group-container").css({"display":"none"});
+          clearnavbar();
+          files = [];
+          folders = [];
+          reloadfiles();
+          reloadfolders();
+          clearnavbar();
+          $.ajax({
+            url:base+"manage/getsharedwithme",
+            success:function(res){
+              list = jQuery.parseJSON(res);
+              $('.folders-text').css({"display": "none"});
+              $('.files-text').css({"display": "none"});
+              $.each(list,function(index,value){
+                exclass = "shared";
+                shortname = value.name;
+                if ( $(window).width() < 480) {
+                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else if($(window).width() < 1025){
+                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else {
+                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                }
+                if(value.is_dir == true){
+                  $('.folders-text').css({"display": "block"});
+                  $('.folder-container').css({"display": "block"});
+                  $('.folder-container').append("<li data-index=\""+value.id+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+                }else {
+                  $('.files-text').css({"display": "block"});
+                  $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.name+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+                }
+              });
+            }
+          });
+          return;
+        }
+        else if(sidelinkid == 'group'){
+          $(".group-container").css({"display":"block"});
+          clearnavbar();
+          files = [];
+          folders = [];
+          reloadfiles();
+          reloadfolders();
+          return;
+        }
+        else {
+          $(".group-container").css({"display":"none"});
         //      alert("entred" + sidelinkid);
-        //      $("h3").text($("#"+sidelinkid).attr('name'));
+        //      //$("h3").text($("#"+sidelinkid).attr('name'));
         if(prevsidelinkid == 'trash'){
           alert("Restore Folder To view Contents");
           return;
@@ -316,6 +382,10 @@ $(document).ready(function(){
             updatenavbar(str[i],tmp);
           }
         }
+        else if(prevsidelinkid == 'shared-with-me'){
+          id = $("#"+sidelinkid).attr('data-index');
+          return;
+        }
         else updatenavbar($("#"+sidelinkid).attr('name'),subdir);
         activeupdate("saved-notes","Saved Notes");
       }
@@ -323,7 +393,7 @@ $(document).ready(function(){
     }
     sidelinkid = $(this).prop("id");
   }
-  });
+});
 /*  $(".left-navigation li").click(function(e){
 
 
@@ -344,41 +414,41 @@ $("#logout").click(function (e) {
 
 //test ----------
 
-    $(".body").click(function(e){
-      var folderClassname = $(e.target).attr('class').split(' ')[0];
+$(".body").click(function(e){
+  var folderClassname = $(e.target).attr('class').split(' ')[0];
 
     //    alert("outside folder " +folderClassname);
-     if(folderClassname != 'dot-icon' ){
-         sidelinkid = $(e.target).prop("id");
-       if(sidelinkid == "saved-notes"){
-          activeupdate(sidelinkid,"Saved Notes");
-        }
-        else if(sidelinkid == 'favorites'){
-          subdir='';
-          activeupdate(sidelinkid,"Favorites");
+    if(folderClassname != 'dot-icon' ){
+     sidelinkid = $(e.target).prop("id");
+     if(sidelinkid == "saved-notes"){
+      activeupdate(sidelinkid,"Saved Notes");
+    }
+    else if(sidelinkid == 'favorites'){
+      subdir='';
+      activeupdate(sidelinkid,"Favorites");
 
-        }
-        else if(sidelinkid == 'trash'){
-          subdir='';
-          activeupdate(sidelinkid,"Deleted");
+    }
+    else if(sidelinkid == 'trash'){
+      subdir='';
+      activeupdate(sidelinkid,"Deleted");
 
-        }
-        else if(sidelinkid == 'recent'){
-          activeupdate(sidelinkid,"Recent");
-        }
-        else if(sidelinkid == 'group'){
-          activeupdate(sidelinkid,"Groups");
-        }
-        else if(sidelinkid == 'shared-with-me'){
-          activeupdate(sidelinkid,"Shared with me");
+    }
+    else if(sidelinkid == 'recent'){
+      activeupdate(sidelinkid,"Recent");
+    }
+    else if(sidelinkid == 'group'){
+      activeupdate(sidelinkid,"Groups");
+    }
+    else if(sidelinkid == 'shared-with-me'){
+      activeupdate(sidelinkid,"Shared with me");
 
-        }
+    }
 
-      }
-    });
+  }
+});
 
-    function activeupdate(curent,title){
-      $(".active-left-nav").text(title);
+function activeupdate(curent,title){
+  $(".active-left-nav").text(title);
       $("#"+prevsidelinkid).removeClass("active");//remove active frm prevously active
       $("#"+curent).addClass("active");//add active current
       prevsidelinkid=curent;//assign current value to prev
@@ -399,19 +469,19 @@ $("body").click(function(e) {
 
   if(classname1 == 'open-with'+"open-with")
   {
-    $("h3").text(classname1);
+    ////$("h3").text(classname1);
   }
   else if(classname1 == 'move-to')
   {
-    $("h3").text(classname1+"open-with");
+    ////$("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'get-shareable-link')
   {
-    $("h3").text(classname1+"open-with");
+    ////$("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'favorite')
   {
-    //$("h3").text("folderid "+ $("#"+folderid).parent().attr('name'));
+    ////$("h3").text("folderid "+ $("#"+folderid).parent().attr('name'));
   //  alert("folderid "+ $("#"+folderid).attr('name'));
     /*if(subdir == "") src = $("#"+folderid).parent().attr('name');
     else src = subdir+"/"+$("#"+folderid).parent().attr('name');
@@ -447,7 +517,7 @@ $("body").click(function(e) {
   }
   else if(classname1 == 'download')
   {
-    //$("h3").text(classname1);
+    ////$("h3").text(classname1);
   }
   else if(classname1 == 'trash')
   {
@@ -470,7 +540,7 @@ $("body").click(function(e) {
     getdel();
     return;
   }
-  });
+});
 /*  if(c
 if(classname1 == 'create-folder')// create folder register added
 {
@@ -513,7 +583,7 @@ incase u want to read full html code
 
 
     */
-}
+  }
 if(classname1 == 'create-folder')// create folder register added
 {
   $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
@@ -534,9 +604,9 @@ if(classname1 == 'create-folder')// create folder register added
         $( ".modal-background-filter" ).remove();
         $( ".open-modal" ).remove();
         if ( $(window).width() < 480) {
-        $(".back-arrow").css({"display": "none"});
-        $(".left-menu").css({"display": "block"});
-      }
+          $(".back-arrow").css({"display": "none"});
+          $(".left-menu").css({"display": "block"});
+        }
       }
     });
   });
@@ -552,16 +622,16 @@ if(classname1 == 'create-folder')// create folder register added
 $("body").click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
   if(classname1 == 'close-button'){
-  $( ".modal-background-filter" ).remove();
+    $( ".modal-background-filter" ).remove();
     $( ".open-modal" ).remove();
   }
   if(classname1 == 'open-with')
   {
-    $("h3").text(classname1+"open-with");
+    //$("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'move-to')
   {
-    $("h3").text(classname1+"open-with");
+    //$("h3").text(classname1+"open-with");
   }
   else if(classname1 == 'get-shareable-link')
   {
@@ -571,62 +641,77 @@ $("body").click(function(e) {
     if(classname == 'get-shareable-link')
     {
         $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input value="link goes here" class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-      //$("h3").text(classname1);
+      ////$("h3").text(classname1);
 
     }*/
-      /*$(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');*/
-      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-      $('#checkbox').attr('checked',false);
-      if(subdir == "") src = oldname;
-      else src = subdir+"/"+oldname;
-      function checkshared(){
+    /*$(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');*/
+    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    $(".chip-container .chips-here span").remove();
+    $('#checkbox').attr('checked',false);
+    if(subdir == "") src = oldname;
+    else src = subdir+"/"+oldname;
+    function checkshared(){
+      $.ajax({
+        url:base+"manage/checkshared",
+        type:"POST",
+        async:false,
+        data:{file:src},
+        success:function(result){
+          res = jQuery.parseJSON(result);
+          if(res.isShared){
+            $('#checkbox').attr('checked',true);
+            $('#linkbox').prop("disabled", false);
+            $('#linkbox').val(base+"shared/open/"+res.link);
+          }
+          else{
+            $('#checkbox').attr('checked',false);
+            $('#linkbox').prop("disabled", true);
+            $('#linkbox').val('');
+          }
+        }
+      });
+    }
+    function getsharedwithlist(){
+      $.ajax({
+        url:base+"manage/getsharedwithlist",
+        type:"POST",
+        data:{file:src},
+        success: function(result){
+          res = jQuery.parseJSON(result);
+          $.each(res,function(index,value){
+            $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+value.email+'</span><i class="remove-email ion-close"></i></span>');
+          });
+        }
+      });
+    }
+    getsharedwithlist();
+    checkshared();
+    $('#checkbox').change(function (){
+      if($(this).is(":checked")){
         $.ajax({
-          url:base+"manage/checkshared",
+          url:base+"manage/addtoshared",
           type:"POST",
           async:false,
           data:{file:src},
           success:function(result){
-            res = jQuery.parseJSON(result);
-            if(res.isShared){
-              $('#checkbox').attr('checked',true);
-              $('#linkbox').prop("disabled", false);
-              $('#linkbox').val(base+"shared/open/"+res.link);
-            }
-            else{
-              $('#checkbox').attr('checked',false);
-              $('#linkbox').prop("disabled", true);
-              $('#linkbox').val('');
-            }
+            checkshared();
           }
         });
       }
-      checkshared();
-      $('#checkbox').change(function (){
-        if($(this).is(":checked")){
-          $.ajax({
-            url:base+"manage/addtoshared",
-            type:"POST",
-            async:false,
-            data:{file:src},
-            success:function(result){
-              checkshared();
-            }
-          });
-        }
-        else {
-          $.ajax({
-            url:base+"manage/remshared",
-            type:"POST",
-            async:false,
-            data:{file:src},
-            success:function(result){
-              checkshared();
-            }
-          });
-        }
-        updateDataSets();
-      });
-    //$("h3").text(classname1);
+      else {
+        $.ajax({
+          url:base+"manage/remshared",
+          type:"POST",
+          async:false,
+          data:{file:src},
+          success:function(result){
+            checkshared();
+          }
+        });
+      }
+      updateDataSets();
+    });
+    ////$("h3").text(classname1);
 
   }
   else if(classname1 == 'favorite'){
@@ -644,7 +729,7 @@ $("body").click(function(e) {
   else if(classname1 == 'rename')
   {
     $(".body").append('<div class="modal-background-filter"></div><div class="open-modal rename-modal-container" ><h3>Rename</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="newname" placeholder="file name goes here" class="share-link" /></div><div class="button-done" id="rname">Save</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-    //$("h3").text(classname1);
+    ////$("h3").text(classname1);
     $("#rname").click(function(e){
       var src,dest;
       newname = $("#newname").val();
@@ -692,54 +777,54 @@ alert(classname1 + " create folder clicked");
 });
 });
 $("body").click(function(e) {
-classname = $(e.target).attr('class').split(' ')[0];
+  classname = $(e.target).attr('class').split(' ')[0];
 
 //     alert("classname");
 
 
-//$("h3").text(folderid);
+////$("h3").text(folderid);
 
-  if(classname == 'dot-icon' )
-  {
+if(classname == 'dot-icon' )
+{
     //console.log("%o",$(e.target).parent().attr('id'));
-      folderid = $(e.target).parent().attr('id');
-      if($("#"+folderid).attr('class') == "file-name"){
-        oldname = $(e.target).parent().parent().attr('name');
-      }
-      else oldname = $("#"+folderid).attr('name');
+    folderid = $(e.target).parent().attr('id');
+    if($("#"+folderid).attr('class') == "file-name"){
+      oldname = $(e.target).parent().parent().attr('name');
     }
+    else oldname = $("#"+folderid).attr('name');
+  }
 
-          if(classname=='move-to'){
+  if(classname=='move-to'){
 
          //alert("move-to clicked " + classname + prevforid);
-        if ( $(window).width() < 480) {
-        $(".back-arrow").css({"display": "none"});
-        $(".left-menu").css({"display": "block"});
-      }
-          $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon" onclick="parseme(this)" name=""></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon"></i><div class="li-container"><li  onclick="parseme(this)"><i class="ion-ios-folder icon" ></i><span class="option-1">Folder</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn-move btn left" name="">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
-          open("");
+         if ( $(window).width() < 480) {
+          $(".back-arrow").css({"display": "none"});
+          $(".left-menu").css({"display": "block"});
         }
+        $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon" onclick="parseme(this)" name=""></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon"></i><div class="li-container"><li  onclick="parseme(this)"><i class="ion-ios-folder icon" ></i><span class="option-1">Folder</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn-move btn left" name="">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
+        open("");
+      }
         //(".back-icon").css({"display": "none"});
         if(classname=='close-icon'){
 
         //  alert("clicked " + classname);
         $(".move-to-submenu").css({"display": "none"});
-        }
-        if(classname=='back-icon'){
+      }
+      if(classname=='back-icon'){
 
           //alert("back icon clicked  " + classname);
       //  $(".move-to-submenu").css({"display": "none"});
-        }
-        if(classname=='btn-move'){
-          src = $(".btn-move").parent().parent().parent().attr("name");
-          if(subdir != "") src = subdir+'/'+src;
-          dest = $(".btn-move").attr("name");
-          move(src,dest);
-          return;
+    }
+    if(classname=='btn-move'){
+      src = $(".btn-move").parent().parent().parent().attr("name");
+      if(subdir != "") src = subdir+'/'+src;
+      dest = $(".btn-move").attr("name");
+      move(src,dest);
+      return;
           //alert("btn move clicked  " + classname);
       //  $(".move-to-submenu").css({"display": "none"});
-        }
-});
+    }
+  });
 function move(src,dest){
   $.ajax({
     url:base+"manage/move",

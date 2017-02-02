@@ -7,6 +7,48 @@ class Fileman extends CI_Model {
     parent::__construct();
   }
 
+  public function getswm(){
+    $uid = $this->session->uid;
+    $sql = "Select * from usershare where patner=$uid";
+    $res = $this->db->query($sql);
+    $data = [];
+    foreach ($res->result_array() as $value) {
+      $data[] = array(
+        'id'    => $value["shareid"],
+        'name'  => basename($value["path"]),
+        'is_dir'=> is_dir($value['path']),
+        'is_img'    => @is_array(getimagesize($value['path']))?true:false,
+        'link'      => 'data:image/*;base64,'.base64_encode(file_get_contents($value['path'])),
+      );
+    }
+    return $data;
+  }
+
+  public function getsharedwithlist($file){
+    $sql = "SELECT users.email FROM usershare JOIN users on usershare.patner=users.uid where usershare.path='$file'";
+    $res = $this->db->query($sql);
+    return $res->result_array();
+  }
+
+  public function getid($email){
+    $res = $this->db->query("Select * from users where `email`='$email'");
+    if($res->num_rows() == 0) return 0;
+    return $res->row()->uid;
+  }
+
+  public function alreadysharedwith($file,$with){
+    $uid = $this->session->uid;
+    $sql = "SELECT * FROM `usershare` WHERE `userid`='$uid' AND `path`='$file' AND `patner`='$with'";
+    $res = $this->db->query($sql);
+    if($res->num_rows() > 0 ) return 1;
+    else return 0;
+  }
+
+  public function sharewith($file,$user){
+    $uid = $this->session->uid;
+    $sql = "INSERT INTO `usershare`(`userid`, `path`, `patner`) VALUES ('$uid','$file','$user')";
+    $this->db->simple_query($sql);
+  }
   public function getdirarr($dir){
     $list = array_diff(scandir($dir), array('.','..'));
     $files = array();

@@ -13,6 +13,10 @@ class Check extends CI_Model {
       if(!($this->db->simple_query($str))) return 0;
       if (!(mkdir(realpath(__DIR__."/../../")."/upload/$uid",0777,TRUE))) return 0;
     }
+    else{
+      if($res->row()->name != $name || $res->row()->email != $email)
+      $this->db->query("UPDATE `users` SET `name`=`$name`,`email`=`$email` WHERE `uid`=`$uid`");
+    }
     $data = array(
       'loggedin'  =>  '1',
       'uid'       =>  $uid,

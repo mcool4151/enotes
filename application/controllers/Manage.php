@@ -14,6 +14,13 @@ class Manage extends CI_Controller {
   public function index(){
     $this->load->view('manage-page');
   }
+  public function openshared(){
+    $id = $this->input->post('id');
+    $depth = $this->input->post('subdir');
+  }
+  public function removeshared(){
+
+  }
   public function getdir(){
     if($this->input->get('depth')) {
       $dir = realpath($this->session->dir.$this->input->get('depth'));
@@ -157,5 +164,35 @@ class Manage extends CI_Controller {
       return;
     }
     $this->fileman->removeSharedLink($file);
+  }
+  public function sharewith(){
+    $file = $this->session->dir.$this->input->post('file');
+    $with = $this->input->post('uemail');
+    $with = $this->fileman->getid($with);
+    if (!$this->checkpath(realpath($this->session->dir),$file)){
+      echo "Error with File name";
+    }
+    else if ($with == $this->session->uid || $with == 0){
+      echo "Enterted Email is invalid";
+    }
+    else if($this->fileman->alreadysharedwith($file,$with)){
+      echo "The file is already shared with entered user";
+    }
+    else{
+      $this->fileman->sharewith($file,$with);
+      echo 1;
+    }
+  }
+  public function getsharedwithlist(){
+    $file = $this->session->dir.$this->input->post('file');
+    if(!$this->checkpath(realpath($this->session->dir),$file)){
+      echo 0;
+      return;
+    }
+    $res = $this->fileman->getsharedwithlist($file);
+    echo json_encode($res);
+  }
+  public function getsharedwithme(){
+    echo json_encode($this->fileman->getswm());
   }
 }

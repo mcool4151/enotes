@@ -141,18 +141,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="file" draggable="true" id="file13"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file2"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true" id="file14"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file15" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
-<<<<<<< HEAD
-            </ul><!--
-            <ul class="group-container" >
-=======
             </ul>
             <ul class="group-container" style="display:none;">
->>>>>>> 16af9e31051a3933c2a72098fd1d20cb64ef6e0a
-              <li class="folder" draggable="true"  id="group1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input checked    type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="group2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="group3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="group4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input   type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
-              <li class="folder" draggable="true"  id="group5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" id="group4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input   type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" id="group1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input checked    type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" id="group2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" id="group3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
+              <li class="folder" id="group5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
             </ul>
             <!--<h3 class="files-text" >Files</h3>
             <ul class="file-container" id="files">
@@ -311,6 +306,10 @@ function makemeactive(e){
   $(e).nextAll().remove();
   $(e).addClass("active-tab");
   subdir = $(e).attr('name');
+  if(prevsidelinkid == 'shared-with-me' && subdir == ''){
+    $("#"+prevsidelinkid).click();
+    return;
+  }
   fnr();
 }
 //clearnavbar();
@@ -331,7 +330,7 @@ document.addEventListener("dragstart", function(event) {
     // Change the opacity of the draggable element
     c=document.getElementById(event.target.id).childNodes;
     var ghostImage = c[1].cloneNode(true);
-//$("h3").text("c[1] = "+ c[1] +"classname " + classname + " id " + event.target.id);
+////$("h3").text("c[1] = "+ c[1] +"classname " + classname + " id " + event.target.id);
 
      ghostImage.style.position = "absolute";
      ghostImage.style.backgroundColor="white"
@@ -373,7 +372,7 @@ document.addEventListener("dragend", function(event) {
 
 // When the draggable p element enters the droptarget, change the DIVS's border style
 document.addEventListener("dragenter", function(event) {
-  $("h2").text("event.target.className " + event.target.id);
+  //$("h2").text("event.target.className " + event.target.id);
 
    if (event.target.className == "folder" || event.target.className == "left-nav-bar-text") {
         $(event.target).css({"border":"1px solid gray"});
@@ -412,7 +411,7 @@ document.addEventListener("dragleave", function(event) {
 */
 document.addEventListener("drop", function(event) {
     event.preventDefault();
-    $("h2").text(event.target.className);
+    //$("h2").text(event.target.className);
     if ( (event.target.className == "folder" || event.target.className == "left-nav-bar-text") && event.target.id!=event.dataTransfer.getData("Text")) {
         var data = event.dataTransfer.getData("Text");
         //alert(event.target.id);
@@ -442,6 +441,7 @@ document.addEventListener("drop", function(event) {
             return
           }
           ff(src);
+          fnr();
           return;
         }
         else if(event.target.id == 'trash'){
