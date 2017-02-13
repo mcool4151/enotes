@@ -13,42 +13,6 @@ $(document).ready(function(){
   function updatesubdir(v){
     alert(v);
   }
-  $( "body" ).keyup(function() {
-    lastchipadded = $(".chip-container .chips-here span").last();
-    var key = event.keyCode || event.charCode;
-    if( key == 8 || key == 46 )//detect backspace & delete key
-    {
-      var value=$.trim($(".chip-container input").val());
-      if(value.length==0)
-      {
-        //alert($("#option-2").text());
-        $(".chip-container input").val($(lastchipadded).text());
-        $(lastchipadded).parent().remove();
-      }
-    }
-    if (key == 13) //detect enter key
-    {
-      var text;
-      text=$(".chip-container input").val();
-      $(".chip-container input").val("");
-      if(subdir == "") src = oldname;
-      else src = subdir+"/"+oldname;
-      //alert(text);
-      $.ajax({
-        url:base+"manage/sharewith",
-        type:"POST",
-        data:{uemail:text,file:src},
-        success:function(result){
-          if(result != 1) {
-            alert(result);
-            return;
-          }
-          $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
-          $(".chip-container .chips-here span").last().text(text);
-        }
-      });
-    }
-  });
   function getdel(){
     $.ajax({
       url:base+"manage/getdel",
@@ -645,11 +609,47 @@ $("body").click(function(e) {
 
     }*/
     /*$(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label><div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><form ><input value="Enter email to share file" class="email-input" /></form><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');*/
-    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Entre email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"><option value="Avish Kakia">avishladalia1996@gmail.com</option><option value="medium">$20 USD</option><option value="large">$25 USD</option></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Enter email here" list="friend-email" autocomplete="off"  name="browser" id="members"><datalist id="friend-email"></datalist></div><div class="button-done">Share</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
     $(".chip-container .chips-here span").remove();
     $('#checkbox').attr('checked',false);
     if(subdir == "") src = oldname;
     else src = subdir+"/"+oldname;
+    $( ".chip-container input" ).keyup(function(event) {
+      lastchipadded = $(".chip-container .chips-here span").last();
+      var key = event.keyCode || event.charCode;
+      if( key == 8 || key == 46 )//detect backspace & delete key
+      {
+        var value=$.trim($(".chip-container input").val());
+        if(value.length==0)
+        {
+          //alert($("#option-2").text());
+          $(".chip-container input").val($(lastchipadded).text());
+          $(lastchipadded).parent().remove();
+        }
+      }
+      if (key == 13) //detect enter key
+      {
+        var text;
+        text=$(".chip-container input").val();
+        $(".chip-container input").val("");
+        if(subdir == "") src = oldname;
+        else src = subdir+"/"+oldname;
+        //alert(text);
+        $.ajax({
+          url:base+"manage/sharewith",
+          type:"POST",
+          data:{uemail:text,file:src},
+          success:function(result){
+            if(result != 1) {
+              alert(result);
+              return;
+            }
+            $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
+            $(".chip-container .chips-here span").last().text(text);
+          }
+        });
+      }
+    });
     function checkshared(){
       $.ajax({
         url:base+"manage/checkshared",
@@ -796,7 +796,7 @@ if(classname == 'dot-icon' )
 
   if(classname=='move-to'){
 
-         //alert("move-to clicked " + classname + prevforid);
+        alert("move-to clicked " + classname + prevforid);
          if ( $(window).width() < 480) {
           $(".back-arrow").css({"display": "none"});
           $(".left-menu").css({"display": "block"});

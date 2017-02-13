@@ -30,6 +30,37 @@ class Fileman extends CI_Model {
     return $res->result_array();
   }
 
+  public function checkgroup($group){
+    $sql = "SELECT * FROM `groups` WHERE uniqName='$group'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
+
+  public function creategroup($id,$uniqname,$desc,$ispublic,$tags){
+    $sql = "INSERT INTO `groups`(`userid`, `uniqName`, `description`, `isPublic`, `Tags`) VALUES ('$id','$uniqname',$desc,'$ispublic','$tags')";
+    if ($this->db->query($sql)) return 1;
+  }
+
+  public function addToGroup($id,$groupname){
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname'";
+    $res = $this->db->query($sql);
+    if(!$res->num_rows()) exit 1;
+    $gid = $res->row()->id;
+    $sql = "INSERT INTO `groupmembers`(`groupid`, `userid`) VALUES ('$gid','$id')";
+    if($this->db->query($sql))return 1;
+    else return 0;
+  }
+
+  public function joinGroup($id,$groupname){
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname' AND `isPublic`='1'";
+    $res = $this->db->query($sql);
+    if(!$res->num_rows()) exit 1;
+    $gid = $res->row()->id;
+    $sql = "INSERT INTO `groupmembers`(`groupid`, `userid`) VALUES ('$gid','$id')";
+    if($this->db->query($sql))return 1;
+    else return 0;
+  }
+
   public function getid($email){
     $res = $this->db->query("Select * from users where `email`='$email'");
     if($res->num_rows() == 0) return 0;

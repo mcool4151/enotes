@@ -183,6 +183,33 @@ class Manage extends CI_Controller {
       echo 1;
     }
   }
+  public function creategroup(){
+    $uniqname = $this->input->post('uniqname');
+    if(checkgroup($uniqname)){
+      echo "Group already exists, Please Enter a different Group Name";
+      return;
+    }
+    $desc = $this->input->post('desc');
+    $tags = $this->input->post('tags');
+    $ispublic = 1;
+    $id = $this->session->uid;
+    echo $this->fileman->creategroup($id,$uniqname,$desc,$ispublic,$tags);
+    $this->fileman->addToGroup($id,$uniqname);
+  }
+  public function addToGroup(){
+    $group = $this->input->post('group');
+    $email = $this->input->post('email');
+    $id = $this->fileman->getid($email);
+    $this->fileman->addToGroup($id,$group);
+  }
+  public function joinGroup(){
+    $this->input->post('group');
+    $id = $this->session->id;
+    $this->fileman->addToGroup($id,$group);
+  }
+  public function checkgroup($name){
+    return $this->fileman->checkgroup($name);
+  }
   public function getsharedwithlist(){
     $file = $this->session->dir.$this->input->post('file');
     if(!$this->checkpath(realpath($this->session->dir),$file)){
