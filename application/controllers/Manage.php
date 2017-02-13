@@ -165,6 +165,12 @@ class Manage extends CI_Controller {
     }
     $this->fileman->removeSharedLink($file);
   }
+  public function checkuser(){
+    $with = $this->input->post('uemail');
+    $with = $this->fileman->getid($with);
+    if($with == 0) echo 0;
+    else echo 1;
+  }
   public function sharewith(){
     $file = $this->session->dir.$this->input->post('file');
     $with = $this->input->post('uemail');
@@ -172,8 +178,12 @@ class Manage extends CI_Controller {
     if (!$this->checkpath(realpath($this->session->dir),$file)){
       echo "Error with File name";
     }
-    else if ($with == $this->session->uid || $with == 0){
-      echo "Enterted Email is invalid";
+    else if (($with == $this->session->uid || $with == 0) && $this->checkgroup($with) == 0){
+      echo "Enterted Email/Group is invalid";
+    }
+    else if(($with == $this->session->uid || $with == 0) && $this->checkgroup($with) != 0) {
+      $this->fileman->sharewithGroup($file,$this->input->post('uemail'));
+      echo 1;
     }
     else if($this->fileman->alreadysharedwith($file,$with)){
       echo "The file is already shared with entered user";
@@ -185,7 +195,7 @@ class Manage extends CI_Controller {
   }
   public function creategroup(){
     $uniqname = $this->input->post('uniqname');
-    if(checkgroup($uniqname)){
+    if($this->checkgroup($uniqname)){
       echo "Group already exists, Please Enter a different Group Name";
       return;
     }

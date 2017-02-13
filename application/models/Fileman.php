@@ -30,21 +30,41 @@ class Fileman extends CI_Model {
     return $res->result_array();
   }
 
+  public function sharewithGroup($file,$group){
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname'";
+    $res = $this->db->query($sql);
+    if(!$res->num_rows()) {
+      echo "eroor";
+      exit(1);
+    }
+    $gid = $res->row()->id;
+    $id = $this->session->id;
+    $sql = "SELECT * FROM `groupmembers` where `userid`='$id' AND `groupid`='$gid'";
+    if($this->db->query($sql)->num_rows() > 0){
+      $sql = "INSERT INTO `groupShare`(`userid`, `path`, `patner`) VALUES ('$id','$file','$gid')";
+      $this->db->query($sql);
+    }
+  }
+
   public function checkgroup($group){
     $sql = "SELECT * FROM `groups` WHERE uniqName='$group'";
     $res = $this->db->query($sql);
-    return $res->num_rows();
+    if ($res->num_rows() == 0) return 0;
+    else return $res->row()->id;
   }
 
   public function creategroup($id,$uniqname,$desc,$ispublic,$tags){
-    $sql = "INSERT INTO `groups`(`userid`, `uniqName`, `description`, `isPublic`, `Tags`) VALUES ('$id','$uniqname',$desc,'$ispublic','$tags')";
+    $sql = "INSERT INTO `groups`(`userid`, `uniqName`, `description`, `isPublic`, `Tags`) VALUES ('$id','$uniqname','$desc','$ispublic','$tags')";
     if ($this->db->query($sql)) return 1;
   }
 
   public function addToGroup($id,$groupname){
     $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname'";
     $res = $this->db->query($sql);
-    if(!$res->num_rows()) exit 1;
+    if(!$res->num_rows()) {
+      echo "eroor";
+      exit(1);
+    }
     $gid = $res->row()->id;
     $sql = "INSERT INTO `groupmembers`(`groupid`, `userid`) VALUES ('$gid','$id')";
     if($this->db->query($sql))return 1;
@@ -54,7 +74,7 @@ class Fileman extends CI_Model {
   public function joinGroup($id,$groupname){
     $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname' AND `isPublic`='1'";
     $res = $this->db->query($sql);
-    if(!$res->num_rows()) exit 1;
+    if(!$res->num_rows()) exit(1);
     $gid = $res->row()->id;
     $sql = "INSERT INTO `groupmembers`(`groupid`, `userid`) VALUES ('$gid','$id')";
     if($this->db->query($sql))return 1;
