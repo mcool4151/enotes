@@ -325,6 +325,29 @@ $(document).ready(function(){
           folders = [];
           reloadfiles();
           reloadfolders();
+          $('.group-container').empty();
+          $.ajax({
+            url:base+'manage/getmygroups',
+            async:false,
+            success:function(res){
+              groups = jQuery.parseJSON(res);
+              $.each(groups,function(index,value){
+                exclass = "shared";
+                shortname = value.name;
+                if ( $(window).width() < 480) {
+                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else if($(window).width() < 1025){
+                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else {
+                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                }
+                $('.group-container').css({"display": "block"});
+                $('.group-container').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+              });
+            }
+          });
           return;
         }
         else {
@@ -349,6 +372,32 @@ $(document).ready(function(){
         else if(prevsidelinkid == 'shared-with-me'){
           id = $("#"+sidelinkid).attr('data-index');
           return;
+        }
+        else if(prevsidelinkid == 'group'){
+          grp = $(e.target).attr('name');
+          $.ajax({
+            url:base+'manage/opengroup',
+            type:"POST",
+            data:{uniqName:grp},
+            success:function(res){
+              files = jQuery.parseJSON(res);
+              $.each(files,function(index,value){
+                exclass = "";
+                shortname = value.name;
+                if ( $(window).width() < 480) {
+                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else if($(window).width() < 1025){
+                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else {
+                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                }
+                $('.group-container').css({"display": "block"});
+                $('.group-container').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+              });
+            },
+          });
         }
         else updatenavbar($("#"+sidelinkid).attr('name'),subdir);
         activeupdate("saved-notes","Saved Notes");
@@ -750,6 +799,7 @@ $("body").click(function(e) {
       $.ajax({
         url:base+"manage/getsharedwithlist",
         type:"POST",
+        async:false,
         data:{file:src},
         success: function(result){
           res = jQuery.parseJSON(result);
@@ -759,7 +809,21 @@ $("body").click(function(e) {
         }
       });
     }
+    function getsharedwithgrouplist(){
+      $.ajax({
+        url:base+"manage/getsharedwithgrouplist",
+        type:"POST",
+        data:{file:src},
+        success: function(result){
+          res = jQuery.parseJSON(result);
+          $.each(res,function(index,value){
+            $(".chips-here").append('<span class="chip"><i class="ion-android-people"></i><span class="shared-email">'+value.uniqName+'</span><i class="remove-email ion-close"></i></span>');
+          });
+        }
+      });
+    }
     getsharedwithlist();
+    getsharedwithgrouplist();
     checkshared();
     $('#checkbox').change(function (){
       if($(this).is(":checked")){

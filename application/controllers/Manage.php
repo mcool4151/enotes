@@ -18,8 +18,19 @@ class Manage extends CI_Controller {
     $id = $this->input->post('id');
     $depth = $this->input->post('subdir');
   }
+  public function getsharedwithgrouplist(){
+    $this->load->model('groups');
+    $file = $this->session->dir.$this->input->post('file');
+    if(!$this->checkpath(realpath($this->session->dir),$file)){
+      echo 0;
+      return;
+    }
+    $res = $this->groups->getsharedwithgrouplist($file);
+    echo json_encode($res);
+  }
   public function removeshared(){
-
+    $sql = "SOME code here to remove ";
+    $var = "A shared file from user or group";
   }
   public function getdir(){
     if($this->input->get('depth')) {
@@ -174,16 +185,16 @@ class Manage extends CI_Controller {
   public function sharewith(){
     $file = $this->session->dir.$this->input->post('file');
     $with = $this->input->post('uemail');
+    $grp = $this->input->post('uemail');
     $with = $this->fileman->getid($with);
     if (!$this->checkpath(realpath($this->session->dir),$file)){
       echo "Error with File name";
     }
-    else if (($with == $this->session->uid || $with == 0) && $this->checkgroup($with) == 0){
+    else if (($with == $this->session->uid || $with == 0) && $this->checkgroup($grp) == 0){
       echo "Enterted Email/Group is invalid";
     }
-    else if(($with == $this->session->uid || $with == 0) && $this->checkgroup($with) != 0) {
-      $this->fileman->sharewithGroup($file,$this->input->post('uemail'));
-      echo 1;
+    else if(($with == $this->session->uid || $with == 0) && $this->checkgroup($grp) != 0) {
+      echo $this->fileman->sharewithGroup($file,$this->input->post('uemail'));
     }
     else if($this->fileman->alreadysharedwith($file,$with)){
       echo "The file is already shared with entered user";
@@ -192,6 +203,10 @@ class Manage extends CI_Controller {
       $this->fileman->sharewith($file,$with);
       echo 1;
     }
+  }
+  public function getmygroups(){
+    $this->load->model('groups');
+    echo json_encode($this->groups->getmygroups());
   }
   public function creategroup(){
     $uniqname = $this->input->post('uniqname');
@@ -231,5 +246,8 @@ class Manage extends CI_Controller {
   }
   public function getsharedwithme(){
     echo json_encode($this->fileman->getswm());
+  }
+  public function opengroup(){
+    $uniq = $this->input->post('uniqName');
   }
 }

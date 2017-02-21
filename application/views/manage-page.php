@@ -149,6 +149,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="folder" id="group3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" id="group5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
             </ul>
+            <h3 class="sug-groups-text" style="display:none;">Suggested Groups</h3>
+            <ul class="sug-group-container" style="display:none;">
+            </ul>
             <!--<h3 class="files-text" >Files</h3>
             <ul class="file-container" id="files">
               <li class="file" draggable="true"id="file12" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>

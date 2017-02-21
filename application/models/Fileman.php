@@ -24,6 +24,9 @@ class Fileman extends CI_Model {
     return $data;
   }
 
+  public function openswm(){
+  }
+
   public function getsharedwithlist($file){
     $sql = "SELECT users.email FROM usershare JOIN users on usershare.patner=users.uid where usershare.path='$file'";
     $res = $this->db->query($sql);
@@ -31,23 +34,30 @@ class Fileman extends CI_Model {
   }
 
   public function sharewithGroup($file,$group){
-    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname'";
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$group'";
     $res = $this->db->query($sql);
     if(!$res->num_rows()) {
       echo "eroor";
       exit(1);
     }
     $gid = $res->row()->id;
-    $id = $this->session->id;
+    $id = $this->session->uid;
+    $sql = "SELECT * from groupShare where patner='$gid' AND path='$file'";
+    if($this->db->query($sql)->num_rows() > 0) {
+      echo "File Already Shared with group";
+      return;
+    }
     $sql = "SELECT * FROM `groupmembers` where `userid`='$id' AND `groupid`='$gid'";
     if($this->db->query($sql)->num_rows() > 0){
       $sql = "INSERT INTO `groupShare`(`userid`, `path`, `patner`) VALUES ('$id','$file','$gid')";
-      $this->db->query($sql);
+      if($this->db->query($sql)) return 1;
+      else return 0;
     }
   }
 
   public function checkgroup($group){
-    $sql = "SELECT * FROM `groups` WHERE uniqName='$group'";
+    $uid = $this->session->uid;
+    $sql = "SELECT groups.id,groups.userid,groups.uniqName FROM groups where groups.id IN (SELECT groupmembers.groupid FROM groupmembers WHERE groupmembers.userid='$uid' AND groups.uniqName='$group')";
     $res = $this->db->query($sql);
     if ($res->num_rows() == 0) return 0;
     else return $res->row()->id;
