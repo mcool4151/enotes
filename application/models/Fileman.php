@@ -91,6 +91,16 @@ class Fileman extends CI_Model {
     else return 0;
   }
 
+  public function leaveGroup($id,$groupname){
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$groupname' AND `isPublic`='1'";
+    $res = $this->db->query($sql);
+    if(!$res->num_rows()) exit(1);
+    $gid = $res->row()->id;
+    $sql = "DELETE FROM `groupmembers` WHERE `groupid`='$gid' AND `userid`='$id'";
+    if($this->db->query($sql))return 1;
+    else return 0;
+  }
+
   public function getid($email){
     $res = $this->db->query("Select * from users where `email`='$email'");
     if($res->num_rows() == 0) return 0;

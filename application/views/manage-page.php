@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script type="text/javascript">
     //constants
     var base = "<?php echo base_url(); ?>";
-    var subdir = "";
+    var subdir = '';
     var logout = base + "/manage/logout";
     var foldercount=0;
     var filecount=0;
@@ -142,15 +142,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="file" draggable="true" id="file14"><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file3"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file15" ><div class="file-preview"  style="  background-image: url('http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png') ;"></div><div class="file-name" id="file4"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
             </ul>
-            <ul class="group-container" style="display:none;">
+            <ul class="group-container my-group" style="display:none;">
               <li class="folder" id="group4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input   type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" id="group1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input checked    type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" id="group2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" id="group3"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" id="group5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><label class="toggle-switch switch"><input  type="checkbox"><div class="slider round"></div></label><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
             </ul>
+            <h3 class="sub-groups-text" style="display:none;">Subscribed Groups</h3>
+            <ul class="sub-group group-container" style="display:none;">
+            </ul>
             <h3 class="sug-groups-text" style="display:none;">Suggested Groups</h3>
-            <ul class="sug-group-container" style="display:none;">
+            <ul class="sug-group group-container" style="display:none;">
             </ul>
             <!--<h3 class="files-text" >Files</h3>
             <ul class="file-container" id="files">
@@ -295,7 +298,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
 
 <script>
-
+function unsubscribe(evt){
+  $.ajax({
+    url:base+'manage/leavegroup',
+    data:{group:$(evt).attr('name')},
+    type:'POST',
+    success:function(res){
+      $('#group').trigger('click');
+    }
+  });
+}
+function subscribe(evt){
+  $.ajax({
+    url:base+'manage/joingroup',
+    data:{group:$(evt).attr('name')},
+    type:'POST',
+    success:function(res){
+      $('#group').trigger('click');
+    }
+  });
+}
 function updatenavbar(name,str){
   $(".nav-bar-title :last-child").removeClass("active-tab");
   $(".nav-bar-title").append('<i class="ion-ios-arrow-right"></i><span onClick="makemeactive(this)" name="'+str+'" class="directory2 directory active-tab">'+name+'</span>');
@@ -311,6 +333,14 @@ function makemeactive(e){
   subdir = $(e).attr('name');
   if(prevsidelinkid == 'shared-with-me' && subdir == ''){
     $("#"+prevsidelinkid).click();
+    return;
+  }
+  else if(prevsidelinkid == 'group' && subdir == ''){
+    $("#"+prevsidelinkid).click();
+    return;
+  }
+  else if(prevsidelinkid == 'group'){
+    window.loadgroup();
     return;
   }
   fnr();

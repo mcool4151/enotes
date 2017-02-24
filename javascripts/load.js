@@ -1,4 +1,11 @@
 var oldname;
+function displaynone(){
+  $('.sub-groups-text').css({'display':'none'});
+  $('.sub-group').css({'display':'none'});
+  $('.sug-groups-text').css({'display':'none'});
+  $('.sug-group').css({'display':'none'});
+  $(".my-group").css({"display":"none"});
+}
 $(document).ready(function(){
   var list = undefined;
   var files = [];
@@ -252,26 +259,26 @@ $(document).ready(function(){
       if(folderClassname != 'dot-icon' ){
         sidelinkid = $(e.target).prop("id");
         if(sidelinkid == "saved-notes"){
-          $(".group-container").css({"display":"none"});
+          displaynone();
           clearnavbar();
           subdir = "";
         }
         else if(sidelinkid == 'favorites'){
-          $(".group-container").css({"display":"none"});
+          displaynone();
           clearnavbar();
           subdir = "";
           getfav();
           return;
         }
         else if(sidelinkid == 'trash'){
-          $(".group-container").css({"display":"none"});
+          displaynone();
           clearnavbar();
           subdir = "";
           getdel();
           return;
         }
         else if(sidelinkid == 'recent'){
-          $(".group-container").css({"display":"none"});
+          displaynone();
           clearnavbar();
           files = [];
           folders = [];
@@ -280,7 +287,7 @@ $(document).ready(function(){
           return;
         }
         else if(sidelinkid == 'shared-with-me'){
-          $(".group-container").css({"display":"none"});
+          displaynone();
           clearnavbar();
           files = [];
           folders = [];
@@ -319,13 +326,14 @@ $(document).ready(function(){
           return;
         }
         else if(sidelinkid == 'group'){
-          $(".group-container").css({"display":"block"});
           clearnavbar();
+          subdir = "";
           files = [];
           folders = [];
           reloadfiles();
           reloadfolders();
-          $('.group-container').empty();
+          displaynone();
+          $('.my-group').empty();
           $.ajax({
             url:base+'manage/getmygroups',
             async:false,
@@ -343,15 +351,70 @@ $(document).ready(function(){
                 else {
                   if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
                 }
-                $('.group-container').css({"display": "block"});
-                $('.group-container').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+                $('.my-group').css({"display": "block"});
+                $('.my-group').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+              });
+            }
+          });
+          $.ajax({
+            url:base+'manage/getsubgroups',
+            async:false,
+            success:function(res){
+              $('.sub-groups-text').css({'display':'none'});
+              $('.sub-group').css({'display':'none'});
+              $('.sub-group').empty();
+              groups = jQuery.parseJSON(res);
+              $.each(groups,function(index,value){
+                exclass = "shared";
+                shortname = value.name;
+                if ( $(window).width() < 480) {
+                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else if($(window).width() < 1025){
+                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else {
+                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                }
+                $('.sub-groups-text').css({'display':'block'});
+                $('.sub-group').css({'display':'block'});
+                $('.sub-group').append('<li class="folder" id="group'+index+'" name="'+value.name+'"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">'+shortname+'</span><label class="toggle-switch switch"><input checked type="checkbox" checked name="'+value.name+'" onchange="unsubscribe(this)"><div class="slider round"></div></label></li>');
+              });
+            }
+          });
+          $.ajax({
+            url:base+'manage/getrestgroups',
+            async:false,
+            success:function(res){
+              function unsubscribe(evt){
+                alert('unsubscribing '+$(evt).name());
+              }
+              $('.sug-groups-text').css({'display':'none'});
+              $('.sug-group').css({'display':'none'});
+              $('.sug-group').empty();
+              groups = jQuery.parseJSON(res);
+              $.each(groups,function(index,value){
+                exclass = "shared";
+                shortname = value.name;
+                if ( $(window).width() < 480) {
+                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else if($(window).width() < 1025){
+                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                }
+                else {
+                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                }
+                $('.sug-groups-text').css({'display':'block'});
+                $('.sug-group').css({'display':'block'});
+                $('.sug-group').append('<li class="folder" id="group'+index+'" name="'+value.name+'"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">'+shortname+'</span><label class="toggle-switch switch"><input type="checkbox" name="'+value.name+'" onchange="subscribe(this)"><div class="slider round"></div></label></li>');
               });
             }
           });
           return;
         }
         else {
-          $(".group-container").css({"display":"none"});
+          $(".my-group").css({"display":"none"});
         //      alert("entred" + sidelinkid);
         //      //$("h3").text($("#"+sidelinkid).attr('name'));
         if(prevsidelinkid == 'trash'){
@@ -374,30 +437,94 @@ $(document).ready(function(){
           return;
         }
         else if(prevsidelinkid == 'group'){
-          grp = $(e.target).attr('name');
-          $.ajax({
-            url:base+'manage/opengroup',
-            type:"POST",
-            data:{uniqName:grp},
-            success:function(res){
-              files = jQuery.parseJSON(res);
-              $.each(files,function(index,value){
-                exclass = "";
-                shortname = value.name;
-                if ( $(window).width() < 480) {
-                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-                }
-                else if($(window).width() < 1025){
-                  if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-                }
-                else {
-                  if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
-                }
-                $('.group-container').css({"display": "block"});
-                $('.group-container').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+          updatenavbar($("#"+sidelinkid).text(),subdir);
+          displaynone();
+          window.loadgroup = function(){
+            if(subdir.split('/').length == 1){
+              //loadGroupcontent
+              grp = subdir.split('/')[0];
+              $.ajax({
+                url:base+'manage/showgroup',
+                type:"POST",
+                data:{uniqName:grp},
+                success:function(res){
+                  $('.my-group').css({'display':'none'});
+                  $('.folder-container').empty();
+                  $('.file-container').empty();
+                  $('.folders-text').css({"display": "none"});
+                  $('.files-text').css({"display": "none"});
+                  files = $.parseJSON(res);
+                  $.each(files,function(index,value){
+                    exclass = "";
+                    shortname = value.name;
+                    if ( $(window).width() < 480) {
+                      if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                    }
+                    else if($(window).width() < 1025){
+                      if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                    }
+                    else {
+                      if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                    }
+                    if(value.is_dir == true){
+                      $('.folders-text').css({"display": "block"});
+                      $('.folder-container').css({'display':'block'});
+                      $('.folder-container').append("<li data-index=\""+value.index+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.id+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>")
+                    }
+                    else {
+                      $('.file-container').css({'display':'block'});
+                      $('.files-text').css({"display": "block"});
+                    }
+                  });
+                },
               });
-            },
-          });
+              return;
+            }
+            grp = subdir.split('/')[0];
+            id = subdir.split('/')[1];
+            gsub = subdir.replace(grp,'');
+            gsub = gsub.replace('/'+id,'');
+            $.ajax({
+              url:base+'manage/opengroup',
+              type:"POST",
+              data:{depth:gsub,sid:id},
+              success:function(res){
+                $('.my-group').css({'display':'none'});
+                $('.folder-container').empty();
+                $('.file-container').empty();
+                $('.folders-text').css({"display": "none"});
+                $('.files-text').css({"display": "none"});
+                files = $.parseJSON(res);
+                $.each(files,function(index,value){
+                  exclass = "";
+                  shortname = value.name;
+                  if ( $(window).width() < 480) {
+                    if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  }
+                  else if($(window).width() < 1025){
+                    if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  }
+                  else {
+                    if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                  }
+                  if(value.is_dir == true){
+                    $('.folders-text').css({"display": "block"});
+                    $('.folder-container').css({'display':'block'});
+                    $('.folder-container').append("<li data-index=\""+value.index+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>")
+                  }
+                  else {
+                    if(value.is_img == true) img = value.link;
+                    else img = defaultimg;
+                    $('.file-container').css({'display':'block'});
+                    $('.files-text').css({"display": "block"});
+                    $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.name+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+                  }
+                });
+              },
+            });
+          }
+          window.loadgroup();
+          return;
         }
         else updatenavbar($("#"+sidelinkid).attr('name'),subdir);
         activeupdate("saved-notes","Saved Notes");
@@ -567,7 +694,7 @@ $(".new-button-container").click(function(e) {
 }
 if(classname1 == 'create-group')
 {
-  $(".body").append('<div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" id="members"></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div>');
+  $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" id="members"></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');
   $(".button-done").on('click',function(){
     var tags=undefined;
     $(".chip-container:not(.memb) .shared-email").each(function(){
@@ -597,7 +724,7 @@ if(classname1 == 'create-group')
     });
   });
   $(".chip-container .chips-here span").remove();
-  $( ".chip-container.memb input" ).keyup(function(event) {
+  $( ".chip-container.memb input" ).keydown(function(event) {
     lastchipadded = $(".chip-container.memb .chips-here span").last();
     var key = event.keyCode || event.charCode;
     if( key == 8 || key == 46 )//detect backspace & delete key
@@ -631,7 +758,7 @@ if(classname1 == 'create-group')
       });
     }
   });
-  $( ".chip-container:not(.memb) input" ).keyup(function(event) {
+  $( ".chip-container:not(.memb) input" ).keydown(function(event) {
     lastchipadded = $(".chip-container:not(.memb) .chips-here span").last();
     var key = event.keyCode || event.charCode;
     if( key == 8 || key == 46 )//detect backspace & delete key
@@ -956,6 +1083,7 @@ if(classname == 'dot-icon' )
     }
     if(classname=='btn-move'){
       src = $(".btn-move").parent().parent().parent().attr("name");
+      if(src == undefined) src = $(".btn-move").parent().parent().parent().parent().attr("name");
       if(subdir != "") src = subdir+'/'+src;
       dest = $(".btn-move").attr("name");
       move(src,dest);

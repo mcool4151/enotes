@@ -208,6 +208,14 @@ class Manage extends CI_Controller {
     $this->load->model('groups');
     echo json_encode($this->groups->getmygroups());
   }
+  public function getsubgroups(){
+    $this->load->model('groups');
+    echo json_encode($this->groups->getSubGroups());
+  }
+  public function getrestgroups(){
+    $this->load->model('groups');
+    echo json_encode($this->groups->getRestGroups());
+  }
   public function creategroup(){
     $uniqname = $this->input->post('uniqname');
     if($this->checkgroup($uniqname)){
@@ -228,9 +236,14 @@ class Manage extends CI_Controller {
     $this->fileman->addToGroup($id,$group);
   }
   public function joinGroup(){
-    $this->input->post('group');
-    $id = $this->session->id;
-    $this->fileman->addToGroup($id,$group);
+    $group = $this->input->post('group');
+    $id = $this->session->uid;
+    $this->fileman->joinGroup($id,$group);
+  }
+  public function leavegroup(){
+    $group = $this->input->post('group');
+    $id = $this->session->uid;
+    $this->fileman->leaveGroup($id,$group);
   }
   public function checkgroup($name){
     return $this->fileman->checkgroup($name);
@@ -248,6 +261,15 @@ class Manage extends CI_Controller {
     echo json_encode($this->fileman->getswm());
   }
   public function opengroup(){
-    $uniq = $this->input->post('uniqName');
+    $_POST['sid'] = 1;
+    $uniq = $this->input->post('sid');
+    $depth = $this->input->post('depth');
+    $this->load->model('groups');
+    echo json_encode($this->groups->loadGroup($uniq,$depth));
+  }
+  public function showgroup(){
+    $gname = $this->input->post('uniqName');
+    $this->load->model('groups');
+    echo json_encode($this->groups->showGroup($gname));
   }
 }
