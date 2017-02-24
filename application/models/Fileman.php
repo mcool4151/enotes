@@ -24,7 +24,26 @@ class Fileman extends CI_Model {
     return $data;
   }
 
-  public function openswm(){
+  public function openswm($id,$depth){
+    $uid = $this->session->uid;
+    $sql = "SELECT * FROM usershare WHERE shareid='$id' AND patner='$uid'";
+    $res = $this->db->query($sql);
+    if($res->num_rows() == 0){
+      echo "Error while Opening File";
+      return 0;
+    }
+    $path = realpath($res->row()->path.$depth);
+    $list = array_diff(scandir($path), array('.','..'));
+    $data = [];
+    foreach ($list as $value) {
+      $data[] = array(
+        'name'    => $value,
+        'is_dir'  => is_dir($path.'/'.$value),
+        'is_img'  => @is_array(getimagesize($path.'/'.$value))?true:false,
+        'link'    => @is_array(getimagesize($path.'/'.$value))?'data:image/*;base64,'.base64_encode(file_get_contents($path.'/'.$value)):null,
+      );
+    }
+    return $data;
   }
 
   public function getsharedwithlist($file){

@@ -343,6 +343,10 @@ function makemeactive(e){
     window.loadgroup();
     return;
   }
+  else if(prevsidelinkid == 'shared-with-me'){
+    window.openshared();
+    return;
+  }
   fnr();
 }
 //clearnavbar();

@@ -17,6 +17,7 @@ class Manage extends CI_Controller {
   public function openshared(){
     $id = $this->input->post('id');
     $depth = $this->input->post('subdir');
+    echo json_encode($this->fileman->openswm($id,$depth));
   }
   public function getsharedwithgrouplist(){
     $this->load->model('groups');

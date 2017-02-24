@@ -282,10 +282,10 @@ $(document).ready(function(){
                 if(value.is_dir == true){
                   $('.folders-text').css({"display": "block"});
                   $('.folder-container').css({"display": "block"});
-                  $('.folder-container').append("<li data-index=\""+value.id+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+                  $('.folder-container').append("<li data-index=\""+value.id+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.id+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
                 }else {
                   $('.files-text').css({"display": "block"});
-                  $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.name+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+                  $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.id+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
                 }
               });
             }
@@ -398,7 +398,48 @@ $(document).ready(function(){
             }
           }
           else if(prevsidelinkid == 'shared-with-me'){
-            id = $("#"+sidelinkid).attr('data-index');
+            updatenavbar($("#"+sidelinkid).text(),subdir);
+            window.openshared = function(){
+              id = subdir.split('/')[0];
+              depth = subdir.replace(id,'');
+              $('.file-container').empty();
+              $('.file-container').css({'display':'block'});
+              $('.folder-container').empty();
+              $.ajax({
+                url:base+'manage/openshared',
+                data:{subdir:depth,id:id},
+                type:"POST",
+                success:function(res){
+                  list = jQuery.parseJSON(res);
+                  $('.folders-text').css({"display": "none"});
+                  $('.files-text').css({"display": "none"});
+                  $.each(list,function(index,value){
+                    exclass = "shared";
+                    shortname = value.name;
+                    if(value.is_img == true) img = value.link;
+                    else img = defaultimg;
+                    if ( $(window).width() < 480) {
+                      if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                    }
+                    else if($(window).width() < 1025){
+                      if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                    }
+                    else {
+                      if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
+                    }
+                    if(value.is_dir == true){
+                      $('.folders-text').css({"display": "block"});
+                      $('.folder-container').css({"display": "block"});
+                      $('.folder-container').append("<li data-index=\""+value.id+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+                    }else {
+                      $('.files-text').css({"display": "block"});
+                      $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.name+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+                    }
+                  });
+                }
+              });
+            }
+            window.openshared();
             return;
           }
           else if(prevsidelinkid == 'group'){
