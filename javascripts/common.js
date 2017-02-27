@@ -11,10 +11,10 @@ $(".move-to-submenu").remove({"move-to-submenu"});
 
 #group4{
   .slider{
-    visibility: hidden;
+    visibility: visible;
   }
   .dot-icon{
-    visibility: visible;
+    visibility: hidden
     right: -5px;
   }
 }
