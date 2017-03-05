@@ -461,7 +461,7 @@ $(document).ready(function(){
                     $('.files-text').css({"display": "none"});
                     files = $.parseJSON(res);
                     $.each(files,function(index,value){
-                      exclass = "";
+                      exclass = "group";
                       shortname = value.name;
                       if ( $(window).width() < 480) {
                         if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -505,7 +505,7 @@ $(document).ready(function(){
                   $('.files-text').css({"display": "none"});
                   files = $.parseJSON(res);
                   $.each(files,function(index,value){
-                    exclass = "";
+                    exclass = "group";
                     shortname = value.name;
                     if ( $(window).width() < 480) {
                       if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -667,7 +667,8 @@ $(document).ready(function(){
                 type:"POST",
                 data:{group:$("#members").val(),email:$(this).text()},
                 success:function(result){
-                  $('.close').trigger('click');
+                  $( ".modal-background-filter" ).remove();
+                  $( ".open-modal" ).remove();
                 }
               });
             });
@@ -690,7 +691,6 @@ $(document).ready(function(){
           //detect enter key
           var text;
           text=$(".chip-container.memb input").val();
-          $(".chip-container.memb input").val("");
           $.ajax({
             url:base+"manage/checkuser",
             type:"POST",
@@ -702,6 +702,7 @@ $(document).ready(function(){
               }
               $(".chips-here.memb").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+text+'</span><i class="remove-email ion-close"></i></span>');
               $(".chip-container .chips-here span");
+              $(".chip-container.memb input").val("");
             }
           });
         }
@@ -790,7 +791,6 @@ $(document).ready(function(){
           //detect enter key
           var text;
           text=$(".chip-container input").val();
-          $(".chip-container input").val("");
           if(subdir == "") src = oldname;
           else src = subdir+"/"+oldname;
           $.ajax({
@@ -804,6 +804,7 @@ $(document).ready(function(){
               }
               $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
               $(".chip-container .chips-here span").last().text(text);
+              $(".chip-container input").val("");
             }
           });
         }
