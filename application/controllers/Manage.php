@@ -262,7 +262,6 @@ class Manage extends CI_Controller {
     echo json_encode($this->fileman->getswm());
   }
   public function opengroup(){
-    $_POST['sid'] = 1;
     $uniq = $this->input->post('sid');
     $depth = $this->input->post('depth');
     $this->load->model('groups');
