@@ -2905,28 +2905,35 @@ input:checked + .slider:before {
   padding-left: 10px;
   padding-top: 12px;
   display: inline-block;
-  background-color: transparent;
+  background-color: #f8f8f8;
+  opacity: 0.3;
   color: #0d0d0d;
   font-size: 13px;
 }
 @media screen and (max-width: 1024px) {
   /* line 16, ../sass/partials/manage-page-partials/_file.scss */
   .file {
-    height: 170px;
+    height: 160px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-right: 0px;
   }
 }
 @media screen and (max-width: 480px) {
   /* line 16, ../sass/partials/manage-page-partials/_file.scss */
   .file {
     font-size: 11px;
-    height: 145px;
+    height: 135px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-right: 0px;
   }
 }
-/* line 35, ../sass/partials/manage-page-partials/_file.scss */
+/* line 44, ../sass/partials/manage-page-partials/_file.scss */
 .file span {
   vertical-align: text-top;
 }
-/* line 38, ../sass/partials/manage-page-partials/_file.scss */
+/* line 47, ../sass/partials/manage-page-partials/_file.scss */
 .file .file-preview {
   background-image: url("http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png");
   background-size: cover;
@@ -2939,45 +2946,49 @@ input:checked + .slider:before {
   box-shadow: 0px 0px 25px #e6e6e6;
 }
 @media screen and (max-width: 1024px) {
-  /* line 38, ../sass/partials/manage-page-partials/_file.scss */
+  /* line 47, ../sass/partials/manage-page-partials/_file.scss */
   .file .file-preview {
     height: 120px;
+    width: 100%;
+    border: none;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 38, ../sass/partials/manage-page-partials/_file.scss */
+  /* line 47, ../sass/partials/manage-page-partials/_file.scss */
   .file .file-preview {
     height: 100px;
+    width: 100%;
+    border: none;
   }
 }
-/* line 55, ../sass/partials/manage-page-partials/_file.scss */
+/* line 68, ../sass/partials/manage-page-partials/_file.scss */
 .file .file-name {
   position: relative;
   width: 96%;
   height: 40px;
   padding-left: 10px;
-  padding-top: 6px;
+  padding-top: 11px;
 }
 @media screen and (max-width: 480px) {
-  /* line 55, ../sass/partials/manage-page-partials/_file.scss */
+  /* line 68, ../sass/partials/manage-page-partials/_file.scss */
   .file .file-name {
     height: 30px;
   }
 }
-/* line 64, ../sass/partials/manage-page-partials/_file.scss */
+/* line 79, ../sass/partials/manage-page-partials/_file.scss */
 .file .file-name .folder-icon {
   font-size: 20px;
   margin-right: 20px;
   color: #858585;
 }
 @media screen and (max-width: 480px) {
-  /* line 64, ../sass/partials/manage-page-partials/_file.scss */
+  /* line 79, ../sass/partials/manage-page-partials/_file.scss */
   .file .file-name .folder-icon {
     font-size: 15px;
     margin-right: 10px;
   }
 }
-/* line 74, ../sass/partials/manage-page-partials/_file.scss */
+/* line 90, ../sass/partials/manage-page-partials/_file.scss */
 .file .dot-icon {
   width: 30px;
   margin-top: -5px;
@@ -2992,17 +3003,29 @@ input:checked + .slider:before {
   color: #8d8d8d;
 }
 @media screen and (max-width: 480px) {
-  /* line 74, ../sass/partials/manage-page-partials/_file.scss */
+  /* line 90, ../sass/partials/manage-page-partials/_file.scss */
   .file .dot-icon {
     margin-top: -3px;
     width: 25px;
-    padding-top: 2px;
+    padding-top: 7px;
     padding-bottom: 2px;
   }
 }
-/* line 93, ../sass/partials/manage-page-partials/_file.scss */
+/* line 109, ../sass/partials/manage-page-partials/_file.scss */
 .file .dot-icon:hover {
   color: #404040;
+}
+
+/* line 113, ../sass/partials/manage-page-partials/_file.scss */
+.file-name:after {
+  content: "";
+  opacity: 1;
+  width: 100%;
+  height: 2px;
+  background: blue;
+  position: absolute;
+  margin-top: 25px;
+  left: 0px;
 }
 
 /* line 4, ../sass/partials/manage-page-partials/_folder.scss */
@@ -3072,11 +3095,13 @@ input:checked + .slider:before {
 @media screen and (max-width: 480px) {
   /* line 44, ../sass/partials/manage-page-partials/_folder.scss */
   .folder .folder-icon, .left-container .line .folder-icon {
+    padding-top: 9px;
+    padding-bottom: 7px;
     font-size: 15px;
     margin-right: 10px;
   }
 }
-/* line 59, ../sass/partials/manage-page-partials/_folder.scss */
+/* line 62, ../sass/partials/manage-page-partials/_folder.scss */
 .folder .dot-icon, .left-container .line .dot-icon {
   width: 30px;
   margin-top: -5px;
@@ -3091,12 +3116,12 @@ input:checked + .slider:before {
   color: #8d8d8d;
 }
 @media screen and (max-width: 480px) {
-  /* line 59, ../sass/partials/manage-page-partials/_folder.scss */
+  /* line 62, ../sass/partials/manage-page-partials/_folder.scss */
   .folder .dot-icon, .left-container .line .dot-icon {
     margin-top: -8px;
   }
 }
-/* line 76, ../sass/partials/manage-page-partials/_folder.scss */
+/* line 79, ../sass/partials/manage-page-partials/_folder.scss */
 .folder .dot-icon:hover, .left-container .line .dot-icon:hover {
   color: #404040;
 }
@@ -3168,11 +3193,13 @@ input:checked + .slider:before {
 @media screen and (max-width: 480px) {
   /* line 44, ../sass/partials/manage-page-partials/_group.scss */
   .group-container .folder .folder-icon, .group-container .left-container .line .folder-icon, .left-container .group-container .line .folder-icon {
+    padding-top: 9px;
+    padding-bottom: 7px;
     font-size: 15px;
     margin-right: 10px;
   }
 }
-/* line 59, ../sass/partials/manage-page-partials/_group.scss */
+/* line 62, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .folder .dot-icon, .group-container .left-container .line .dot-icon, .left-container .group-container .line .dot-icon {
   visibility: hidden;
   width: 30px;
@@ -3188,16 +3215,16 @@ input:checked + .slider:before {
   color: #8d8d8d;
 }
 @media screen and (max-width: 480px) {
-  /* line 59, ../sass/partials/manage-page-partials/_group.scss */
+  /* line 62, ../sass/partials/manage-page-partials/_group.scss */
   .group-container .folder .dot-icon, .group-container .left-container .line .dot-icon, .left-container .group-container .line .dot-icon {
     margin-top: -8px;
   }
 }
-/* line 77, ../sass/partials/manage-page-partials/_group.scss */
+/* line 80, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .folder .dot-icon:hover, .group-container .left-container .line .dot-icon:hover, .left-container .group-container .line .dot-icon:hover {
   color: #404040;
 }
-/* line 83, ../sass/partials/manage-page-partials/_group.scss */
+/* line 86, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .switch {
   z-index: 0;
   position: absolute;
@@ -3207,11 +3234,11 @@ input:checked + .slider:before {
   top: 15px;
   right: 10px;
 }
-/* line 94, ../sass/partials/manage-page-partials/_group.scss */
+/* line 97, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .switch input {
   display: none;
 }
-/* line 96, ../sass/partials/manage-page-partials/_group.scss */
+/* line 99, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .slider {
   position: absolute;
   cursor: pointer;
@@ -3223,7 +3250,7 @@ input:checked + .slider:before {
   -webkit-transition: .4s;
   transition: .4s;
 }
-/* line 108, ../sass/partials/manage-page-partials/_group.scss */
+/* line 111, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .slider:before {
   position: absolute;
   content: "";
@@ -3235,35 +3262,35 @@ input:checked + .slider:before {
   -webkit-transition: .4s;
   transition: .4s;
 }
-/* line 120, ../sass/partials/manage-page-partials/_group.scss */
+/* line 123, ../sass/partials/manage-page-partials/_group.scss */
 .group-container input:checked + .slider {
   background-color: #ffdfa4;
 }
-/* line 124, ../sass/partials/manage-page-partials/_group.scss */
+/* line 127, ../sass/partials/manage-page-partials/_group.scss */
 .group-container input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
-/* line 128, ../sass/partials/manage-page-partials/_group.scss */
+/* line 131, ../sass/partials/manage-page-partials/_group.scss */
 .group-container input:checked + .slider:before {
   background-color: #ffc04d;
   -webkit-transform: translateX(10px);
   -ms-transform: translateX(10px);
   transform: translateX(10px);
 }
-/* line 136, ../sass/partials/manage-page-partials/_group.scss */
+/* line 139, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .slider.round {
   border-radius: 34px;
 }
-/* line 140, ../sass/partials/manage-page-partials/_group.scss */
+/* line 143, ../sass/partials/manage-page-partials/_group.scss */
 .group-container .slider.round:before {
   border-radius: 50%;
 }
 
-/* line 147, ../sass/partials/manage-page-partials/_group.scss */
+/* line 150, ../sass/partials/manage-page-partials/_group.scss */
 #group4 .slider {
   visibility: hidden;
 }
-/* line 150, ../sass/partials/manage-page-partials/_group.scss */
+/* line 153, ../sass/partials/manage-page-partials/_group.scss */
 #group4 .dot-icon {
   visibility: visible;
   right: -5px;

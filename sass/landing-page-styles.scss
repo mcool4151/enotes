@@ -203,6 +203,7 @@ body{
   /* Full height */
   height: $top-slideshow-height;
   background-attachment: scroll;
+  text-align: center;
 
   /* Create the parallax scrolling effect */
   background-position: 50% 50%;
@@ -236,7 +237,6 @@ z-index:6;
   top: 0px;
   font-size:12px;
   text-align: center;
-
 h2{
   color: #fff;
   margin-top: 20px;
@@ -257,11 +257,40 @@ h2{
 
 }
 }
-
+.down-arrow{
+  font-size: 35px;
+  position: absolute;
+  bottom: 10px;
+  color:#fff;
+  font-weight: 100;
+  margin-left: -12px;
+}
 .banner{
-position: relative;
-height: 250px;
-top:-550px;
+position: absolute;
+height: 550px;
+top:150px;
+@include bp-large {
+  top:250px;
+}
+h2{
+  color: #fff;
+  margin-top: 20px;
+  font-weight: 100;
+  font-family: RalewayRegular;
+  margin-bottom: 20px;
+  line-height: 60px;
+
+  @include bp-large {
+    font-size: 40px;
+  }
+  @include bp-medium {
+    font-size: 35px;
+  }
+  @include bp-small {
+    font-size: 20px;
+  }
+
+}
 
 }
 .banner-logo{
@@ -349,7 +378,6 @@ padding-top: 15px;
   z-index: 10;
   width: 100%;
   height: 500px;
-
   position: relative;
   margin-top: 0px;
   color:red!important;
@@ -446,7 +474,7 @@ padding-top: 15px;
 .shared-files{
   z-index: 10;
   width: 100%;
-  height: 300px;
+  height: 500px;
   background-color: white;
   position: relative;
   margin-top: 0px;
@@ -457,6 +485,14 @@ padding-top: 15px;
 
     height: 500px;
   }
+  @include bp-medium{
+
+    height: 350px;
+  }
+  @include bp-small {
+
+    height: 300px;
+  }
 }
 
  .shared-files .shared-img{
@@ -466,17 +502,17 @@ padding-top: 15px;
 
   float: left;
 
-    margin-top: 100px;
+    margin-top: 60px;
     background-position:50% 0%;
     width: 100%;
     height: 50%;
     background-size:800px 140px;
     @include bp-medium {
-      background-size:550px 100px;
+      background-size:400px 75px;
     }
     @include bp-small {
-      margin-top: 50px;
-      background-size:250px 50px;
+      margin-top: 60px;
+      background-size:275px 55px;
     }
 }
 
@@ -498,9 +534,10 @@ padding-top: 15px;
       width: 100%;
       @include bp-medium {
         font-size: 40px;
+        margin-top: -60px;
       }
       @include bp-small {
-        margin-top: -80px;
+        margin-top: -60px;
         font-size:25px;
       }
 
@@ -523,7 +560,7 @@ padding-top: 15px;
         margin-left: 5px;
       }
       @include bp-small {
-        margin-top: -30px;
+        margin-top: -20px;
         font-size:18px;
         margin-left: 5px;
       }
@@ -538,7 +575,10 @@ padding-top: 15px;
   margin-top: 0px;
   color:red!important;
   padding-top: 40px;
-  padding-top: 100px;
+  padding-top: 50px;
+  @include bp-small{
+    height: 300px;
+  }
   .banner-logo{
     position: relative;
     margin: 0px auto;
@@ -670,7 +710,10 @@ padding-top: 15px;
       display: none;
     }
   }
-
+  a{
+    color: lighten(orange, 10%);
+    text-decoration: none;
+  }
 }
 .desktop-nav-bar{
   @include bp-medium {
@@ -704,5 +747,9 @@ padding-top: 15px;
   }
   .left:hover{
     border: none;
+  }
+  a{
+    color:#fff;
+    text-decoration: none;
   }
 }

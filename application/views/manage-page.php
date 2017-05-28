@@ -27,8 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="<?php echo base_url();?>stylesheets/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo base_url();?>stylesheets/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>stylesheets/manage-page-styles.css">
 
   <!--[if lt IE 9]>

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <script src="https://apis.google.com/js/api:client.js"></script>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <script src="https://apis.google.com/js/api:client.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/landing-page-styles.css">
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="mobile-nav-container">
     <div class="nav-company-name">e-notes</div>
     <div>
-      <div class="c-hamburger c-hamburger--htx mobile-menu"><span></span>
+      <div style="visibility:hidden" class="c-hamburger c-hamburger--htx mobile-menu"><span></span>
       </div>
 
 
@@ -80,8 +80,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </ul>
   </div>
   <div class="modal desktop-nav-bar" >
-    <div><a href="<?php echo base_url();?>/termsncondn">Terms and Conditions</a></div>
-    <!--<div >Sign-in</div>
+    <!--<div><a href="<?php echo base_url();?>/termsncondn">Terms and Conditions</a></div>
+    <div >Sign-in</div>
     <div >Help</div>
     <div >Using e-notes</div>
     <div >Home</div>-->
@@ -93,6 +93,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="parallax bg-one" style="background-image: url('<?php echo base_url(); ?>/images/banner-1.jpg');">
 <div class="image-filter"></div>
+<i class="fa fa-angle-down down-arrow" aria-hidden="true"></i>
+
 </div>
 
 <div class="modal banner" >
