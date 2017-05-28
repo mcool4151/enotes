@@ -100,6 +100,10 @@ class Groups extends CI_Model {
     return $data;
   }
 
+  private function checkpath($base,$test){
+    if(!strncmp(realpath($test)."/",realpath($base)."/",strlen($base))) return 1;
+    else return 0;
+  }
   public function getsharedwithgrouplist($file){
     $uid = $this->session->uid;
     $sql = "SELECT groups.uniqName FROM `groupShare` LEFT JOIN groups ON groupShare.patner=groups.id WHERE groupShare.userid='$uid' AND groupShare.path='$file'";
@@ -107,4 +111,71 @@ class Groups extends CI_Model {
     return $res->result_array();
   }
 
+  public function copygroupfile($sid,$depth,$to){
+    $to = realpath($to)."/";
+    $sql = "SELECT * FROM `groupShare` WHERE `shareid`='$sid'";
+    $res = $this->db->query($sql);
+    $src = $res->row()->path;
+    $src = $src.$depth;
+    if($this->checkpath($src,$to)){
+      echo "Invalid operation";
+      exit();
+    }
+    $fix = basename($src);
+    if(!$this->smartCopy($src,$to.$fix))echo 0;
+    else echo 1;
+  }
+  private function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'filePermission'=>0755)){
+    //Code from php.com
+      $result=false;
+      if (is_file($source)) {
+          if ($dest[strlen($dest)-1]=='/') {
+              if (!file_exists($dest)) {
+                  cmfcDirectory::makeAll($dest,$options['folderPermission'],true);
+              }
+              $__dest=$dest."/".basename($source);
+          } else {
+              $__dest=$dest;
+          }
+          $result=copy($source, $__dest);
+          chmod($__dest,$options['filePermission']);
+      } elseif(is_dir($source)) {
+          if ($dest[strlen($dest)-1]=='/') {
+              if ($source[strlen($source)-1]=='/') {
+                  //Copy only contents
+              } else {
+                  //Change parent itself and its contents
+                  $dest=$dest.basename($source);
+                  @mkdir($dest);
+                  chmod($dest,$options['filePermission']);
+              }
+          } else {
+              if ($source[strlen($source)-1]=='/') {
+                  //Copy parent directory with new name and all its content
+                  @mkdir($dest,$options['folderPermission']);
+                  chmod($dest,$options['filePermission']);
+              } else {
+                  //Copy parent directory with new name and all its content
+                  @mkdir($dest,$options['folderPermission']);
+                  chmod($dest,$options['filePermission']);
+              }
+          }
+          $dirHandle=opendir($source);
+          while($file=readdir($dirHandle)){
+              if($file!="." && $file!=".."){
+                   if(!is_dir($source."/".$file)) {
+                      $__dest=$dest."/".$file;
+                  } else {
+                      $__dest=$dest."/".$file;
+                  }
+                  //echo "$source/$file ||| $__dest<br />";
+                  $result=$this->smartCopy($source."/".$file, $__dest, $options);
+              }
+          }
+          closedir($dirHandle);
+      } else {
+          $result=false;
+      }
+      return $result;
+  }
 }

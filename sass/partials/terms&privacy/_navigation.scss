@@ -1,0 +1,295 @@
+
+.desktop-nav-bar .sub-title{
+  font-size: 25px;
+  color:darken(gray, 5%);
+
+}
+.mobile-nav-container .sub-title{
+  font-size: 20px;
+  color:darken(gray, 5%);
+}
+.mobile-nav-container{
+  z-index: 100;
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top:0px;
+
+  left: 0px;
+  @include bp-large {
+    display: none;
+  }
+  @include bp-medium {
+    display: block;
+  }
+}
+
+.nav-company-name{
+
+  float: left;
+  margin-left: 20px;
+  margin-top: 15px;
+  font-size: 27px ;
+  color:darken(gray, 5%);
+
+  font-family: RalewayRegular;
+  font-weight: 100!important;
+}
+.c-hamburger {
+  display: block;
+  position: absolute;
+  overflow: visible;
+  top:15px;
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 25px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+
+}
+
+.c-hamburger:focus {
+  outline: none;
+}
+.c-hamburger span {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  right: 0px;
+  height: 1px;
+  background-color: lighten(gray, 10%);
+}
+
+.c-hamburger span::before,
+.c-hamburger span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: lighten(gray, 10%);
+  content: "";
+}
+
+.c-hamburger span::before {
+  top: -10px;
+}
+
+.c-hamburger span::after {
+  bottom: -10px;
+}
+.c-hamburger--htx {
+
+}
+
+.c-hamburger--htx span {
+  transition: background 0s 0.3s;
+}
+
+.c-hamburger--htx span::before,
+.c-hamburger--htx span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.c-hamburger--htx span::before {
+  transition-property: top, transform;
+}
+
+.c-hamburger--htx span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+.is-active {
+
+}
+
+.is-active span {
+  background: none;
+}
+
+.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.is-active span::before,
+.is-active span::after {
+  transition-delay: 0s, 0.3s;
+}
+
+
+.mobile-submenu{
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  position:fixed;
+  top:25px;
+  padding-left: 0px;
+  display: none;
+}
+.mobile-submenu li{
+  width: 100%;
+  background-color: #fff;
+  margin-left: 0px;
+  margin-top: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  font-family: RalewayRegular;
+  font-weight: 300;
+  color:lighten(orange, 10%);
+}
+.mobile-submenu span:hover{
+  border-bottom: 1px solid lighten(orange, 10%);
+  cursor: pointer;
+}
+.mobile-submenu .banner-logo{
+  width: 68px;
+  height: 60px;
+  margin: 50px auto;
+  position: relative;
+  margin-bottom: 30px;
+}
+.mobile-submenu .login-button-container{
+
+    @include bp-medium {
+      width: 350px;
+    }
+    @include bp-small {
+      width: 90%;
+      padding-left: 15px;
+    }
+
+  padding-left: 15px;
+}
+.mobile-submenu .active{
+  color: darken(gray,15%);
+  span:hover{
+    border-bottom: 0px solid lighten(orange, 10%);
+  }
+}
+/*modal */
+.banner-logo{
+  position: relative;
+  margin: 0px auto;
+  width: 68px;
+  height: 60px;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size:68px 60px;
+
+
+  @include bp-large {
+    width: 88px;
+    height: 77px;
+    background-size: 88px 77px;
+  }
+
+}
+.login-button-container{
+  margin: 0px auto;
+  width: 450px;
+  height:40px;
+  padding-top: 10px;
+  @include bp-medium {
+    width: 350px;
+  }
+  @include bp-small {
+    width: 90%;
+  }
+}
+.button{
+  background-color: #4CAF50; /* Green */
+ border: none;
+ color: white;
+ padding: 11px 32px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ font-size: 13px;
+ margin-top: -10px;
+ cursor: pointer;
+}
+.banner .login-button-container {
+  text-align: center;
+  div{
+  width: 45%;
+  height:inherit;
+}
+span{
+font-size: 13px;
+color: #fff;
+
+padding-top: 15px;
+}
+
+}
+.google-login{
+  float: left;
+  background-color: #d34836;
+}
+.facebook-login{
+  float: right;
+  background-color: #3b5998;
+}
+
+.desktop-nav-bar{
+  @include bp-medium {
+    display: none;
+  }
+  background-color: #fff;
+  border-bottom: 1px solid darken(#f2f2f2,10%);
+  z-index: 100;
+  width: 100%;
+  height: 60px;
+  top:0px;
+
+  position: fixed;
+  margin-top: 0px;
+  padding-top: 10px;
+
+  div{
+    float: right;
+    margin-top: 13px;
+    margin-right: 40px;
+    color:darken(gray, 5%);
+
+    font-size: 16px;
+    font-family: RalewayRegular;
+  }
+  div:hover{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+  .left{
+    float: left;
+    margin-left: 30px;
+    font-size: 32px;
+  }
+  .left:hover{
+    border: none;
+  }
+  a{
+    color:darken(gray, 5%);
+
+  }
+}

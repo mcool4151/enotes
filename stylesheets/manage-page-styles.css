@@ -658,64 +658,6 @@ th {
   background: #2b2c41;
 }
 
-@font-face {
-  font-family: RalewayRegular;
-  src: url(../fonts/Raleway-Light.ttf);
-}
-@font-face {
-  font-family: colab;
-  src: url(../fonts/ColabReg.otf);
-}
-@font-face {
-  font-family: LeagueGothicRegular;
-  src: url(../fonts/LeagueGothic-CondensedRegular.otf);
-}
-@font-face {
-  font-family: Existencelight;
-  src: url(../fonts/Existence-Light.otf);
-}
-@font-face {
-  font-family: Ralewaymedium;
-  src: url(../fonts/Raleway-Medium.ttf);
-}
-@font-face {
-  font-family: KaushanScriptRegular;
-  src: url(../fonts/KaushanScript-Regular.otf);
-}
-@font-face {
-  font-family: OpenSansRegular;
-  src: url(../fonts/OpenSans-Regular.ttf);
-}
-@font-face {
-  font-family: AlexBrushRegular;
-  src: url(../fonts/AlexBrush-Regular.ttf);
-}
-@font-face {
-  font-family: INKITMT;
-  src: url(../fonts/INKITMT_.otf);
-}
-@font-face {
-  font-family: digital7;
-  src: url(../fonts/digital-7.ttf);
-}
-@font-face {
-  font-family: Roboto;
-  src: url(../fonts/roboto/Roboto-Light.ttf);
-}
-@font-face {
-  font-family: Roboto-Regular;
-  src: url(../fonts/roboto/Roboto-Regular.ttf);
-}
-/*-buttons modes-*/
-/*1-stop variables
-$default-font-color:$green-light;
-$main-background: lighten($cyan,30%);
-$font-size-logo:25px;
-$nav-bar-left:25px;
-*/
-/*
-$default-text-color: $black !default;
-*/
 /*    usage
 p {
   @include font-size(14px)
@@ -3269,7 +3211,16 @@ input:checked + .slider:before {
   right: -5px;
 }
 
-/* line 15, ../sass/manage-page-styles.scss */
+/* line 1, ../sass/partials/manage-page-partials/_error.scss */
+.error {
+  position: absolute;
+  left: 30px;
+  top: 90px;
+  color: #ff6666;
+  font-size: 10px;
+}
+
+/* line 16, ../sass/manage-page-styles.scss */
 body {
   background-color: #f3f3f3;
   overflow-x: hidden;
@@ -3278,7 +3229,7 @@ body {
   height: 100%;
 }
 
-/* line 23, ../sass/manage-page-styles.scss */
+/* line 24, ../sass/manage-page-styles.scss */
 .font, .nav-header .email-id, .folder-submenu-container li, .move-to-submenu li, .file, .folder, .left-container .line, .group-container .folder, .display-container h3, .left-container .left-navigation .folder, .left-container .left-navigation .line, .upload-button {
   color: #404040;
   line-height: 1em;
@@ -3289,26 +3240,26 @@ body {
   font-weight: 500;
 }
 
-/* line 32, ../sass/manage-page-styles.scss */
+/* line 33, ../sass/manage-page-styles.scss */
 .active {
   border-left: 2px solid #ffb733 !important;
   color: #ffb733 !important;
 }
-/* line 36, ../sass/manage-page-styles.scss */
+/* line 37, ../sass/manage-page-styles.scss */
 .active i {
   color: #ffb733 !important;
 }
 
-/* line 40, ../sass/manage-page-styles.scss */
+/* line 41, ../sass/manage-page-styles.scss */
 .active:hover {
   background-color: #f3f3f3 !important;
 }
-/* line 42, ../sass/manage-page-styles.scss */
+/* line 43, ../sass/manage-page-styles.scss */
 .active:hover i {
   background-color: #f3f3f3 !important;
 }
 
-/* line 46, ../sass/manage-page-styles.scss */
+/* line 47, ../sass/manage-page-styles.scss */
 .container {
   width: 100%;
   height: auto;
@@ -3316,19 +3267,19 @@ body {
   float: left;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 46, ../sass/manage-page-styles.scss */
+  /* line 47, ../sass/manage-page-styles.scss */
   .container {
     top: 110px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 46, ../sass/manage-page-styles.scss */
+  /* line 47, ../sass/manage-page-styles.scss */
   .container {
     top: 50px;
   }
 }
 
-/* line 59, ../sass/manage-page-styles.scss */
+/* line 60, ../sass/manage-page-styles.scss */
 .display-container {
   position: absolute;
   left: 200px;
@@ -3343,47 +3294,47 @@ body {
   z-index: 1;
 }
 @media screen and (max-width: 1024px) {
-  /* line 59, ../sass/manage-page-styles.scss */
+  /* line 60, ../sass/manage-page-styles.scss */
   .display-container {
     left: 20px;
     padding-left: 0px;
   }
 }
-/* line 76, ../sass/manage-page-styles.scss */
+/* line 77, ../sass/manage-page-styles.scss */
 .display-container ul {
   list-style: none;
 }
-/* line 79, ../sass/manage-page-styles.scss */
+/* line 80, ../sass/manage-page-styles.scss */
 .display-container h3 {
   padding-bottom: 0px;
   display: inline-block;
   clear: both;
 }
 
-/* line 90, ../sass/manage-page-styles.scss */
+/* line 91, ../sass/manage-page-styles.scss */
 .file, .folder, .left-container .line {
   cursor: pointer !important;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 90, ../sass/manage-page-styles.scss */
+  /* line 91, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 24%;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 90, ../sass/manage-page-styles.scss */
+  /* line 91, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 32%;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 90, ../sass/manage-page-styles.scss */
+  /* line 91, ../sass/manage-page-styles.scss */
   .file, .folder, .left-container .line {
     width: 48%;
   }
 }
 
-/* line 107, ../sass/manage-page-styles.scss */
+/* line 108, ../sass/manage-page-styles.scss */
 .filter {
   z-index: 90;
   background-color: black;
@@ -3396,7 +3347,7 @@ body {
   visibility: hidden;
 }
 
-/* line 120, ../sass/manage-page-styles.scss */
+/* line 121, ../sass/manage-page-styles.scss */
 .left-container {
   position: fixed;
   top: 110px;
@@ -3407,7 +3358,7 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1024px) {
-  /* line 120, ../sass/manage-page-styles.scss */
+  /* line 121, ../sass/manage-page-styles.scss */
   .left-container {
     top: -20px;
     width: 300px;
@@ -3415,11 +3366,11 @@ body {
     background-color: #fff;
   }
 }
-/* line 146, ../sass/manage-page-styles.scss */
+/* line 147, ../sass/manage-page-styles.scss */
 .left-container .left-navigation {
   list-style: none;
 }
-/* line 149, ../sass/manage-page-styles.scss */
+/* line 150, ../sass/manage-page-styles.scss */
 .left-container .left-navigation .folder, .left-container .left-navigation .line {
   background-color: #f3f3f3;
   cursor: pointer !important;
@@ -3437,13 +3388,13 @@ body {
   border-right: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
-  /* line 149, ../sass/manage-page-styles.scss */
+  /* line 150, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .line {
     width: 200px;
   }
 }
 @media screen and (max-width: 1024px) {
-  /* line 149, ../sass/manage-page-styles.scss */
+  /* line 150, ../sass/manage-page-styles.scss */
   .left-container .left-navigation .folder, .left-container .left-navigation .line {
     background-color: #fff;
     width: 300px;
@@ -3454,7 +3405,7 @@ body {
     transition: 1;
   }
 }
-/* line 180, ../sass/manage-page-styles.scss */
+/* line 181, ../sass/manage-page-styles.scss */
 .left-container .folder .folder-icon, .left-container .line .folder-icon {
   margin-right: 20px;
   font-size: 20px;
@@ -3462,25 +3413,25 @@ body {
   color: #5a5a5a;
 }
 @media screen and (max-width: 1024px) {
-  /* line 180, ../sass/manage-page-styles.scss */
+  /* line 181, ../sass/manage-page-styles.scss */
   .left-container .folder .folder-icon, .left-container .line .folder-icon {
     background-color: #fff;
   }
 }
-/* line 189, ../sass/manage-page-styles.scss */
+/* line 190, ../sass/manage-page-styles.scss */
 .left-container .folder span, .left-container .line span {
   vertical-align: text-top;
 }
-/* line 192, ../sass/manage-page-styles.scss */
+/* line 193, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover {
   background-color: #e6e6e6;
   border-left: 3px solid gray;
 }
-/* line 196, ../sass/manage-page-styles.scss */
+/* line 197, ../sass/manage-page-styles.scss */
 .left-container .left-navigation li:hover .folder-icon {
   background-color: #e6e6e6;
 }
-/* line 202, ../sass/manage-page-styles.scss */
+/* line 203, ../sass/manage-page-styles.scss */
 .left-container .line {
   padding: 0px !important;
   margin: 0px !important;
@@ -3491,7 +3442,7 @@ body {
   background-color: #e6e6e6 !important;
 }
 
-/* line 215, ../sass/manage-page-styles.scss */
+/* line 216, ../sass/manage-page-styles.scss */
 .upload-button {
   position: fixed;
   bottom: 15px;
@@ -3511,7 +3462,7 @@ body {
   font-size: 40px;
 }
 
-/* line 236, ../sass/manage-page-styles.scss */
+/* line 237, ../sass/manage-page-styles.scss */
 .upload-button:hover {
   background: #1a1aff;
 }

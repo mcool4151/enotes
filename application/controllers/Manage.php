@@ -19,6 +19,13 @@ class Manage extends CI_Controller {
     $depth = $this->input->post('subdir');
     echo json_encode($this->fileman->openswm($id,$depth));
   }
+  public function copyshared(){
+    $sid = $this->input->post('sid');
+    $depth = $this->input->post('depth');
+    $dest = $this->input->post('dest');
+    $dest = $this->session->dir.$dest;
+    $this->fileman->copyshared($sid,$depth,$dest);
+  }
   public function getsharedwithgrouplist(){
     $this->load->model('groups');
     $file = $this->session->dir.$this->input->post('file');
@@ -30,8 +37,22 @@ class Manage extends CI_Controller {
     echo json_encode($res);
   }
   public function removeshared(){
-    $sql = "SOME code here to remove ";
-    $var = "A shared file from user or group";
+    $file = $this->session->dir.$this->input->post('file');
+    $with = $this->input->post('email');
+    $grp = $this->input->post('email');
+    $with = $this->fileman->getid($with);
+    if (!$this->checkpath(realpath($this->session->dir),$file)){
+      echo "Error with File name";
+    }
+    else if (($with == $this->session->uid || $with == 0) && $this->checkgroup($grp) == 0){
+      echo "Enterted Email/Group is invalid";
+    }
+    else if(($with == $this->session->uid || $with == 0) && $this->checkgroup($grp) != 0) {
+      echo $this->fileman->revokefromGroup($file,$this->input->post('email'));
+    }
+    else{
+      $this->fileman->revokefrom($file,$with);
+    }
   }
   public function getdir(){
     if($this->input->get('depth')) {
@@ -60,7 +81,14 @@ class Manage extends CI_Controller {
       echo "Error dir";
       return;
     }
-    if(move_uploaded_file($_FILES['myfile']['tmp_name'],$depth.'/'.$_FILES['myfile']['name'])) echo 1;
+    $name = $_FILES['myfile']['name'];
+    $i=1;
+    $no = '';
+    while(file_exists($depth.'/'.$no.$name) && !is_dir($depth.'/'.$no.$name)){
+      $no = "($i)";
+      $i = $i+1;
+    }
+    if(move_uploaded_file($_FILES['myfile']['tmp_name'],$depth.'/'.$no.$name)) echo 1;
     else echo 0;
   }
   public function move(){
@@ -90,8 +118,7 @@ class Manage extends CI_Controller {
       echo "Error dir";
       return;
     }else{
-      if(!mkdir($depth.'/'.$name)) echo 0;
-      else echo 1;
+      echo $this->fileman->mkdir($depth.'/'.$name);
     }
   }
   public function setdownload(){
@@ -129,13 +156,16 @@ class Manage extends CI_Controller {
     echo json_encode($this->fileman->getFavAll());
   }
   public function flipdel(){
-    $file = realpath($this->session->dir.$this->input->post('path'));
-    if(!$this->checkpath(realpath($this->session->dir),$file)) {
-      echo "error dir";
-      return;
+    $type = $this->input->post('type');
+    if($type == 0){
+      $file = realpath($this->session->dir.$this->input->post('path'));
+      if(!$this->checkpath(realpath($this->session->dir),$file)) {
+        echo "error dir";
+        return;
+      }
+      echo $this->fileman->addToDel($file);
     }
-    if(!$this->fileman->checkdel($file)) $this->fileman->addToDel($file);
-    else $this->fileman->removeFromDel($file);
+    else echo $this->fileman->removeFromDel($this->input->post('path'));
   }
   public function getdel(){
     echo json_encode($this->fileman->getDelAll());
@@ -267,9 +297,21 @@ class Manage extends CI_Controller {
     $this->load->model('groups');
     echo json_encode($this->groups->loadGroup($uniq,$depth));
   }
+  public function copygroup(){
+    $sid = $this->input->post('sid');
+    $depth = $this->input->post('depth');
+    $dest = $this->input->post('dest');
+    $dest = $this->session->dir.$dest;
+    $this->load->model('groups');
+    $this->groups->copygroupfile($sid,$depth,$dest);
+  }
   public function showgroup(){
     $gname = $this->input->post('uniqName');
     $this->load->model('groups');
     echo json_encode($this->groups->showGroup($gname));
+  }
+  public function forevdel(){
+    $file = $this->input->post('file');
+    echo $this->fileman->deleteforever($file);
   }
 }

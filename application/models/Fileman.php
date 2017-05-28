@@ -46,6 +46,76 @@ class Fileman extends CI_Model {
     return $data;
   }
 
+  private function checkpath($base,$test){
+    if(!strncmp($test,$base,strlen($base))) return 1;
+    else return 0;
+  }
+
+  public function copyshared($sid,$depth,$to){
+    $sql = "SELECT * FROM `usershare` WHERE `shareid`='$sid'";
+    $res = $this->db->query($sql);
+    $src = $res->row()->path;
+    $src = $src.$depth;
+    if($this->checkpath($src,$to.'/')){
+      echo "Invalid operation";
+      return;
+    }
+    if(!$this->smartCopy($src,$to.'/')) echo "Error While copying";
+    else echo 1;
+  }
+  private function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'filePermission'=>0755)){
+    //Code from php.com
+      $result=false;
+      if (is_file($source)) {
+          if ($dest[strlen($dest)-1]=='/') {
+              if (!file_exists($dest)) {
+                  cmfcDirectory::makeAll($dest,$options['folderPermission'],true);
+              }
+              $__dest=$dest."/".basename($source);
+          } else {
+              $__dest=$dest;
+          }
+          $result=copy($source, $__dest);
+          chmod($__dest,$options['filePermission']);
+      } elseif(is_dir($source)) {
+          if ($dest[strlen($dest)-1]=='/') {
+              if ($source[strlen($source)-1]=='/') {
+                  //Copy only contents
+              } else {
+                  //Change parent itself and its contents
+                  $dest=$dest.basename($source);
+                  @mkdir($dest);
+                  chmod($dest,$options['filePermission']);
+              }
+          } else {
+              if ($source[strlen($source)-1]=='/') {
+                  //Copy parent directory with new name and all its content
+                  @mkdir($dest,$options['folderPermission']);
+                  chmod($dest,$options['filePermission']);
+              } else {
+                  //Copy parent directory with new name and all its content
+                  @mkdir($dest,$options['folderPermission']);
+                  chmod($dest,$options['filePermission']);
+              }
+          }
+          $dirHandle=opendir($source);
+          while($file=readdir($dirHandle)){
+              if($file!="." && $file!=".."){
+                   if(!is_dir($source."/".$file)) {
+                      $__dest=$dest."/".$file;
+                  } else {
+                      $__dest=$dest."/".$file;
+                  }
+                  //echo "$source/$file ||| $__dest<br />";
+                  $result=$this->smartCopy($source."/".$file, $__dest, $options);
+              }
+          }
+          closedir($dirHandle);
+      } else {
+          $result=false;
+      }
+      return $result;
+  }
   public function getsharedwithlist($file){
     $sql = "SELECT users.email FROM usershare JOIN users on usershare.patner=users.uid where usershare.path='$file'";
     $res = $this->db->query($sql);
@@ -162,16 +232,28 @@ class Fileman extends CI_Model {
     return $files;
   }
   public function mv($from,$to){
+    $tmpto = $to.'/'.(basename($from));
+    if((is_dir($from) && is_dir($tmpto)) || (!is_dir($from) && !is_dir($tmpto)) && file_exists($tmpto)){
+      return "Cannot Move as file of that name already exists";
+    }
     if (rename($from,$to.'/'.basename($from))) {
       $uid = $this->session->uid;
       $path = $to.'/'.basename($from);
       if($this->isShared($from)){
         $id = md5($from);
-        $sql = "UPDATE `sharedlink` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
+        $sql = "UPDATE `sharedlink` SET `path`='$from' WHERE `uid`=$uid AND `path`='$path'";
         $this->db->query($sql);
       }
       if($this->isFav($from)){
-        $sql = "UPDATE `favourites` SET `path`=$from WHERE `uid`=$uid AND `path`='$path'";
+        $sql = "UPDATE `favourites` SET `path`='$from' WHERE `uid`=$uid AND `path`='$path'";
+        $this->db->query($sql);
+      }
+      if($this->isGroupShared($from)){
+        $sql = "UPDATE `groupShare` SET `path`='$from' WHERE `userid`=$uid AND `path`='$path'";
+        $this->db->query($sql);
+      }
+      if($this->isUserShared($from)){
+        $sql = "UPDATE `usershare` SET `path`='$from' WHERE `userid`=$uid AND `path`='$path'";
         $this->db->query($sql);
       }
       return 1;
@@ -179,6 +261,9 @@ class Fileman extends CI_Model {
     else return 0;
   }
   public function rn($from,$to){
+    if((is_dir($from) && is_dir($to)) || (!is_dir($from) && !is_dir($to)) && file_exists($to)){
+      return "Cannot rename as file of that name already exists";
+    }
     $uid = $this->session->uid;
     if (rename($from,$to)) {
       if($this->isShared($from)){
@@ -187,8 +272,15 @@ class Fileman extends CI_Model {
         $this->db->query($sql);
       }
       if($this->isFav($from)){
-        echo "here";
         $sql = "UPDATE `favourites` SET `path`='$to' WHERE `uid`=$uid AND `path`='$from'";
+        $this->db->query($sql);
+      }
+      if($this->isGroupShared($from)){
+        $sql = "UPDATE `groupShare` SET `path`='$to' WHERE `userid`=$uid AND `path`='$from'";
+        $this->db->query($sql);
+      }
+      if($this->isUserShared($from)){
+        $sql = "UPDATE `usershare` SET `path`='$to' WHERE `userid`=$uid AND `path`='$from'";
         $this->db->query($sql);
       }
       return 1;
@@ -196,7 +288,8 @@ class Fileman extends CI_Model {
     else return 0;
   }
   public function mkdir($path){
-      return mkdir($path,0777,false);
+    if(file_exists($path)) return "Files already exists in the directory, Select Another name or rename the old file";
+    return mkdir($path,0777,false);
   }
   public function download($file){
     if(!is_dir($file)){
@@ -213,7 +306,37 @@ class Fileman extends CI_Model {
       }
     }
     else{
-      echo "Folder download Not implemented";
+      //echo "Folder download Not implemented";
+      if(is_dir($file)){
+        header("Content-Type: archive/zip");
+        header("Content-Disposition: attachment; filename=".date('d-m-Y H:i:s').".zip");
+        $tmp_zip = tempnam ("tmp", "tempname") . ".zip";
+        $zip_file = $tmp_zip;
+        //chdir($file);
+        //exec('zip '.$tmp_zip.' *');
+        //$fp = fopen("$tmp_zip","r");
+        //echo fpassthru($fp);
+        //unlink($tmp_zip);
+        $rootPath = realpath($file);
+        $zip = new ZipArchive();
+        $zip->open($zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        $files = new RecursiveIteratorIterator(
+          new RecursiveDirectoryIterator($rootPath),
+          RecursiveIteratorIterator::LEAVES_ONLY
+        );
+        foreach ($files as $name => $file){
+          if (!$file->isDir()){
+            $filePath = $file->getRealPath();
+            $relativePath = substr($filePath, strlen($rootPath) + 1);
+            $zip->addFile($filePath, $relativePath);
+          }
+        }
+        $zip->close();
+        $filesize = filesize($tmp_zip);
+        header("Content-Length: $filesize");
+        readfile($zip_file);
+        unlink($zip_file);
+      }
     }
   }
   public function getlink($path){
@@ -269,11 +392,24 @@ class Fileman extends CI_Model {
   public function addToDel($path){
     $data = array(
       'uid'   => $this->session->uid,
-      'path'  => $path
+      'path'  => $path,
+      'is_dir'=> is_dir($path),
     );
     $this->removeFromFav($path);
+    $sql = "DELETE FROM `favourites` WHERE `path` LIKE '".$path.'/'."%'";
+    $this->db->query($sql);
     $this->removeSharedLink($path);
+    $sql = "DELETE FROM `sharedlink` WHERE `path` LIKE '".$path.'/'."%'";
+    $this->db->query($sql);
+    $this->revokefromGroup($path);
+    $sql = "DELETE FROM `groupShare` WHERE `path` LIKE '".$path.'/'."%'";
+    $this->db->query($sql);
+    $this->revokefrom($path);
+    $sql = "DELETE FROM `usershare` WHERE `path` LIKE '".$path.'/'."%'";
+    $this->db->query($sql);
     $this->db->insert('deleted',$data);
+    rename($path,$this->session->dir.'../delete/'.$this->db->insert_id());
+    return 1;
   }
   public function getDelAll(){
     $uid = $this->session->uid;
@@ -281,29 +417,37 @@ class Fileman extends CI_Model {
     $res = $this->db->query($sql);
     $files = [];
     foreach ($res->result_array() as $file) {
-      $path = str_replace($this->session->dir,'',$file['path']);
       $img = @is_array(getimagesize($file['path']));
-      $link = $img?base_url().'upload/'.$this->session->uid.'/'.str_replace($this->session->dir,'',$file['path']):null;
       $files[] = array(
-        'path'    => $path,
+        'path'    => $file['id'],
         'name'    => basename($file['path']),
-        'is_dir'  => is_dir($file['path']),
+        'is_dir'  => $file['is_dir'],
         'is_img'  => $img,
-        'link'    => $link,
+        'link'    => null
       );
     }
     return $files;
   }
   public function removeFromDel($path){
     $uid = $this->session->uid;
-    $sql = "DELETE FROM `deleted` WHERE `uid`=$uid AND `path`='$path'";
-    $this->db->query($sql);
+    $sql = "SELECT * FROM deleted WHERE `id`='$path'";
+    $res = $this->db->query($sql);
+    $res = $res->result_array();
+    if(file_exists($res[0]['path'])) return "Error While Restoring";
+    else{
+      rename($this->session->dir.'../delete/'.$res[0]['id'],$res[0]['path']);
+      $id = $res[0]['id'];
+      $sql = "DELETE FROM deleted WHERE `id`='$id'";
+      $this->db->query($sql);
+    }
+    return 1;
   }
   public function checkdel($path){
-    $uid = $this->session->uid;
+    /*$uid = $this->session->uid;
     $sql = "Select * from deleted where path='$path' AND uid='$uid'";
     $res = $this->db->query($sql);
-    return $res->num_rows();
+    return $res->num_rows();*/
+    return 0;
   }
   public function makeShareLink($path){
     $id = md5($path);
@@ -321,9 +465,54 @@ class Fileman extends CI_Model {
     $res = $this->db->query($sql);
     return $res->num_rows();
   }
+  public function isGroupShared($path){
+    $uid = $this->session->uid;
+    $sql = "SELECT * FROM `groupShare` WHERE `userid`=$uid AND `path`='$path'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
+  public function isUserShared($path){
+    $uid = $this->session->uid;
+    $sql = "SELECT * FROM `usershare` WHERE `userid`=$uid AND `path`='$path'";
+    $res = $this->db->query($sql);
+    return $res->num_rows();
+  }
   public function removeSharedLink($path){
     $uid = $this->session->uid;
     $sql = "DELETE FROM `sharedlink` WHERE `uid`=$uid AND `path`='$path'";
     $this->db->query($sql);
+  }
+  public function revokefrom($file,$user=''){
+    $uid = $this->session->uid;
+    if($user == '') $sql = "DELETE FROM `usershare` WHERE `userid`='$uid' AND `path`='$file'";
+    else $sql = "DELETE FROM `usershare` WHERE `userid`='$uid' AND `path`='$file' AND `patner`='$user'";
+    if($this->db->query($sql)) return 1;
+    else return 0;
+  }
+  public function revokefromGroup($file,$group=''){
+    $uid = $this->session->uid;
+    if($group == ''){
+      $sql = "DELETE FROM `groupShare` WHERE `userid`='$uid' AND `path`='$file'";
+      if($this->db->query($sql)) return 1;
+      else return 0;
+      return;
+    }
+    $sql = "SELECT * FROM `groups` WHERE `uniqName`='$group'";
+    $res = $this->db->query($sql);
+    if(!$res->num_rows()) {
+      echo "eroor";
+      exit(1);
+    }
+    $gid = $res->row()->id;
+    $sql = "DELETE FROM `groupShare` WHERE `userid`='$uid' AND `path`='$file' AND `patner`='$gid'";
+    if($this->db->query($sql)) return 1;
+    else return 0;
+  }
+  public function deleteforever($file){
+    $sql = "DELETE FROM deleted WHERE `id`='$file'";
+    $file = realpath($this->session->dir.'../delete/'.$file);
+    exec("rm -rf ".$file);
+    if($this->db->query($sql)) return 1;
+    else return 0;
   }
 }

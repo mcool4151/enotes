@@ -211,6 +211,7 @@ $(document).ready(function(){
       success:function(result){
         if(result == 1){
           fetchAndReload();
+          document.getElementById("myfile").value = null;
         }
         else {
         }
@@ -547,7 +548,7 @@ $(document).ready(function(){
     var classname1 = $(e.target).attr('class').split(' ')[0];
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
-        alert('You can only upload files in saved-notes');
+        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
         return;
       }
       document.getElementById('myfile').click();
@@ -592,21 +593,18 @@ $(document).ready(function(){
   }
   $("body").click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
-
-    if(classname1 == 'open-with'+"open-with"){
-    }
-    else if(classname1 == 'move-to'){
-    }
-    else if(classname1 == 'get-shareable-link'){
-    }
-    else if(classname1 == 'favorite'){
-    }
-    else if(classname1 == 'rename')
-    {
-      if(subdir == "") {
-      }
-      else {
-      }
+    if(classname1 == 'remove-email'){
+      email = $(e.target).parent().text();
+      filename = oldname;
+      $.ajax({
+        url:base+'manage/removeshared',
+        type:"POST",
+        async:true,
+        data:{email:email,file:filename},
+        success:function(result){
+          if(result != 1) console.log('error: while removing user:'+email+' On file:'+filename);
+        }
+      });
     }
     else if(classname1 == 'details')
     {
@@ -621,8 +619,6 @@ $(document).ready(function(){
       $(".file-info-container").append('<li><span class="parameter">Is Favorite</span><span     class="description">'+((data.is_fav == 1)?'Yes':'No')+'</span></li>');
       $(".file-info-container").append('<li><span class="parameter">Shared By Link</span><span class="description">'+((data.is_slink == 1)?'Yes':'No')+'</span></li>');
       $(".file-info-container").append('<li><span class="parameter">Size</span><span class="description">'+data.size+'</span></li>');
-    }
-    else if(classname1 == 'download'){
     }
     else if(classname1 == 'trash'){
       data = $(".trash").parent().parent().attr('name');
@@ -644,7 +640,16 @@ $(document).ready(function(){
       return;
     }
     else if(classname1 == 'permanently-delete'){
-      alert('delete forever');
+      tdata = $(".restore").parent().parent().attr('name');
+      if(tdata == undefined) tdata = $(".restore").parent().parent().parent().attr('name');
+      $.ajax({
+        url:base+'manage/forevdel',
+        data:{file:tdata},
+        type:"POST",
+        success:function(res){
+          getdel();
+        }
+      });
     }
   });
   $(".new-button-container").click(function(e) {
@@ -690,11 +695,11 @@ $(document).ready(function(){
                 type:"POST",
                 data:{group:$("#members").val(),email:$(this).text()},
                 success:function(result){
-                  $( ".modal-background-filter" ).remove();
-                  $( ".open-modal" ).remove();
                 }
               });
             });
+            $( ".modal-background-filter" ).remove();
+            $( ".open-modal" ).remove();
           }
         });
       });
@@ -720,7 +725,7 @@ $(document).ready(function(){
             data:{uemail:text},
             success:function(result){
               if(result != 1) {
-                alert(result);
+                alert("Entered user not found");
                 return;
               }
               $(".chips-here.memb").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+text+'</span><i class="remove-email ion-close"></i></span>');
@@ -752,7 +757,7 @@ $(document).ready(function(){
     }
     if(classname1 == 'create-folder'){
       if(prevsidelinkid != 'saved-notes'){
-        alert("You can only create folder in saved-notes!");
+        alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document");
         return;
       }
       // create folder register added
@@ -777,6 +782,10 @@ $(document).ready(function(){
           async:false,
           data:{depth:subdir,name:name},
           success:function(result){
+            if(result!=1) {
+              alert(result);
+              return;
+            }
             fnr();
             $( ".modal-background-filter" ).remove();
             $( ".open-modal" ).remove();
@@ -948,6 +957,10 @@ $(document).ready(function(){
           async:false,
           data:{src:src,dest:dest,depth:subdir},
           success:function(result){
+            if(result != 1){
+              alert('Error while renaming');
+              console.log(result);
+            }
             $( ".modal-background-filter" ).remove();
             $( ".open-modal" ).remove();
             fnr();
@@ -983,7 +996,7 @@ $("body").click(function(e) {
 
   if(classname=='move-to'){
 
-    alert("move-to clicked " + classname + prevforid);
+    //alert("move-to clicked " + classname + prevforid);
     if ( $(window).width() < 480) {
       $(".back-arrow").css({"display": "none"});
       $(".left-menu").css({"display": "block"});
@@ -1001,6 +1014,35 @@ $("body").click(function(e) {
     if(src == undefined) src = $(".btn-move").parent().parent().parent().parent().attr("name");
     if(subdir != "") src = subdir+'/'+src;
     dest = $(".btn-move").attr("name");
+    if(prevsidelinkid == 'group'){
+      gid = src.split('/')[0];
+      sid = src.split('/')[1];
+      depth = src.replace(gid,'');
+      depth = depth.replace('/'+sid,'');
+      $.ajax({
+        url:base+'manage/copygroup',
+        data:{sid:sid,depth:depth,dest:dest},
+        type:"POST",
+        success:function(res){
+          if(res != 1) alert('Invalid operation');
+          $('.move-to-submenu').remove();
+        }
+      });
+      return;
+    }
+    if(prevsidelinkid == 'shared-with-me'){
+      sid = src.split('/')[0];
+      depth = src.replace(sid,'');
+      $.ajax({
+        url:base+'manage/copyshared',
+        data:{sid:sid,depth:depth,dest:dest},
+        type:"POST",
+        success:function(res){
+          $('.move-to-submenu').remove();
+        }
+      });
+      return;
+    }
     move(src,dest);
     return;
   }
@@ -1012,6 +1054,10 @@ function move(src,dest){
     async:false,
     data:{dest:dest,src:src},
     success:function(result){
+      if(result != 1){
+        alert("Error While Moving");
+        console.log(result);
+      }
       fnr();
     }
   });
@@ -1028,12 +1074,14 @@ function flipfav(file){
 }
 ff = flipfav;
 function flipdel(file){
+  type = (prevsidelinkid == 'trash'?1:0);
   $.ajax({
     url:base+"manage/flipdel",
-    data:{path:file},
+    data:{path:file,type:type},
     type:"POST",
     async:false,
     success:function(result){
+      if(result!=1) alert(result);
     }
   });
 }

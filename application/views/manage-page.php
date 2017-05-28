@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <li class="account-info-container">
         <div class="log-out-username"><?php echo $this->session->name; ?></div>
           <div class="log-out-email-id"><?php echo $this->session->email; ?></div>
-            <div class="account-info">My Account</div>
+            <!--<div class="account-info">My Account</div>-->
     </li>
 
 
@@ -82,9 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
         </li>
         <li><h2 class="nav-bar-title"><span onClick="makemeactive(this)" name="" class="active-left-nav directory0 directory">Saved Notes</span><i class="ion-ios-arrow-right"></i><span class="directory1 directory" onclick="makemeactive(this)">Html Folder</span><i class="ion-ios-arrow-right"></i><span class="directory2 directory active-tab">Website</span></h2></li>
-              <li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>
-        <li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>
-        <li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>
+              <!--<li class="search"><i class="ion-ios-gear settings-icon hover-effect" aria-hidden="true"></i></li>-->
+        <!--<li class="search"><i class="ion-information-circled info-icon hover-effect" aria-hidden="true"></i></li>-->
+        <!--<li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>-->
 
 
         <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
             <li class="folder" id="saved-notes"><i class="ion-android-archive folder-icon" ></i><span class="left-nav-bar-text" id="saved-notes">Saved Notes</span></li>
             <li class="folder" id="shared-with-me"><i class="ion-android-share-alt folder-icon" ></i><span class="left-nav-bar-text" id="shared-with-me">Shared with me</span></li>
-            <li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text" id="recent">Recent</span></li>
+            <!--<li class="folder" id="recent"><i class="ion-ios-clock folder-icon" ></i><span class="left-nav-bar-text" id="recent">Recent</span></li>-->
             <li class="folder" id="favorites"><i class="ion-star folder-icon" ></i><span class="left-nav-bar-text" id="favorites">Favorites</span></li>
             <li class="folder" id="group"><i class="ion-android-people folder-icon" ></i><span id="group" class="left-nav-bar-text" >Groups</span></li>
             <li class="folder" id="trash" ><i class="ion-trash-b folder-icon" ></i><span class="left-nav-bar-text" id="trash">Deleted</span></li>

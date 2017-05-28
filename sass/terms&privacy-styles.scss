@@ -1,0 +1,79 @@
+@import "partials/terms&privacy/normalize";
+@import "partials/terms&privacy/variables";
+@import "partials/terms&privacy/mixins";
+@import "partials/terms&privacy/navigation";
+@import "partials/terms&privacy/footer";
+
+$top-slideshow-height:100%;
+body,html{
+    height: 100%;
+   cursor: default!important;
+
+}
+body{
+  overflow-x: hidden;
+    background-color: $main-background ;
+}
+
+.body{
+
+  margin-top: 60px;
+
+  padding-top: 20px;
+  padding-left: 20px;
+  height: auto;
+  width: 100%;
+  font-family: RalewayRegular;
+  @include bp-large {
+    padding-top: 10px;
+  }
+  @include bp-medium {
+    padding-top: 0px;
+  }
+
+  h2{
+    width: 80%;
+    height: auto;
+    line-height: 50px;
+    color: lighten(#000,30%);
+    font-size: 40px;
+    margin-bottom: 60px;
+    span{
+    white-space:nowrap
+    }
+  }
+  h4{
+    width: 80%;
+    height: auto;
+    font-size: 23px;
+    color: lighten(#000,15%);
+    margin-bottom: 70px;
+  }
+  p{
+
+    width: 90%;
+    height: auto;
+    margin-top: -40px;
+    font-size: 16px;
+    color: lighten(#000,30%);
+    margin-bottom: 50px;
+    .highlight{
+      color:$orange-light;
+    }
+
+  }
+  .list{
+    list-style:inside;
+    margin-left: -30px;
+    margin-top: -40px;
+    margin-bottom: 70px;
+    color: lighten(#000,30%);
+    li{
+      color: lighten(#000,30%);
+      span{
+        position: relative;
+        left: -13px;
+      }
+    }
+  }
+}

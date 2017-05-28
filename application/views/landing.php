@@ -66,9 +66,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="banner-logo" style="background-image:url(<?php echo base_url(); ?>/images/logo.png);">
 </li>
       <li class="active"><span>home</span></li>
+      <!--<li><span>home</span></li>
       <li><span>home</span></li>
-      <li><span>home</span></li>
-      <li><span>home</span></li>
+      <li><span>home</span></li>-->
       <li>
         <div class="login-button-container">
         <div class="google-login button ">Google</div><span>or</span>
@@ -78,10 +78,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </ul>
   </div>
   <div class="modal desktop-nav-bar" >
-    <div >Sign-in</div>
+    <div><a href="<?php echo base_url();?>/termsncondn">Terms and Conditions</a></div>
+    <!--<div >Sign-in</div>
     <div >Help</div>
     <div >Using e-notes</div>
-    <div >Home</div>
+    <div >Home</div>-->
     <div class="left">e-notes</div>
   </div>
 </nav>
@@ -132,9 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="modal footer" >
   <div>e-notes</div>
-  <div>About e-notes</div>
-  <div>Privacy</div>
-  <div>Terms</div>
+  <div><a href="<?php echo base_url(); ?>/termsncondn">Privacy and Terms</a></div>
   <div class="right">&#169; 2017 All copyrights reserved</div>
 </div>
 
