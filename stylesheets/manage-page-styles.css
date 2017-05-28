@@ -658,6 +658,64 @@ th {
   background: #2b2c41;
 }
 
+@font-face {
+  font-family: RalewayRegular;
+  src: url(../fonts/Raleway-Light.ttf);
+}
+@font-face {
+  font-family: colab;
+  src: url(../fonts/ColabReg.otf);
+}
+@font-face {
+  font-family: LeagueGothicRegular;
+  src: url(../fonts/LeagueGothic-CondensedRegular.otf);
+}
+@font-face {
+  font-family: Existencelight;
+  src: url(../fonts/Existence-Light.otf);
+}
+@font-face {
+  font-family: Ralewaymedium;
+  src: url(../fonts/Raleway-Medium.ttf);
+}
+@font-face {
+  font-family: KaushanScriptRegular;
+  src: url(../fonts/KaushanScript-Regular.otf);
+}
+@font-face {
+  font-family: OpenSansRegular;
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: AlexBrushRegular;
+  src: url(../fonts/AlexBrush-Regular.ttf);
+}
+@font-face {
+  font-family: INKITMT;
+  src: url(../fonts/INKITMT_.otf);
+}
+@font-face {
+  font-family: digital7;
+  src: url(../fonts/digital-7.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/roboto/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: Roboto-Regular;
+  src: url(../fonts/roboto/Roboto-Regular.ttf);
+}
+/*-buttons modes-*/
+/*1-stop variables
+$default-font-color:$green-light;
+$main-background: lighten($cyan,30%);
+$font-size-logo:25px;
+$nav-bar-left:25px;
+*/
+/*
+$default-text-color: $black !default;
+*/
 /*    usage
 p {
   @include font-size(14px)
@@ -3004,7 +3062,7 @@ input:checked + .slider:before {
   font-size: 20px;
   color: #858585;
   background-color: #f8f8f8;
-  padding: 10px;
+  padding: 20px;
   margin: -10px;
   margin-top: -9px;
   padding-top: 8px;

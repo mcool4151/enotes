@@ -10,9 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
-  <meta name="author" content="Abc,def,ghi">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <script src="https://apis.google.com/js/api:client.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/font-awesome.min.css">
   <script src="https://apis.google.com/js/api:client.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>stylesheets/landing-page-styles.css">

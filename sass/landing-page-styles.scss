@@ -4,14 +4,14 @@
 @import "partials/landing-page-partials/base";
 $top-slideshow-height:100%;
 body,html{
-  background-color: black;
+  background-color: #fff;
   height: 100%;
   width: 100%;
    cursor: default!important;
 
 }
 body{
-  overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 
 
@@ -202,9 +202,9 @@ body{
   position: relative;
   /* Full height */
   height: $top-slideshow-height;
+  background-attachment: scroll;
 
   /* Create the parallax scrolling effect */
-  background-attachment: fixed;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -232,11 +232,11 @@ z-index:6;
 .modal{
   width: 100%;
   height:$top-slideshow-height;
-  position: absolute;
-  background-color:transparent;
+  position: relative;
   top: 0px;
   font-size:12px;
   text-align: center;
+
 h2{
   color: #fff;
   margin-top: 20px;
@@ -259,9 +259,9 @@ h2{
 }
 
 .banner{
-position: fixed;
+position: relative;
 height: 250px;
-top:250px;
+top:-550px;
 
 }
 .banner-logo{
@@ -293,6 +293,7 @@ top:250px;
     width: 90%;
   }
 }
+
 .button{
   background-color: #4CAF50; /* Green */
  border: none;
@@ -304,18 +305,24 @@ top:250px;
  font-size: 13px;
  margin-top: -10px;
  cursor: pointer;
+ @include bp-small {
+   padding: 7px 32px;
+ }
 }
-.banner .login-button-container {
+.login-button-container {
   text-align: center;
+  @include bp-small {
+    height:30px;
+  }
   div{
   width: 45%;
   height:inherit;
 }
 span{
 font-size: 13px;
-color: #fff;
-
+color:#fff;
 padding-top: 15px;
+
 }
 
 }
@@ -342,7 +349,7 @@ padding-top: 15px;
   z-index: 10;
   width: 100%;
   height: 500px;
-  background-color: white;
+
   position: relative;
   margin-top: 0px;
   color:red!important;
@@ -360,7 +367,6 @@ padding-top: 15px;
   background-position: 100% 50%;
   background-repeat: no-repeat;
   background-size:350px 300px;
-  background-color: white;
   float: left;
   @include bp-medium {
     margin-top: 30px;
@@ -440,7 +446,7 @@ padding-top: 15px;
 .shared-files{
   z-index: 10;
   width: 100%;
-  height: 500px;
+  height: 300px;
   background-color: white;
   position: relative;
   margin-top: 0px;
@@ -457,7 +463,7 @@ padding-top: 15px;
 
   background-repeat: no-repeat;
 
-  background-color: white;
+
   float: left;
 
     margin-top: 100px;
@@ -469,6 +475,7 @@ padding-top: 15px;
       background-size:550px 100px;
     }
     @include bp-small {
+      margin-top: 50px;
       background-size:250px 50px;
     }
 }
@@ -493,7 +500,7 @@ padding-top: 15px;
         font-size: 40px;
       }
       @include bp-small {
-        margin-top: -140px;
+        margin-top: -80px;
         font-size:25px;
       }
 
@@ -516,7 +523,7 @@ padding-top: 15px;
         margin-left: 5px;
       }
       @include bp-small {
-        margin-top: -20px;
+        margin-top: -30px;
         font-size:18px;
         margin-left: 5px;
       }
@@ -572,9 +579,15 @@ padding-top: 15px;
    font-size: 13px;
    margin-top: -10px;
    cursor: pointer;
+   @include bp-small {
+     padding: 7px 32px;
+   }
   }
   .login-button-container {
     text-align: center;
+    @include bp-small {
+      height:30px;
+    }
     div{
     width: 45%;
     height:inherit;
@@ -582,14 +595,15 @@ padding-top: 15px;
   span{
   font-size: 13px;
   color: lighten(black,35%);
-
   padding-top: 15px;
+
   }
 
   }
   .google-login{
     float: left;
     background-color: #d34836;
+
   }
   .facebook-login{
     float: right;
@@ -610,7 +624,7 @@ padding-top: 15px;
       font-size: 35px;
     }
     @include bp-small {
-      font-size: 30px
+      font-size: 20px;
     }
 
   }
