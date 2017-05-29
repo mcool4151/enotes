@@ -2906,7 +2906,7 @@ input:checked + .slider:before {
   padding-top: 12px;
   display: inline-block;
   background-color: #f8f8f8;
-  opacity: 0.3;
+  opacity: 1;
   color: #0d0d0d;
   font-size: 13px;
 }
@@ -3017,12 +3017,12 @@ input:checked + .slider:before {
 }
 
 /* line 113, ../sass/partials/manage-page-partials/_file.scss */
-.file-name:after {
+#file1:after {
   content: "";
   opacity: 1;
-  width: 100%;
+  width: 20%;
   height: 2px;
-  background: blue;
+  background: orange;
   position: absolute;
   margin-top: 25px;
   left: 0px;

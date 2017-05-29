@@ -8,7 +8,7 @@ body,html{
   height: 100%;
   width: 100%;
    cursor: default!important;
-
+   margin-bottom:200px;
 }
 body{
   overflow-x: hidden!important;
@@ -59,8 +59,10 @@ body{
   border-radius: none;
   border: none;
   cursor: pointer;
-  transition: background 0.3s;
-
+  transition: 0.3s;
+  -webkit-transition:0.3s;
+  -moz-transition:0.3s;
+  -o-transition:0.3s;
 }
 
 .c-hamburger:focus {
@@ -100,20 +102,36 @@ body{
 
 .c-hamburger--htx span {
   transition: background 0s 0.3s;
+  -webkit-transition:0.3s;
+  -moz-transition:0.3s;
+  -o-transition:0.3s;
 }
 
 .c-hamburger--htx span::before,
 .c-hamburger--htx span::after {
   transition-duration: 0.3s, 0.3s;
+  -webkit-transition-duration: 0.3s, 0.3s;
+  -moz-transition-duration: 0.3s, 0.3s;
+  -o-transition-duration: 0.3s, 0.3s;
   transition-delay: 0.3s, 0s;
+  -webkit-transition-delay: 0.3s, 0s;
+  -moz-transition-delay: 0.3s, 0s;
+  -o-transition-delay: 0.3s, 0s;
+
 }
 
 .c-hamburger--htx span::before {
   transition-property: top, transform;
+  -webkit-transition-property: bottom, transform;
+  -moz-transition-property: bottom, transform;
+  -o-transition-property: bottom, transform;
 }
 
 .c-hamburger--htx span::after {
   transition-property: bottom, transform;
+  -webkit-transition-property: bottom, transform;
+  -moz-transition-property: bottom, transform;
+  -o-transition-property: bottom, transform;
 }
 
 /* active state, i.e. menu open */
@@ -128,16 +146,25 @@ body{
 .is-active span::before {
   top: 0;
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 }
 
 .is-active span::after {
   bottom: 0;
   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
 }
 
 .is-active span::before,
 .is-active span::after {
   transition-delay: 0s, 0.3s;
+  -webkit-transition-delay: 0s, 0.3s;
+  -moz-ransition-delay: 0s, 0.3s;
+  -o-ransition-delay: 0s, 0.3s;
 }
 
 
@@ -199,16 +226,16 @@ body{
 .parallax {
   /* The image used */
 
-  position: relative;
+
   /* Full height */
   height: $top-slideshow-height;
-  background-attachment: scroll;
   text-align: center;
-
-  /* Create the parallax scrolling effect */
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+    background-attachment: fixed;
+  /* Create the parallax scrolling effect */
+
   .image-filter{
     width: inherit;
     height: inherit;
@@ -220,6 +247,9 @@ body{
   z-index:8;
 }
 .bg-one{
+
+
+
 z-index:6;
 }
 .banner{
@@ -232,7 +262,7 @@ z-index:6;
 }
 .modal{
   width: 100%;
-  height:$top-slideshow-height;
+  height:10%;
   position: relative;
   top: 0px;
   font-size:12px;
@@ -244,7 +274,7 @@ h2{
   font-family: RalewayRegular;
   margin-bottom: 20px;
   line-height: 60px;
-
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.4);
   @include bp-large {
     font-size: 40px;
   }
@@ -259,16 +289,18 @@ h2{
 }
 .down-arrow{
   font-size: 35px;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
+  margin: 0px auto;
   color:#fff;
   font-weight: 100;
   margin-left: -12px;
 }
 .banner{
-position: absolute;
+position: fixed;
 height: 550px;
 top:150px;
+
 @include bp-large {
   top:250px;
 }
@@ -364,14 +396,16 @@ padding-top: 15px;
   background-color: #3b5998;
 }
 
-
+.bg-1{
+  padding-top: -400px;
+}
 .bg-two{
   @include bp-large {
     height: 500px;
   }
   height: 300px;
   margin-top: 0px;
-  background-attachment: scroll;
+  background-attachment: scroll!important;
 }
 
 .files-supported{
@@ -380,6 +414,7 @@ padding-top: 15px;
   height: 500px;
   position: relative;
   margin-top: 0px;
+  background-color: #fff;
   color:red!important;
   padding-top: 40px;
   padding-top: 0px;
@@ -486,11 +521,11 @@ padding-top: 15px;
     height: 500px;
   }
   @include bp-medium{
-
+      margin-top: -100px;
     height: 350px;
   }
   @include bp-small {
-
+      margin-top: -100px;
     height: 300px;
   }
 }
@@ -569,13 +604,11 @@ padding-top: 15px;
 .last-modal{
   z-index: 10;
   width: 100%;
-  height: 500px;
-  background-color: white;
+  height: 300px;
   position: relative;
-  margin-top: 0px;
+  margin-top: -150px;
   color:red!important;
-  padding-top: 40px;
-  padding-top: 50px;
+  padding-top: 150px;
   @include bp-small{
     height: 300px;
   }
@@ -677,7 +710,7 @@ padding-top: 15px;
   border-top: 1px solid $light-grey-border;
   box-shadow: 0px 22px 50px gray;
   position: relative;
-  margin-top: 0px;
+  margin-top: 100px;
   color:red!important;
   padding-top: 40px;
   padding-top: 0px;

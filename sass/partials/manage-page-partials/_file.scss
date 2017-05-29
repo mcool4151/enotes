@@ -22,7 +22,7 @@
   padding-top: 12px;
   display: inline-block;
   background-color: lighten($gray, 47%);
-  opacity: 0.3;
+  opacity: 1;
   color: lighten(black, 5%);
 
 
@@ -110,12 +110,12 @@
       color: darken($gray, 25%);
     }
 }
-.file-name:after{
+#file1:after{
      content: "";
      opacity: 1;
-     width: 100%;
+     width: 20%;
      height: 2px;
-     background: blue;
+     background: orange;
      position: absolute;
      margin-top: 25px;
      left: 0px;
