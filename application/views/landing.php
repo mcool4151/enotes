@@ -91,13 +91,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-<div data-scroll-speed="9" class="parallax bg-one" style="background-image: url('<?php echo base_url(); ?>/images/banner-1.jpg' ) ;">
+<div data-scroll-speed="10" class="parallax bg-one" style="background-image: url('<?php echo base_url(); ?>/images/banner-1.jpg' ) ;">
 <div class="image-filter"></div>
 <i class="fa fa-angle-down down-arrow" aria-hidden="true"></i>
 
 </div>
 
-<div data-scroll-speed="4"  class="modal banner" >
+<div   data-scroll-speed="4" class="modal banner" >
   <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2 >Save &#38; Share knowledge here</h2>
   <div class="login-button-container">
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 
-<div data-scroll-speed="5"  class="modal files-supported" >
+<div   class="modal files-supported" >
     <div class="file-img" style="background-image:url(<?php echo base_url();?>/images/files.png);">
     </div>
     <div class="text-container">
@@ -115,9 +115,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div data-scroll-speed="3" class="parallax bg-two bg-1" style="background-image: url('<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
+<div  class="parallax bg-two bg-1" style="background-image: url('<?php echo base_url();?>/images/banner-2.jpg');"><div class="image-filter"></div></div>
 
-<div data-scroll-speed="4" class="modal shared-files" >
+<div  class="modal shared-files" >
     <div class="shared-img" style="background-image:url(<?php echo base_url();?>/images/share.jpg);">
     </div>
     <div class="text-container">
@@ -125,9 +125,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p>You can keep notes, photon, designs, drawings, recordings, videos – anything.</p>
   </div>
 </div>
-<div data-scroll-speed="3"   class="parallax bg-two" style="background-image: url('<?php echo base_url();?>/images/banner-3.jpg');"><div class="image-filter"></div></div>
+<div    class="parallax bg-two bg-2" style="background-image: url('<?php echo base_url();?>/images/banner-3.jpg');"><div class="image-filter"></div></div>
 
-<div data-scroll-speed="6" class="modal last-modal" >
+
+<div  class="modal last-modal" >
   <div class="banner-logo" style="background-image:url(<?php echo base_url();?>/images/logo.png);"></div>
   <h2>Get started with US now for free </h2>
   <div class="login-button-container">

@@ -4,7 +4,7 @@
 @import "partials/landing-page-partials/base";
 $top-slideshow-height:100%;
 body,html{
-  background-color: #fff;
+  background-color:#fff;
   height: 100%;
   width: 100%;
    cursor: default!important;
@@ -226,7 +226,8 @@ body{
 .parallax {
   /* The image used */
 
-
+  position: relative;
+  width: 100%;
   /* Full height */
   height: $top-slideshow-height;
   text-align: center;
@@ -235,7 +236,6 @@ body{
   background-size: cover;
     background-attachment: fixed;
   /* Create the parallax scrolling effect */
-
   .image-filter{
     width: inherit;
     height: inherit;
@@ -247,10 +247,12 @@ body{
   z-index:8;
 }
 .bg-one{
-
-
-
-z-index:6;
+position: fixed;
+top:0px;
+left:0px;
+z-index:1;
+width: 100%;
+height: 100%;
 }
 .banner{
   z-index:6;
@@ -400,12 +402,19 @@ padding-top: 15px;
   padding-top: -400px;
 }
 .bg-two{
+  position: relative;
+  z-index: 2;
   @include bp-large {
     height: 500px;
   }
   height: 300px;
   margin-top: 0px;
+  margin-bottom:0px;
   background-attachment: scroll!important;
+}
+.bg-2{
+  margin-top: 0px;
+  margin-bottom:0px;
 }
 
 .files-supported{
@@ -413,14 +422,15 @@ padding-top: 15px;
   width: 100%;
   height: 500px;
   position: relative;
-  margin-top: 0px;
+
   background-color: #fff;
-  color:red!important;
-  padding-top: 40px;
   padding-top: 0px;
   @include bp-large {
-
+    margin-top: 55%;
     height: 500px;
+  }
+  @include bp-medium {
+    margin-top: 150%;
   }
 }
 
@@ -514,13 +524,13 @@ padding-top: 15px;
   position: relative;
   margin-top: 0px;
   color:red!important;
-  padding-top: 40px;
-  padding-top: 0px;
+  padding-top: 50px;
   @include bp-large {
 
     height: 500px;
   }
   @include bp-medium{
+    padding-top: 0px;
       margin-top: -100px;
     height: 350px;
   }
@@ -564,7 +574,7 @@ padding-top: 15px;
     font-family: RalewayRegular;
     font-weight: 500;
       font-size: 50px;
-      margin-top: -80px;
+      margin-top: -50px;
       text-align: center;
       width: 100%;
       @include bp-medium {
@@ -604,11 +614,12 @@ padding-top: 15px;
 .last-modal{
   z-index: 10;
   width: 100%;
-  height: 300px;
+  height: 600px;
   position: relative;
-  margin-top: -150px;
-  color:red!important;
+  margin-top: 0px;
   padding-top: 150px;
+  background-color: #fff;
+  margin-bottom: 0px;
   @include bp-small{
     height: 300px;
   }
@@ -669,7 +680,7 @@ padding-top: 15px;
   font-size: 13px;
   color: lighten(black,35%);
   padding-top: 15px;
-
+  text-shadow: none;
   }
 
   }
@@ -689,7 +700,7 @@ padding-top: 15px;
     font-family: RalewayRegular;
     margin-bottom: 20px;
     line-height: 60px;
-
+    text-shadow: none;
     @include bp-large {
       font-size: 40px;
     }
