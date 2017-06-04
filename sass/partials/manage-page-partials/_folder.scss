@@ -70,7 +70,12 @@ height: auto;
       text-align: center;
       margin-right: 5px;
         top:10px;
+        visibility: visible;
       color: lighten($gray, 5%);
+
+      @include bp-medium{
+        visibility: visible;
+      }
       @include bp-small {
           margin-top: -8px;
       }

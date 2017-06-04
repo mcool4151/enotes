@@ -125,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
 
         </div><!--left container end --><!--change end -->
-          <div class="display-container ">
+          <div class="display-container " id="display-container">
 
 
             <h3 class="folders-text">Folders</h3>
@@ -300,6 +300,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
+<script src="<?php echo base_url();?>javascripts/contextmenu.js"></script>
 <script src="<?php echo base_url();?>javascripts/upload.js"></script>
 
 <script>
