@@ -110,13 +110,3 @@
       color: darken($gray, 25%);
     }
 }
-#file1:after{
-     content: "";
-     opacity: 1;
-     width: 20%;
-     height: 2px;
-     background: orange;
-     position: absolute;
-     margin-top: 25px;
-     left: 0px;
-}

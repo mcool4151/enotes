@@ -3016,18 +3016,6 @@ input:checked + .slider:before {
   color: #404040;
 }
 
-/* line 113, ../sass/partials/manage-page-partials/_file.scss */
-#file1:after {
-  content: "";
-  opacity: 1;
-  width: 20%;
-  height: 2px;
-  background: orange;
-  position: absolute;
-  margin-top: 25px;
-  left: 0px;
-}
-
 /* line 4, ../sass/partials/manage-page-partials/_folder.scss */
 .folder-container {
   z-index: -1;
