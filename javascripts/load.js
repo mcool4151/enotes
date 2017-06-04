@@ -9,6 +9,7 @@ function displaynone(){
 $(document).ready(function(){
   var list = undefined;
   var files = [];
+  var upload = 1;
   var folders = [];
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
@@ -217,8 +218,14 @@ $(document).ready(function(){
         }
       },
       uploadProgress: function(event, position, total, percentComplete) {
-        $('#files').prepend('<li class="file" draggable="true"id="file12" ><div class="file-preview"  style="  background-image: url(\'http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png\') ;"></div><div class="upload file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>');
-
+        if(upload == 1){
+          alert("1");
+          $('#files').prepend('<li class="file" draggable="true" id="file12" ><div class="file-preview"  style="  background-image: url(\'http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png\') ;"></div><div class="upload file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>');
+          upload = 0;
+        }
+        $("<div class=\"upload-bar\"></div>").insertAfter($("#files li:first-child"));
+        $("#files li:first-child").css({ 'opacity': '0.2' });
+        $(".upload-bar").css({ "color":"red","height":"2px","width":percentComplete,"background":"orange"  });
       }
     });
   });
