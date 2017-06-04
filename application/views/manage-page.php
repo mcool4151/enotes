@@ -289,7 +289,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <script src="http://localhost:35729/livereload.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/.file-name3.1.1/jquery.min.js"></script>
+    <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
     <!--<script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>-->
     <!--<script src="<?php echo base_url();?>javascripts/drag-drop.js"></script>-->
 

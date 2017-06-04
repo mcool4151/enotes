@@ -215,6 +215,10 @@ $(document).ready(function(){
         }
         else {
         }
+      },
+      uploadProgress: function(event, position, total, percentComplete) {
+        $('#files').prepend('<li class="file" draggable="true"id="file12" ><div class="file-preview"  style="  background-image: url(\'http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png\') ;"></div><div class="upload file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>');
+
       }
     });
   });
