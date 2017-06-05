@@ -571,7 +571,7 @@ $(document).ready(function(){
   $(".create-menu").click(function(e) {
 
     var classname1 = $(e.target).attr('class').split(' ')[0];
-    //alert(classname1)
+    //alert(classname1);
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
         alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
@@ -682,6 +682,11 @@ $(document).ready(function(){
     var classname1 = $(e.target).attr('class').split(' ')[0];
 //    alert(classname1);
     if(classname1 == 'upload'){
+      if(prevsidelinkid != 'saved-notes'){
+        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
+        return;
+      }
+      document.getElementById('myfile').click();
     }
     if(classname1 == 'create-group'){
       $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input class="namebox" autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" id="members"></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');

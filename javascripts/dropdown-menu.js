@@ -66,7 +66,7 @@ $(document).ready(function(){
 $(".upload-button").click(function(e) {
   $(".back-arrow").css({"display": "block"});
   $(".left-menu").css({"display": "none"});
-  $(".body").append('<ul class="mobile-submenu-full-cover" ><li class="create-folder"><i class="ion-plus icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="ion-ios-paper icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+  $(".body").append('<ul class="mobile-submenu-full-cover" ><li class="create-folder"><i class="ion-plus icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
 });
 $(".search-icon").click(function(e) {
   $(".back-arrow").css({"display": "block"});
