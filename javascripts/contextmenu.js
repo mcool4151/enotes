@@ -2,6 +2,7 @@
 var menuDisplayed = false;
 var elementid,elementclickedparentparent,elementclickedparent,elementclicked,menuBox = null;
 var elementidparent;
+var classname;
 $(document).mousedown(function(ev){
   if(menuDisplayed == true){
     menuBox.style.display = "none";
@@ -26,7 +27,19 @@ $(document).mousedown(function(ev){
     }
   }
 
+  classname = $(ev.target).attr('class').split(' ')[0];
 
+if(classname == 'new'){
+if(onscreen==0)
+{
+$(".new-button-container").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+onscreen=1;
+}
+}
+else{
+$( ".new-dropdown" ).remove();
+onscreen=0;
+}
 });
 
 window.addEventListener("contextmenu", function() {
@@ -47,7 +60,6 @@ window.addEventListener("contextmenu", function() {
 
   }
 //  $("h2").text(" id " + elementid + elementidparent + " class " + elementclicked + elementclickedparentparent);
-$("h2").text(elementclickedparentparent);
 
   if(elementclickedparentparent=="file,trash"||elementclickedparentparent=="folder,trash"||elementclicked=="file,trash"||elementclicked=="folder,trash")
   {
@@ -86,7 +98,9 @@ $("h2").text(elementclickedparentparent);
 
 
   }
-  if(elementclickedparentparent=="file,group"||elementclickedparentparent=="folder,group"||elementclicked=="file,group"||elementclicked=="folder,group")
+
+
+/*  if(elementclickedparentparent=="file,group"||elementclickedparentparent=="folder,group"||elementclicked=="file,group"||elementclicked=="folder,group")
   {
 
     $(".body").append('<ul class="folder-submenu-container group-submenu-container" ><li class="move-to"><i class="ion-android-exit icon" ></i><span class="move-to">Move To Saved Notes</span></li><li class="download"><i class="ion-archive icon" ></i><span class="download">Download</span></li></ul>');
@@ -99,7 +113,7 @@ $("h2").text(elementclickedparentparent);
 
 
   }
-
+*/
 
 
 

@@ -21,7 +21,7 @@
   padding-left:10px;
   padding-top: 12px;
   display: inline-block;
-  background-color: lighten($gray, 47%);
+  //background-color: lighten($gray, 47%);
   opacity: 1;
   color: lighten(black, 5%);
 
@@ -98,7 +98,7 @@
       text-align: center;
       top:6px;
       margin-right: 5px;
-      visibility: visible;
+      visibility: hidden;
     color: lighten($gray, 5%);
     @include bp-medium{
       visibility: visible;
@@ -114,3 +114,77 @@
       color: darken($gray, 25%);
     }
 }
+/*
+.file1{
+  margin-right: 5px;
+  margin-bottom: 5px;
+  float:left;
+  height: 150px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  margin-bottom: 40px;
+  width:19%;
+  color: lighten(black, 5%);
+    @extend .font;
+    font-size: 13px;
+    @include bp-medium {
+    height: 160px;
+    margin-right: 5px;
+          width:32%;
+    }
+    @include bp-small {
+      font-size: 11px;
+      height: 135px;
+      margin-right: 5px;
+      width:48%;
+    }
+    div{
+      position: relative;
+      margin-top: 160px;
+      margin-bottom: 20px;
+      padding-left: 35px;
+      @include bp-medium {
+      margin-top: 170px;
+
+      }
+      @include bp-small {
+        margin-top:145px;
+      }
+
+    }
+    div:before{
+      content: "\f472";
+      font-family: Ionicons;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      font-size: 18px;
+      color: lighten($gray, 2%);
+      padding-left: 10px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+    }
+    div:after{
+      content: "\f397";
+      font-family: Ionicons;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      font-size: 18px;
+      color: lighten($gray, 3%);
+      padding-right:20px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+
+    }
+    div:after:hover{
+      color: lighten($gray, 23%);
+    }
+
+}*/

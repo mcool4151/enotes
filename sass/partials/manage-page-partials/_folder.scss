@@ -70,7 +70,7 @@ height: auto;
       text-align: center;
       margin-right: 5px;
         top:10px;
-        visibility: visible;
+        visibility:hidden;
       color: lighten($gray, 5%);
 
       @include bp-medium{
