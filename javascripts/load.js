@@ -1,4 +1,4 @@
-var oldname;
+
 function displaynone(){
   $('.sub-groups-text').css({'display':'none'});
   $('.sub-group').css({'display':'none'});
@@ -232,6 +232,19 @@ $(document).ready(function(){
   var folderClassname;
   var sidelinkid;
   $("body").click(function(e){
+
+
+  if(classname == 'new'){
+  if(onscreen==0)
+  {
+  $(".new-button-container").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+  onscreen=1;
+  }
+  }
+  else{
+  $( ".new-dropdown" ).remove();
+  onscreen=0;
+  }
     folderClassname = $(e.target).attr('class').split(' ')[0];
     if(folderClassname=="folder"  || folderClassname=="left-nav-bar-text" || folderClassname=="folder-name-text")
     {
@@ -997,10 +1010,21 @@ $(document).ready(function(){
 });
 $("body").click(function(e) {
   classname = $(e.target).attr('class').split(' ')[0];
+  //alert(classname);
+  if(menuDisplayed == true  ){
+    menuBox.style.display = "none";
+  //  $( ".folder-submenu-container" ).remove();
+
+    //        var folderClassname = $(e.target).attr('class').split(' ')[0];
+
+  }
   if(classname == 'dot-icon' ){
     folderid = $(e.target).parent().attr('id');
     if($("#"+folderid).attr('class') == "file-name"){
       oldname = $(e.target).parent().parent().attr('name');
+      if($(window).width() > 1024){
+        oldname = $(e.target).parent().parent().attr('name');
+      }
     }
     else oldname = $("#"+folderid).attr('name');
   }

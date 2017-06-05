@@ -21,6 +21,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var classname;
     var onscreen=0;
     var prevforid;
+    var menuDisplayed = false;
+    var oldname;
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
