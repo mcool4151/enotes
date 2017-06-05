@@ -3122,7 +3122,7 @@ input:checked + .slider:before {
   text-align: center;
   top: 6px;
   margin-right: 5px;
-  visibility: hidden;
+  visibility: visible;
   color: #8d8d8d;
 }
 @media screen and (max-width: 1024px) {
@@ -3304,7 +3304,7 @@ input:checked + .slider:before {
   text-align: center;
   margin-right: 5px;
   top: 10px;
-  visibility: hidden;
+  visibility: visible;
   color: #8d8d8d;
 }
 @media screen and (max-width: 1024px) {

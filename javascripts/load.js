@@ -237,7 +237,7 @@ $(document).ready(function(){
   if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".new-button-container").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+  $(".create-menu").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
   onscreen=1;
   }
   }
@@ -568,8 +568,10 @@ $(document).ready(function(){
       sidelinkid = $(this).prop("id");
     }
   });
-  $(".new-button-container").click(function(e) {
+  $(".create-menu").click(function(e) {
+
     var classname1 = $(e.target).attr('class').split(' ')[0];
+    //alert(classname1)
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
         alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
@@ -676,8 +678,9 @@ $(document).ready(function(){
       });
     }
   });
-  $(".new-button-container").click(function(e) {
+  $(".create-menu,body").click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
+//    alert(classname1);
     if(classname1 == 'upload'){
     }
     if(classname1 == 'create-group'){
@@ -779,7 +782,11 @@ $(document).ready(function(){
         }
       });
     }
+
     if(classname1 == 'create-folder'){
+
+      $(".mobile-submenu-full-cover").css({"display": "none"});
+
       if(prevsidelinkid != 'saved-notes'){
         alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document");
         return;
@@ -823,7 +830,10 @@ $(document).ready(function(){
     }
   });
   $("body").click(function(e) {
+  //  alert("entred");
+
     var classname1 = $(e.target).attr('class').split(' ')[0];
+      //  alert(classname1);
     if(classname1 == 'close-button'){
       $( ".modal-background-filter" ).remove();
       $( ".open-modal" ).remove();

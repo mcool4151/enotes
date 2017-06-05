@@ -98,7 +98,7 @@
       text-align: center;
       top:6px;
       margin-right: 5px;
-      visibility: hidden;
+      visibility: visible;
     color: lighten($gray, 5%);
     @include bp-medium{
       visibility: visible;

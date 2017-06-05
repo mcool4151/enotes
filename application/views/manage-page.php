@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </li>
       </ul>
       <ul class="nav-container" >
-        <li class="new-button-container"><div class="new button ">new</div></li>
+        <li class="new-button-container create-menu"><div class="new button ">new</div></li>
         <li class="c-hamburger c-hamburger--htla left-menu"><span></span>
         </li>
         <li class="c-hamburger c-hamburger--htla back-arrow"><span></span>
@@ -199,7 +199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>-->
 
 
-          <div class="upload-button">+</div><!--upload button -->
+          <div class="create-menu upload-button">+</div><!--upload button -->
         <ul class="right-container">
           <li class="top-section-contianer section-view-detail" >
             <i class="ion-ios-paper icon current-icon" ></i>
@@ -304,7 +304,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="jquery-3.1.1.min.js"></script>
 <script src="<?php echo base_url();?>javascripts/scripts.js"></script>
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
-<script src="<?php echo base_url();?>javascripts/contextmenu.js"></script>
+<!--<script src="<?php echo base_url();?>javascripts/contextmenu1.js"></script>-->
 <script src="<?php echo base_url();?>javascripts/upload.js"></script>
 
 <script>
