@@ -71,7 +71,7 @@ $(".upload-button").click(function(e) {
 $(".search-icon").click(function(e) {
   $(".back-arrow").css({"display": "block"});
   $(".left-menu").css({"display": "none"});
-  $(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span class="text">result1</span></li><li><i class="ion-ios-paper icon" ></i><span class="text">result 2</span></li><li><i class="ion-ios-folder icon" ></i><span class="text">result3</span></li></ul>');
+  /*$(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span class="text">result1</span></li><li><i class="ion-ios-paper icon" ></i><span class="text">result 2</span></li><li><i class="ion-ios-folder icon" ></i><span class="text">result3</span></li></ul>');*/
 });
 
   $("body").click(function(e) {
