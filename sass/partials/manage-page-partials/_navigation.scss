@@ -304,6 +304,32 @@ padding-top:120px;
   bottom: 0;
   transform: translateX(10px) translateY(-1px) rotate(-45deg);
 }
+
+
+.back-arrow1{
+  display: none;
+  width: 20px;
+
+}
+.back-arrow1 span {
+  transform: rotate(180deg);
+
+}
+
+.back-arrow1 span::before,
+.back-arrow1 span::after {
+  width: 50%;
+}
+
+.back-arrow1 span::before {
+  top: 0;
+  transform: translateX(10px) translateY(0px) rotate(45deg);
+}
+
+.back-arrow1 span::after {
+  bottom: 0;
+  transform: translateX(10px) translateY(-1px) rotate(-45deg);
+}
 .nav-icons{
   font-size: 22px;
   color: darken(gray, 20%);

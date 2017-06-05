@@ -97,15 +97,19 @@ if(classname=='remove-email')
 
 
     $(".search-icon").click(function(){
-      $(".back-arrow").css({"display": "block"});
+      $(".back-arrow1").css({"display": "block"});
       $(".left-menu").css({"display": "none"});
       $(".search-bar").css({"display": "block"});
       $(".search-icon").css({"display": "none"});
     });
 
-    $(".back-arrow").click(function(){
+    $(".back-arrow1").click(function(){
+      if($(".back-arrow").css('display')=='none')
+      {$(".left-menu").css({"display": "block"});}
 
 
+
+      $(".back-arrow1").css({"display": "none"});
       $(".search-bar").css({"display": "none"});
       $(".search-icon").css({"display": "block"});
       $(".folder-submenu-container").css({"display": "none"});
