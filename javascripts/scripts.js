@@ -104,8 +104,8 @@ if(classname=='remove-email')
     });
 
     $(".back-arrow").click(function(){
-      $(".back-arrow").css({"display": "none"});
-      $(".left-menu").css({"display": "block"});
+
+
       $(".search-bar").css({"display": "none"});
       $(".search-icon").css({"display": "block"});
       $(".folder-submenu-container").css({"display": "none"});

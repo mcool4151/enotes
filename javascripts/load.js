@@ -231,6 +231,24 @@ $(document).ready(function(){
   });
   var folderClassname;
   var sidelinkid;
+  $(".back-arrow").click(function(){
+    //alert('executed');
+    tmp = subdir.lastIndexOf("/");
+    if(tmp == -1) {
+      subdir = '';
+      $(".back-arrow").css({"display": "none"});
+      $(".left-menu").css({"display": "block"});
+      clearnavbar();
+    }
+    else {
+      subdir = subdir.substring(0,tmp);
+      if(subdir.lastIndexOf("/") == -1) updatenavbar(subdir,subdir);
+      else updatenavbar(subdir.substring(subdir.lastIndexOf("/")-1,subdir.length),subdir);
+    }
+    //alert('Subdir is :'+subdir);
+    fetchAndReload();
+    //clearnavbar();
+  });
   $("body").click(function(e){
 
 
@@ -564,6 +582,10 @@ $(document).ready(function(){
           activeupdate("saved-notes","Saved Notes");
         }
         fetchAndReload();
+        if($(window).width() < 480){
+          $(".back-arrow").css({"display": "block"});
+          $(".left-menu").css({"display": "none"});
+        }
       }
       sidelinkid = $(this).prop("id");
     }
