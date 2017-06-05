@@ -590,18 +590,7 @@ $(document).ready(function(){
       sidelinkid = $(this).prop("id");
     }
   });
-  $(".create-menu").click(function(e) {
 
-    var classname1 = $(e.target).attr('class').split(' ')[0];
-    //alert(classname1);
-    if(classname1 == 'upload'){
-      if(prevsidelinkid != 'saved-notes'){
-        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
-        return;
-      }
-      document.getElementById('myfile').click();
-    }
-  });
   $("#logout").click(function (e) {
     window.location.href = base+"/manage/logout";
   });
@@ -700,9 +689,9 @@ $(document).ready(function(){
       });
     }
   });
-  $(".create-menu,body").click(function(e) {
+  $("body").click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
-//    alert(classname1);
+//alert(classname1);
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
         alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
