@@ -11,6 +11,18 @@ class Manage extends CI_Controller {
 		}
     $this->load->model('fileman');
 	}
+  public function getmembers(){
+    $key = $this->input->post('key');
+    $sql = "Select email from users where email like '%$key%'";
+    $res = $this->db->query($sql);
+    $i=0;
+    $data='';
+    foreach ($res->result_array() as $value) {
+      if($i<3) $data[] = $value['email'];
+      $i++;
+    }
+    echo json_encode($data);
+  }
   public function index(){
     $this->load->view('manage-page');
   }
