@@ -18,6 +18,8 @@ $(document).ready(function(){
   function updatesubdir(v){
     alert(v);
   }
+
+
   $(".search-bar").keyup(function(event){
     var ew = event.which;
     if (ew == 13){
@@ -441,8 +443,8 @@ $(document).ready(function(){
         else {
           $(".my-group").css({"display":"none"});
           if(prevsidelinkid == 'trash'){
-            $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><p>Restore Folder To View Contents</p><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
-            alert("Restore Folder To view Contents"); // TODO Change Later
+            $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>Restore Folder To view Contents</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+            //alert("Restore Folder To view Contents"); // TODO Change Later
             return;
           }
           if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
@@ -646,6 +648,10 @@ $(document).ready(function(){
   }
   $(document).click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
+    if(classname1 == 'okay'){
+      $(".error-modal-container").css({'display':'none'});
+      $( ".modal-background-filter" ).remove();
+    }
     if(classname1 == 'remove-email'){
       email = $(e.target).parent().text();
       filename = oldname;
@@ -710,7 +716,9 @@ $(document).ready(function(){
 //alert(classname1);
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
-        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document'); //TODO Change Later
+        $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+    //    alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document'); //TODO Change Later
         return;
       }
       document.getElementById('myfile').click();
@@ -851,7 +859,9 @@ $(document).ready(function(){
       $(".mobile-submenu-full-cover").css({"display": "none"});
 
       if(prevsidelinkid != 'saved-notes'){
-        alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document"); // TODO Change Later
+        $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+      //  alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document"); // TODO Change Later
         return;
       }
       // create folder register added
@@ -1109,7 +1119,12 @@ $(document).ready(function(){
         data:{name:oldname,depth:subdir},
         success:function(result){
           if(result == 1) window.location.href=base+"/manage/download";
-          else alert("error While Setting download params"); //TODO Change Later
+
+          else {
+            $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>Error While Setting download params</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+          //alert("Error While Setting download params"); //TODO Change Later
+        }
         }
       });
     }
@@ -1166,7 +1181,11 @@ $(document).click(function(e) {
         data:{sid:sid,depth:depth,dest:dest},
         type:"POST",
         success:function(res){
-          if(res != 1) alert('Invalid operation'); // TODO Change Later
+          if(res != 1) {
+            $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>Invalid operation</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+            //alert('Invalid operation'); // TODO Change Later
+        }
           $('.move-to-submenu').remove();
         }
       });
@@ -1197,7 +1216,9 @@ function move(src,dest){
     data:{dest:dest,src:src},
     success:function(result){
       if(result != 1){
-        alert("Error While Moving"); // TODO Change Later
+        $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>Error While Moving</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+        //alert("Error While Moving"); // TODO Change Later
         console.log(result);
       }
       fnr();
