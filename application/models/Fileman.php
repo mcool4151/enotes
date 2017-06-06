@@ -215,9 +215,9 @@ class Fileman extends CI_Model {
     foreach ($list as $file) {
       $path = $dir.$file;
       $uid = $this->session->uid;
-      $sql = "Select * from deleted where `uid`=$uid AND `path`='$path'";
-      $res = $this->db->query($sql);
-      if ($res->num_rows()) continue;
+      //$sql = "Select * from deleted where `uid`=$uid AND `path`='$path'";
+      //$res = $this->db->query($sql);
+      //if ($res->num_rows()) continue;
       $files[] = array(
         'name'      => $file,
         'is_dir'    => is_dir($dir.'/'.$file),
