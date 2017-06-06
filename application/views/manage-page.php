@@ -93,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!--<li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>-->
 
 
-        <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
+        <!--  <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>-->
 
         <li class="search">
           <i class="ion-android-search search-icon" aria-hidden="true"></i>
@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="display-container " id="display-container">
 
 
-            <h3 class="folders-text">Folders</h3>
+            <!--<h3 class="folders-text">Folders</h3>-->
             <ul class="folder-container" >
               <!--<li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li> -->
             </ul>
-            <h3 class="files-text" >Files</h3>
+            <!--<h3 class="files-text" >Files</h3>-->
             <ul class="file-container" id="files">
               <!--<li class="file" draggable="true"id="file12" ><div class="file-preview"  ></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file12" ><div class="file-preview"  ></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>

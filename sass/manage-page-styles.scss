@@ -222,7 +222,7 @@ body{
   width:50px;
   height: 50px;
   border-radius: 50%;
-  background: lighten($blue, 7%);
+  background: lighten($orange, 7%);
   text-align:center;
   box-shadow: 5px 10px 30px gray;
   z-index: 2;
@@ -235,5 +235,5 @@ body{
   @extend .phone-visible;
 }
 .upload-button:hover{
-  background: lighten($blue, 5%);
+  background: lighten($orange, 5%);
 }

@@ -2889,6 +2889,7 @@ input:checked + .slider:before {
 @media screen and (max-width: 1024px) {
   /* line 1, ../sass/partials/manage-page-partials/_creategroup.scss */
   .group-modal-container {
+    margin: 75px auto;
     width: 500px;
   }
 }
@@ -2898,7 +2899,7 @@ input:checked + .slider:before {
     width: 90%;
   }
 }
-/* line 19, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 20, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container h3 {
   font-weight: 200;
   font-size: 23px;
@@ -2907,7 +2908,7 @@ input:checked + .slider:before {
   color: #404040;
   text-transform: capitalize;
 }
-/* line 28, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 29, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container p {
   width: 80%;
   margin-top: -20px;
@@ -2916,7 +2917,7 @@ input:checked + .slider:before {
   color: #4d4d4d;
   font-weight: 100;
 }
-/* line 36, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 37, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .input-container {
   margin-left: 30px;
   width: 100%;
@@ -2925,12 +2926,12 @@ input:checked + .slider:before {
   margin-bottom: 10px;
   font-family: Roboto;
 }
-/* line 46, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 47, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container label {
   text-transform: capitalize;
   font-size: 13px;
 }
-/* line 53, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 54, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .button-done {
   background-color: #ffb733;
   width: 100px;
@@ -2943,12 +2944,12 @@ input:checked + .slider:before {
   bottom: 15px;
   color: #fff;
 }
-/* line 67, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 68, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .button-done:hover {
   background-color: #ffc04d;
   cursor: pointer !important;
 }
-/* line 71, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 72, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .close {
   position: absolute;
   width: 30px;
@@ -2958,15 +2959,15 @@ input:checked + .slider:before {
   padding-left: 10px;
   z-index: 20;
 }
-/* line 80, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 81, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .close:hover {
   cursor: pointer !important;
 }
-/* line 81, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 82, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .close:hover i {
   border: none;
 }
-/* line 86, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 87, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container input {
   margin-bottom: 5px;
   padding-left: 5px;
@@ -2983,16 +2984,16 @@ input:checked + .slider:before {
   width: 85%;
 }
 @media screen and (max-width: 480px) {
-  /* line 86, ../sass/partials/manage-page-partials/_creategroup.scss */
+  /* line 87, ../sass/partials/manage-page-partials/_creategroup.scss */
   .group-modal-container input {
     width: 80%;
   }
 }
-/* line 104, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 105, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container input:focus {
   border-bottom: 1px solid orange;
 }
-/* line 108, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 109, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container textarea {
   font-size: 13px;
   margin-top: 20px;
@@ -3006,16 +3007,16 @@ input:checked + .slider:before {
   resize: vertical;
 }
 @media screen and (max-width: 480px) {
-  /* line 108, ../sass/partials/manage-page-partials/_creategroup.scss */
+  /* line 109, ../sass/partials/manage-page-partials/_creategroup.scss */
   .group-modal-container textarea {
     width: 80%;
   }
 }
-/* line 123, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 124, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container textarea:focus {
   border-bottom: 1px solid orange;
 }
-/* line 128, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 129, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container {
   position: relative;
   width: 85%;
@@ -3029,12 +3030,12 @@ input:checked + .slider:before {
   border-bottom: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 480px) {
-  /* line 128, ../sass/partials/manage-page-partials/_creategroup.scss */
+  /* line 129, ../sass/partials/manage-page-partials/_creategroup.scss */
   .group-modal-container .chip-container {
     width: 80%;
   }
 }
-/* line 142, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 143, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container input {
   padding-left: 0px;
   min-width: 100px;
@@ -3047,11 +3048,11 @@ input:checked + .slider:before {
   outline: none;
   color: #4d4d4d;
 }
-/* line 154, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 155, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container input:focus {
   border: none;
 }
-/* line 159, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 160, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .chip {
   float: left;
   width: auto;
@@ -3065,19 +3066,19 @@ input:checked + .slider:before {
   display: inline-block;
   border-radius: 3px;
 }
-/* line 173, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 174, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .person {
   margin-right: 7px;
   margin-left: 7px;
   font-size: 15px;
 }
-/* line 178, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 179, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .remove-email {
   font-size: 13px;
   margin-left: 7px;
   margin-right: 7px;
 }
-/* line 183, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 184, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .result {
   width: 80%;
   background-color: red;
@@ -3086,7 +3087,7 @@ input:checked + .slider:before {
   margin-left: 0px;
   padding-left: 0px;
 }
-/* line 192, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 193, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .result li {
   list-style: none;
   padding: 5px;
@@ -3095,7 +3096,7 @@ input:checked + .slider:before {
   height: 30px;
   color: #676767;
 }
-/* line 200, ../sass/partials/manage-page-partials/_creategroup.scss */
+/* line 201, ../sass/partials/manage-page-partials/_creategroup.scss */
 .group-modal-container .chip-container .result li:hover {
   background-color: #e6e6e6;
   cursor: pointer;
@@ -3840,7 +3841,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2424ff;
+  background: #ff9124;
   text-align: center;
   box-shadow: 5px 10px 30px gray;
   z-index: 2;
@@ -3852,5 +3853,5 @@ body {
 
 /* line 237, ../sass/manage-page-styles.scss */
 .upload-button:hover {
-  background: #1a1aff;
+  background: #ff8c1a;
 }
