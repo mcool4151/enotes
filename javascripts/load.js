@@ -11,12 +11,21 @@ $(document).ready(function(){
   var files = [];
   var upload = 1;
   var folders = [];
+  var quer = '';
   var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
   var folderid;
   var newname;
   function updatesubdir(v){
     alert(v);
   }
+  $(".search-bar").keyup(function(event){
+    var ew = event.which;
+    if (ew == 13){
+      quer = $(this).val();
+      $('#group').click();
+      quer='';
+    }
+  });
   function getdel(){
     $.ajax({
       url:base+"manage/getdel",
@@ -347,6 +356,8 @@ $(document).ready(function(){
           $.ajax({
             url:base+'manage/getmygroups',
             async:false,
+            type:"POST",
+            data:{key:quer},
             success:function(res){
               groups = jQuery.parseJSON(res);
               $.each(groups,function(index,value){
@@ -369,6 +380,8 @@ $(document).ready(function(){
           $.ajax({
             url:base+'manage/getsubgroups',
             async:false,
+            type:"POST",
+            data:{key:quer},
             success:function(res){
               $('.sub-groups-text').css({'display':'none'});
               $('.sub-group').css({'display':'none'});
@@ -395,9 +408,11 @@ $(document).ready(function(){
           $.ajax({
             url:base+'manage/getrestgroups',
             async:false,
+            type:"POST",
+            data:{key:quer},
             success:function(res){
               function unsubscribe(evt){
-                alert('unsubscribing '+$(evt).name());
+                //alert('unsubscribing '+$(evt).name());
               }
               $('.sug-groups-text').css({'display':'none'});
               $('.sug-group').css({'display':'none'});
@@ -426,7 +441,8 @@ $(document).ready(function(){
         else {
           $(".my-group").css({"display":"none"});
           if(prevsidelinkid == 'trash'){
-            alert("Restore Folder To view Contents");
+            $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><p>Restore Folder To View Contents</p><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+            alert("Restore Folder To view Contents"); // TODO Change Later
             return;
           }
           if(subdir == "") subdir = $("#"+sidelinkid).attr('name');
@@ -694,13 +710,13 @@ $(document).ready(function(){
 //alert(classname1);
     if(classname1 == 'upload'){
       if(prevsidelinkid != 'saved-notes'){
-        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document');
+        alert('You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document'); //TODO Change Later
         return;
       }
       document.getElementById('myfile').click();
     }
     if(classname1 == 'create-group'){
-      $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input class="namebox" autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" class="members" list="friend-email1" ><datalist class="email-suggestion" id="friend-email1"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');
+      $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input class="namebox" autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" class="members" list="friend-email1" ><datalist class="email-suggestion" id="friend-email1"></datalist></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');
       $('.members').keyup(function(event){
         $.ajax({
           url:base+"manage/getmembers",
@@ -731,7 +747,8 @@ $(document).ready(function(){
           $(".chip-container.memb input").trigger( $.Event("keydown", {keyCode: 13}));
         }*/
         if($('.namebox').val().trim().length == 0){
-          alert('Please Enter a name');
+          $("#myform p").text('Please Enter a name');
+          $("#myform p").css({'color':'red'});
           return;
         }
         if($( ".chip-container:not(.memb) input" ).val().length != 0){
@@ -739,7 +756,8 @@ $(document).ready(function(){
           $( ".chip-container:not(.memb) input" ).trigger(e);
         }
         if($(".chip-container:not(.memb) .shared-email").length == 0){
-          alert('Please Add some tags');
+          $("#myform p").text('Please Add some tags');
+          $("#myform p").css({'color':'red'});
           return;
         }
         var tags=undefined;
@@ -753,8 +771,10 @@ $(document).ready(function(){
           data:{uniqname:$("#members").val(),desc:$("textarea").val(),tags:tags},
           success:function(result){
             if(result!=1) {
-              alert(result);
-              exit();
+              $("#myform p").text("Group "+$("#members").val()+" Already Exists");
+              $("#myform p").css({'color':'red'});
+              return;
+              //exit();
             }
             $(".chip-container.memb .shared-email").each(function(){
               $.ajax({
@@ -762,11 +782,12 @@ $(document).ready(function(){
                 type:"POST",
                 data:{group:$("#members").val(),email:$(this).text()},
                 success:function(result){
+                  //alert("entered");
                 }
               });
             });
-            $( ".modal-background-filter" ).remove();
-            $( ".open-modal" ).remove();
+            $("#myform p").text('Group '+$("#members").val()+' Created');
+            $("#myform p").css({'color':'green'});
           }
         });
       });
@@ -783,7 +804,7 @@ $(document).ready(function(){
           }
         }
         if (key == 13){
-          alert("entered");
+          //alert("entered");
           //detect enter key
           var text;
           text=$(".chip-container.memb input").val();
@@ -793,7 +814,8 @@ $(document).ready(function(){
             data:{uemail:text},
             success:function(result){
               if(result != 1) {
-                alert("Entered user not found");
+                $("#myform p").text("Entered user not found");
+                $("#myform p").css({'color':'red'});
                 return;
               }
               $(".chips-here.memb").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+text+'</span><i class="remove-email ion-close"></i></span>');
@@ -829,12 +851,13 @@ $(document).ready(function(){
       $(".mobile-submenu-full-cover").css({"display": "none"});
 
       if(prevsidelinkid != 'saved-notes'){
-        alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document");
+        alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document"); // TODO Change Later
         return;
       }
       // create folder register added
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('#nameto').keypress(function(event){
+        if(event.which == 13) $( "#crtbtn" ).click();
         if(event.which == 47 || event.which == 92 ||
            event.which == 34 || event.which == 39 ||
            event.which == 94 || event.which == 96
@@ -844,8 +867,14 @@ $(document).ready(function(){
       $( "#crtbtn" ).click(function() {
         name = $("#nameto").val();
         name = $.trim(name);
-        if(name == '' || name == '.' || name == '..'){
-          alert("Please Enter a valid name");
+        if(name == '' || name == '.' || name == '..'){ //TODO FIX {}<>
+          $(".create-folder-modal-container p").text("Please Enter a valid name");
+          $(".create-folder-modal-container p").css({'color':'red'});
+          return;
+        }
+        if(name.length > 20){
+          $(".create-folder-modal-container p").text("Name Limit 20 Characters");
+          $(".create-folder-modal-container p").css({'color':'red'});
           return;
         }
         $.ajax({
@@ -855,7 +884,8 @@ $(document).ready(function(){
           data:{depth:subdir,name:name},
           success:function(result){
             if(result!=1) {
-              alert(result);
+              $(".create-folder-modal-container p").text('Error while creating folder');
+              $(".create-folder-modal-container p").css({'color':'red'});
               return;
             }
             fnr();
@@ -884,7 +914,7 @@ $(document).ready(function(){
     else if(classname1 == 'move-to'){
     }
     else if(classname1 == 'get-shareable-link'){
-      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People/Group<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Enter email here" list="friend-email1" autocomplete="off"  name="browser" class="email-sugg" id="members"><datalist class="email-suggestion" id="friend-email1"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist></div><div class="button-done">Done</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People/Group<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Enter email here" list="friend-email1" autocomplete="off"  name="browser" class="email-sugg" id="members"><datalist class="email-suggestion" id="friend-email1"></datalist></div><div class="button-done">Done</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('.email-sugg').keyup(function(event){
         $.ajax({
           url:base+"manage/getmembers",
@@ -933,7 +963,7 @@ $(document).ready(function(){
             data:{uemail:text,file:src},
             success:function(result){
               if(result != 1) {
-                alert(result);
+                //alert(result);
                 return;
               }
               $(".chips-here").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email"></span><i class="remove-email ion-close"></i></span>');
@@ -1032,12 +1062,21 @@ $(document).ready(function(){
     }
     else if(classname1 == 'rename'){
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal rename-modal-container" ><h3>Rename</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="newname" placeholder="file name goes here" class="share-link" /></div><div class="button-done" id="rname">Save</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      $('#newname').keypress(function(event){
+        if(event.which == 13) $( "#rname" ).click();
+      });
       $("#rname").click(function(e){
         var src,dest;
         newname = $("#newname").val();
         newname = $.trim(newname);
-        if(newname == '' || (newname.indexOf('/') >= 0) || (newname.indexOf("\\") >= 0)){
-          alert("Please Enter a valid name");
+        if(newname == '.' || newname == '..' || newname == '' || (newname.indexOf('/') >= 0) || (newname.indexOf("\\") >= 0)){
+          $('.rename-modal-container p').text("Please Enter a valid name");
+          $('.rename-modal-container p').css({'color':'red'});
+          return;
+        }
+        if(newname.length > 20){
+          $('.rename-modal-container p').text("Name Limit 20 Characters");
+          $('.rename-modal-container p').css({'color':'red'});
           return;
         }
         src = oldname;
@@ -1049,8 +1088,9 @@ $(document).ready(function(){
           data:{src:src,dest:dest,depth:subdir},
           success:function(result){
             if(result != 1){
-              alert('Error while renaming');
-              console.log(result);
+              //alert('Error while renaming');
+              $('.rename-modal-container p').text("Error while renaming");
+              $('.rename-modal-container p').css({'color':'red'});
             }
             $( ".modal-background-filter" ).remove();
             $( ".open-modal" ).remove();
@@ -1069,7 +1109,7 @@ $(document).ready(function(){
         data:{name:oldname,depth:subdir},
         success:function(result){
           if(result == 1) window.location.href=base+"/manage/download";
-          else alert("error While Setting download params");
+          else alert("error While Setting download params"); //TODO Change Later
         }
       });
     }
@@ -1126,7 +1166,7 @@ $(document).click(function(e) {
         data:{sid:sid,depth:depth,dest:dest},
         type:"POST",
         success:function(res){
-          if(res != 1) alert('Invalid operation');
+          if(res != 1) alert('Invalid operation'); // TODO Change Later
           $('.move-to-submenu').remove();
         }
       });
@@ -1157,7 +1197,7 @@ function move(src,dest){
     data:{dest:dest,src:src},
     success:function(result){
       if(result != 1){
-        alert("Error While Moving");
+        alert("Error While Moving"); // TODO Change Later
         console.log(result);
       }
       fnr();
@@ -1183,7 +1223,7 @@ function flipdel(file){
     type:"POST",
     async:false,
     success:function(result){
-      if(result!=1) alert(result);
+      if(result!=1) alert(result); //TODO Change Later
     }
   });
 }

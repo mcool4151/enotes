@@ -49,10 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li><h2>e-Notes</h2></li>
         <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
-          <form>
-    <input type="text" name="search" class="search-bar" placeholder="Search for files , folders , documents pdf.." list="search-result">
+
+    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search for files , folders , documents pdf.." list="search-result">
     <datalist class="search-result" id="search-result"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist>
-    </form>
+
     <form id="myform" style="display:none;">
       <input type="file" id="myfile" name="myfile" value="">
     </form>
@@ -98,10 +98,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="search">
           <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
-          <form>
-    <input type="text" name="search" class="search-bar" placeholder="Search.."list="search-result">
+
+    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search.."list="search-result">
     <datalist class="search-result" id="search-result"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist>
-    </form>
+
         </li>
       </ul>
 

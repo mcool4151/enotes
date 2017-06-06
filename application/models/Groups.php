@@ -9,7 +9,9 @@ class Groups extends CI_Model {
 
   public function getmyGroups(){
     $uid = $this->session->uid;
+    $key = $this->input->post('key');
     $sql = "SELECT groups.id,groups.userid,groups.uniqName FROM groups where groups.userid='$uid'";
+    if($key != '') $sql = "SELECT groups.id,groups.userid,groups.uniqName FROM groups where groups.userid='$uid' AND uniqName like '%$key%'";
     $res = $this->db->query($sql);
     $data = [];
     foreach ($res->result_array() as $value) {
@@ -24,7 +26,9 @@ class Groups extends CI_Model {
 
   public function getSubGroups(){
     $uid = $this->session->uid;
+    $key = $this->input->post('key');
     $sql = "SELECT groups.id,groups.userid,groups.uniqName FROM groups where groups.id IN (SELECT groupmembers.groupid FROM groupmembers WHERE groupmembers.userid='$uid' AND groups.userid <> '$uid')";
+    if($key != '') $sql = "SELECT groups.id,groups.userid,groups.uniqName FROM groups where groups.id IN (SELECT groupmembers.groupid FROM groupmembers WHERE groupmembers.userid='$uid' AND groups.userid <> '$uid') AND uniqName like '%$key%'";
     $res = $this->db->query($sql);
     $data = [];
     foreach ($res->result_array() as $value) {
@@ -39,7 +43,9 @@ class Groups extends CI_Model {
 
   public function getRestGroups(){
     $uid = $this->session->uid;
+    $key = $this->input->post('key');
     $sql = "SELECT * FROM `groups` WHERE groups.id NOT IN(SELECT groupmembers.groupid FROM groupmembers WHERE groupmembers.userid='$uid') AND isPublic=1";
+    if($key != '') $sql = "SELECT * FROM `groups` WHERE groups.id NOT IN(SELECT groupmembers.groupid FROM groupmembers WHERE groupmembers.userid='$uid') AND isPublic=1 AND uniqName like '%$key%'";
     $res = $this->db->query($sql);
     $data = [];
     foreach ($res->result_array() as $value) {
