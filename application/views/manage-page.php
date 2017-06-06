@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE HTML>
-<html>
+<html class="html">
 <head>
   <meta charset="utf-8">
   <script type="text/javascript">
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </style>
 </head>
 
-<body><!--change start -->
+<body ><!--change start -->
 
     <nav>
       <ul class="nav-container main" >

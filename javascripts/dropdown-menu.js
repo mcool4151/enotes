@@ -6,7 +6,7 @@ var sidelinkid='saved-notes';
 var prevsidelinkid='saved-notes';
 var prevforid;
 
-    $("body").click(function(e){
+    $(document).click(function(e){
       var folderClassname = $(e.target).attr('class').split(' ')[0];
 
     //    alert("outside folder " +folderClassname);
@@ -53,7 +53,7 @@ $(document).ready(function(){
     $(".new-button-container").append('<ul class="folder-submenu-container" ><li class="open-with-main"><i class="ion-arrow-expand icon" ></i><span>Open with</span><i class="ion-arrow-right-b right" aria-hidden="true"></i><ul class="submenu open-with-sub" ><li><i class="ion-plus icon" ></i><span>connect more apps</span></li></ul></li><li><i class="ion-android-exit icon" ></i><span>Move To..</span></li><li><i class="ion-link icon" ></i><span>Get Shareable Link</span></li><li><i class="ion-ios-star icon" ></i><span>Add To Favorite</span></li><li><i class="ion-ios-compose icon" ></i><span>Rename</span></li><li><i class="ion-ios-information icon" ></i><span>View Details</span></li><li><i class="ion-archive icon" ></i><span>Downloads</span></li></ul>');
 
   });
-  $("body").click(function(){
+  $(document).click(function(){
 
 
     $( ".new-button-containers" ).remove();
@@ -74,7 +74,8 @@ $(".search-icon").click(function(e) {
   /*$(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span class="text">result1</span></li><li><i class="ion-ios-paper icon" ></i><span class="text">result 2</span></li><li><i class="ion-ios-folder icon" ></i><span class="text">result3</span></li></ul>');*/
 });
 
-  $("body").click(function(e) {
+  $(document).click(function(e) {
+
 
 
 });
@@ -86,7 +87,7 @@ $(".dot-icon").click(function(){
   folderid = $(this).parent().prop("id");
 
 });*/
-    $("body").click(function(e) {
+    $(document).click(function(e) {
  classname = $(e.target).attr('class').split(' ')[0];
 
     //     alert("classname");
@@ -94,12 +95,12 @@ $(".dot-icon").click(function(){
 
     folderid = $(e.target).parent().attr('id');
     ////$("h3").text(folderid);
-      if(active!=0){
-        $( ".folder-submenu-container" ).remove();
-        onscreen=0;
-        active=0;
-      }
 
+    if(active!=0){
+      $( ".folder-submenu-container" ).remove();
+      onscreen=0;
+      active=0;
+    }
       if(classname == 'dot-icon' )
       {
         //alert("entred "+folderid);

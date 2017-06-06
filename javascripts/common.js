@@ -20,7 +20,7 @@ $(".move-to-submenu").remove({"move-to-submenu"});
 }
 
 /*key press for chips*/
-$( "body" ).keyup(function() {
+$( document ).keyup(function() {
 
   var key = event.keyCode || event.charCode;
   if( key == 8 || key == 46 )//detect backspace & delete key
@@ -189,7 +189,7 @@ var prevsidelinkid='saved-notes';
 
 
 //submenu regiters
-$("body").click(function(e) {
+$(document).click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
 
   if(classname1 == 'open-with')
@@ -241,7 +241,7 @@ if(classname1 == 'create-folder')// create folder register added
 
 }
 });
-$("body").click(function(e) {
+$(document).click(function(e) {
   var classname1 = $(e.target).attr('class').split(' ')[0];
   if(classname1 == 'close-button'){
   $( ".modal-background-filter" ).remove();

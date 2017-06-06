@@ -1,4 +1,4 @@
-
+document
 function displaynone(){
   $('.sub-groups-text').css({'display':'none'});
   $('.sub-group').css({'display':'none'});
@@ -249,7 +249,7 @@ $(document).ready(function(){
     fetchAndReload();
     //clearnavbar();
   });
-  $("body").click(function(e){
+  $(document).click(function(e){
 
 
   if(classname == 'new'){
@@ -628,7 +628,7 @@ $(document).ready(function(){
     prevsidelinkid=curent;//assign current value to prev
 
   }
-  $("body").click(function(e) {
+  $(document).click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
     if(classname1 == 'remove-email'){
       email = $(e.target).parent().text();
@@ -689,7 +689,7 @@ $(document).ready(function(){
       });
     }
   });
-  $("body").click(function(e) {
+  $(document).click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
 //alert(classname1);
     if(classname1 == 'upload'){
@@ -870,7 +870,7 @@ $(document).ready(function(){
       });
     }
   });
-  $("body").click(function(e) {
+  $(document).click(function(e) {
   //  alert("entred");
 
     var classname1 = $(e.target).attr('class').split(' ')[0];
@@ -1075,7 +1075,7 @@ $(document).ready(function(){
     }
   });
 });
-$("body").click(function(e) {
+$(document).click(function(e) {
   classname = $(e.target).attr('class').split(' ')[0];
   //alert(classname);
   if(menuDisplayed == true  ){
