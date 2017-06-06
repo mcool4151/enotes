@@ -1204,7 +1204,36 @@ article p a:visited {
   transform: translateX(10px) translateY(-1px) rotate(-45deg);
 }
 
-/* line 307, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 309, ../sass/partials/manage-page-partials/_navigation.scss */
+.back-arrow1 {
+  display: none;
+  width: 20px;
+}
+
+/* line 314, ../sass/partials/manage-page-partials/_navigation.scss */
+.back-arrow1 span {
+  transform: rotate(180deg);
+}
+
+/* line 319, ../sass/partials/manage-page-partials/_navigation.scss */
+.back-arrow1 span::before,
+.back-arrow1 span::after {
+  width: 50%;
+}
+
+/* line 324, ../sass/partials/manage-page-partials/_navigation.scss */
+.back-arrow1 span::before {
+  top: 0;
+  transform: translateX(10px) translateY(0px) rotate(45deg);
+}
+
+/* line 329, ../sass/partials/manage-page-partials/_navigation.scss */
+.back-arrow1 span::after {
+  bottom: 0;
+  transform: translateX(10px) translateY(-1px) rotate(-45deg);
+}
+
+/* line 333, ../sass/partials/manage-page-partials/_navigation.scss */
 .nav-icons, .settings-icon, .grid-icon, .list-icon, .info-icon, .sub-menu-icon, .search-icon {
   font-size: 22px;
   color: #4d4d4d;
@@ -1213,39 +1242,39 @@ article p a:visited {
   margin-right: 30px;
 }
 
-/* line 315, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 341, ../sass/partials/manage-page-partials/_navigation.scss */
 .settings-icon {
   color: #737373;
 }
 
-/* line 320, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 346, ../sass/partials/manage-page-partials/_navigation.scss */
 .grid-icon {
   color: #737373;
 }
 
-/* line 325, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 351, ../sass/partials/manage-page-partials/_navigation.scss */
 .list-icon {
   display: none;
   color: #737373;
 }
 
-/* line 331, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 357, ../sass/partials/manage-page-partials/_navigation.scss */
 .info-icon {
   color: #737373;
 }
 
-/* line 337, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 363, ../sass/partials/manage-page-partials/_navigation.scss */
 .sub-menu-icon {
   margin-top: 14px;
 }
 
-/* line 343, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 369, ../sass/partials/manage-page-partials/_navigation.scss */
 .search-icon {
   margin-top: 15px;
   margin-left: -10px;
 }
 
-/* line 349, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 375, ../sass/partials/manage-page-partials/_navigation.scss */
 .search-bar {
   display: none;
   position: absolute;
@@ -1259,12 +1288,12 @@ article p a:visited {
   z-index: 10;
 }
 
-/* line 361, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 387, ../sass/partials/manage-page-partials/_navigation.scss */
 .search-bar:focus {
   border: 0px solid black;
 }
 
-/* line 364, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 390, ../sass/partials/manage-page-partials/_navigation.scss */
 .hover-effect {
   width: 30px;
   margin-top: 7px;
@@ -1281,7 +1310,7 @@ article p a:visited {
   margin-left: 0px;
 }
 
-/* line 381, ../sass/partials/manage-page-partials/_navigation.scss */
+/* line 407, ../sass/partials/manage-page-partials/_navigation.scss */
 .hover-effect:hover {
   border: 1px solid #8d8d8d;
   background-color: #fff;

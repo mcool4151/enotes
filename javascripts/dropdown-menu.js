@@ -64,12 +64,12 @@ $(document).ready(function(){
 
 
 $(".upload-button").click(function(e) {
-  $(".back-arrow").css({"display": "block"});
+  $(".back-arrow1").css({"display": "block"});
   $(".left-menu").css({"display": "none"});
   $(".body").append('<ul class=" mobile-submenu-full-cover" ><li class="create-folder"><i class="ion-plus icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
 });
 $(".search-icon").click(function(e) {
-  $(".back-arrow").css({"display": "block"});
+  $(".back-arrow1").css({"display": "block"});
   $(".left-menu").css({"display": "none"});
   /*$(".body").append('<ul class="mobile-submenu-full-cover" ><li><i class="ion-plus icon" ></i><span class="text">result1</span></li><li><i class="ion-ios-paper icon" ></i><span class="text">result 2</span></li><li><i class="ion-ios-folder icon" ></i><span class="text">result3</span></li></ul>');*/
 });
@@ -159,7 +159,7 @@ prevforid=folderid;
 
           active=1;
           if ( $(window).width() < 480) {
-          $(".back-arrow").css({"display": "block"});
+          $(".back-arrow1").css({"display": "block"});
           $(".left-menu").css({"display": "none"});
           }
         }
@@ -196,7 +196,7 @@ prevforid=folderid;
 
        }
        else if ( $(window).width() < 480) {
-       $(".back-arrow").css({"display": "block"});
+       $(".back-arrow1").css({"display": "block"});
        $(".left-menu").css({"display": "none"});
        $(".close-icon-right-container").css({"display": "none"});
        $("body").css({"overflow": "hidden"});
@@ -244,7 +244,7 @@ prevforid=folderid;
 
       //   alert("move-to clicked " + classname + prevforid);
       if ( $(window).width() < 480) {
-      $(".back-arrow").css({"display": "none"});
+      $(".back-arrow1").css({"display": "none"});
       $(".left-menu").css({"display": "block"});
     }
         $("#"+prevforid).append('<ul class="move-to-submenu" ><i class="back-icon ion-arrow-left-c icon"></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon  "></i><div class="li-container"><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li><li class="option-1" id="option-1"><i class="ion-ios-folder icon" ></i><span class="option-1">Avish1</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn btn-move left">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
