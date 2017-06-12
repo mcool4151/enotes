@@ -1,4 +1,4 @@
-document
+
 function displaynone(){
   $('.sub-groups-text').css({'display':'none'});
   $('.sub-group').css({'display':'none'});
@@ -212,11 +212,12 @@ $(document).ready(function(){
       }
     });
   }
-  fetchAndReload();
+  fetchAndReload(); // imp
   fnr = fetchAndReload;
   $("#myfile").change(function (){
     if(ufree==0) {
-      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>File Currently Being Uploaded. Please Wait</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      //$(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>File Currently Being Uploaded. Please Wait</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+      displaymessage("File Currently Being Uploaded. Please Wait");
       return;
     }
     ufree = 0;
@@ -256,7 +257,7 @@ $(document).ready(function(){
       }
     });
   });
-  var folderClassname;
+  var folderClassname;//!imp
   var sidelinkid;
   $(".back-arrow").click(function(){
     //alert('executed');
@@ -662,7 +663,7 @@ $(document).ready(function(){
     prevsidelinkid=curent;//assign current value to prev
 
   }
-  $(document).click(function(e) {
+  $(document).click(function(e) {//jere
     var classname1 = $(e.target).attr('class').split(' ')[0];
     if(classname1 == 'okay'){
       $(".error-modal-container").css({'display':'none'});
@@ -731,6 +732,8 @@ $(document).ready(function(){
     var classname1 = $(e.target).attr('class').split(' ')[0];
 //alert(classname1);
     if(classname1 == 'upload'){
+      $(".mobile-submenu-full-cover").css({"display": "none"});
+      //$(".back-arrow1").click();
       if(prevsidelinkid != 'saved-notes'){
         $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
 
@@ -740,6 +743,8 @@ $(document).ready(function(){
       document.getElementById('myfile').click();
     }
     if(classname1 == 'create-group'){
+      $(".mobile-submenu-full-cover").css({"display": "none"});
+      //$(".back-arrow1").click();
       $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input class="namebox" autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" class="members" list="friend-email1" ><datalist class="email-suggestion" id="friend-email1"></datalist></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');
       $('.members').keyup(function(event){
         $.ajax({
@@ -873,7 +878,7 @@ $(document).ready(function(){
     if(classname1 == 'create-folder'){
 
       $(".mobile-submenu-full-cover").css({"display": "none"});
-
+      //$(".back-arrow1").click();
       if(prevsidelinkid != 'saved-notes'){
         $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
 

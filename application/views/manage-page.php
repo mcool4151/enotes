@@ -23,6 +23,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var prevforid;
     var menuDisplayed = false;
     var oldname;
+    var ufree=1;
+    var list = undefined;
+    var files = [];
+    var upload = 1;
+    var folders = [];
+    var quer = '';
+    var defaultimg = "http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png";
+    var folderid;
+    var newname;
   </script>
   <title>e-notes</title>
   <meta name="e-notes" content="">
@@ -50,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
 
-    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search for files , folders , documents pdf.." list="search-result">
+    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search for files , folders , documents pdf.." list="search-result" onsubmit="return false">
     <datalist class="search-result" id="search-result"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist>
 
     <form id="myform" style="display:none;">
@@ -93,13 +102,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!--<li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>-->
 
 
-        <!--  <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>-->
+        <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
 
         <li class="search">
           <i class="ion-android-search search-icon" aria-hidden="true"></i>
 
 
-    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search.."list="search-result">
+    <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search.."list="search-result" onsubmit="return false">
     <datalist class="search-result" id="search-result"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist>
 
         </li>
@@ -134,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="display-container " id="display-container">
 
 
-            <!--<h3 class="folders-text">Folders</h3>-->
+            <h3 class="folders-text" style="display:none;">Folders</h3>
             <ul class="folder-container" >
               <!--<li class="folder" draggable="true"  id="folder1"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder2"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
@@ -142,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="folder" draggable="true"  id="folder4"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li>
               <li class="folder" draggable="true"  id="folder5"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">Avish1</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></li> -->
             </ul>
-            <!--<h3 class="files-text" >Files</h3>-->
+            <h3 class="files-text" style="display:none;">Files</h3>
             <ul class="file-container" id="files">
               <!--<li class="file" draggable="true"id="file12" ><div class="file-preview"  ></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
               <li class="file" draggable="true"id="file12" ><div class="file-preview"  ></div><div class="file-name" id="file1"><i class="ion-ios-paper folder-icon" ></i><span>file1.jpg</span><i class="dot-icon ion-android-more-vertical " aria-hidden="true"></i></div></li>
@@ -310,6 +319,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url();?>javascripts/dropdown-menu.js"></script>
 <!--<script src="<?php echo base_url();?>javascripts/contextmenu1.js"></script>-->
 <script src="<?php echo base_url();?>javascripts/upload.js"></script>
+<!--<script src="<?php echo base_url();?>javascripts/filemanager.js"></script>-->
 
 <script>
 function unsubscribe(evt){
