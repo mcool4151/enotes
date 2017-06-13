@@ -128,7 +128,7 @@ class Groups extends CI_Model {
       exit();
     }
     $fix = basename($src);
-    if(!$this->smartCopy($src,$to.$fix))echo 0;
+    if($this->smartCopy($src,$to.$fix))echo 0;
     else echo 1;
   }
   private function smartCopy($source, $dest, $options=array('folderPermission'=>0755,'filePermission'=>0755)){

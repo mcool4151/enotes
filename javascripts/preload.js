@@ -2,11 +2,11 @@ $(document).ready(function (){
   fetchAndReload();
   $('.new').click(function (){
     if(onscreen==0){
-      $(".create-menu").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+      appendCreateMenu();
       onscreen=1;
     }
     else {
-      $( ".new-dropdown" ).remove();
+      removeCreateMenu();
       onscreen=0;
     }
   });
@@ -53,27 +53,18 @@ $(document).ready(function (){
       url:base+"manage/getsharedwithme",
       success:function(res){
         list = jQuery.parseJSON(res);
-        $('.folders-text').css({"display": "none"});
-        $('.files-text').css({"display": "none"});
+        hideFolderText();
+        hideFileText();
         $.each(list,function(index,value){
           exclass = "shared";
-          shortname = value.name;
-          if ( $(window).width() < 480) {
-            if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else if($(window).width() < 1025){
-            if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else {
-            if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
-          }
+          shortname = getShortName(value.name);
           if(value.is_dir == true){
-            $('.folders-text').css({"display": "block"});
-            $('.folder-container').css({"display": "block"});
-            $('.folder-container').append("<li data-index=\""+value.id+"\" class=\"folder "+exclass+"\" draggable=\"true\"  id=\"folder"+index+"\" name=\""+value.id+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\" >"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+            showFolderText();
+            showFolderContainer();
+            appendFolder(value,exclass,index,shortname);
           }else {
             $('.files-text').css({"display": "block"});
-            $('#files').append("<li data-index=\""+value.id+"\" class=\"file "+exclass+"\" id=\"file"+index+"\" draggable=\"true\" name=\""+value.id+"\"><div class=\"file-preview\"  style=\"  background-image: url('"+img+"') ;\"></div><div class=\"file-name\" id=\"file-name"+index+"\"><i class=\"ion-ios-paper folder-icon\" ></i><span>"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></div></li>");
+            appendFile(value,exclass,index,img,shortname);
           }
         });
       }
@@ -99,18 +90,9 @@ $(document).ready(function (){
         groups = jQuery.parseJSON(res);
         $.each(groups,function(index,value){
           exclass = "shared";
-          shortname = value.name;
-          if ( $(window).width() < 480) {
-            if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else if($(window).width() < 1025){
-            if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else {
-            if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
-          }
-          $('.my-group').css({"display": "block"});
-          $('.my-group').append("<li data-index=\""+value.id+"\" class=\"folder\" draggable=\"true\"  id=\"mfolder"+index+"\" name=\""+value.name+"\"><i class=\"ion-ios-folder folder-icon\" ></i><span class=\"folder-name-text\" id=\"folder"+index+"\">"+shortname+"</span><i class=\"dot-icon ion-android-more-vertical \" aria-hidden=\"true\"></i></li>");
+          shortname = getShortName(value.name);
+          showMyGroupContainer();
+          appendMyGroup(value,index,shortname);
         });
       }
     });
@@ -120,25 +102,16 @@ $(document).ready(function (){
       type:"POST",
       data:{key:quer},
       success:function(res){
-        $('.sub-groups-text').css({'display':'none'});
-        $('.sub-group').css({'display':'none'});
-        $('.sub-group').empty();
+        hideSubGroupText();
+        hideSubGroupContainer();
+        emptySubgroupContainer();
         groups = jQuery.parseJSON(res);
         $.each(groups,function(index,value){
           exclass = "shared";
-          shortname = value.name;
-          if ( $(window).width() < 480) {
-            if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else if($(window).width() < 1025){
-            if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else {
-            if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
-          }
-          $('.sub-groups-text').css({'display':'block'});
-          $('.sub-group').css({'display':'block'});
-          $('.sub-group').append('<li class="folder" id="sgroup'+index+'" name="'+value.name+'"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">'+shortname+'</span><label class="toggle-switch switch"><input checked type="checkbox" checked name="'+value.name+'" onchange="unsubscribe(this)"><div class="slider round"></div></label></li>');
+          shortname = getShortName(value.name);
+          showSubGroupText();
+          showSubGroupContainer();
+          appendSubGroup(index,value,shortname);
         });
       }
     });
@@ -148,31 +121,212 @@ $(document).ready(function (){
       type:"POST",
       data:{key:quer},
       success:function(res){
-        function unsubscribe(evt){
-          //alert('unsubscribing '+$(evt).name());
-        }
-        $('.sug-groups-text').css({'display':'none'});
-        $('.sug-group').css({'display':'none'});
-        $('.sug-group').empty();
+        hideSugGroupText();
+        hideSugGroupContainer();
+        emptySugGroupContainer();
         groups = jQuery.parseJSON(res);
         $.each(groups,function(index,value){
           exclass = "shared";
-          shortname = value.name;
-          if ( $(window).width() < 480) {
-            if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else if($(window).width() < 1025){
-            if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
-          }
-          else {
-            if(shortname.length > 30) shortname = shortname.substring(0,20) + "..." + shortname.substring(shortname.length-5,shortname.length);
-          }
-          $('.sug-groups-text').css({'display':'block'});
-          $('.sug-group').css({'display':'block'});
-          $('.sug-group').append('<li class="folder" id="rgroup'+index+'" name="'+value.name+'"><i class="ion-ios-folder folder-icon" ></i><span class="folder-name-text">'+shortname+'</span><label class="toggle-switch switch"><input type="checkbox" name="'+value.name+'" onchange="subscribe(this)"><div class="slider round"></div></label></li>');
+          shortname = getShortName(value.name);
+          showSugGroupText();
+          showSugGroupContainer();
+          appendSugGroup(index,value,shortname)
         });
       }
     });
     return;
+  });
+  $(".upload").click(function(){
+    hideMobileSubmenu();
+    if(prevsidelinkid != 'saved-notes'){
+      showMessage("You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document");
+      return;
+    }
+    document.getElementById('myfile').click();
+  });
+  $(".create-group").click(function(){
+    hideMobileSubmenu();
+    appendGroupMenu();
+    $('.members').keyup(function(event){
+      $.ajax({
+        url:base+"manage/getmembers",
+        type:"POST",
+        data:{key:$(this).val()},
+        success: function(result){
+          //alert(result);
+          $(".email-suggestion").empty();
+          var obj = jQuery.parseJSON(result);
+          for(i=0;i<obj.length;i++){
+            //alert("entered");
+            $("#friend-email1").append('<option value="'+obj[i]+'">'+obj[i]+'</option>');
+          }
+        }
+      });
+    });
+    $('.namebox').keypress(function(event){
+      var ew = event.which;
+      if(ew == 32 || ew == 95 || ew == 127 || ew == 8 || ew == 0) return true;
+      if(48 <= ew && ew <= 57) return true;
+      if(65 <= ew && ew <= 90) return true;
+      if(97 <= ew && ew <= 122) return true;
+      return false;
+    });
+    $(".button-done").on('click',function(){
+      //alert($( ".chip-container:not(.memb) input" ).val().length);
+      /*if($(".chip-container.memb input").val().length != 0){
+        $(".chip-container.memb input").trigger( $.Event("keydown", {keyCode: 13}));
+      }*/
+      if($('.namebox').val().trim().length == 0){
+        $("#myform p").text('Please Enter a name');
+        $("#myform p").css({'color':'red'});
+        return;
+      }
+      if($( ".chip-container:not(.memb) input" ).val().length != 0){
+        var e = $.Event("keydown", {keyCode: 13});
+        $( ".chip-container:not(.memb) input" ).trigger(e);
+      }
+      if($(".chip-container:not(.memb) .shared-email").length == 0){
+        $("#myform p").text('Please Add some tags');
+        $("#myform p").css({'color':'red'});
+        return;
+      }
+      var tags=undefined;
+      $(".chip-container:not(.memb) .shared-email").each(function(){
+        if(tags == undefined) tags=$(this).text();
+        else tags=tags +','+$(this).text();
+      });
+      $.ajax({
+        url:base+"manage/creategroup",
+        type:"POST",
+        data:{uniqname:$("#members").val(),desc:$("textarea").val(),tags:tags},
+        success:function(result){
+          if(result!=1) {
+            $("#myform p").text("Group "+$("#members").val()+" Already Exists");
+            $("#myform p").css({'color':'red'});
+            return;
+            //exit();
+          }
+          $(".chip-container.memb .shared-email").each(function(){
+            $.ajax({
+              url:base+"manage/addtogroup",
+              type:"POST",
+              data:{group:$("#members").val(),email:$(this).text()},
+              success:function(result){
+                //alert("entered");
+              }
+            });
+          });
+          $("#myform p").text('Group '+$("#members").val()+' Created');
+          $("#myform p").css({'color':'green'});
+        }
+      });
+    });
+    $(".chip-container .chips-here span").remove();
+    $( ".chip-container.memb input" ).keydown(function(event) {
+      lastchipadded = $(".chip-container.memb .chips-here span").last();
+      var key = event.keyCode || event.charCode;
+      if( key == 8 || key == 46 ){
+        //detect backspace & delete key
+        var value=$.trim($(".chip-container.memb input").val());
+        if(value.length==0){
+          $(".chip-container.memb input").val($(lastchipadded).text());
+          $(lastchipadded).parent().remove();
+        }
+      }
+      if (key == 13){
+        //alert("entered");
+        //detect enter key
+        var text;
+        text=$(".chip-container.memb input").val();
+        $.ajax({
+          url:base+"manage/checkuser",
+          type:"POST",
+          data:{uemail:text},
+          success:function(result){
+            if(result != 1) {
+              $("#myform p").text("Entered user not found");
+              $("#myform p").css({'color':'red'});
+              return;
+            }
+            $(".chips-here.memb").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+text+'</span><i class="remove-email ion-close"></i></span>');
+            $(".chip-container .chips-here span");
+            $(".chip-container.memb input").val("");
+          }
+        });
+      }
+    });
+    $( ".chip-container:not(.memb) input" ).keydown(function(event) {
+      lastchipadded = $(".chip-container:not(.memb) .chips-here span").last();
+      var key = event.keyCode || event.charCode;
+      if( key == 8 || key == 46 ){
+        //detect backspace & delete key
+        var value=$.trim($(".chip-container:not(.memb) input").val());
+        if(value.length==0){
+          $(".chip-container.memb:not(.memb) input").val($(lastchipadded).text());
+          $(lastchipadded).parent().remove();
+        }
+      }
+      if (key == 13){
+        //detect enter key
+        var text;
+        text=$(".chip-container:not(.memb) input").val();
+        $(".chip-container:not(.memb) input").val("");
+        $(".chips-here:not(.memb)").append('<span class="chip"><i class="ion-person person"></i><span class="shared-email">'+text+'</span><i class="remove-email ion-close"></i></span>');
+      }
+    });
+  });
+  $(".create-folder").click(function(){
+    $(".mobile-submenu-full-cover").css({"display": "none"});
+    //$(".back-arrow1").click();
+    if(prevsidelinkid != 'saved-notes'){
+      $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+
+    //  alert("You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document"); // TODO Change Later
+      return;
+    }
+    // create folder register added
+    $(".body").append('<div class="modal-background-filter"></div><div class="open-modal create-folder-modal-container" ><h3>Create Folder</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="nameto" placeholder="folder name goes here" class="share-link" /></div><div class="button-done" id="crtbtn">Create</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
+    $('#nameto').keypress(function(event){
+      if(event.which == 13) $( "#crtbtn" ).click();
+      if(event.which == 47 || event.which == 92 ||
+         event.which == 34 || event.which == 39 ||
+         event.which == 94 || event.which == 96
+      )return false;
+      else return true;
+    });
+    $( "#crtbtn" ).click(function() {
+      name = $("#nameto").val();
+      name = $.trim(name);
+      if(name == '' || name == '.' || name == '..'){ //TODO FIX {}<>
+        $(".create-folder-modal-container p").text("Please Enter a valid name");
+        $(".create-folder-modal-container p").css({'color':'red'});
+        return;
+      }
+      if(name.length > 20){
+        $(".create-folder-modal-container p").text("Name Limit 20 Characters");
+        $(".create-folder-modal-container p").css({'color':'red'});
+        return;
+      }
+      $.ajax({
+        url:base+"manage/createdir",
+        type:"POST",
+        async:false,
+        data:{depth:subdir,name:name},
+        success:function(result){
+          if(result!=1) {
+            $(".create-folder-modal-container p").text('Error while creating folder');
+            $(".create-folder-modal-container p").css({'color':'red'});
+            return;
+          }
+          fnr();
+          $( ".modal-background-filter" ).remove();
+          $( ".open-modal" ).remove();
+          if ( $(window).width() < 480) {
+            $(".back-arrow").css({"display": "none"});
+            $(".left-menu").css({"display": "block"});
+          }
+        }
+      });
+    });
   });
 });

@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <input type="text" name="search" id="search-bar" class="search-bar" placeholder="Search for files , folders , documents pdf.." list="search-result" onsubmit="return false">
-    <datalist class="search-result" id="search-result"><option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari"></datalist>
+    <datalist class="search-result" id="search-result"></datalist>
 
     <form id="myform" style="display:none;">
       <input type="file" id="myfile" name="myfile" value="">
@@ -102,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!--<li class="search"><i class="ion-android-apps grid-icon hover-effect" aria-hidden="true"></i></li>-->
 
 
-        <li class="search"><i class="ion-android-more-vertical sub-menu-icon" aria-hidden="true"></i></li>
+        <li class="search"></li>
 
         <li class="search">
           <i class="ion-android-search search-icon" aria-hidden="true"></i>

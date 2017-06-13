@@ -30,6 +30,7 @@ $(document).ready(function(){
       }
       $('#group').click();
       quer='';
+      $(".left-menu").css({"display":"none"});
     }
   });
   function getdel(){
@@ -111,7 +112,7 @@ $(document).ready(function(){
       $('.folder-container').css({"display": "block"});
       $('.files-text').css({"display": "block"});
       if ( $(window).width() < 480) {
-        if(tmpval.length > 10) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
+        if(tmpval.length > 8) tmpval = tmpval.substring(0,8) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else if($(window).width() < 1025){
         if(tmpval.length > 15) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
@@ -151,7 +152,7 @@ $(document).ready(function(){
       tmpval = value.name;
       test = 0;
       if ( $(window).width() < 480) {
-        if(value.length > 10) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
+        if(value.length > 8) tmpval = tmpval.substring(0,7) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
       }
       else if($(window).width() < 1025){
         if(value.length > 15) tmpval = tmpval.substring(0,9) + "..." + tmpval.substring(tmpval.length-4,tmpval.length);
@@ -260,7 +261,18 @@ $(document).ready(function(){
   var folderClassname;//!imp
   var sidelinkid;
   $(".back-arrow").click(function(){
-    //alert('executed');
+    if(prevsidelinkid == "group"){
+      $(".nav-bar-title :last-child").remove();
+      $(".nav-bar-title :last-child").remove();
+      $(".nav-bar-title :last-child").click();
+      return;
+    }
+    else if (prevsidelinkid == 'shared-with-me'){
+      $(".nav-bar-title :last-child").remove();
+      $(".nav-bar-title :last-child").remove();
+      $(".nav-bar-title :last-child").click();
+      return;
+    }
     tmp = subdir.lastIndexOf("/");
     if(tmp == -1) {
       subdir = '';
@@ -279,11 +291,13 @@ $(document).ready(function(){
   });
   $(document).click(function(e){
 
+  if(classname == 'new' || classname == 'upload-button' || classname == 'create-menu'){
 
-  if(classname == 'new'){
   if(onscreen==0)
   {
-  $(".create-menu").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
+    $(".back-arrow1").css({"display": "block"});
+    $(".left-menu").css({"display": "none"});
+  $(".body").append('<ul class="new-dropdown folder-submenu-container" ><li class="create-folder"><i class="create-folder ion-ios-folder icon" ></i><span class="create-folder">Create Folder</span></li><li class="create-group"><i class="create-group ion-android-people icon" ></i><span class="create-group">Create Group</span></li><li class="upload"><i class="upload ion-ios-paper icon" ></i><span class="upload">Upload File</span></li></ul>');
   onscreen=1;
   }
   }
@@ -342,7 +356,7 @@ $(document).ready(function(){
                 exclass = "shared";
                 shortname = value.name;
                 if ( $(window).width() < 480) {
-                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                 }
                 else if($(window).width() < 1025){
                   if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -361,6 +375,10 @@ $(document).ready(function(){
               });
             }
           });
+          if($(window).width() <= 480){
+            $('.back-arrow').css({"display":"none"});
+            $('.left-menu').css({"display":"block"});
+          }
           return;
         }
         else if(sidelinkid == 'group'){
@@ -383,7 +401,7 @@ $(document).ready(function(){
                 exclass = "shared";
                 shortname = value.name;
                 if ( $(window).width() < 480) {
-                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                 }
                 else if($(window).width() < 1025){
                   if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -410,7 +428,7 @@ $(document).ready(function(){
                 exclass = "shared";
                 shortname = value.name;
                 if ( $(window).width() < 480) {
-                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                 }
                 else if($(window).width() < 1025){
                   if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -441,7 +459,7 @@ $(document).ready(function(){
                 exclass = "shared";
                 shortname = value.name;
                 if ( $(window).width() < 480) {
-                  if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                  if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                 }
                 else if($(window).width() < 1025){
                   if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -455,6 +473,10 @@ $(document).ready(function(){
               });
             }
           });
+          if($(window).width() <= 480){ //fix
+            $(".back-arrow").css({"display":"none"});
+            $(".left-menu").css({"display":"block"});
+          }
           return;
         }
         else {
@@ -497,7 +519,7 @@ $(document).ready(function(){
                     if(value.is_img == true) img = value.link;
                     else img = defaultimg;
                     if ( $(window).width() < 480) {
-                      if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                      if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                     }
                     else if($(window).width() < 1025){
                       if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -542,7 +564,7 @@ $(document).ready(function(){
                       exclass = "group";
                       shortname = value.name;
                       if ( $(window).width() < 480) {
-                        if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                        if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                       }
                       else if($(window).width() < 1025){
                         if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -586,7 +608,7 @@ $(document).ready(function(){
                     exclass = "group";
                     shortname = value.name;
                     if ( $(window).width() < 480) {
-                      if(shortname.length > 10) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
+                      if(shortname.length > 8) shortname = shortname.substring(0,7) + "..." + shortname.substring(shortname.length-4,shortname.length);
                     }
                     else if($(window).width() < 1025){
                       if(shortname.length > 15) shortname = shortname.substring(0,9) + "..." + shortname.substring(shortname.length-4,shortname.length);
@@ -611,13 +633,17 @@ $(document).ready(function(){
               });
             }
             window.loadgroup();
+            if($(window).width() < 480){
+              $(".back-arrow").css({"display": "block"});
+              $(".left-menu").css({"display": "none"});
+            }
             return;
           }
           else updatenavbar($("#"+sidelinkid).attr('name'),subdir);
           activeupdate("saved-notes","Saved Notes");
         }
         fetchAndReload();
-        if($(window).width() < 480){
+        if($(window).width() < 480 && subdir != ''){
           $(".back-arrow").css({"display": "block"});
           $(".left-menu").css({"display": "none"});
         }
@@ -730,9 +756,13 @@ $(document).ready(function(){
   });
   $(document).click(function(e) {
     var classname1 = $(e.target).attr('class').split(' ')[0];
+    if($(".left-menu").css('display')=='block'){
+      $(".back-arrow1").css({"display": "none"});
+      $(".back-arrow").css({"display": "none"});
+    }
 //alert(classname1);
     if(classname1 == 'upload'){
-      $(".mobile-submenu-full-cover").css({"display": "none"});
+      //$(".mobile-submenu-full-cover").css({"display": "none"});
       //$(".back-arrow1").click();
       if(prevsidelinkid != 'saved-notes'){
         $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only upload files in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
@@ -744,6 +774,8 @@ $(document).ready(function(){
     }
     if(classname1 == 'create-group'){
       $(".mobile-submenu-full-cover").css({"display": "none"});
+      $(".back-arrow1").css({"display":"none"});
+      if(subdir == '') $('.left-menu').css({"display":"block"});
       //$(".back-arrow1").click();
       $(".body").append('<form id="myform"><div class="modal-background-filter"></div><div class="open-modal group-modal-container " ><h3>Create Group</h3><p>Please enter details to create group </p><div class="input-container"><input class="namebox" autocomplete="off" placeholder="Name" id="members" style="text-transform: none"><div class="chip-container memb" ><span class="chips-here memb"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" style="text-transform: none" placeholder="Members" name="browser" class="members" list="friend-email1" ><datalist class="email-suggestion" id="friend-email1"></datalist></div><textarea rows="4" placeholder="Description"></textarea><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input autocomplete="off" placeholder="Tags (e.g., engennering,CM4G,Mumbai University)" name="browser" id="members"></div></div><div class="button-done">Create</div><div class="close"><i class="close-button ion-close"></i></div></div></form>');
       $('.members').keyup(function(event){
@@ -878,7 +910,13 @@ $(document).ready(function(){
     if(classname1 == 'create-folder'){
 
       $(".mobile-submenu-full-cover").css({"display": "none"});
+      /*if($(".left-menu").css()=='block'){
+        $(".back-arrow1").css({"display": "none"});
+        $(".back-arrow").css({"display": "none"});
+      }*/
       //$(".back-arrow1").click();
+      $(".back-arrow1").css({"display":"none"});
+      if(subdir == '') $('.left-menu').css({"display":"block"});
       if(prevsidelinkid != 'saved-notes'){
         $(".body").append('<div class="modal-background-filter"></div><div class="open-modal error-modal-container" ><p>You can only create folder in saved-notes. To Share a folder with Group/User browse to saved-notes and share the required document</p><div class="okay button-done" id="okay" >OK</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
 
@@ -931,7 +969,7 @@ $(document).ready(function(){
       });
     }
   });
-  $(document).click(function(e) {
+  $(document).click(function(e) {//jere
   //  alert("entred");
 
     var classname1 = $(e.target).attr('class').split(' ')[0];
@@ -945,6 +983,10 @@ $(document).ready(function(){
     else if(classname1 == 'move-to'){
     }
     else if(classname1 == 'get-shareable-link'){
+      if($(window).width() <= 480) {
+        $(".back-arrow1").css({"display":"none"});
+        if(subdir == '') $('.left-menu').css({"display":"block"});
+      }
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal shared-modal-container" ><h3>Share with others</h3><label class="toggle-switch switch"><input id="checkbox" checked name="hello" type="checkbox"><div class="slider round"></div></label> <div class="link-share-contianer"><input id="linkbox" readonly disabled placeholder="Enable Slider to Get shared link" onClick="this.setSelectionRange(0, this.value.length)"  class="share-link" /></div><div class="or-container"><div class="line-share left"></div><span>or</span><div class="line-share right"></div></div><h4>People/Group<h4><div class="chip-container" ><span class="chips-here"><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-2"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span><span class="chip" id="option-1"><i class="ion-person person"></i><span class="shared-email">Avish Kadakia</span><i class="remove-email ion-close"></i></span></span><input type="text" style="text-transform: none" placeholder="Enter email here" list="friend-email1" autocomplete="off"  name="browser" class="email-sugg" id="members"><datalist class="email-suggestion" id="friend-email1"></datalist></div><div class="button-done">Done</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('.email-sugg').keyup(function(event){
         $.ajax({
@@ -1092,6 +1134,10 @@ $(document).ready(function(){
       fnr();
     }
     else if(classname1 == 'rename'){
+      if($(window).width() <= 480) {
+        $(".back-arrow1").css({"display":"none"});
+        if(subdir == '') $('.left-menu').css({"display":"block"});
+      }
       $(".body").append('<div class="modal-background-filter"></div><div class="open-modal rename-modal-container" ><h3>Rename</h3><p>Please enter a new name for the item </p><div class="link-share-contianer"><input id="newname" placeholder="file name goes here" class="share-link" /></div><div class="button-done" id="rname">Save</div><div class="close-button close"><i class="close-button ion-close"></i></div></div>');
       $('#newname').keypress(function(event){
         if(event.which == 13) $( "#rname" ).click();
@@ -1176,8 +1222,8 @@ $(document).click(function(e) {
 
     //alert("move-to clicked " + classname + prevforid);
     if ( $(window).width() < 480) {
-      $(".back-arrow").css({"display": "none"});
-      $(".left-menu").css({"display": "block"});
+      $(".back-arrow1").css({"display": "none"});
+      if(subdir == '') $(".left-menu").css({"display": "block"});
     }
     $("#"+prevforid).append('<ul class=" move-to-submenu" ><i class="back-icon ion-arrow-left-c icon" onclick="parseme(this)" name=""></i><h4 class="move-to-title">Saved Notes</h4><i class="close-icon ion-close-round icon"></i><div class="li-container"><li  onclick="parseme(this)"><i class="ion-ios-folder icon" ></i><span class="option-1">Folder</span><i class="ion-android-arrow-dropright right icon" ></i></li></div><li class="btn-container"><div class="btn-move btn left" name="">Move here</div><div class="btn btn-move right"><i class="ion-plus icon"></i></div></li></ul>');
     open("");
